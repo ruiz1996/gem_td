@@ -226,6 +226,12 @@ export function keep(s: GameState, id: number) {
   g.candidate = false;
   s.resolved = true;
 }
+export function keepAndStartWave(s: GameState, id: number) {
+  // Validate the route before consuming candidates. Keeping never changes occupancy.
+  if (!findPath(s.gems)) throw new Error('道路不通');
+  keep(s, id);
+  startWave(s);
+}
 export function fuseOptions(s: GameState, id: number) {
   const g = getGem(s, id),
     t = g && TOWERS[g.type];

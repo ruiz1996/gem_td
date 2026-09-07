@@ -202,7 +202,7 @@ export function TouchControls({
                   disabled={!ready || s.placed !== 5}
                   onClick={a.keep}
                 >
-                  保留这颗宝石
+                  保留并开始本波
                 </Button>
                 {options.map((count) => (
                   <Button
@@ -219,6 +219,9 @@ export function TouchControls({
           {!!tower && (
             <div className="touch-recipes">
               <strong>配方合成</strong>
+              {s.phase === 'combat' && (
+                <p className="muted">战斗中可合成，其他材料原地变石。</p>
+              )}
               {combinations.length ? (
                 combinations.map(({ recipe, ids }) => (
                   <Button

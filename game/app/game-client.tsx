@@ -71,7 +71,7 @@ import {
   fuse,
   fuseOptions,
   getGem,
-  keep,
+  keepAndStartWave,
   loadGame,
   materialPool,
   place,
@@ -471,6 +471,16 @@ export default function GemGame() {
       notify(`${TOWERS[g.type].name} · 已放置 ${s.placed}/5`);
     });
   }
+  function keepSelected() {
+    act(() => {
+      if (!selected) return;
+      keepAndStartWave(s, selected.id);
+      if (modal === 'action') closeModal();
+      // Opening a new wave supersedes the preparation dialog's previous pause.
+      s.paused = document.hidden;
+      notify(`已保留宝石 · 第 ${s.wave} 波开始`);
+    });
+  }
   const touchActions: TouchActions = {
     nudge: (dx, dy) => {
       const p = nudgeCell(v.cursor ?? selected ?? { x: 18, y: 18 }, dx, dy);
@@ -478,12 +488,7 @@ export default function GemGame() {
       if (v.zoom > 1) v.focus = p;
     },
     place: confirmPlacement,
-    keep: () =>
-      act(() => {
-        if (selected) keep(s, selected.id);
-        closeModal();
-        notify('已保留，其余候选变成石头');
-      }),
+    keep: keepSelected,
     fuse: (count) =>
       act(() => {
         if (selected) fuse(s, selected.id, count);
@@ -1056,16 +1061,11 @@ export default function GemGame() {
                       <Button
                         className="primary-action full"
                         disabled={s.placed !== 5 || s.resolved}
-                        onClick={() =>
-                          act(() => {
-                            keep(s, selected.id);
-                            notify('已保留，其余候选变成石头');
-                          })
-                        }
+                        onClick={keepSelected}
                       >
                         {s.placed < 5
                           ? '还需放置 ' + (5 - s.placed) + ' 颗'
-                          : '保留这颗宝石'}
+                          : '保留并开始本波'}
                         <Check size={16} />
                       </Button>
                       {fuseOptions(s, selected.id).map((count) => (
@@ -1511,7 +1511,7 @@ export default function GemGame() {
                 <li>
                   <strong>守住路线</strong>
                   <p>
-                    准备完成后开始下一波。飞行怪无视石头，隐形怪需要显隐光环。
+                    点击保留立即开始本波；同品质融合或本轮合成后可手动开波。飞行怪无视石头，隐形怪需要显隐光环。
                   </p>
                 </li>
                 <li>

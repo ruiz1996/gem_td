@@ -15,9 +15,11 @@ import {
   fuse,
   fuseOptions,
   keep,
+  keepAndStartWave,
   loadGame,
   physicalMultiplier,
   place,
+  recipesFor,
   recommend,
   removeStone,
   saveGame,
@@ -118,6 +120,95 @@ void test('combat prohibits building/removal even when paused', () => {
   const before = s.time;
   tick(s);
   assert.equal(s.time, before);
+});
+void test('keeping starts the current wave once, including after restoring a paused preparation', () => {
+  const s = freshGame(7);
+  for (let x = 4; x < 9; x++) place(s, x, 11);
+  s.wave = 4;
+  s.paused = true;
+  const selected = s.gems[2],
+    beforePath = findPath(s.gems);
+  keepAndStartWave(s, selected.id);
+  assert.equal(s.phase, 'combat');
+  assert.equal(s.wave, 4, 'start this prepared wave, never skip to wave 5');
+  assert.equal(s.paused, false);
+  assert.equal(s.gems.filter((g) => g.type !== 'stone').length, 1);
+  assert.ok(s.gems.every((g) => !g.candidate));
+  assert.deepEqual(s.path, beforePath);
+  tick(s);
+  assert.ok(s.enemies.length > 0, 'spawning begins without a second command');
+  const started = saveGame(s);
+  assert.throws(() => keepAndStartWave(s, selected.id));
+  assert.equal(saveGame(s), started, 'double taps cannot restart combat');
+  assert.throws(() => removeStone(s, s.gems[0].id));
+});
+void test('invalid keep-and-start requests leave the preparation unchanged', () => {
+  const s = freshGame(8);
+  place(s, 4, 11);
+  let before = saveGame(s);
+  assert.throws(() => keepAndStartWave(s, s.gems[0].id));
+  assert.equal(saveGame(s), before);
+  for (let x = 5; x < 9; x++) place(s, x, 11);
+  before = saveGame(s);
+  assert.throws(() => keepAndStartWave(s, -1));
+  assert.equal(saveGame(s), before);
+  for (let y = 0; y < BOARD.height; y++) add(s, 'stone', 12, y - 6);
+  before = saveGame(s);
+  assert.throws(() => keepAndStartWave(s, s.gems[0].id), /道路不通/);
+  assert.equal(
+    saveGame(s),
+    before,
+    'failed route validation must not consume candidates',
+  );
+});
+void test('combat recipes work while running or paused without changing enemies, route or wave clocks', () => {
+  for (const paused of [false, true]) {
+    const s = freshGame(12);
+    const b = add(s, basicId('B', 1), 4, 4),
+      y1 = add(s, basicId('Y', 1), 5, 4),
+      d = add(s, basicId('D', 1), 6, 4),
+      y2 = add(s, basicId('Y', 1), 7, 4);
+    s.resolved = true;
+    startWave(s);
+    for (let i = 0; i < 35; i++) tick(s);
+    s.paused = paused;
+    b.cooldown = 0.37;
+    const recipe = recipesFor(s, b.id).find(
+      (r) => r.recipe.result === 'gemtd_baiyin',
+    )!;
+    assert.deepEqual(recipe.ids, [b.id, y1.id, d.id]);
+    const enemies = structuredClone(s.enemies),
+      path = s.path,
+      occupied = s.gems.map((g) => [g.x, g.y]),
+      clocks = [
+        s.time,
+        s.spawnClock,
+        s.spawned,
+        s.waveStartedAt,
+        s.combatCount,
+      ];
+    assert.ok(enemies.length > 0);
+    combine(s, recipe.recipe.id, b.id, [b.id, y2.id, d.id]);
+    assert.equal(s.phase, 'combat');
+    assert.equal(s.paused, paused);
+    assert.equal(b.type, 'gemtd_baiyin');
+    assert.equal(b.cooldown, 0.37);
+    assert.equal(y1.type, basicId('Y', 1));
+    assert.equal(y2.type, 'stone');
+    assert.equal(d.type, 'stone');
+    assert.equal(s.path, path);
+    assert.deepEqual(
+      s.gems.map((g) => [g.x, g.y]),
+      occupied,
+    );
+    assert.deepEqual(s.enemies, enemies);
+    assert.deepEqual(
+      [s.time, s.spawnClock, s.spawned, s.waveStartedAt, s.combatCount],
+      clocks,
+    );
+    tick(s);
+    assert.equal(s.time > clocks[0], !paused);
+  }
 });
 void test('fusion consumes this round only and honors the quality cap', () => {
   const s = freshGame();
