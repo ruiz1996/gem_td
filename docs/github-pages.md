@@ -4,6 +4,10 @@
 
 发布目标：https://ruiz1996.github.io/gem_td/ （以 Actions 成功部署为准）。
 
+## 默认发布约定
+
+用户于2026-09-07授权本项目后续每轮修改完成后直接推送GitHub，无需再次确认。完成相关检查后提交并推送main，确认现有Actions发布结果，再交付试玩入口。若用户某次明确要求仅本地修改或暂不发布，则按该次要求处理。此约定也记录于根目录[AGENTS.md](../AGENTS.md)。
+
 仓库 Settings → Pages → Build and deployment → Source 选择 **GitHub Actions**。首次启用需要仓库管理员操作。此后推送 main 会自动进行类型检查、规则测试、静态构建和发布，也可在 Actions 手动运行 Publish Gem TD to GitHub Pages。
 
 ## 本地检查
