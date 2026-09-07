@@ -31,7 +31,7 @@ npm run build
 | `lib/game/data.ts` | 将历史字段转成运行配置，并明确放置手机试玩参数 |
 | `lib/game/board.ts` / `board-input.ts` | Phaser 棋盘绘制、统一 Pointer Events、拖动及双指缩放 |
 | `lib/game/interaction.ts` / `hooks/use-game-interaction.ts` | 设备识别、操作模式偏好、棋盘镜头和逐格定位 |
-| `components/game/touch-controls.tsx` | 手机独立操作区、候选列表和合成材料选择 |
+| `components/game/touch-controls.tsx` | 选中位置后的操作弹窗、建造、保留与合成材料选择 |
 | `app/game-client.tsx` | 桌面与触屏界面、操作桥接、图鉴、存档恢复 |
 | `data/historical.json` | 固定历史快照中提取的事实字段，含来源 URL 与 SHA-256 |
 | `scripts/extract-data.mjs` | 从固定提交重新提取数据：`npm run data:extract` |
@@ -43,7 +43,7 @@ npm run build
 
 ## 存档与界面
 
-手机自动进入触屏模式：竖屏底部操作、横屏右侧操作，棋盘与按钮保持在同一屏幕内。拖动移图、双指缩放，点选后用箭头逐格微调并确认建造。五颗候选与宝石列表可直接定位；详情面板提供配方，预览时以材料槽和坐标列表选材。右上角操作设置可选择自动、手机或桌面模式。详见[交互设计与测试](docs/touch-interaction.md)。
+手机自动进入触屏模式，默认完整显示地图，不常驻底部或右侧操作面板。点选空格或宝石，再点“操作”打开弹窗，进行建造、保留、融合或配方合成；完成后自动回到地图。建造框保留逐格微调，合成框提供材料槽和坐标列表。双指缩放，放大后可拖动；暂停、倍速、宝石列表、图鉴及模式切换均在右上角菜单中。详见[交互设计与测试](docs/touch-interaction.md)。
 
 存档仅在当前浏览器本地保存，不跨设备同步。每次有效操作、波次切换和战斗约 5 秒间隔保存；恢复后暂停。不同配置版本的存档会被拒绝，不能直接覆盖解释为新版本。
 

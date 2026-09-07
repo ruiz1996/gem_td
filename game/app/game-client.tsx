@@ -31,7 +31,6 @@ import {
 import { useGameInteraction } from '@/hooks/use-game-interaction';
 import {
   nudgeCell,
-  touchZoom,
   MAX_TOUCH_ZOOM,
   type InteractionPreference,
 } from '@/lib/game/interaction';
@@ -96,7 +95,6 @@ type Preview = {
 export default function GemGame() {
   'use no memo'; // The fixed-step game engine is mutable; this bridge samples it explicitly.
   const { touch, preference, changePreference } = useGameInteraction();
-  const [touchDetails, setTouchDetails] = useState(false);
   const [initialState] = useState(() => freshGame(20260907));
   const state = useRef<GameState>(initialState);
   const board = useRef<HTMLDivElement>(null);
@@ -120,7 +118,7 @@ export default function GemGame() {
     [boardError, setBoardError] = useState(''),
     [notice, setNotice] = useState('点选空格，开始布置宝石'),
     [modal, setModal] = useState<
-      'help' | 'library' | 'waves' | 'settings' | 'towers' | null
+      'help' | 'library' | 'waves' | 'settings' | 'towers' | 'action' | null
     >(null),
     [restart, setRestart] = useState(false),
     [saved, setSaved] = useState<string | null>(null),
@@ -196,12 +194,11 @@ export default function GemGame() {
       ids: [...ids],
       anchor,
       slot: Math.max(0, slot),
-      wasPaused: state.current.paused,
+      wasPaused: modal === 'action' ? modalPause.current : state.current.paused,
     };
     state.current.paused = true;
     view.current.pending = null;
-    setTouchDetails(false);
-    if (view.current.touchMode)
+    if (view.current.touchMode && view.current.zoom > 1)
       view.current.focus = getGem(state.current, anchor)!;
     updatePreview(p);
   }
@@ -213,6 +210,7 @@ export default function GemGame() {
     refresh();
   }
   function closeModal() {
+    if (previewRef.current) closePreview();
     state.current.paused = document.hidden ? true : modalPause.current;
     setModal(null);
     refresh();
@@ -273,17 +271,11 @@ export default function GemGame() {
   useEffect(() => {
     const v = view.current;
     v.touchMode = touch;
-    v.zoom =
-      touch && board.current
-        ? touchZoom(board.current.clientWidth, board.current.clientHeight)
-        : 1;
+    v.zoom = 1;
     v.panX = 0;
     v.panY = 0;
-    v.focus = touch
-      ? (getGem(state.current, v.selected) ?? { x: 18, y: 18 })
-      : null;
+    v.focus = null;
     setZoom(v.zoom);
-    setTouchDetails(false);
   }, [touch]);
   useEffect(() => {
     let disposed = false,
@@ -379,7 +371,8 @@ export default function GemGame() {
     };
     const exit = () => persist();
     const key = (e: KeyboardEvent) => {
-      if (e.key === 'Escape' && previewRef.current) closePreview();
+      if (e.key === 'Escape' && previewRef.current && !view.current.touchMode)
+        closePreview();
     };
     document.addEventListener('visibilitychange', hide);
     window.addEventListener('pagehide', exit);
@@ -410,15 +403,8 @@ export default function GemGame() {
       cursor: null,
       focus: null,
     });
-    if (view.current.touchMode && board.current) {
-      view.current.zoom = touchZoom(
-        board.current.clientWidth,
-        board.current.clientHeight,
-      );
-      view.current.focus = { x: 18, y: 18 };
-    }
     setZoom(view.current.zoom);
-    setTouchDetails(false);
+    setModal(null);
     setSaved(null);
     setRestart(false);
     readyRef.current = true;
@@ -470,14 +456,7 @@ export default function GemGame() {
     v.selected = id;
     v.pending = null;
     v.cursor = { x: gem.x, y: gem.y };
-    if (touch && board.current) {
-      if (v.zoom === 1) {
-        v.zoom = touchZoom(
-          board.current.clientWidth,
-          board.current.clientHeight,
-        );
-        setZoom(v.zoom);
-      }
+    if (touch && v.zoom > 1) {
       v.focus = { x: gem.x, y: gem.y };
     }
     refresh();
@@ -488,75 +467,79 @@ export default function GemGame() {
       const g = place(s, v.pending.x, v.pending.y);
       v.selected = g.id;
       v.pending = null;
+      if (modal === 'action') closeModal();
       notify(`${TOWERS[g.type].name} · 已放置 ${s.placed}/5`);
     });
   }
   const touchActions: TouchActions = {
-    selectGem: selectTouchGem,
     nudge: (dx, dy) => {
       const p = nudgeCell(v.cursor ?? selected ?? { x: 18, y: 18 }, dx, dy);
       callbacks.current(p.x, p.y);
-      v.focus = p;
-      if (v.zoom === 1 && board.current) {
-        v.zoom = touchZoom(
-          board.current.clientWidth,
-          board.current.clientHeight,
-        );
-        setZoom(v.zoom);
-      }
+      if (v.zoom > 1) v.focus = p;
     },
     place: confirmPlacement,
     keep: () =>
       act(() => {
         if (selected) keep(s, selected.id);
+        closeModal();
         notify('已保留，其余候选变成石头');
       }),
     fuse: (count) =>
       act(() => {
         if (selected) fuse(s, selected.id, count);
+        closeModal();
         notify('同品质融合完成');
       }),
     remove: () =>
       act(() => {
         if (selected) removeStone(s, selected.id);
         v.selected = null;
+        v.cursor = null;
+        closeModal();
         notify('石头已拆除');
       }),
-    fight: () =>
-      act(() => {
-        if (s.phase === 'prepare') startWave(s);
-        else s.paused = !s.paused;
-      }),
-    speed: () =>
-      act(() => {
-        s.speed = s.speed === 1 ? 2 : 1;
-      }),
-    details: () => setTouchDetails(true),
-    library: () => openModal('library'),
-    towers: () => openModal('towers'),
+    recipe: openPreview,
     slot: (slot) => {
       if (preview) {
         updatePreview({ ...preview, slot });
-        v.focus = getGem(s, preview.ids[slot])!;
+        if (v.zoom > 1) v.focus = getGem(s, preview.ids[slot])!;
       }
     },
     material: (id) => {
       const g = getGem(s, id);
       if (g) {
         callbacks.current(g.x, g.y);
-        v.focus = { x: g.x, y: g.y };
+        if (v.zoom > 1) v.focus = { x: g.x, y: g.y };
       }
     },
     combine: () =>
       act(() => {
         if (preview) {
           combine(s, preview.recipe.id, preview.anchor, preview.ids);
-          closePreview();
+          closeModal();
           notify('合成完成');
         }
       }),
-    cancel: closePreview,
   };
+  const touchPoint = v.pending ?? v.cursor;
+  const touchHasSelection =
+    !!selected ||
+    (!!touchPoint && s.phase === 'prepare' && !s.resolved && s.placed < 5);
+  function fullMap() {
+    v.zoom = 1;
+    v.panX = 0;
+    v.panY = 0;
+    v.focus = null;
+    setZoom(1);
+  }
+  function fight() {
+    act(() => {
+      const pausedBeforeMenu = modal ? modalPause.current : s.paused;
+      if (modal) closeModal();
+      if (s.phase === 'prepare') startWave(s);
+      else s.paused = !pausedBeforeMenu;
+    });
+  }
   return (
     <main
       className={'game-shell' + (touch ? ' touch-mode' : '')}
@@ -690,7 +673,7 @@ export default function GemGame() {
                 </Button>
               </div>
             )}
-            {preview && (
+            {preview && !touch && (
               <div className="preview-banner">
                 <Layers size={16} />
                 合成预览 · 战斗暂停 · 点击高亮宝石替换材料
@@ -711,6 +694,58 @@ export default function GemGame() {
                   继续
                 </Button>
               </div>
+            )}
+            {touch && ready && !complete && !boardError && (
+              <>
+                <div className="touch-map-status">
+                  {s.phase === 'combat'
+                    ? `${w.name} · ${s.enemies.length}只在场`
+                    : s.resolved
+                      ? '准备就绪'
+                      : `本轮建造 ${s.placed}/5`}
+                </div>
+                {zoom > 1 && (
+                  <Button
+                    className="touch-full-map"
+                    variant="outline"
+                    onClick={fullMap}
+                    aria-label="查看全图"
+                  >
+                    <Maximize2 size={16} />
+                    全图
+                  </Button>
+                )}
+                <div className="touch-map-actions">
+                  {touchHasSelection && (
+                    <Button
+                      className="touch-open-action"
+                      aria-label="打开选中位置操作"
+                      onClick={() => openModal('action')}
+                    >
+                      <span>
+                        <small>
+                          {selected
+                            ? (selectedTower?.name ?? '迷宫石头')
+                            : `${touchPoint!.x + 1}列 · ${touchPoint!.y + 1}行`}
+                        </small>
+                        操作 <ChevronRight size={16} />
+                      </span>
+                    </Button>
+                  )}
+                  {s.phase === 'prepare' && s.resolved && (
+                    <Button className="primary-action" onClick={fight}>
+                      <Play size={16} />
+                      开始第 {s.wave} 波
+                    </Button>
+                  )}
+                </div>
+                <output className="touch-map-notice" aria-live="polite">
+                  {notice ||
+                    (!touchHasSelection && s.phase === 'prepare' && !s.resolved
+                      ? '点选位置或宝石，再点“操作”'
+                      : '')}
+                </output>
+              </>
             )}
           </div>
           <div className="board-toolbar">
@@ -771,30 +806,8 @@ export default function GemGame() {
             </div>
           </div>
         </section>
-        {touch && (
-          <TouchControls
-            state={s}
-            view={v}
-            ready={ready}
-            preview={preview}
-            actions={touchActions}
-            notice={notice}
-            saveStatus={saveStatus}
-          />
-        )}
-        {(!touch || touchDetails) && (
-          <aside className={'inspector' + (touch ? ' touch-details' : '')}>
-            {touch && (
-              <div className="touch-detail-header">
-                <strong>宝石详情与配方</strong>
-                <Button
-                  variant="outline"
-                  onClick={() => setTouchDetails(false)}
-                >
-                  返回棋盘
-                </Button>
-              </div>
-            )}
+        {!touch && (
+          <aside className="inspector">
             <div className="wave-card">
               <div className="eyebrow">
                 {s.phase === 'combat' ? '当前敌人' : '下一波'}
@@ -1256,33 +1269,154 @@ export default function GemGame() {
           className={
             'game-dialog ' +
             (touch ? 'touch-dialog ' : '') +
-            (modal === 'library' ? 'wide-dialog' : '')
+            (modal === 'library' ? 'wide-dialog' : '') +
+            (modal === 'action' ? ' touch-context-dialog' : '')
           }
+          showCloseButton={modal !== 'action'}
         >
           <DialogTitle>
-            {modal === 'library'
-              ? '宝石图鉴'
-              : modal === 'waves'
-                ? '波次情报'
-                : modal === 'settings'
-                  ? '操作设置'
-                  : modal === 'towers'
-                    ? '宝石列表'
-                    : '欢迎来到宝石 TD'}
+            {modal === 'action'
+              ? preview
+                ? `合成 ${TOWERS[preview.recipe.result].name}`
+                : selected
+                  ? (selectedTower?.name ?? '迷宫石头')
+                  : '建造宝石'
+              : modal === 'library'
+                ? '宝石图鉴'
+                : modal === 'waves'
+                  ? '波次情报'
+                  : modal === 'settings'
+                    ? '操作设置'
+                    : modal === 'towers'
+                      ? '宝石列表'
+                      : '欢迎来到宝石 TD'}
           </DialogTitle>
           <DialogDescription>
-            {modal === 'library'
-              ? '查看宝石属性与配方，规划你的下一次合成。'
-              : modal === 'waves'
-                ? '根据下一波的飞行、隐形与免疫能力安排防线。'
-                : modal === 'settings'
-                  ? '自动适应设备，也可以手动切换操作方式。'
-                  : modal === 'towers'
-                    ? '点击列表中的宝石，直接定位到棋盘上。'
-                    : '随机选石、合成强塔，用迷宫守住每一波。'}
+            {modal === 'action'
+              ? preview
+                ? '预览期间暂停，完成或取消后回到地图。'
+                : selected
+                  ? `${selected.x + 1}列 · ${selected.y + 1}行${selected.candidate ? ' · 本轮候选' : ''}`
+                  : touchPoint
+                    ? `${touchPoint.x + 1}列 · ${touchPoint.y + 1}行`
+                    : '点选位置后进行操作。'
+              : modal === 'library'
+                ? '查看宝石属性与配方，规划你的下一次合成。'
+                : modal === 'waves'
+                  ? '根据下一波的飞行、隐形与免疫能力安排防线。'
+                  : modal === 'settings'
+                    ? '暂停、倍速、地图缩放和操作模式。'
+                    : modal === 'towers'
+                      ? '点击列表选择宝石，回到地图后点“操作”。'
+                      : '随机选石、合成强塔，用迷宫守住每一波。'}
           </DialogDescription>
+          {modal === 'action' && (
+            <>
+              <TouchControls
+                state={s}
+                view={v}
+                ready={ready}
+                preview={preview}
+                actions={touchActions}
+                notice={notice}
+              />
+              <Button
+                className="touch-return"
+                variant="outline"
+                onClick={closeModal}
+              >
+                {preview ? '取消合成，返回地图' : '返回地图'}
+              </Button>
+            </>
+          )}
           {modal === 'settings' && (
             <div className="touch-settings">
+              {touch && (
+                <>
+                  <div className="touch-menu-row">
+                    <Button
+                      className="primary-action"
+                      disabled={
+                        !ready ||
+                        complete ||
+                        (s.phase === 'prepare' && !s.resolved)
+                      }
+                      onClick={fight}
+                    >
+                      {s.phase === 'combat'
+                        ? modalPause.current
+                          ? '继续防守'
+                          : '暂停防守'
+                        : `开始第 ${s.wave} 波`}
+                    </Button>
+                    <Button
+                      variant="outline"
+                      disabled={!ready}
+                      onClick={() =>
+                        act(() => {
+                          s.speed = s.speed === 1 ? 2 : 1;
+                        })
+                      }
+                    >
+                      速度 {s.speed}×
+                    </Button>
+                  </div>
+                  <div className="touch-menu-row">
+                    <Button
+                      variant="outline"
+                      disabled={!ready}
+                      onClick={() => setModal('towers')}
+                    >
+                      宝石列表
+                    </Button>
+                    <Button
+                      variant="outline"
+                      onClick={() => setModal('library')}
+                    >
+                      宝石图鉴
+                    </Button>
+                  </div>
+                  <div className="touch-menu-row">
+                    <Button
+                      variant="outline"
+                      aria-label="缩小棋盘"
+                      disabled={zoom <= 1}
+                      onClick={() => adjustZoom(-0.5)}
+                    >
+                      <Minus size={18} />
+                    </Button>
+                    <Button
+                      variant="outline"
+                      onClick={() => {
+                        fullMap();
+                        closeModal();
+                      }}
+                    >
+                      查看全图
+                    </Button>
+                    <Button
+                      variant="outline"
+                      aria-label="放大棋盘"
+                      disabled={zoom >= MAX_TOUCH_ZOOM}
+                      onClick={() => adjustZoom(0.5)}
+                    >
+                      <Plus size={18} />
+                    </Button>
+                  </div>
+                  <Button
+                    variant="outline"
+                    onClick={() => {
+                      v.showPath = !v.showPath;
+                      refresh();
+                    }}
+                  >
+                    {v.showPath ? '隐藏路径' : '显示路径'}
+                  </Button>
+                  <p className="muted">
+                    品质 Lv.{s.quality + 1} · 经验 {s.xp} · {saveStatus}
+                  </p>
+                </>
+              )}
               <label>
                 操作模式
                 <select
@@ -1360,7 +1494,7 @@ export default function GemGame() {
             <div className="help-content">
               {touch && (
                 <p className="touch-hint">
-                  手机操作：拖动棋盘移图，点格子定位，用箭头逐格微调，再点“确认放置”。候选与宝石列表都可直接定位。合成时从材料列表选择，无需点中小宝石。
+                  手机操作：点选空格或宝石，再点“操作”打开建造、保留或合成面板。完成后自动回到地图。双指缩放，放大后拖动移图；暂停、倍速和图鉴在右上角菜单里。
                 </p>
               )}
               <ol>

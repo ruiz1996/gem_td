@@ -1203,7 +1203,7 @@ input {
     transition: none !important;
   }
 }
-/* Dedicated touch layout: the board and commands share one viewport. */
+/* Touch mode keeps the whole play area for the map; actions open in a dialog. */
 .game-shell.touch-mode {
   height: 100dvh;
   min-height: 0;
@@ -1256,52 +1256,26 @@ input {
   padding: 10px;
 }
 .touch-mode .workspace {
-  position: relative;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  grid-template-rows: minmax(0, 1fr) auto;
+  display: flex;
+  flex-direction: column;
   padding: 0;
   gap: 0;
   overflow: hidden;
+  width: 100%;
+  max-width: none;
 }
 .touch-mode .board-wrap {
+  flex: 1;
+  width: 100%;
   height: auto;
   min-height: 0;
   border: 0;
   border-radius: 0;
 }
-.touch-mode .board-heading {
-  height: 28px;
-  padding: 0 12px;
-}
-.touch-mode .board-heading > span:first-child,
-.touch-mode .phase-label {
-  font-size: 12px;
-}
-.touch-mode .board-heading small {
+.touch-mode .board-heading,
+.touch-mode .board-toolbar,
+.touch-mode > .statusbar {
   display: none;
-}
-.touch-mode .board-toolbar {
-  height: 48px;
-  padding: 0 8px;
-}
-.touch-mode .board-toolbar .legend {
-  display: none;
-}
-.touch-mode .map-controls {
-  flex: 1;
-  justify-content: space-between;
-}
-.touch-mode .map-controls button {
-  width: 46px;
-  height: 44px;
-  min-height: 44px !important;
-}
-.touch-mode .map-controls button:last-child {
-  width: 80px;
-}
-.touch-mode .map-controls span {
-  font-size: 14px;
 }
 .touch-mode .phaser-host {
   overscroll-behavior: none;
@@ -1310,68 +1284,104 @@ input {
 .touch-mode .phaser-host canvas {
   touch-action: none;
 }
-.touch-mode > .statusbar {
+.touch-map-status {
+  position: absolute;
+  top: 8px;
+  left: 12px;
+  color: #b9d5c5;
+  font-size: 12px;
+  pointer-events: none;
+}
+.touch-map-actions {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  display: flex;
+  gap: 8px;
+  max-width: calc(100% - 24px);
+}
+.touch-map-actions button {
+  min-height: 54px !important;
+  height: auto;
+  padding: 6px 14px;
+  box-shadow: 0 4px 18px #0005;
+  font-size: 14px;
+}
+.touch-open-action {
+  background: #c5e3d1 !important;
+  color: #152e25 !important;
+  min-width: 92px;
+}
+.touch-open-action small {
+  display: block;
+  max-width: 132px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 12px;
+  opacity: 0.8;
+}
+.touch-open-action svg {
+  display: inline;
+  vertical-align: middle;
+}
+.touch-full-map {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  min-height: 44px !important;
+  background: #12202ced !important;
+}
+.touch-map-notice {
+  position: absolute;
+  bottom: 80px;
+  left: 12px;
+  max-width: calc(100% - 24px);
+  padding: 6px 10px;
+  border-radius: 7px;
+  background: #12202ced;
+  color: #c4dbcd;
+  font-size: 12px;
+  pointer-events: none;
+}
+.touch-map-notice:empty {
   display: none;
 }
-.touch-dock {
+.touch-context-dialog {
+  display: flex !important;
+  flex-direction: column;
+  gap: 10px !important;
+  max-height: calc(100dvh - 24px) !important;
+  overflow: hidden !important;
+}
+.touch-context-dialog > [data-slot='dialog-title'],
+.touch-context-dialog > [data-slot='dialog-description'],
+.touch-return {
+  flex-shrink: 0;
+}
+.touch-context-content {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  padding: 10px 12px 6px;
-  border-top: 1px solid #385346;
-  background: #12202c;
-  min-width: 0;
-  overflow: auto;
+  gap: 12px;
+  min-height: 0;
+  overflow-y: auto;
   overscroll-behavior: contain;
+  padding: 2px;
 }
-.touch-dock button {
+.touch-context-content > * {
+  flex-shrink: 0;
+}
+.touch-context-content .ability-text,
+.touch-context-content .stat-grid {
+  margin-bottom: 0;
+}
+.touch-context-dialog button {
   min-height: 46px !important;
   font-size: 14px;
   touch-action: manipulation;
 }
-.touch-selection {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 8px;
-  min-height: 42px;
-}
-.touch-selection > div {
-  min-width: 0;
-}
-.touch-selection strong {
-  font-size: 16px;
-  display: block;
-}
-.touch-selection small {
-  display: block;
-  font-size: 12px;
-  color: #acbecb;
-  line-height: 1.5;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  max-width: 100%;
-}
-.touch-candidates {
-  display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 6px;
-}
-.touch-candidates button {
-  padding: 4px;
-  gap: 7px;
-}
-.touch-candidates span {
-  font-size: 17px;
-  font-weight: 600;
-}
-.touch-candidates button[aria-pressed='true'] {
-  border: 2px solid #afe5c9;
-  background: #294d43;
-}
-.touch-candidates small {
-  color: #93a6b7;
+.touch-context-dialog .touch-return {
+  background: #1c303a;
 }
 .touch-nudge {
   display: flex;
@@ -1384,12 +1394,13 @@ input {
   color: #a8c7b5;
 }
 .touch-nudge button {
-  width: 46px;
+  width: 44px;
   padding: 0;
   flex-shrink: 0;
 }
 .touch-main-actions {
   display: flex;
+  flex-wrap: wrap;
   gap: 8px;
 }
 .touch-main-actions > button {
@@ -1397,22 +1408,11 @@ input {
   padding: 8px;
   min-height: 48px !important;
 }
-.touch-tools {
-  display: grid;
-  grid-template-columns: 1.3fr 1.4fr 0.8fr 0.6fr;
-  gap: 4px;
-}
-.touch-tools button {
-  padding: 4px;
-}
 .touch-notice {
   display: block;
-  min-height: 18px;
-  max-height: 36px;
   font-size: 12px;
-  line-height: 18px;
+  line-height: 1.6;
   color: #acc5b5;
-  overflow: hidden;
 }
 .touch-field {
   display: grid;
@@ -1440,36 +1440,10 @@ input {
   font-size: 14px;
   line-height: 1.6;
 }
-.touch-mode .touch-details {
-  position: absolute;
-  inset: 0;
-  z-index: 25;
-  background: #12202c;
-  padding: 0 16px 16px;
-  overflow-y: auto;
-  min-height: 0;
-}
-.touch-mode .touch-details .selection-content {
-  overflow: visible;
-  flex: 1 0 auto;
-}
-.touch-mode .touch-details .inspector-bottom {
-  position: static;
-}
-.touch-mode .touch-details button {
-  min-height: 48px !important;
-}
-.touch-detail-header {
-  position: sticky;
-  top: 0;
-  background: #12202c;
-  z-index: 2;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  padding: 12px 0;
-  border-bottom: 1px solid #385346;
+.touch-recipes > strong {
+  display: block;
+  font-size: 14px;
+  margin: 8px 0;
 }
 .touch-settings,
 .touch-tower-list {
@@ -1483,6 +1457,13 @@ input {
   flex-direction: column;
   gap: 8px;
   font-size: 14px;
+}
+.touch-menu-row {
+  display: flex;
+  gap: 8px;
+}
+.touch-menu-row > button {
+  flex: 1;
 }
 .touch-tower-list {
   overflow: auto;
@@ -1514,21 +1495,11 @@ input {
   height: 46px;
 }
 @media (orientation: landscape) {
-  .touch-mode .workspace {
-    grid-template-columns: minmax(0, 1fr) 320px;
-    grid-template-rows: minmax(0, 1fr);
-  }
   .touch-mode .topbar {
     height: 48px;
   }
-  .touch-dock {
-    border-top: 0;
-    border-left: 1px solid #385346;
-    gap: 6px;
-    padding: 8px 10px;
-  }
-  .touch-mode .touch-details {
-    left: 28%;
+  .touch-context-dialog {
+    max-width: min(460px, calc(100vw - 32px)) !important;
   }
 }
 @media (max-width: 360px) {
@@ -1541,10 +1512,10 @@ input {
   .touch-nudge {
     gap: 4px;
   }
+  .touch-context-dialog {
+    padding: 14px !important;
+  }
   .touch-nudge button {
     width: 44px;
-  }
-  .touch-tools {
-    grid-template-columns: 1.15fr 1.4fr 0.75fr 0.6fr;
   }
 }
