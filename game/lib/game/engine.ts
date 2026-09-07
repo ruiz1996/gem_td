@@ -33,10 +33,12 @@ export type Enemy = Point & {
   routeIndex: number;
   slow: number;
   slowUntil: number;
-  poison: number;
-  poisonUntil: number;
-  poisonClock: number;
-  poisonOwner: number;
+  poisons: {
+    owner: number;
+    damage: number;
+    nextTick: number;
+    remaining: number;
+  }[];
   pierce: number;
   pierceUntil: number;
   stunUntil: number;
@@ -48,6 +50,7 @@ export type Enemy = Point & {
   evasion: number;
   physicalImmune: boolean;
   magicImmune: boolean;
+  ancient: boolean;
   leak: number;
 };
 export type Shot = {
@@ -66,6 +69,11 @@ export type GameState = {
   life: number;
   gold: number;
   quality: number;
+  xp: number;
+  normalCount: number;
+  combatCount: number;
+  winStreak: number;
+  waveStartedAt: number;
   placed: number;
   resolved: boolean;
   gems: Gem[];
@@ -108,6 +116,11 @@ export function freshGame(seed = Date.now() >>> 0): GameState {
     life: MOBILE_RULES.initialLife,
     gold: MOBILE_RULES.initialGold,
     quality: 0,
+    xp: 0,
+    normalCount: MOBILE_RULES.normalCount,
+    combatCount: MOBILE_RULES.normalCount,
+    winStreak: 0,
+    waveStartedAt: 0,
     placed: 0,
     resolved: false,
     gems,
@@ -136,7 +149,11 @@ export function random(s: GameState) {
   return s.rng / 4294967296;
 }
 export function waveInfo(s: GameState): Wave {
-  return WAVES[s.wave - 1];
+  const w = WAVES[s.wave - 1];
+  return {
+    ...w,
+    count: w.boss ? 1 : s.phase === 'combat' ? s.combatCount : s.normalCount,
+  };
 }
 export function getGem(s: GameState, id: number | null | undefined) {
   return s.gems.find((g) => g.id === id);
@@ -234,14 +251,6 @@ export function removeStone(s: GameState, id: number) {
   s.gems = s.gems.filter((x) => x.id !== id);
   s.path = findPath(s.gems)!;
 }
-export function upgradeQuality(s: GameState) {
-  if (s.phase !== 'prepare') throw new Error('波次结束后才能提升品质');
-  if (s.quality >= 4) throw new Error('品质概率已升满');
-  const cost = MOBILE_RULES.qualityCosts[s.quality];
-  if (s.gold < cost) throw new Error('金币不足');
-  s.gold -= cost;
-  s.quality++;
-}
 export function materialPool(s: GameState, anchor: Gem) {
   return s.gems
     .filter((g) => g.type !== 'stone' && g.candidate === anchor.candidate)
@@ -337,6 +346,8 @@ export function startWave(s: GameState) {
   s.spawned = 0;
   s.waveKills = 0;
   s.waveLeaks = 0;
+  s.combatCount = WAVES[s.wave - 1].boss ? 1 : s.normalCount;
+  s.waveStartedAt = s.time;
 }
 export function physicalMultiplier(armor: number) {
   return 1 - (0.06 * armor) / (1 + 0.06 * Math.abs(armor));
@@ -346,7 +357,11 @@ function auraAt(s: GameState, p: Point): Aura[] {
   for (const g of s.gems) {
     if (g.candidate || g.type === 'stone') continue;
     for (const aura of TOWERS[g.type].auras)
-      if (distance(g, p) <= aura.range) out.set(aura.id, aura);
+      if (
+        distance(g, p) <= aura.range &&
+        !(aura.nonAncientOnly && 'ancient' in p && p.ancient)
+      )
+        out.set(aura.id, aura);
   }
   return [...out.values()];
 }
@@ -358,12 +373,13 @@ function hit(
   g: Gem | undefined,
   e: Enemy,
   amount: number,
-  magic = false,
+  kind: 'physical' | 'magic' | 'pure' = 'physical',
 ) {
   if (e.hp <= 0 || amount <= 0) return;
   const auras = auraAt(s, e);
   let value = 0;
-  if (magic) {
+  if (kind === 'pure') value = amount;
+  else if (kind === 'magic') {
     if (!e.magicImmune)
       value =
         amount *
@@ -384,12 +400,18 @@ function hit(
   if (e.hp <= 0) {
     s.kills++;
     s.waveKills++;
-    s.gold += MOBILE_RULES.killGold;
+    const w = WAVES[s.wave - 1];
+    s.gold += w.gold;
+    s.xp += w.xp;
+    while (s.quality < 4 && s.xp >= MOBILE_RULES.qualityXP[s.quality + 1])
+      s.quality++;
     if (g) g.kills++;
     s.shots.push({ from: e, to: e, color: '#a7f4d1', life: 0.3, kind: 'kill' });
   }
 }
 function spawn(s: GameState, w: Wave) {
+  if (w.variants.length)
+    w = { ...w, ...w.variants[Math.floor(random(s) * w.variants.length)] };
   const p = s.path[0];
   s.enemies.push({
     id: s.nextId++,
@@ -401,10 +423,7 @@ function spawn(s: GameState, w: Wave) {
     routeIndex: 1,
     slow: 0,
     slowUntil: 0,
-    poison: 0,
-    poisonUntil: 0,
-    poisonClock: 0,
-    poisonOwner: 0,
+    poisons: [],
     pierce: 0,
     pierceUntil: 0,
     stunUntil: 0,
@@ -416,7 +435,8 @@ function spawn(s: GameState, w: Wave) {
     evasion: w.evasion,
     physicalImmune: w.physicalImmune,
     magicImmune: w.magicImmune,
-    leak: w.leak,
+    ancient: w.ancient,
+    leak: w.boss ? w.leak : 1 + Math.floor(random(s) * w.leak),
   });
   s.spawned++;
 }
@@ -441,96 +461,103 @@ export function tick(s: GameState, dt = STEP) {
         g.burnClock += t.effects.burnInterval;
         for (const e of s.enemies)
           if (e.hp > 0 && distance(g, e) <= t.effects.burnRange)
-            hit(s, g, e, t.effects.burn * t.effects.burnInterval, true);
+            hit(s, g, e, t.effects.burn * t.effects.burnInterval, 'magic');
       }
     }
-    g.cooldown = Math.max(0, g.cooldown - dt);
-    if (g.cooldown > 0 || t.damage <= 0) continue;
-    const targets = s.enemies
-      .filter((e) => e.hp > 0 && distance(g, e) <= reach && seen(s, e))
-      .sort((a, b) => b.progress - a.progress || a.id - b.id)
-      .slice(0, t.effects.targets);
-    if (!targets.length) continue;
-    g.cooldown =
-      t.interval /
-      (1 +
-        (t.bonusSpeed + buffs.reduce((n, a) => n + (a.speed ?? 0), 0)) / 100);
-    for (const e of targets) {
-      if (e.hp <= 0) continue;
-      if (
-        e.evasion &&
-        !buffs.some((a) => a.cannotMiss) &&
-        random(s) < e.evasion
-      )
-        continue;
-      const damage =
-        t.damage *
-        (1 + Math.max(0, ...buffs.map((a) => a.damage ?? 0))) *
-        (t.effects.crit && random(s) < t.effects.crit ? 5 : 1);
-      hit(s, g, e, damage);
-      s.shots.push({
-        from: { x: g.x, y: g.y },
-        to: { x: e.x, y: e.y },
-        color: t.color,
-        life: 0.16,
-        kind: 'hit',
-      });
-      if (t.effects.splash)
-        for (const other of s.enemies)
-          if (
-            other.id !== e.id &&
-            other.hp > 0 &&
-            distance(other, e) <= t.effects.splashRange
-          )
-            hit(s, g, other, damage * t.effects.splash);
-      if (t.effects.lightning && random(s) < t.effects.lightning)
-        for (const other of s.enemies
-          .filter((x) => x.hp > 0 && distance(x, e) <= 1000 / 128)
-          .slice(0, 5))
-          hit(s, g, other, 150, true);
-      if (t.effects.fork && random(s) < t.effects.fork)
-        for (const other of s.enemies
-          .filter((x) => x.hp > 0 && distance(x, e) <= 10)
-          .slice(0, 5))
-          hit(s, g, other, 2500, true);
-      if (t.effects.heal && random(s) < t.effects.heal)
-        s.life = Math.min(MOBILE_RULES.initialLife, s.life + 1);
-      if (e.hp <= 0) continue;
-      if (t.effects.pierce) {
-        e.pierce = Math.max(
-          e.pierceUntil > s.time ? e.pierce : 0,
-          t.effects.pierce,
-        );
-        e.pierceUntil = s.time + 5;
+    g.cooldown -= dt;
+    if (t.damage <= 0) {
+      g.cooldown = 0;
+      continue;
+    }
+    if (g.cooldown > 1e-9) continue;
+    while (g.cooldown <= 1e-9) {
+      const targets = s.enemies
+        .filter((e) => e.hp > 0 && distance(g, e) <= reach && seen(s, e))
+        .sort((a, b) => b.progress - a.progress || a.id - b.id)
+        .slice(0, t.effects.targets);
+      if (!targets.length) {
+        g.cooldown = 0;
+        break;
       }
-      if (!e.magicImmune) {
-        if (t.effects.slow) {
-          e.slow = Math.max(e.slowUntil > s.time ? e.slow : 0, t.effects.slow);
-          e.slowUntil = s.time + 3;
-        }
+      g.cooldown +=
+        t.interval /
+        (1 +
+          (t.bonusSpeed + buffs.reduce((n, a) => n + (a.speed ?? 0), 0)) / 100);
+      for (const e of targets) {
+        if (e.hp <= 0) continue;
         if (
-          t.effects.poison &&
-          (e.poisonUntil <= s.time || t.effects.poison >= e.poison)
-        ) {
-          if (e.poisonUntil <= s.time) e.poisonClock = 1;
-          e.poison = t.effects.poison;
-          e.poisonUntil = s.time + 5;
-          e.poisonOwner = g.id;
+          e.evasion &&
+          !buffs.some((a) => a.cannotMiss) &&
+          random(s) < e.evasion
+        )
+          continue;
+        const damage =
+          t.damage *
+          (1 + Math.max(0, ...buffs.map((a) => a.damage ?? 0))) *
+          (t.effects.crit && random(s) < t.effects.crit ? 5 : 1);
+        hit(s, g, e, damage);
+        s.shots.push({
+          from: { x: g.x, y: g.y },
+          to: { x: e.x, y: e.y },
+          color: t.color,
+          life: 0.16,
+          kind: 'hit',
+        });
+        if (t.effects.splash)
+          for (const other of s.enemies)
+            if (other.hp > 0 && distance(other, e) <= t.effects.splashRange)
+              hit(s, g, other, damage * t.effects.splash, 'pure');
+        if (t.effects.lightning && random(s) < t.effects.lightning)
+          for (const other of s.enemies
+            .filter((x) => x.hp > 0 && distance(x, e) <= 1000 / 128)
+            .slice(0, 5))
+            hit(s, g, other, 200, 'magic');
+        if (t.effects.fork && random(s) < t.effects.fork)
+          for (const other of s.enemies
+            .filter((x) => x.hp > 0 && distance(x, e) <= 10)
+            .slice(0, 5))
+            hit(s, g, other, 2500, 'magic');
+        if (t.effects.heal && random(s) < t.effects.heal)
+          s.life = Math.min(MOBILE_RULES.initialLife, s.life + 1);
+        if (e.hp <= 0) continue;
+        if (t.effects.pierce) {
+          e.pierce = Math.max(
+            e.pierceUntil > s.time ? e.pierce : 0,
+            t.effects.pierce,
+          );
+          e.pierceUntil = s.time + t.effects.pierceDuration;
         }
-        if (t.effects.stun && random(s) < t.effects.stun)
-          e.stunUntil = s.time + 2;
+        if (!e.magicImmune) {
+          if (t.effects.slow) {
+            e.slow = Math.max(
+              e.slowUntil > s.time ? e.slow : 0,
+              t.effects.slow,
+            );
+            e.slowUntil = s.time + t.effects.slowDuration;
+          }
+          if (t.effects.poison)
+            e.poisons.push({
+              owner: g.id,
+              damage: t.effects.poison,
+              nextTick: s.time + 1,
+              remaining: 5,
+            });
+          if (t.effects.stun && random(s) < t.effects.stun)
+            e.stunUntil = s.time + 2;
+        }
       }
     }
   }
   for (const e of s.enemies) {
     if (e.hp <= 0) continue;
-    if (e.poisonUntil > s.time) {
-      e.poisonClock -= dt;
-      if (e.poisonClock <= 0) {
-        e.poisonClock += 1;
-        hit(s, getGem(s, e.poisonOwner), e, e.poison, true);
+    for (const poison of e.poisons) {
+      if (poison.remaining > 0 && poison.nextTick <= s.time + 1e-9) {
+        poison.nextTick += 1;
+        poison.remaining--;
+        hit(s, getGem(s, poison.owner), e, poison.damage, 'magic');
       }
     }
+    e.poisons = e.poisons.filter((p) => p.remaining > 0);
     if (e.hp <= 0) continue;
     const auras = e.magicImmune ? [] : auraAt(s, e);
     const slow =
@@ -564,10 +591,13 @@ export function tick(s: GameState, dt = STEP) {
       }
     }
     if (e.routeIndex >= route.length) {
+      const damage = w.boss ? bossLeakDamage(e.hp, e.maxHp, e.leak) : e.leak;
       e.hp = -1;
-      s.life = Math.max(0, s.life - e.leak);
+      s.life = Math.max(0, s.life - damage);
       s.leaks++;
       s.waveLeaks++;
+      s.normalCount = Math.max(MOBILE_RULES.normalCount, s.normalCount - 1);
+      s.winStreak = 0;
     }
   }
   s.enemies = s.enemies.filter((e) => e.hp > 0);
@@ -583,7 +613,15 @@ export function tick(s: GameState, dt = STEP) {
       leaks: s.waveLeaks,
       life: s.life,
     });
-    s.gold += MOBILE_RULES.waveReward;
+    if (
+      s.waveLeaks === 0 &&
+      s.time - s.waveStartedAt < MOBILE_RULES.perfectTime
+    ) {
+      if (++s.winStreak >= 3) {
+        s.normalCount++;
+        s.winStreak = 0;
+      }
+    } else s.winStreak = 0;
     s.shots = [];
     if (s.wave === WAVES.length) {
       s.phase = 'won';
@@ -594,6 +632,10 @@ export function tick(s: GameState, dt = STEP) {
     s.placed = 0;
     s.resolved = false;
   }
+}
+export function bossLeakDamage(hp: number, maxHp: number, baseDamage = 80) {
+  const damagedPercent = Math.floor(((maxHp - hp) / maxHp) * 100);
+  return Math.floor((baseDamage * (100 - damagedPercent)) / 100) + 10;
 }
 export function saveGame(s: GameState) {
   return JSON.stringify({ ...s, shots: [] });
@@ -626,10 +668,18 @@ export function loadGame(text: string): GameState {
       s.leaks,
       s.waveKills,
       s.waveLeaks,
+      s.xp,
+      s.normalCount,
+      s.combatCount,
+      s.winStreak,
+      s.waveStartedAt,
     ].every(finite) ||
     s.life < 0 ||
     s.life > 100 ||
     s.gold < 0 ||
+    s.xp < 0 ||
+    s.normalCount < 5 ||
+    s.combatCount < 1 ||
     !Number.isInteger(s.quality) ||
     s.quality < 0 ||
     s.quality > 4 ||
@@ -686,10 +736,6 @@ export function loadGame(text: string): GameState {
         e.routeIndex,
         e.slow,
         e.slowUntil,
-        e.poison,
-        e.poisonUntil,
-        e.poisonClock,
-        e.poisonOwner,
         e.pierce,
         e.pierceUntil,
         e.stunUntil,
@@ -702,6 +748,13 @@ export function loadGame(text: string): GameState {
       e.hp <= 0 ||
       e.hp > e.maxHp ||
       e.speed <= 0 ||
+      !Array.isArray(e.poisons) ||
+      e.poisons.some(
+        (p) =>
+          ![p.owner, p.damage, p.nextTick, p.remaining].every(finite) ||
+          p.remaining < 1 ||
+          p.remaining > 5,
+      ) ||
       !Number.isInteger(e.routeIndex) ||
       e.routeIndex < 1 ||
       e.routeIndex >= (e.flying ? BOARD.checkpoints.length : route.length)
@@ -719,12 +772,12 @@ export function describe(type: string) {
   const t = TOWERS[type];
   if (!t) return '阻挡道路，准备阶段可拆除';
   const parts: string[] = [];
-  if (t.effects.slow) parts.push('命中减速');
-  if (t.effects.poison) parts.push(`毒伤 ${t.effects.poison}/秒`);
-  if (t.effects.pierce) parts.push(`减甲 ${t.effects.pierce}`);
+  if (t.effects.slow) parts.push(`减速 ${t.effects.slow} · 2秒`);
+  if (t.effects.poison) parts.push(`毒伤 ${t.effects.poison}/秒 · 5秒可叠加`);
+  if (t.effects.pierce) parts.push(`减甲 ${t.effects.pierce} · 2秒`);
   if (t.effects.targets > 1) parts.push(`${t.effects.targets}目标`);
   if (t.effects.splash)
-    parts.push(`${Math.round(t.effects.splash * 100)}%溅射`);
+    parts.push(`${Math.round(t.effects.splash * 100)}%纯粹溅射`);
   if (t.effects.burn) parts.push(`灼烧 ${t.effects.burn}/秒`);
   if (t.effects.crit) parts.push('10%五倍暴击');
   if (t.effects.lightning || t.effects.fork) parts.push('闪电');

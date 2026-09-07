@@ -2,7 +2,7 @@
 
 整理日期：2026-09-07。摘要用于后续检索，非网站全文存档。
 
-“正文查阅”表示本次通过网页工具打开并获取正文；“搜索摘要”表示只取得搜索结果中的内容。任何来源尚未与锁定版本的地图文件逐项核对。
+“正文查阅”表示通过网页工具打开并获取正文；“搜索摘要”表示只取得搜索结果。2026-09-07补充：已取得S02仓库保存的固定版本Lua/NPC配置，并对部分核心规则完成逐项核对；尚非当前工作坊版本的完整验证。
 
 ## DOTA 2 资料
 
@@ -26,6 +26,7 @@
 - 后续核查：资料站主页说明字段来自 VPK 提取；GitHub gh-pages 的末次提交为 [f424bb2](https://github.com/clementbera/Website/commit/f424bb2abbe9355f7cfa9a539e4e61512f027750)，日期 2018-06-10。已以该提交固定资料快照，并提取基础塔、进阶塔、怪物和石板的事实字段到 `game/data/historical.json`。
 - 补充页面：[基础塔](https://clementbera.github.io/Website/baseTowers.html)、[怪物](https://clementbera.github.io/Website/creeps.html)、[石板](https://clementbera.github.io/Website/pedals.html)。完整地址与各页 SHA-256 在提取结果中。
 - 限制：资料快照版本不等于精确地图版本。Attack Rate、脚本效果及当前版本差异仍需确认；不是当前地图的完整数值核实。
+- 新增脚本证据：master提交[712f6a2](https://github.com/clementbera/Website/commit/712f6a2d0f68ea4049e8923917311f8d1a44dfc8)保存了用于生成页面的`GemTD-Generation/scripts/`。已下载检查Lua和NPC配置，锁定散列，整理200条单位事实及91条技能数值。具体来源、行号、前后对照与限制见[原版规则核对](../../game/docs/original-rules-audit.md)。
 
 ### S03 — Gem TD Helper
 

@@ -1,0 +1,3270 @@
+{
+  "commit": "712f6a2d0f68ea4049e8923917311f8d1a44dfc8",
+  "date": "2018-06-10",
+  "base": "https://raw.githubusercontent.com/clementbera/Website/712f6a2d0f68ea4049e8923917311f8d1a44dfc8/GemTD-Generation/scripts/",
+  "hashes": {
+    "units": "5859cd8ece129f3260a8f93a0496e4f2f29f1d5c8193abf1d98f843780fc3f89",
+    "abilities": "f4fb21e311c6b6f2aa9a65541e9d2ab9fdca9c4f1d995ff1b151e29cf96ed6a8",
+    "rules": "6b99219b02c6d8b62f3725604451c8f82b23ed7da7e059158cfd2df625a13434"
+  },
+  "units": {
+    "gemtd_b1": {
+      "damage": 2,
+      "interval": 1,
+      "range": 600,
+      "hp": 1,
+      "speed": 0,
+      "armor": 10,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "tower_slow1"
+      ]
+    },
+    "gemtd_b11": {
+      "damage": 4,
+      "interval": 1,
+      "range": 600,
+      "hp": 1,
+      "speed": 0,
+      "armor": 10,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "tower_slow2"
+      ]
+    },
+    "gemtd_b111": {
+      "damage": 6,
+      "interval": 1,
+      "range": 600,
+      "hp": 1,
+      "speed": 0,
+      "armor": 10,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "tower_slow3"
+      ]
+    },
+    "gemtd_b1111": {
+      "damage": 8,
+      "interval": 1,
+      "range": 600,
+      "hp": 1,
+      "speed": 0,
+      "armor": 10,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "tower_slow4"
+      ]
+    },
+    "gemtd_b11111": {
+      "damage": 10,
+      "interval": 1,
+      "range": 600,
+      "hp": 1,
+      "speed": 0,
+      "armor": 10,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "tower_slow5"
+      ]
+    },
+    "gemtd_b111111": {
+      "damage": 36,
+      "interval": 0.6,
+      "range": 600,
+      "hp": 1,
+      "speed": 0,
+      "armor": 10,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "tower_slow6"
+      ]
+    },
+    "gemtd_d1": {
+      "damage": 5,
+      "interval": 1,
+      "range": 500,
+      "hp": 1,
+      "speed": 0,
+      "armor": 0,
+      "resist": 10,
+      "ancient": false,
+      "abilities": []
+    },
+    "gemtd_d11": {
+      "damage": 10,
+      "interval": 1,
+      "range": 500,
+      "hp": 1,
+      "speed": 0,
+      "armor": 0,
+      "resist": 10,
+      "ancient": false,
+      "abilities": []
+    },
+    "gemtd_d111": {
+      "damage": 20,
+      "interval": 1,
+      "range": 500,
+      "hp": 1,
+      "speed": 0,
+      "armor": 0,
+      "resist": 10,
+      "ancient": false,
+      "abilities": []
+    },
+    "gemtd_d1111": {
+      "damage": 20,
+      "interval": 1,
+      "range": 500,
+      "hp": 1,
+      "speed": 0,
+      "armor": 0,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "tower_attack1"
+      ]
+    },
+    "gemtd_d11111": {
+      "damage": 40,
+      "interval": 1,
+      "range": 500,
+      "hp": 1,
+      "speed": 0,
+      "armor": 0,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "tower_attack2"
+      ]
+    },
+    "gemtd_d111111": {
+      "damage": 140,
+      "interval": 0.7,
+      "range": 500,
+      "hp": 1,
+      "speed": 0,
+      "armor": 0,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "tower_attack5"
+      ]
+    },
+    "gemtd_e1": {
+      "damage": 1,
+      "interval": 1,
+      "range": 500,
+      "hp": 1,
+      "speed": 0,
+      "armor": 10,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "tower_true_sight",
+        "tower_speed_aura1"
+      ]
+    },
+    "gemtd_e11": {
+      "damage": 2,
+      "interval": 1,
+      "range": 500,
+      "hp": 1,
+      "speed": 0,
+      "armor": 10,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "tower_true_sight",
+        "tower_speed_aura2"
+      ]
+    },
+    "gemtd_e111": {
+      "damage": 3,
+      "interval": 1,
+      "range": 500,
+      "hp": 1,
+      "speed": 0,
+      "armor": 10,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "tower_true_sight",
+        "tower_speed_aura3"
+      ]
+    },
+    "gemtd_e1111": {
+      "damage": 4,
+      "interval": 1,
+      "range": 500,
+      "hp": 1,
+      "speed": 0,
+      "armor": 10,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "tower_true_sight",
+        "tower_speed_aura4"
+      ]
+    },
+    "gemtd_e11111": {
+      "damage": 5,
+      "interval": 1,
+      "range": 500,
+      "hp": 1,
+      "speed": 0,
+      "armor": 10,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "tower_true_sight",
+        "tower_speed_aura5"
+      ]
+    },
+    "gemtd_e111111": {
+      "damage": 6,
+      "interval": 1,
+      "range": 500,
+      "hp": 1,
+      "speed": 0,
+      "armor": 10,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "tower_true_sight",
+        "tower_speed_aura6"
+      ]
+    },
+    "gemtd_g1": {
+      "damage": 2,
+      "interval": 1,
+      "range": 500,
+      "hp": 1,
+      "speed": 0,
+      "armor": 10,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "tower_du1"
+      ]
+    },
+    "gemtd_g11": {
+      "damage": 4,
+      "interval": 1,
+      "range": 500,
+      "hp": 1,
+      "speed": 0,
+      "armor": 10,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "tower_du2"
+      ]
+    },
+    "gemtd_g111": {
+      "damage": 6,
+      "interval": 1,
+      "range": 500,
+      "hp": 1,
+      "speed": 0,
+      "armor": 10,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "tower_du3"
+      ]
+    },
+    "gemtd_g1111": {
+      "damage": 8,
+      "interval": 1,
+      "range": 500,
+      "hp": 1,
+      "speed": 0,
+      "armor": 10,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "tower_du4"
+      ]
+    },
+    "gemtd_g11111": {
+      "damage": 10,
+      "interval": 1,
+      "range": 500,
+      "hp": 1,
+      "speed": 0,
+      "armor": 10,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "tower_du5"
+      ]
+    },
+    "gemtd_g111111": {
+      "damage": 12,
+      "interval": 1,
+      "range": 500,
+      "hp": 1,
+      "speed": 0,
+      "armor": 10,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "tower_du6"
+      ]
+    },
+    "gemtd_p1": {
+      "damage": 2,
+      "interval": 0.6,
+      "range": 500,
+      "hp": 1,
+      "speed": 0,
+      "armor": 10,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "tower_jianjia1"
+      ]
+    },
+    "gemtd_p11": {
+      "damage": 4,
+      "interval": 0.6,
+      "range": 500,
+      "hp": 1,
+      "speed": 0,
+      "armor": 10,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "tower_jianjia2"
+      ]
+    },
+    "gemtd_p111": {
+      "damage": 6,
+      "interval": 0.6,
+      "range": 500,
+      "hp": 1,
+      "speed": 0,
+      "armor": 10,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "tower_jianjia3"
+      ]
+    },
+    "gemtd_p1111": {
+      "damage": 8,
+      "interval": 0.6,
+      "range": 500,
+      "hp": 1,
+      "speed": 0,
+      "armor": 10,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "tower_jianjia4"
+      ]
+    },
+    "gemtd_p11111": {
+      "damage": 10,
+      "interval": 0.6,
+      "range": 500,
+      "hp": 1,
+      "speed": 0,
+      "armor": 10,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "tower_jianjia5"
+      ]
+    },
+    "gemtd_p111111": {
+      "damage": 70,
+      "interval": 0.6,
+      "range": 500,
+      "hp": 1,
+      "speed": 0,
+      "armor": 10,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "tower_jianjia6"
+      ]
+    },
+    "gemtd_q1": {
+      "damage": 2,
+      "interval": 1,
+      "range": 400,
+      "hp": 1,
+      "speed": 0,
+      "armor": 10,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "tower_speed1"
+      ]
+    },
+    "gemtd_q11": {
+      "damage": 4,
+      "interval": 0.9,
+      "range": 400,
+      "hp": 1,
+      "speed": 0,
+      "armor": 10,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "tower_speed1"
+      ]
+    },
+    "gemtd_q111": {
+      "damage": 8,
+      "interval": 0.8,
+      "range": 400,
+      "hp": 1,
+      "speed": 0,
+      "armor": 10,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "tower_speed1"
+      ]
+    },
+    "gemtd_q1111": {
+      "damage": 16,
+      "interval": 0.7,
+      "range": 400,
+      "hp": 1,
+      "speed": 0,
+      "armor": 10,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "tower_speed1"
+      ]
+    },
+    "gemtd_q11111": {
+      "damage": 24,
+      "interval": 0.6,
+      "range": 400,
+      "hp": 1,
+      "speed": 0,
+      "armor": 10,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "tower_speed1"
+      ]
+    },
+    "gemtd_q111111": {
+      "damage": 80,
+      "interval": 0.5,
+      "range": 500,
+      "hp": 1,
+      "speed": 0,
+      "armor": 10,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "tower_speed2"
+      ]
+    },
+    "gemtd_r1": {
+      "damage": 4,
+      "interval": 1,
+      "range": 500,
+      "hp": 1,
+      "speed": 0,
+      "armor": 10,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "tower_jianshe1"
+      ]
+    },
+    "gemtd_r11": {
+      "damage": 8,
+      "interval": 1,
+      "range": 500,
+      "hp": 1,
+      "speed": 0,
+      "armor": 10,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "tower_jianshe2"
+      ]
+    },
+    "gemtd_r111": {
+      "damage": 12,
+      "interval": 1,
+      "range": 500,
+      "hp": 1,
+      "speed": 0,
+      "armor": 10,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "tower_jianshe3"
+      ]
+    },
+    "gemtd_r1111": {
+      "damage": 24,
+      "interval": 1,
+      "range": 500,
+      "hp": 1,
+      "speed": 0,
+      "armor": 10,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "tower_jianshe4"
+      ]
+    },
+    "gemtd_r11111": {
+      "damage": 48,
+      "interval": 1,
+      "range": 500,
+      "hp": 1,
+      "speed": 0,
+      "armor": 10,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "tower_jianshe5"
+      ]
+    },
+    "gemtd_r111111": {
+      "damage": 150,
+      "interval": 1,
+      "range": 500,
+      "hp": 1,
+      "speed": 0,
+      "armor": 10,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "tower_jianshe6"
+      ]
+    },
+    "gemtd_y1": {
+      "damage": 3,
+      "interval": 1.3,
+      "range": 600,
+      "hp": 1,
+      "speed": 0,
+      "armor": 10,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "tower_fenliejian"
+      ]
+    },
+    "gemtd_y11": {
+      "damage": 6,
+      "interval": 1.3,
+      "range": 500,
+      "hp": 1,
+      "speed": 0,
+      "armor": 10,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "tower_fenliejian"
+      ]
+    },
+    "gemtd_y111": {
+      "damage": 9,
+      "interval": 1.3,
+      "range": 500,
+      "hp": 1,
+      "speed": 0,
+      "armor": 10,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "tower_fenliejian"
+      ]
+    },
+    "gemtd_y1111": {
+      "damage": 18,
+      "interval": 1.3,
+      "range": 500,
+      "hp": 1,
+      "speed": 0,
+      "armor": 10,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "tower_fenliejian"
+      ]
+    },
+    "gemtd_y11111": {
+      "damage": 36,
+      "interval": 1.3,
+      "range": 500,
+      "hp": 1,
+      "speed": 0,
+      "armor": 10,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "tower_fenliejian"
+      ]
+    },
+    "gemtd_y111111": {
+      "damage": 200,
+      "interval": 0.6,
+      "range": 5000,
+      "hp": 1,
+      "speed": 0,
+      "armor": 10,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "tower_fenliejian"
+      ]
+    },
+    "gemtd_baiyin": {
+      "damage": 30,
+      "interval": 1,
+      "range": 600,
+      "hp": 1,
+      "speed": 0,
+      "armor": 0,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "tower_slow2"
+      ]
+    },
+    "gemtd_baiyinqishi": {
+      "damage": 100,
+      "interval": 0.8,
+      "range": 700,
+      "hp": 1,
+      "speed": 0,
+      "armor": 0,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "tower_jianshe3",
+        "tower_slow3"
+      ]
+    },
+    "gemtd_fenhongzuanshi": {
+      "damage": 30,
+      "interval": 1,
+      "range": 600,
+      "hp": 1,
+      "speed": 0,
+      "armor": 0,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "tower_baoji1",
+        "tower_attack3"
+      ]
+    },
+    "gemtd_juxingfenhongzuanshi": {
+      "damage": 150,
+      "interval": 0.8,
+      "range": 700,
+      "hp": 1,
+      "speed": 0,
+      "armor": 0,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "tower_jianshe3",
+        "tower_baoji1",
+        "tower_attack4",
+        "tower_slow3"
+      ]
+    },
+    "gemtd_keyinuoerguangmingzhishan": {
+      "damage": 660,
+      "interval": 0.6,
+      "range": 700,
+      "hp": 1,
+      "speed": 0,
+      "armor": 0,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "tower_jianshe3",
+        "tower_baoji1",
+        "tower_attack6",
+        "tower_jianjia6",
+        "e301"
+      ]
+    },
+    "gemtd_kongqueshi": {
+      "damage": 15,
+      "interval": 0.8,
+      "range": 600,
+      "hp": 1,
+      "speed": 0,
+      "armor": 0,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "tower_fenliejian"
+      ]
+    },
+    "gemtd_xianyandekongqueshi": {
+      "damage": 50,
+      "interval": 0.7,
+      "range": 700,
+      "hp": 1,
+      "speed": 0,
+      "armor": 0,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "tower_fenliejian_xianyan"
+      ]
+    },
+    "gemtd_you238": {
+      "damage": 120,
+      "interval": 0.7,
+      "range": 700,
+      "hp": 1,
+      "speed": 0,
+      "armor": 0,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "tower_fenliejian_you"
+      ]
+    },
+    "gemtd_you235": {
+      "damage": 60,
+      "interval": 0.7,
+      "range": 800,
+      "hp": 1,
+      "speed": 0,
+      "armor": 0,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "tower_fenliejian_you",
+        "tower_attack4"
+      ]
+    },
+    "gemtd_shuaibiankaipayou": {
+      "damage": 90,
+      "interval": 0.4,
+      "range": 5000,
+      "hp": 1,
+      "speed": 0,
+      "armor": 0,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "tower_attack5",
+        "tower_fenliejian_you",
+        "e10003"
+      ]
+    },
+    "gemtd_xingcaihongbaoshi": {
+      "damage": 0,
+      "interval": 1,
+      "range": 600,
+      "hp": 1,
+      "speed": 0,
+      "armor": 0,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "tower_huiyao"
+      ]
+    },
+    "gemtd_xuehonghuoshan": {
+      "damage": 0,
+      "interval": 1,
+      "range": 600,
+      "hp": 1,
+      "speed": 0,
+      "armor": 0,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "tower_huiyao2"
+      ]
+    },
+    "gemtd_jixueshi": {
+      "damage": 35,
+      "interval": 1,
+      "range": 700,
+      "hp": 1,
+      "speed": 0,
+      "armor": 0,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "tower_shandianlian"
+      ]
+    },
+    "gemtd_gudaidejixueshi": {
+      "damage": 70,
+      "interval": 1,
+      "range": 800,
+      "hp": 1,
+      "speed": 0,
+      "armor": 0,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "tower_chazhuangshandian",
+        "tower_huiyao2"
+      ]
+    },
+    "gemtd_heiwangzihuangguanhongbaoshi": {
+      "damage": 70,
+      "interval": 1,
+      "range": 800,
+      "hp": 1,
+      "speed": 0,
+      "armor": 0,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "tower_chazhuangshandian",
+        "tower_huiyao3",
+        "tower_du6",
+        "e10002"
+      ]
+    },
+    "gemtd_yu": {
+      "damage": 10,
+      "interval": 0.5,
+      "range": 800,
+      "hp": 1,
+      "speed": 0,
+      "armor": 0,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "tower_du4"
+      ]
+    },
+    "gemtd_furongshi": {
+      "damage": 15,
+      "interval": 0.6,
+      "range": 500,
+      "hp": 1,
+      "speed": 0,
+      "armor": 0,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "tower_zheyi"
+      ]
+    },
+    "gemtd_haiyangqingyu": {
+      "damage": 30,
+      "interval": 0.5,
+      "range": 800,
+      "hp": 1,
+      "speed": 0,
+      "armor": 0,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "tower_shechengguanghuan",
+        "tower_du5"
+      ]
+    },
+    "gemtd_huaguoshanxiandan": {
+      "damage": 80,
+      "interval": 0.5,
+      "range": 1000,
+      "hp": 1,
+      "speed": 0,
+      "armor": 10,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "tower_du5",
+        "tower_shechengguanghuan",
+        "tower_jingzhun"
+      ]
+    },
+    "gemtd_jingangshikulinan": {
+      "damage": 2514,
+      "interval": 0.8,
+      "range": 1200,
+      "hp": 1,
+      "speed": 0,
+      "armor": 10,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "tower_jingzhun",
+        "tower_shechengguanghuan",
+        "tower_attack6",
+        "tower_baoji1",
+        "e10005"
+      ]
+    },
+    "gemtd_jixiangdezhongguoyu": {
+      "damage": 30,
+      "interval": 0.5,
+      "range": 900,
+      "hp": 1,
+      "speed": 0,
+      "armor": 0,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "tower_du5",
+        "tower_zhongguoyu",
+        "tower_zheyi"
+      ]
+    },
+    "gemtd_mirendeqingjinshi": {
+      "damage": 30,
+      "interval": 0.6,
+      "range": 800,
+      "hp": 1,
+      "speed": 0,
+      "armor": 0,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "tower_zheyi2"
+      ]
+    },
+    "gemtd_huguoshenyishi": {
+      "damage": 1,
+      "interval": 0.7,
+      "range": 800,
+      "hp": 1,
+      "speed": 0,
+      "armor": 10,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "tower_zheyi2",
+        "tower_ranjin",
+        "e10006"
+      ]
+    },
+    "gemtd_jin": {
+      "damage": 60,
+      "interval": 0.8,
+      "range": 600,
+      "hp": 1,
+      "speed": 0,
+      "armor": 0,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "tower_jin"
+      ]
+    },
+    "gemtd_aijijin": {
+      "damage": 100,
+      "interval": 0.8,
+      "range": 700,
+      "hp": 1,
+      "speed": 0,
+      "armor": 0,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "tower_jin2",
+        "tower_tanlan"
+      ]
+    },
+    "gemtd_heianfeicui": {
+      "damage": 80,
+      "interval": 0.5,
+      "range": 700,
+      "hp": 1,
+      "speed": 0,
+      "armor": 0,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "tower_10jiyun"
+      ]
+    },
+    "gemtd_feicuimoxiang": {
+      "damage": 170,
+      "interval": 0.5,
+      "range": 700,
+      "hp": 1,
+      "speed": 0,
+      "armor": 0,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "tower_10jiyun",
+        "tower_jin",
+        "tower_5shihua"
+      ]
+    },
+    "gemtd_palayibabixi": {
+      "damage": 30,
+      "interval": 0.6,
+      "range": 600,
+      "hp": 1,
+      "speed": 0,
+      "armor": 0,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "tower_bixi"
+      ]
+    },
+    "gemtd_jingxindiaozhuodepalayibabixi": {
+      "damage": 130,
+      "interval": 0.6,
+      "range": 700,
+      "hp": 1,
+      "speed": 0,
+      "armor": 0,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "tower_10jiyun",
+        "tower_bixi2"
+      ]
+    },
+    "gemtd_sililankazhixing": {
+      "damage": 42,
+      "interval": 1,
+      "range": 800,
+      "hp": 1,
+      "speed": 0,
+      "armor": 10,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "tower_du6",
+        "tower_jianjia6",
+        "tower_bixi2",
+        "tower_jihan",
+        "e10004"
+      ]
+    },
+    "gemtd_shenhaizhenzhu": {
+      "damage": 80,
+      "interval": 0.6,
+      "range": 500,
+      "hp": 1,
+      "speed": 0,
+      "armor": 0,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "tower_chenmoguanghuan"
+      ]
+    },
+    "gemtd_heisemaoyanshi": {
+      "damage": 6,
+      "interval": 1,
+      "range": 500,
+      "hp": 1,
+      "speed": 0,
+      "armor": 0,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "tower_speed_aura5",
+        "tower_true_sight",
+        "tower_maoyan"
+      ]
+    },
+    "gemtd_hongshanhu": {
+      "damage": 120,
+      "interval": 0.6,
+      "range": 500,
+      "hp": 1,
+      "speed": 0,
+      "armor": 0,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "tower_speed_aura5",
+        "tower_speed_aura4",
+        "tower_true_sight",
+        "tower_maoyan",
+        "tower_chenmoguanghuan"
+      ]
+    },
+    "gemtd_tianranzumulv": {
+      "damage": 80,
+      "interval": 1,
+      "range": 500,
+      "hp": 1,
+      "speed": 0,
+      "armor": 0,
+      "resist": 10,
+      "ancient": false,
+      "abilities": []
+    },
+    "gemtd_yijiazhishi": {
+      "damage": 6,
+      "interval": 1,
+      "range": 500,
+      "hp": 1,
+      "speed": 0,
+      "armor": 10,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "tower_chenmoguanghuan",
+        "tower_maoyan",
+        "tower_speed_aura_guichu",
+        "tower_speed_aura6",
+        "tower_true_sight",
+        "e10009"
+      ]
+    },
+    "gemtd_huangcailanbaoshi": {
+      "damage": 20,
+      "interval": 1,
+      "range": 600,
+      "hp": 1,
+      "speed": 0,
+      "armor": 0,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "tower_lanbaoshi"
+      ]
+    },
+    "gemtd_haibao": {
+      "damage": 60,
+      "interval": 1,
+      "range": 500,
+      "hp": 1,
+      "speed": 0,
+      "armor": 0,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "tower_lanbaoshi",
+        "tower_chain_frost"
+      ]
+    },
+    "gemtd_xingguanglanbaoshi": {
+      "damage": 20,
+      "interval": 1,
+      "range": 600,
+      "hp": 1,
+      "speed": 0,
+      "armor": 0,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "tower_true_sight",
+        "tower_speed_aura6",
+        "tower_slow6",
+        "tower_lanbaoshi2",
+        "e10001"
+      ]
+    },
+    "gemtd_heiyaoshi": {
+      "damage": 180,
+      "interval": 0.8,
+      "range": 800,
+      "hp": 1,
+      "speed": 0,
+      "armor": 0,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "tower_jianshe5",
+        "tower_slow5",
+        "e10011",
+        "tower_attack6"
+      ]
+    },
+    "gemtd_manao": {
+      "damage": 110,
+      "interval": 0.3,
+      "range": 5000,
+      "hp": 1,
+      "speed": 0,
+      "armor": 0,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "tower_fenliejian_xianyan",
+        "e10012",
+        "tower_attack5"
+      ]
+    },
+    "gemtd_xiameishi": {
+      "damage": 585,
+      "interval": 0.5,
+      "range": 1000,
+      "hp": 1,
+      "speed": 0,
+      "armor": 0,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "tower_aojiao",
+        "tower_shandianlian",
+        "tower_chazhuangshandian",
+        "e10008",
+        "tower_attack6"
+      ]
+    },
+    "gemtd_geluanshi": {
+      "damage": 140,
+      "interval": 1,
+      "range": 800,
+      "hp": 1,
+      "speed": 0,
+      "armor": 10,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "tower_bixi2",
+        "tower_jianjia6",
+        "tower_zheyi3",
+        "e10013"
+      ]
+    },
+    "gemtd_ranshaozhishi": {
+      "damage": 0,
+      "interval": 0.5,
+      "range": 600,
+      "hp": 1,
+      "speed": 0,
+      "armor": 0,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "tower_huiyao3",
+        "e10010"
+      ]
+    },
+    "gemtd_zhenjiazhishi": {
+      "damage": 1369,
+      "interval": 1,
+      "range": 800,
+      "hp": 1,
+      "speed": 0,
+      "armor": 10,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "tower_baoji1",
+        "tower_attack6",
+        "tower_jianshe6",
+        "e10007"
+      ]
+    },
+    "gemtd_kuangbaoyezhu": {
+      "damage": null,
+      "interval": 1,
+      "range": 0,
+      "hp": 5,
+      "speed": 525,
+      "armor": 0,
+      "resist": 10,
+      "ancient": true,
+      "abilities": [
+        "gemtd_guai_base"
+      ]
+    },
+    "gemtd_kuaidiqingwatiaotiao": {
+      "damage": null,
+      "interval": 1,
+      "range": 0,
+      "hp": 10,
+      "speed": 600,
+      "armor": 0,
+      "resist": 10,
+      "ancient": true,
+      "abilities": [
+        "gemtd_guai_base"
+      ]
+    },
+    "gemtd_zhongchenggaoshanmaoniu": {
+      "damage": null,
+      "interval": 1,
+      "range": 0,
+      "hp": 20,
+      "speed": 525,
+      "armor": 0,
+      "resist": 10,
+      "ancient": true,
+      "abilities": [
+        "gemtd_guai_base"
+      ]
+    },
+    "gemtd_moluokedejixiezhushou": {
+      "damage": null,
+      "interval": 1,
+      "range": 0,
+      "hp": 20,
+      "speed": 1000,
+      "armor": 0,
+      "resist": 10,
+      "ancient": true,
+      "abilities": [
+        "gemtd_guai_base"
+      ]
+    },
+    "gemtd_xiaohongmao_fly": {
+      "damage": null,
+      "interval": 1,
+      "range": 0,
+      "hp": 24,
+      "speed": 500,
+      "armor": 0,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "gemtd_guai_base"
+      ]
+    },
+    "gemtd_wuweizhihuan_fly": {
+      "damage": null,
+      "interval": 1,
+      "range": 0,
+      "hp": 22,
+      "speed": 500,
+      "armor": 0,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "gemtd_guai_base"
+      ]
+    },
+    "gemtd_shudunziranzhizhu": {
+      "damage": null,
+      "interval": 1,
+      "range": 0,
+      "hp": 100,
+      "speed": 450,
+      "armor": 0,
+      "resist": 10,
+      "ancient": true,
+      "abilities": [
+        "gemtd_guai_base"
+      ]
+    },
+    "gemtd_chaomengjuxi": {
+      "damage": null,
+      "interval": 1,
+      "range": 0,
+      "hp": 100,
+      "speed": 600,
+      "armor": 0,
+      "resist": 10,
+      "ancient": true,
+      "abilities": [
+        "gemtd_guai_base"
+      ]
+    },
+    "gemtd_mengzhu": {
+      "damage": null,
+      "interval": 1,
+      "range": 0,
+      "hp": 70,
+      "speed": 750,
+      "armor": 0,
+      "resist": 10,
+      "ancient": true,
+      "abilities": [
+        "gemtd_guai_base",
+        "riki_permanent_invisibility"
+      ]
+    },
+    "gemtd_dashiqi": {
+      "damage": null,
+      "interval": 1,
+      "range": 0,
+      "hp": 120,
+      "speed": 600,
+      "armor": 0,
+      "resist": 10,
+      "ancient": true,
+      "abilities": [
+        "gemtd_guai_base"
+      ]
+    },
+    "gemtd_buquzhanquan_boss": {
+      "damage": null,
+      "interval": 1,
+      "range": 0,
+      "hp": 2100,
+      "speed": 750,
+      "armor": 0,
+      "resist": 10,
+      "ancient": true,
+      "abilities": [
+        "gemtd_guai_base"
+      ]
+    },
+    "gemtd_maorongrongdefeiyangyang": {
+      "damage": null,
+      "interval": 1,
+      "range": 0,
+      "hp": 300,
+      "speed": 525,
+      "armor": 4,
+      "resist": 10,
+      "ancient": true,
+      "abilities": [
+        "gemtd_guai_base"
+      ]
+    },
+    "gemtd_caonimalama": {
+      "damage": null,
+      "interval": 1,
+      "range": 0,
+      "hp": 450,
+      "speed": 600,
+      "armor": 4,
+      "resist": 20,
+      "ancient": true,
+      "abilities": [
+        "gemtd_guai_base"
+      ]
+    },
+    "gemtd_fengtungongzhu": {
+      "damage": null,
+      "interval": 1,
+      "range": 0,
+      "hp": 800,
+      "speed": 600,
+      "armor": 4,
+      "resist": 10,
+      "ancient": true,
+      "abilities": [
+        "gemtd_guai_base"
+      ]
+    },
+    "gemtd_bugou": {
+      "damage": null,
+      "interval": 1,
+      "range": 0,
+      "hp": 1100,
+      "speed": 600,
+      "armor": 4,
+      "resist": 10,
+      "ancient": true,
+      "abilities": [
+        "gemtd_guai_base"
+      ]
+    },
+    "gemtd_tianmaodigou_fly": {
+      "damage": null,
+      "interval": 1,
+      "range": 0,
+      "hp": 400,
+      "speed": 700,
+      "armor": 4,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "gemtd_guai_base"
+      ]
+    },
+    "gemtd_banzhuduizhang_fly": {
+      "damage": null,
+      "interval": 1,
+      "range": 0,
+      "hp": 440,
+      "speed": 600,
+      "armor": 4,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "gemtd_guai_base"
+      ]
+    },
+    "gemtd_xunjiemotong": {
+      "damage": null,
+      "interval": 1,
+      "range": 0,
+      "hp": 950,
+      "speed": 800,
+      "armor": 4,
+      "resist": 10,
+      "ancient": true,
+      "abilities": [
+        "gemtd_guai_base",
+        "enemy_momian"
+      ]
+    },
+    "gemtd_yonggandexiaoji": {
+      "damage": null,
+      "interval": 1,
+      "range": 0,
+      "hp": 1600,
+      "speed": 600,
+      "armor": 4,
+      "resist": 50,
+      "ancient": true,
+      "abilities": [
+        "gemtd_guai_base"
+      ]
+    },
+    "gemtd_xiaobajie": {
+      "damage": null,
+      "interval": 1,
+      "range": 0,
+      "hp": 3000,
+      "speed": 675,
+      "armor": 4,
+      "resist": 10,
+      "ancient": true,
+      "abilities": [
+        "gemtd_guai_base",
+        "riki_permanent_invisibility"
+      ]
+    },
+    "gemtd_shentu": {
+      "damage": null,
+      "interval": 1,
+      "range": 0,
+      "hp": 2200,
+      "speed": 1000,
+      "armor": 4,
+      "resist": 10,
+      "ancient": true,
+      "abilities": [
+        "gemtd_guai_base"
+      ]
+    },
+    "gemtd_yaobaidelvgemi": {
+      "damage": null,
+      "interval": 1,
+      "range": 0,
+      "hp": 3700,
+      "speed": 700,
+      "armor": 4,
+      "resist": 10,
+      "ancient": true,
+      "abilities": [
+        "gemtd_guai_base"
+      ]
+    },
+    "gemtd_huxiaotao_boss": {
+      "damage": null,
+      "interval": 1,
+      "range": 0,
+      "hp": 34000,
+      "speed": 900,
+      "armor": 0,
+      "resist": 10,
+      "ancient": true,
+      "abilities": [
+        "gemtd_guai_base"
+      ]
+    },
+    "gemtd_siwangsiliezhe": {
+      "damage": null,
+      "interval": 1,
+      "range": 0,
+      "hp": 7500,
+      "speed": 675,
+      "armor": 8,
+      "resist": 10,
+      "ancient": true,
+      "abilities": [
+        "gemtd_guai_base"
+      ]
+    },
+    "gemtd_xiexiaowo": {
+      "damage": null,
+      "interval": 1,
+      "range": 0,
+      "hp": 9000,
+      "speed": 700,
+      "armor": 8,
+      "resist": 10,
+      "ancient": true,
+      "abilities": [
+        "gemtd_guai_base"
+      ]
+    },
+    "gemtd_yaorenxiangluoke": {
+      "damage": null,
+      "interval": 1,
+      "range": 0,
+      "hp": 9000,
+      "speed": 600,
+      "armor": 8,
+      "resist": 10,
+      "ancient": true,
+      "abilities": [
+        "gemtd_guai_base"
+      ]
+    },
+    "gemtd_dazuiyaorenxiang": {
+      "damage": null,
+      "interval": 1,
+      "range": 0,
+      "hp": 12000,
+      "speed": 650,
+      "armor": 8,
+      "resist": 10,
+      "ancient": true,
+      "abilities": [
+        "gemtd_guai_base",
+        "enemy_wumian"
+      ]
+    },
+    "gemtd_tiezuiyaorenxiang": {
+      "damage": null,
+      "interval": 1,
+      "range": 0,
+      "hp": 10000,
+      "speed": 625,
+      "armor": 8,
+      "resist": 10,
+      "ancient": true,
+      "abilities": [
+        "gemtd_guai_base",
+        "enemy_wumian"
+      ]
+    },
+    "gemtd_jixiezhanlv": {
+      "damage": null,
+      "interval": 1,
+      "range": 0,
+      "hp": 7500,
+      "speed": 775,
+      "armor": 8,
+      "resist": 10,
+      "ancient": true,
+      "abilities": [
+        "gemtd_guai_base"
+      ]
+    },
+    "gemtd_jixieyaorenxiang": {
+      "damage": null,
+      "interval": 1,
+      "range": 0,
+      "hp": 10000,
+      "speed": 675,
+      "armor": 8,
+      "resist": 10,
+      "ancient": true,
+      "abilities": [
+        "gemtd_guai_base"
+      ]
+    },
+    "gemtd_huoxingche_fly": {
+      "damage": null,
+      "interval": 1,
+      "range": 0,
+      "hp": 2800,
+      "speed": 600,
+      "armor": 8,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "gemtd_guai_base"
+      ]
+    },
+    "gemtd_fengbaozhizikesaier_fly": {
+      "damage": null,
+      "interval": 1,
+      "range": 0,
+      "hp": 3600,
+      "speed": 400,
+      "armor": 8,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "gemtd_guai_base"
+      ]
+    },
+    "gemtd_niepanhuolieniao": {
+      "damage": null,
+      "interval": 1,
+      "range": 0,
+      "hp": 6300,
+      "speed": 900,
+      "armor": 8,
+      "resist": 10,
+      "ancient": true,
+      "abilities": [
+        "gemtd_guai_base",
+        "enemy_momian"
+      ]
+    },
+    "gemtd_lgddejinmengmeng_fly": {
+      "damage": null,
+      "interval": 1,
+      "range": 0,
+      "hp": 3500,
+      "speed": 625,
+      "armor": 8,
+      "resist": 50,
+      "ancient": false,
+      "abilities": [
+        "gemtd_guai_base"
+      ]
+    },
+    "gemtd_ruxingshuimu_fly": {
+      "damage": null,
+      "interval": 1,
+      "range": 0,
+      "hp": 2000,
+      "speed": 625,
+      "armor": 8,
+      "resist": 50,
+      "ancient": false,
+      "abilities": [
+        "gemtd_guai_base",
+        "enemy_wumian"
+      ]
+    },
+    "gemtd_youniekesizhinu_fly": {
+      "damage": null,
+      "interval": 1,
+      "range": 0,
+      "hp": 3800,
+      "speed": 750,
+      "armor": 8,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "gemtd_guai_base"
+      ]
+    },
+    "gemtd_xiaofamuji_fly": {
+      "damage": null,
+      "interval": 1,
+      "range": 0,
+      "hp": 4900,
+      "speed": 600,
+      "armor": 24,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "gemtd_guai_base"
+      ]
+    },
+    "gemtd_feihuxia_fly": {
+      "damage": null,
+      "interval": 1,
+      "range": 0,
+      "hp": 6000,
+      "speed": 775,
+      "armor": 8,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "gemtd_guai_base"
+      ]
+    },
+    "gemtd_yingwuchuanfu_fly": {
+      "damage": null,
+      "interval": 1,
+      "range": 0,
+      "hp": 4500,
+      "speed": 1000,
+      "armor": 8,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "gemtd_guai_base"
+      ]
+    },
+    "gemtd_mofafeitanxiaoemo_boss_fly": {
+      "damage": null,
+      "interval": 1,
+      "range": 0,
+      "hp": 80000,
+      "speed": 750,
+      "armor": 0,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "gemtd_guai_base"
+      ]
+    },
+    "gemtd_modianxiaolong": {
+      "damage": null,
+      "interval": 1,
+      "range": 0,
+      "hp": 14000,
+      "speed": 900,
+      "armor": 12,
+      "resist": 10,
+      "ancient": true,
+      "abilities": [
+        "gemtd_guai_base",
+        "enemy_momian"
+      ]
+    },
+    "gemtd_talongaosiji": {
+      "damage": null,
+      "interval": 1,
+      "range": 0,
+      "hp": 21000,
+      "speed": 800,
+      "armor": 12,
+      "resist": 10,
+      "ancient": true,
+      "abilities": [
+        "gemtd_guai_base",
+        "enemy_wumian"
+      ]
+    },
+    "gemtd_xiaoshayu": {
+      "damage": null,
+      "interval": 1,
+      "range": 0,
+      "hp": 85000,
+      "speed": 600,
+      "armor": 12,
+      "resist": 10,
+      "ancient": true,
+      "abilities": [
+        "gemtd_guai_base"
+      ]
+    },
+    "gemtd_feijiangxiaobao": {
+      "damage": null,
+      "interval": 1,
+      "range": 0,
+      "hp": 80000,
+      "speed": 700,
+      "armor": 12,
+      "resist": 10,
+      "ancient": true,
+      "abilities": [
+        "gemtd_guai_base",
+        "enemy_wumian"
+      ]
+    },
+    "gemtd_siwangxianzhi": {
+      "damage": null,
+      "interval": 1,
+      "range": 0,
+      "hp": 55000,
+      "speed": 1000,
+      "armor": 12,
+      "resist": 10,
+      "ancient": true,
+      "abilities": [
+        "gemtd_guai_base",
+        "enemy_wumian"
+      ]
+    },
+    "gemtd_xuemobaobao_fly": {
+      "damage": null,
+      "interval": 1,
+      "range": 0,
+      "hp": 13000,
+      "speed": 925,
+      "armor": 12,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "gemtd_guai_base"
+      ]
+    },
+    "gemtd_shangjinbaobao_fly": {
+      "damage": null,
+      "interval": 1,
+      "range": 0,
+      "hp": 20000,
+      "speed": 725,
+      "armor": 12,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "gemtd_guai_base"
+      ]
+    },
+    "gemtd_jinyinhuling_fly": {
+      "damage": null,
+      "interval": 1,
+      "range": 0,
+      "hp": 8800,
+      "speed": 700,
+      "armor": 12,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "gemtd_guai_base",
+        "enemy_momian"
+      ]
+    },
+    "gemtd_cuihua": {
+      "damage": null,
+      "interval": 1,
+      "range": 0,
+      "hp": 55000,
+      "speed": 1000,
+      "armor": 12,
+      "resist": 10,
+      "ancient": true,
+      "abilities": [
+        "gemtd_guai_base",
+        "enemy_momian"
+      ]
+    },
+    "gemtd_xiaobaihu": {
+      "damage": null,
+      "interval": 1,
+      "range": 0,
+      "hp": 120000,
+      "speed": 1200,
+      "armor": 12,
+      "resist": 10,
+      "ancient": true,
+      "abilities": [
+        "gemtd_guai_base"
+      ]
+    },
+    "gemtd_xiaoxingyue": {
+      "damage": null,
+      "interval": 1,
+      "range": 0,
+      "hp": 200000,
+      "speed": 1000,
+      "armor": 12,
+      "resist": 10,
+      "ancient": true,
+      "abilities": [
+        "gemtd_guai_base"
+      ]
+    },
+    "gemtd_liangqiyuhai_fly": {
+      "damage": null,
+      "interval": 1,
+      "range": 0,
+      "hp": 55000,
+      "speed": 600,
+      "armor": 12,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "gemtd_guai_base"
+      ]
+    },
+    "gemtd_fennenrongyuan_fly": {
+      "damage": null,
+      "interval": 1,
+      "range": 0,
+      "hp": 15000,
+      "speed": 800,
+      "armor": 12,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "gemtd_guai_base"
+      ]
+    },
+    "gemtd_guixiaoxieling_boss_fly": {
+      "damage": null,
+      "interval": 1,
+      "range": 0,
+      "hp": 330000,
+      "speed": 800,
+      "armor": 0,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "gemtd_guai_base"
+      ]
+    },
+    "gemtd_cuiyuxiaolong": {
+      "damage": null,
+      "interval": 1,
+      "range": 0,
+      "hp": 240000,
+      "speed": 700,
+      "armor": 16,
+      "resist": 50,
+      "ancient": true,
+      "abilities": [
+        "gemtd_guai_base"
+      ]
+    },
+    "gemtd_weilanlong": {
+      "damage": null,
+      "interval": 1,
+      "range": 0,
+      "hp": 120000,
+      "speed": 1300,
+      "armor": 16,
+      "resist": 25,
+      "ancient": true,
+      "abilities": [
+        "gemtd_guai_base"
+      ]
+    },
+    "gemtd_saodiekupu_fly": {
+      "damage": null,
+      "interval": 1,
+      "range": 0,
+      "hp": 15000,
+      "speed": 700,
+      "armor": 16,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "gemtd_guai_base",
+        "enemy_momian"
+      ]
+    },
+    "gemtd_maomaoyu": {
+      "damage": null,
+      "interval": 1,
+      "range": 0,
+      "hp": 190000,
+      "speed": 800,
+      "armor": 16,
+      "resist": 50,
+      "ancient": true,
+      "abilities": [
+        "gemtd_guai_base"
+      ]
+    },
+    "gemtd_xiaomogu": {
+      "damage": null,
+      "interval": 1,
+      "range": 0,
+      "hp": 200000,
+      "speed": 500,
+      "armor": 16,
+      "resist": 10,
+      "ancient": true,
+      "abilities": [
+        "gemtd_guai_base",
+        "enemy_momian"
+      ]
+    },
+    "gemtd_jiujiu_fly": {
+      "damage": null,
+      "interval": 1,
+      "range": 0,
+      "hp": 120000,
+      "speed": 2400,
+      "armor": 16,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "gemtd_guai_base",
+        "guai_xietong"
+      ]
+    },
+    "gemtd_siwangxintu": {
+      "damage": null,
+      "interval": 1,
+      "range": 0,
+      "hp": 600000,
+      "speed": 800,
+      "armor": 32,
+      "resist": 20,
+      "ancient": true,
+      "abilities": [
+        "gemtd_guai_base",
+        "enemy_wumian"
+      ]
+    },
+    "gemtd_xunjieyuanzumaolv": {
+      "damage": null,
+      "interval": 1,
+      "range": 0,
+      "hp": 300000,
+      "speed": 500,
+      "armor": 16,
+      "resist": 80,
+      "ancient": true,
+      "abilities": [
+        "gemtd_guai_base",
+        "enemy_momian"
+      ]
+    },
+    "gemtd_jilamofashi": {
+      "damage": null,
+      "interval": 1,
+      "range": 0,
+      "hp": 550000,
+      "speed": 600,
+      "armor": 16,
+      "resist": 80,
+      "ancient": true,
+      "abilities": [
+        "gemtd_guai_base"
+      ]
+    },
+    "gemtd_xiaofeixia_fly": {
+      "damage": null,
+      "interval": 1,
+      "range": 0,
+      "hp": 60000,
+      "speed": 550,
+      "armor": 16,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "gemtd_guai_base",
+        "enemy_momian"
+      ]
+    },
+    "gemtd_jiwanghaidao_fly": {
+      "damage": null,
+      "interval": 1,
+      "range": 0,
+      "hp": 100000,
+      "speed": 400,
+      "armor": 16,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "gemtd_guai_base",
+        "enemy_momian"
+      ]
+    },
+    "gemtd_juniaoduoduo": {
+      "damage": null,
+      "interval": 1,
+      "range": 0,
+      "hp": 800000,
+      "speed": 700,
+      "armor": 32,
+      "resist": 80,
+      "ancient": true,
+      "abilities": [
+        "gemtd_guai_base"
+      ]
+    },
+    "gemtd_roushan_boss_fly": {
+      "damage": null,
+      "interval": 1,
+      "range": 0,
+      "hp": 1000000,
+      "speed": 1000,
+      "armor": 16,
+      "resist": 20,
+      "ancient": false,
+      "abilities": [
+        "gemtd_guai_base"
+      ]
+    },
+    "gemtd_stone": {
+      "damage": 0,
+      "interval": 0,
+      "range": 0,
+      "hp": 1,
+      "speed": 0,
+      "armor": 0,
+      "resist": 10,
+      "ancient": false,
+      "abilities": []
+    },
+    "gemtd_yuediyang_boss": {
+      "damage": null,
+      "interval": 1,
+      "range": 0,
+      "hp": 40000,
+      "speed": 850,
+      "armor": 0,
+      "resist": 10,
+      "ancient": true,
+      "abilities": [
+        "gemtd_guai_base"
+      ]
+    },
+    "gemtd_kongxinnanguaren_boss": {
+      "damage": null,
+      "interval": 1,
+      "range": 0,
+      "hp": 45000,
+      "speed": 800,
+      "armor": 0,
+      "resist": 10,
+      "ancient": true,
+      "abilities": [
+        "gemtd_guai_base"
+      ]
+    },
+    "gemtd_nianshou_boss": {
+      "damage": null,
+      "interval": 1,
+      "range": 0,
+      "hp": 40000,
+      "speed": 900,
+      "armor": 0,
+      "resist": 10,
+      "ancient": true,
+      "abilities": [
+        "gemtd_guai_base"
+      ]
+    },
+    "gemtd_zard_boss_fly": {
+      "damage": null,
+      "interval": 1,
+      "range": 0,
+      "hp": 100000,
+      "speed": 750,
+      "armor": 0,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "gemtd_guai_base"
+      ]
+    },
+    "gemtd_jinyinhuling_fly1": {
+      "damage": null,
+      "interval": 1,
+      "range": 0,
+      "hp": 10000,
+      "speed": 700,
+      "armor": 12,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "gemtd_guai_base",
+        "enemy_wumian"
+      ]
+    },
+    "gemtd_cuihua1": {
+      "damage": null,
+      "interval": 1,
+      "range": 0,
+      "hp": 85000,
+      "speed": 1000,
+      "armor": 12,
+      "resist": 10,
+      "ancient": true,
+      "abilities": [
+        "gemtd_guai_base",
+        "enemy_wumian"
+      ]
+    },
+    "gemtd_taijiaoxiongdi_tester": {
+      "damage": null,
+      "interval": 1,
+      "range": 0,
+      "hp": 2000000,
+      "speed": 99999,
+      "armor": 99999,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "gemtd_guai_base"
+      ]
+    },
+    "gemtd_yutumeixuan_tester": {
+      "damage": null,
+      "interval": 1,
+      "range": 0,
+      "hp": 2000000,
+      "speed": 675,
+      "armor": 0,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "gemtd_guai_base",
+        "enemy_momian"
+      ]
+    },
+    "gemtd_xiaoxingyue1": {
+      "damage": null,
+      "interval": 1,
+      "range": 0,
+      "hp": 200000,
+      "speed": 1000,
+      "armor": 12,
+      "resist": 10,
+      "ancient": true,
+      "abilities": [
+        "gemtd_guai_base",
+        "riki_permanent_invisibility"
+      ]
+    },
+    "gemtd_gugubiao_boss_fly": {
+      "damage": null,
+      "interval": 1,
+      "range": 0,
+      "hp": 330000,
+      "speed": 1200,
+      "armor": 0,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "gemtd_guai_base"
+      ]
+    },
+    "gemtd_moke_boss_fly": {
+      "damage": null,
+      "interval": 1,
+      "range": 0,
+      "hp": 400000,
+      "speed": 900,
+      "armor": 0,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "gemtd_guai_base",
+        "tidehunter_kraken_shell"
+      ]
+    },
+    "gemtd_jumenghaimin_tester": {
+      "damage": null,
+      "interval": 1,
+      "range": 0,
+      "hp": 3000000,
+      "speed": 1500,
+      "armor": 0,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "gemtd_guai_base",
+        "tidehunter_kraken_shell"
+      ]
+    },
+    "gemtd_juniaoduoduo_tester": {
+      "damage": null,
+      "interval": 1,
+      "range": 0,
+      "hp": 20000000,
+      "speed": 1500,
+      "armor": 20,
+      "resist": 10,
+      "ancient": false,
+      "abilities": [
+        "gemtd_guai_base",
+        "quanpingchenmo"
+      ]
+    },
+    "gemtd_roushan_boss_fly_jin": {
+      "damage": null,
+      "interval": 1,
+      "range": 0,
+      "hp": 1000000,
+      "speed": 900,
+      "armor": 32,
+      "resist": 100,
+      "ancient": false,
+      "abilities": [
+        "gemtd_guai_base"
+      ]
+    },
+    "gemtd_roushan_boss_fly_bojin": {
+      "damage": null,
+      "interval": 1,
+      "range": 0,
+      "hp": 1000000,
+      "speed": 900,
+      "armor": 9999,
+      "resist": 20,
+      "ancient": false,
+      "abilities": [
+        "gemtd_guai_base"
+      ]
+    },
+    "gemtd_castle": {
+      "damage": 0,
+      "interval": 0,
+      "range": 0,
+      "hp": 100,
+      "speed": 0,
+      "armor": 0,
+      "resist": 10,
+      "ancient": false,
+      "abilities": []
+    },
+    "gemtd_youbushiban": {
+      "damage": 0,
+      "interval": 1,
+      "range": 0,
+      "hp": 1,
+      "speed": 0,
+      "armor": 10,
+      "resist": 10,
+      "ancient": false,
+      "abilities": []
+    },
+    "gemtd_zhangqishiban": {
+      "damage": 0,
+      "interval": 1,
+      "range": 0,
+      "hp": 1,
+      "speed": 0,
+      "armor": 10,
+      "resist": 10,
+      "ancient": false,
+      "abilities": []
+    },
+    "gemtd_hongliushiban": {
+      "damage": 0,
+      "interval": 1,
+      "range": 0,
+      "hp": 1,
+      "speed": 0,
+      "armor": 10,
+      "resist": 10,
+      "ancient": false,
+      "abilities": []
+    },
+    "gemtd_haojiaoshiban": {
+      "damage": 0,
+      "interval": 1,
+      "range": 0,
+      "hp": 1,
+      "speed": 0,
+      "armor": 10,
+      "resist": 10,
+      "ancient": false,
+      "abilities": []
+    },
+    "gemtd_suanwushiban": {
+      "damage": 0,
+      "interval": 1,
+      "range": 0,
+      "hp": 1,
+      "speed": 0,
+      "armor": 10,
+      "resist": 10,
+      "ancient": false,
+      "abilities": []
+    },
+    "gemtd_mabishiban": {
+      "damage": 0,
+      "interval": 1,
+      "range": 0,
+      "hp": 1,
+      "speed": 0,
+      "armor": 10,
+      "resist": 10,
+      "ancient": false,
+      "abilities": []
+    },
+    "gemtd_kongheshiban": {
+      "damage": 0,
+      "interval": 1,
+      "range": 0,
+      "hp": 1,
+      "speed": 0,
+      "armor": 10,
+      "resist": 10,
+      "ancient": false,
+      "abilities": []
+    },
+    "gemtd_xuwushiban": {
+      "damage": 0,
+      "interval": 1,
+      "range": 0,
+      "hp": 1,
+      "speed": 0,
+      "armor": 10,
+      "resist": 10,
+      "ancient": false,
+      "abilities": []
+    },
+    "gemtd_youbushiban_yin": {
+      "damage": 0,
+      "interval": 1,
+      "range": 0,
+      "hp": 1,
+      "speed": 0,
+      "armor": 10,
+      "resist": 10,
+      "ancient": false,
+      "abilities": []
+    },
+    "gemtd_zhangqishiban_yin": {
+      "damage": 0,
+      "interval": 1,
+      "range": 0,
+      "hp": 1,
+      "speed": 0,
+      "armor": 10,
+      "resist": 10,
+      "ancient": false,
+      "abilities": []
+    },
+    "gemtd_hongliushiban_yin": {
+      "damage": 0,
+      "interval": 1,
+      "range": 0,
+      "hp": 1,
+      "speed": 0,
+      "armor": 10,
+      "resist": 10,
+      "ancient": false,
+      "abilities": []
+    },
+    "gemtd_haojiaoshiban_yin": {
+      "damage": 0,
+      "interval": 1,
+      "range": 0,
+      "hp": 1,
+      "speed": 0,
+      "armor": 10,
+      "resist": 10,
+      "ancient": false,
+      "abilities": []
+    },
+    "gemtd_suanwushiban_yin": {
+      "damage": 0,
+      "interval": 1,
+      "range": 0,
+      "hp": 1,
+      "speed": 0,
+      "armor": 10,
+      "resist": 10,
+      "ancient": false,
+      "abilities": []
+    },
+    "gemtd_mabishiban_yin": {
+      "damage": 0,
+      "interval": 1,
+      "range": 0,
+      "hp": 1,
+      "speed": 0,
+      "armor": 10,
+      "resist": 10,
+      "ancient": false,
+      "abilities": []
+    },
+    "gemtd_kongheshiban_yin": {
+      "damage": 0,
+      "interval": 1,
+      "range": 0,
+      "hp": 1,
+      "speed": 0,
+      "armor": 10,
+      "resist": 10,
+      "ancient": false,
+      "abilities": []
+    },
+    "gemtd_xuwushiban_yin": {
+      "damage": 0,
+      "interval": 1,
+      "range": 0,
+      "hp": 1,
+      "speed": 0,
+      "armor": 10,
+      "resist": 10,
+      "ancient": false,
+      "abilities": []
+    },
+    "gemtd_youbushiban_jin": {
+      "damage": 0,
+      "interval": 1,
+      "range": 0,
+      "hp": 1,
+      "speed": 0,
+      "armor": 10,
+      "resist": 10,
+      "ancient": false,
+      "abilities": []
+    },
+    "gemtd_zhangqishiban_jin": {
+      "damage": 0,
+      "interval": 1,
+      "range": 0,
+      "hp": 1,
+      "speed": 0,
+      "armor": 10,
+      "resist": 10,
+      "ancient": false,
+      "abilities": []
+    },
+    "gemtd_hongliushiban_jin": {
+      "damage": 0,
+      "interval": 1,
+      "range": 0,
+      "hp": 1,
+      "speed": 0,
+      "armor": 10,
+      "resist": 10,
+      "ancient": false,
+      "abilities": []
+    },
+    "gemtd_haojiaoshiban_jin": {
+      "damage": 0,
+      "interval": 1,
+      "range": 0,
+      "hp": 1,
+      "speed": 0,
+      "armor": 10,
+      "resist": 10,
+      "ancient": false,
+      "abilities": []
+    },
+    "gemtd_suanwushiban_jin": {
+      "damage": 0,
+      "interval": 1,
+      "range": 0,
+      "hp": 1,
+      "speed": 0,
+      "armor": 10,
+      "resist": 10,
+      "ancient": false,
+      "abilities": []
+    },
+    "gemtd_mabishiban_jin": {
+      "damage": 0,
+      "interval": 1,
+      "range": 0,
+      "hp": 1,
+      "speed": 0,
+      "armor": 10,
+      "resist": 10,
+      "ancient": false,
+      "abilities": []
+    },
+    "gemtd_kongheshiban_jin": {
+      "damage": 0,
+      "interval": 1,
+      "range": 0,
+      "hp": 1,
+      "speed": 0,
+      "armor": 10,
+      "resist": 10,
+      "ancient": false,
+      "abilities": []
+    },
+    "gemtd_xuwushiban_jin": {
+      "damage": 0,
+      "interval": 1,
+      "range": 0,
+      "hp": 1,
+      "speed": 0,
+      "armor": 10,
+      "resist": 10,
+      "ancient": false,
+      "abilities": []
+    }
+  },
+  "numericAbilities": {
+    "tower_slow1": {
+      "MaxLevel": "1",
+      "Modifiers.SlowTarget1.IsDebuff": "1",
+      "Modifiers.SlowTarget1.Duration": "2",
+      "Modifiers.SlowTarget1.Properties.MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT": "-60"
+    },
+    "tower_slow2": {
+      "MaxLevel": "1",
+      "Modifiers.SlowTarget2.IsDebuff": "1",
+      "Modifiers.SlowTarget2.Duration": "2",
+      "Modifiers.SlowTarget2.Properties.MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT": "-90"
+    },
+    "tower_slow3": {
+      "MaxLevel": "1",
+      "Modifiers.SlowTarget3.IsDebuff": "1",
+      "Modifiers.SlowTarget3.Duration": "2",
+      "Modifiers.SlowTarget3.Properties.MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT": "-120"
+    },
+    "tower_slow4": {
+      "MaxLevel": "1",
+      "Modifiers.SlowTarget4.IsDebuff": "1",
+      "Modifiers.SlowTarget4.Duration": "2",
+      "Modifiers.SlowTarget4.Properties.MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT": "-150"
+    },
+    "tower_slow5": {
+      "MaxLevel": "1",
+      "Modifiers.SlowTarget5.IsDebuff": "1",
+      "Modifiers.SlowTarget5.Duration": "2",
+      "Modifiers.SlowTarget5.Properties.MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT": "-180"
+    },
+    "tower_slow6": {
+      "MaxLevel": "1",
+      "Modifiers.SlowTarget6.IsDebuff": "1",
+      "Modifiers.SlowTarget6.Duration": "2",
+      "Modifiers.SlowTarget6.Properties.MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT": "-480"
+    },
+    "tower_attack1": {
+      "Modifiers.modifier_tower_attack1.Properties.MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE": "20",
+      "Modifiers.modifier_tower_attack1.Passive": "1"
+    },
+    "tower_attack2": {
+      "Modifiers.modifier_tower_attack2.Properties.MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE": "40",
+      "Modifiers.modifier_tower_attack2.Passive": "1"
+    },
+    "tower_attack5": {
+      "Modifiers.modifier_tower_attack5.Properties.MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE": "320",
+      "Modifiers.modifier_tower_attack5.Passive": "1"
+    },
+    "tower_true_sight": {
+      "Modifiers.modifier_true_sight_222.Passive": "1",
+      "Modifiers.modifier_true_sight_222.IsHidden": "1"
+    },
+    "tower_speed_aura1": {
+      "MaxLevel": "1",
+      "AbilityCastRange": "600",
+      "Modifiers.modifier_inner_beast1.Passive": "1",
+      "Modifiers.modifier_inner_beast1.IsHidden": "1",
+      "Modifiers.modifier_inner_beast1.Aura_Radius": "664",
+      "Modifiers.modifier_inner_beast1.IsBuff": "1",
+      "Modifiers.modifier_inner_beast1_buff.Properties.MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT": "20",
+      "Modifiers.modifier_inner_beast1_buff.IsBuff": "1",
+      "Modifiers.modifier_inner_beast1_buff.IsPurgable": "1"
+    },
+    "tower_speed_aura2": {
+      "MaxLevel": "1",
+      "AbilityCastRange": "600",
+      "Modifiers.modifier_inner_beast2.Passive": "1",
+      "Modifiers.modifier_inner_beast2.IsHidden": "1",
+      "Modifiers.modifier_inner_beast2.Aura_Radius": "664",
+      "Modifiers.modifier_inner_beast2.IsBuff": "1",
+      "Modifiers.modifier_inner_beast2.IsPurgable": "0",
+      "Modifiers.modifier_inner_beast2_buff.Properties.MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT": "30",
+      "Modifiers.modifier_inner_beast2_buff.IsBuff": "1",
+      "Modifiers.modifier_inner_beast2_buff.IsPurgable": "1"
+    },
+    "tower_speed_aura3": {
+      "MaxLevel": "1",
+      "AbilityCastRange": "600",
+      "Modifiers.modifier_inner_beast3.Passive": "1",
+      "Modifiers.modifier_inner_beast3.IsHidden": "1",
+      "Modifiers.modifier_inner_beast3.Aura_Radius": "664",
+      "Modifiers.modifier_inner_beast3.IsBuff": "1",
+      "Modifiers.modifier_inner_beast3_buff.Properties.MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT": "40"
+    },
+    "tower_speed_aura4": {
+      "MaxLevel": "1",
+      "AbilityCastRange": "600",
+      "Modifiers.modifier_inner_beast4.Passive": "1",
+      "Modifiers.modifier_inner_beast4.IsHidden": "1",
+      "Modifiers.modifier_inner_beast4.Aura_Radius": "664",
+      "Modifiers.modifier_inner_beast4.IsBuff": "1",
+      "Modifiers.modifier_inner_beast4_buff.Properties.MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT": "50"
+    },
+    "tower_speed_aura5": {
+      "MaxLevel": "1",
+      "AbilityCastRange": "600",
+      "Modifiers.modifier_inner_beast5.Passive": "1",
+      "Modifiers.modifier_inner_beast5.IsHidden": "1",
+      "Modifiers.modifier_inner_beast5.Aura_Radius": "664",
+      "Modifiers.modifier_inner_beast5.IsBuff": "1",
+      "Modifiers.modifier_inner_beast5_buff.Properties.MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT": "60"
+    },
+    "tower_speed_aura6": {
+      "MaxLevel": "1",
+      "AbilityCastRange": "600",
+      "Modifiers.modifier_inner_beast6.Passive": "1",
+      "Modifiers.modifier_inner_beast6.IsHidden": "1",
+      "Modifiers.modifier_inner_beast6.Aura_Radius": "664",
+      "Modifiers.modifier_inner_beast6.IsBuff": "1",
+      "Modifiers.modifier_inner_beast6_buff.Properties.MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT": "70"
+    },
+    "tower_du1": {
+      "MaxLevel": "1",
+      "Modifiers.modifier_MyAbility_passive_dulong.IsHidden": "1",
+      "Modifiers.modifier_MyAbility_passive_dulong.Passive": "1",
+      "Modifiers.modifier_MyAbility_passive_dulong_damage1.IsHidden": "1",
+      "Modifiers.modifier_MyAbility_passive_dulong_damage1.Duration": "5",
+      "Modifiers.modifier_MyAbility_passive_dulong_damage1.ThinkInterval": "1",
+      "Modifiers.modifier_MyAbility_passive_dulong_damage1.OnIntervalThink.Damage.Damage": "2"
+    },
+    "tower_du2": {
+      "MaxLevel": "2",
+      "Modifiers.modifier_MyAbility_passive_dulong.IsHidden": "1",
+      "Modifiers.modifier_MyAbility_passive_dulong.Passive": "1",
+      "Modifiers.modifier_MyAbility_passive_dulong_damage2.IsHidden": "1",
+      "Modifiers.modifier_MyAbility_passive_dulong_damage2.Duration": "5",
+      "Modifiers.modifier_MyAbility_passive_dulong_damage2.ThinkInterval": "1",
+      "Modifiers.modifier_MyAbility_passive_dulong_damage2.OnIntervalThink.Damage.Damage": "4"
+    },
+    "tower_du3": {
+      "MaxLevel": "3",
+      "Modifiers.modifier_MyAbility_passive_dulong.IsHidden": "1",
+      "Modifiers.modifier_MyAbility_passive_dulong.Passive": "1",
+      "Modifiers.modifier_MyAbility_passive_dulong_damage3.IsHidden": "1",
+      "Modifiers.modifier_MyAbility_passive_dulong_damage3.Duration": "5",
+      "Modifiers.modifier_MyAbility_passive_dulong_damage3.ThinkInterval": "1",
+      "Modifiers.modifier_MyAbility_passive_dulong_damage3.OnIntervalThink.Damage.Damage": "8"
+    },
+    "tower_du4": {
+      "MaxLevel": "4",
+      "Modifiers.modifier_MyAbility_passive_dulong.IsHidden": "1",
+      "Modifiers.modifier_MyAbility_passive_dulong.Passive": "1",
+      "Modifiers.modifier_MyAbility_passive_dulong_damage4.IsHidden": "1",
+      "Modifiers.modifier_MyAbility_passive_dulong_damage4.Duration": "5",
+      "Modifiers.modifier_MyAbility_passive_dulong_damage4.ThinkInterval": "1",
+      "Modifiers.modifier_MyAbility_passive_dulong_damage4.OnIntervalThink.Damage.Damage": "16"
+    },
+    "tower_du5": {
+      "MaxLevel": "5",
+      "Modifiers.modifier_MyAbility_passive_dulong.IsHidden": "1",
+      "Modifiers.modifier_MyAbility_passive_dulong.Passive": "1",
+      "Modifiers.modifier_MyAbility_passive_dulong_damage5.IsHidden": "1",
+      "Modifiers.modifier_MyAbility_passive_dulong_damage5.Duration": "5",
+      "Modifiers.modifier_MyAbility_passive_dulong_damage5.ThinkInterval": "1",
+      "Modifiers.modifier_MyAbility_passive_dulong_damage5.OnIntervalThink.Damage.Damage": "32"
+    },
+    "tower_du6": {
+      "MaxLevel": "6",
+      "Modifiers.modifier_MyAbility_passive_dulong.IsHidden": "1",
+      "Modifiers.modifier_MyAbility_passive_dulong.Passive": "1",
+      "Modifiers.modifier_MyAbility_passive_dulong_damage6.IsHidden": "1",
+      "Modifiers.modifier_MyAbility_passive_dulong_damage6.Duration": "5",
+      "Modifiers.modifier_MyAbility_passive_dulong_damage6.ThinkInterval": "1",
+      "Modifiers.modifier_MyAbility_passive_dulong_damage6.OnIntervalThink.Damage.Damage": "128"
+    },
+    "tower_jianjia1": {
+      "MaxLevel": "1",
+      "Modifiers.modifier_jianjia1.IsHidden": "1",
+      "Modifiers.modifier_jianjia1.Passive": "1",
+      "Modifiers.modifier_jianjia_target1.IsHidden": "0",
+      "Modifiers.modifier_jianjia_target1.Duration": "2",
+      "Modifiers.modifier_jianjia_target1.Properties.MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS": "-2"
+    },
+    "tower_jianjia2": {
+      "MaxLevel": "1",
+      "Modifiers.modifier_jianjia2.IsHidden": "1",
+      "Modifiers.modifier_jianjia2.Passive": "1",
+      "Modifiers.modifier_jianjia_target2.IsHidden": "0",
+      "Modifiers.modifier_jianjia_target2.Duration": "2",
+      "Modifiers.modifier_jianjia_target2.Properties.MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS": "-4"
+    },
+    "tower_jianjia3": {
+      "MaxLevel": "1",
+      "Modifiers.modifier_jianjia3.IsHidden": "1",
+      "Modifiers.modifier_jianjia3.Passive": "1",
+      "Modifiers.modifier_jianjia_target3.IsHidden": "0",
+      "Modifiers.modifier_jianjia_target3.Duration": "2",
+      "Modifiers.modifier_jianjia_target3.Properties.MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS": "-8"
+    },
+    "tower_jianjia4": {
+      "MaxLevel": "1",
+      "Modifiers.modifier_jianjia4.IsHidden": "1",
+      "Modifiers.modifier_jianjia4.Passive": "1",
+      "Modifiers.modifier_jianjia_target4.IsHidden": "0",
+      "Modifiers.modifier_jianjia_target4.Duration": "2",
+      "Modifiers.modifier_jianjia_target4.Properties.MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS": "-16"
+    },
+    "tower_jianjia5": {
+      "MaxLevel": "1",
+      "Modifiers.modifier_jianjia5.IsHidden": "1",
+      "Modifiers.modifier_jianjia5.Passive": "1",
+      "Modifiers.modifier_jianjia_target5.IsHidden": "0",
+      "Modifiers.modifier_jianjia_target5.Duration": "2",
+      "Modifiers.modifier_jianjia_target5.Properties.MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS": "-32"
+    },
+    "tower_jianjia6": {
+      "MaxLevel": "1",
+      "Modifiers.modifier_jianjia6.IsHidden": "1",
+      "Modifiers.modifier_jianjia6.Passive": "1",
+      "Modifiers.modifier_jianjia_target6.IsHidden": "0",
+      "Modifiers.modifier_jianjia_target6.Duration": "2",
+      "Modifiers.modifier_jianjia_target6.Properties.MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS": "-64"
+    },
+    "tower_speed1": {
+      "Modifiers.modifier_tower_speed1.Passive": "1",
+      "Modifiers.modifier_tower_speed1.Properties.MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT": "200"
+    },
+    "tower_speed2": {
+      "Modifiers.modifier_tower_speed2.Passive": "1",
+      "Modifiers.modifier_tower_speed2.Properties.MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT": "500"
+    },
+    "tower_jianshe1": {
+      "MaxLevel": "1",
+      "Modifiers.modifier_jianshe_new1.Passive": "1",
+      "Modifiers.modifier_jianshe_new1.IsHidden": "1"
+    },
+    "tower_jianshe2": {
+      "MaxLevel": "1",
+      "Modifiers.modifier_jianshe_new2.Passive": "1",
+      "Modifiers.modifier_jianshe_new2.IsHidden": "1"
+    },
+    "tower_jianshe3": {
+      "MaxLevel": "1",
+      "Modifiers.modifier_jianshe_new3.Passive": "1",
+      "Modifiers.modifier_jianshe_new3.IsHidden": "1"
+    },
+    "tower_jianshe4": {
+      "MaxLevel": "1",
+      "Modifiers.modifier_jianshe_new4.Passive": "1",
+      "Modifiers.modifier_jianshe_new4.IsHidden": "1"
+    },
+    "tower_jianshe5": {
+      "MaxLevel": "1",
+      "Modifiers.modifier_jianshe_new5.Passive": "1",
+      "Modifiers.modifier_jianshe_new5.IsHidden": "1"
+    },
+    "tower_jianshe6": {
+      "MaxLevel": "1",
+      "Modifiers.modifier_jianshe_new6.Passive": "1",
+      "Modifiers.modifier_jianshe_new6.IsHidden": "1"
+    },
+    "tower_fenliejian": {
+      "MaxLevel": "1",
+      "Modifiers.modifier_duo_chong_gong_ji_right.Passive": "1",
+      "Modifiers.modifier_duo_chong_gong_ji_right.IsHidden": "1",
+      "Modifiers.modifier_duo_chong_gong_ji_right.OnAttack.RunScript.attack_count": "2"
+    },
+    "tower_baoji1": {
+      "Modifiers.modifier_coup_de_grace_datadriven.Passive": "1",
+      "Modifiers.modifier_coup_de_grace_datadriven.IsHidden": "1",
+      "Modifiers.modifier_coup_de_grace_datadriven.OnAttackStart.Random.Chance": "10",
+      "Modifiers.modifier_coup_de_grace_crit_datadriven.IsHidden": "1",
+      "Modifiers.modifier_coup_de_grace_crit_datadriven.Properties.MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE": "500"
+    },
+    "tower_attack3": {
+      "Modifiers.modifier_tower_attack3.Properties.MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE": "80",
+      "Modifiers.modifier_tower_attack3.Passive": "1"
+    },
+    "tower_attack4": {
+      "Modifiers.modifier_tower_attack4.Properties.MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE": "160",
+      "Modifiers.modifier_tower_attack4.Passive": "1"
+    },
+    "tower_attack6": {
+      "Modifiers.modifier_tower_attack6.Properties.MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE": "640",
+      "Modifiers.modifier_tower_attack6.Passive": "1"
+    },
+    "e301": {
+      "Modifiers.modifier_texiao_star.Passive": "1",
+      "Modifiers.modifier_texiao_star.IsHidden": "1"
+    },
+    "tower_fenliejian_xianyan": {
+      "MaxLevel": "1",
+      "Modifiers.modifier_duo_chong_gong_ji_right.Passive": "1",
+      "Modifiers.modifier_duo_chong_gong_ji_right.IsHidden": "1",
+      "Modifiers.modifier_duo_chong_gong_ji_right.OnAttack.RunScript.attack_count": "4"
+    },
+    "tower_fenliejian_you": {
+      "MaxLevel": "1",
+      "Modifiers.modifier_duo_chong_gong_ji_right.Passive": "1",
+      "Modifiers.modifier_duo_chong_gong_ji_right.IsHidden": "1",
+      "Modifiers.modifier_duo_chong_gong_ji_right.OnAttack.RunScript.attack_count": "10"
+    },
+    "e10003": {
+      "Modifiers.modifier_texiao_star2.Passive": "1",
+      "Modifiers.modifier_texiao_star2.IsHidden": "1"
+    },
+    "tower_huiyao": {
+      "MaxLevel": "1",
+      "AbilityCastRange": "400",
+      "Modifiers.modifier_tower_huiyao1.Passive": "1",
+      "Modifiers.modifier_tower_huiyao1.IsHidden": "1",
+      "Modifiers.modifier_tower_huiyao1.Aura_Radius": "400",
+      "Modifiers.modifier_tower_huiyao_buff1.IsHidden": "1",
+      "Modifiers.modifier_tower_huiyao_buff1.Duration": "1",
+      "Modifiers.modifier_tower_huiyao_buff1.ThinkInterval": "0.5",
+      "Modifiers.modifier_tower_huiyao_buff1.OnIntervalThink.Damage.Damage": "30"
+    },
+    "tower_huiyao2": {
+      "MaxLevel": "1",
+      "AbilityCastRange": "500",
+      "Modifiers.modifier_tower_huiyao2.Passive": "1",
+      "Modifiers.modifier_tower_huiyao2.IsHidden": "1",
+      "Modifiers.modifier_tower_huiyao2.Aura_Radius": "500",
+      "Modifiers.modifier_tower_huiyao_buff2.IsHidden": "1",
+      "Modifiers.modifier_tower_huiyao_buff2.Duration": "1",
+      "Modifiers.modifier_tower_huiyao_buff2.ThinkInterval": "0.5",
+      "Modifiers.modifier_tower_huiyao_buff2.OnIntervalThink.Damage.Damage": "160"
+    },
+    "tower_shandianlian": {
+      "MaxLevel": "1",
+      "Modifiers.modifier_jn_D3_10.Passive": "1",
+      "Modifiers.modifier_jn_D3_10.IsHidden": "1",
+      "Modifiers.modifier_jn_D3_10.IsDebuff": "0",
+      "Modifiers.modifier_jn_D3_10.OnAttackLanded.Random.Chance": "30",
+      "Modifiers.modifier_jn_D3_10.OnAttackLanded.Random.OnSuccess.RunScript.Count": "5",
+      "Modifiers.modifier_jn_D3_10.OnAttackLanded.Random.OnSuccess.RunScript.Damage": "150",
+      "Modifiers.modifier_jn_D3_10.OnAttackLanded.Random.OnSuccess.RunScript.Radius": "1000",
+      "Modifiers.modifier_jn_D3_10.OnAttackLanded.Random.OnSuccess.RunScript.AttackCount": "1",
+      "Modifiers.modifier_jn_D3_10_effect.Duration": "0.1",
+      "Modifiers.modifier_jn_D3_10_effect.IsHidden": "1",
+      "Modifiers.modifier_jn_D3_10_effect.OnCreated.Damage.Damage": "200"
+    },
+    "tower_chazhuangshandian": {
+      "MaxLevel": "1",
+      "Modifiers.ether_shock_passive.Passive": "1",
+      "Modifiers.ether_shock_passive.IsHidden": "1",
+      "Modifiers.ether_shock_passive.OnAttackLanded.Random.Chance": "25",
+      "AbilitySpecial.01.start_radius": "100",
+      "AbilitySpecial.02.end_radius": "3000",
+      "AbilitySpecial.03.end_distance": "5000",
+      "AbilitySpecial.04.targets": "5",
+      "AbilitySpecial.05.damage": "2500",
+      "AbilitySpecial.06.chance": "25"
+    },
+    "tower_huiyao3": {
+      "MaxLevel": "1",
+      "AbilityCastRange": "800",
+      "Modifiers.modifier_tower_huiyao3.Passive": "1",
+      "Modifiers.modifier_tower_huiyao3.IsHidden": "1",
+      "Modifiers.modifier_tower_huiyao3.Aura_Radius": "800",
+      "Modifiers.modifier_tower_huiyao_buff3.IsHidden": "1",
+      "Modifiers.modifier_tower_huiyao_buff3.Duration": "1",
+      "Modifiers.modifier_tower_huiyao_buff3.ThinkInterval": "2",
+      "Modifiers.modifier_tower_huiyao_buff3.OnIntervalThink.Damage.Damage": "5000"
+    },
+    "e10002": {
+      "Modifiers.modifier_texiao_star2.Passive": "1",
+      "Modifiers.modifier_texiao_star2.IsHidden": "1"
+    },
+    "tower_zheyi": {
+      "AbilityCastRange": "600",
+      "Modifiers.modifier_zheyi.Passive": "1",
+      "Modifiers.modifier_zheyi.IsHidden": "1",
+      "Modifiers.modifier_zheyi.Aura_Radius": "600",
+      "Modifiers.modifier_zheyi_buff.Properties.MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS": "-10",
+      "Modifiers.modifier_zheyi_buff.Properties.MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT": "-250"
+    },
+    "tower_shechengguanghuan": {
+      "MaxLevel": "1",
+      "AbilityCastRange": "300",
+      "Modifiers.modifier_tower_shecheng.Passive": "1",
+      "Modifiers.modifier_tower_shecheng.IsHidden": "1",
+      "Modifiers.modifier_tower_shecheng.Aura_Radius": "290",
+      "Modifiers.modifier_tower_shecheng_buff.IsHidden": "1",
+      "Modifiers.modifier_tower_shecheng_buff.Duration": "1",
+      "Modifiers.modifier_tower_shecheng_buff.ThinkInterval": "0.3",
+      "Modifiers.modifier_tower_shecheng_buff.Properties.MODIFIER_PROPERTY_ATTACK_RANGE_BONUS": "300"
+    },
+    "tower_jingzhun": {
+      "MaxLevel": "1",
+      "AbilityCastRange": "300",
+      "Modifiers.modifier_tower_jingzhun.Passive": "1",
+      "Modifiers.modifier_tower_jingzhun.IsHidden": "1",
+      "Modifiers.modifier_tower_jingzhun.Aura_Radius": "300"
+    },
+    "e10005": {
+      "Modifiers.modifier_texiao_star2.Passive": "1",
+      "Modifiers.modifier_texiao_star2.IsHidden": "1"
+    },
+    "tower_zhongguoyu": {
+      "MaxLevel": "1",
+      "Modifiers.modifier_huichun.Passive": "1",
+      "Modifiers.modifier_huichun.IsHidden": "1",
+      "Modifiers.modifier_huichun.OnAttackLanded.Random.Chance": "1"
+    },
+    "tower_zheyi2": {
+      "AbilityCastRange": "600",
+      "Modifiers.modifier_zheyi2.Passive": "1",
+      "Modifiers.modifier_zheyi2.IsHidden": "1",
+      "Modifiers.modifier_zheyi2.Aura_Radius": "600",
+      "Modifiers.modifier_zheyi2_buff.Properties.MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS": "-10",
+      "Modifiers.modifier_zheyi2_buff.Properties.MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT": "-250",
+      "Modifiers.modifier_zheyi2_buff.Properties.MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS": "-50"
+    },
+    "tower_ranjin": {
+      "MaxLevel": "1",
+      "Modifiers.modifier_shaojin.Passive": "1",
+      "Modifiers.modifier_shaojin.IsHidden": "1"
+    },
+    "e10006": {
+      "Modifiers.modifier_texiao_star2.Passive": "1",
+      "Modifiers.modifier_texiao_star2.IsHidden": "1"
+    },
+    "tower_jin": {
+      "MaxLevel": "1",
+      "Modifiers.modifier_jin.IsHidden": "1",
+      "Modifiers.modifier_jin.Passive": "1",
+      "Modifiers.modifier_jin_target.IsHidden": "1",
+      "Modifiers.modifier_jin_target.Duration": "2",
+      "Modifiers.modifier_jin_target.Properties.MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS": "-32"
+    },
+    "tower_jin2": {
+      "MaxLevel": "1",
+      "Modifiers.modifier_jin.IsHidden": "1",
+      "Modifiers.modifier_jin.Passive": "1",
+      "Modifiers.modifier_jin2_target.IsHidden": "1",
+      "Modifiers.modifier_jin2_target.Duration": "2",
+      "Modifiers.modifier_jin2_target.Properties.MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS": "-48"
+    },
+    "tower_tanlan": {
+      "MaxLevel": "1",
+      "AbilityCastRange": "800",
+      "Modifiers.modifier_tanlan.Passive": "1",
+      "Modifiers.modifier_tanlan.IsHidden": "1",
+      "Modifiers.modifier_tanlan.Aura_Radius": "800",
+      "Modifiers.modifier_tanlan.Aura_ApplyToCaster": "1",
+      "Modifiers.modifier_tower_tanlan.Duration": "99999"
+    },
+    "tower_10jiyun": {
+      "Modifiers.modifier_10jiyun.IsHidden": "1",
+      "Modifiers.modifier_10jiyun.Passive": "1",
+      "Modifiers.modifier_10jiyun.OnAttackLanded.Random.Chance": "10",
+      "Modifiers.modifier_10jiyun.OnAttackLanded.Random.OnSuccess.Stun.Duration": "2"
+    },
+    "tower_5shihua": {
+      "Modifiers.tower_5shihua.IsHidden": "1",
+      "Modifiers.tower_5shihua.Passive": "1",
+      "Modifiers.tower_5shihua.OnAttackLanded.Random.Chance": "1",
+      "AbilitySpecial.01.bonus_physical_damage": "100",
+      "AbilitySpecial.02.bonus_magic_resist": "0"
+    },
+    "tower_bixi": {
+      "MaxLevel": "1",
+      "AbilityCastRange": "800",
+      "Modifiers.modifier_tower_bixi.Passive": "1",
+      "Modifiers.modifier_tower_bixi.IsHidden": "1",
+      "Modifiers.modifier_tower_bixi.Aura_Radius": "800",
+      "Modifiers.modifier_tower_bixi_buff.Properties.MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS": "-15"
+    },
+    "tower_bixi2": {
+      "MaxLevel": "2",
+      "AbilityCastRange": "1200",
+      "Modifiers.modifier_tower_bixi2.Passive": "1",
+      "Modifiers.modifier_tower_bixi2.IsHidden": "1",
+      "Modifiers.modifier_tower_bixi2.Aura_Radius": "1200",
+      "Modifiers.modifier_tower_bixi2_buff.Properties.MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS": "-30"
+    },
+    "tower_jihan": {
+      "MaxLevel": "1",
+      "AbilityCastRange": "300",
+      "Modifiers.modifier_tower_jihan_buff.Properties.MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE": "-50",
+      "Modifiers.modifier_tower_jihan_buff.Properties.MODIFIER_PROPERTY_DISABLE_HEALING": "1",
+      "Modifiers.modifier_tower_jihan.Passive": "1",
+      "Modifiers.modifier_tower_jihan.OnAttackLanded.ApplyModifier.Target.Radius": "300",
+      "Modifiers.modifier_tower_jihan.OnAttackLanded.ApplyModifier.Duration": "3"
+    },
+    "e10004": {
+      "Modifiers.modifier_texiao_star2.Passive": "1",
+      "Modifiers.modifier_texiao_star2.IsHidden": "1"
+    },
+    "tower_chenmoguanghuan": {
+      "MaxLevel": "1",
+      "AbilityCastRange": "600",
+      "Modifiers.modifier_tower_chenmo.Passive": "1",
+      "Modifiers.modifier_tower_chenmo.IsHidden": "1",
+      "Modifiers.modifier_tower_chenmo.Aura_Radius": "600",
+      "Modifiers.modifier_tower_momian_buff.IsHidden": "0",
+      "Modifiers.modifier_tower_momian_buff.Duration": "1",
+      "Modifiers.modifier_tower_momian_buff.ThinkInterval": "0.3",
+      "Modifiers.modifier_tower_momian_buff.IsBuff": "1"
+    },
+    "tower_maoyan": {
+      "AbilityCastRange": "500",
+      "Modifiers.modifier_tower_maoyan.Passive": "1",
+      "Modifiers.modifier_tower_maoyan.IsHidden": "1",
+      "Modifiers.modifier_tower_maoyan.Aura_Radius": "500",
+      "Modifiers.modifier_tower_maoyan_buff.Properties.MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE": "50"
+    },
+    "tower_speed_aura_guichu": {
+      "AbilityCastRange": "150",
+      "Modifiers.modifier_inner_beast_guichu.Passive": "1",
+      "Modifiers.modifier_inner_beast_guichu.IsHidden": "1",
+      "Modifiers.modifier_inner_beast_guichu.Aura_Radius": "200",
+      "Modifiers.modifier_inner_beast_guichu_buff.Properties.MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT": "200"
+    },
+    "e10009": {
+      "Modifiers.modifier_texiao_star2.Passive": "1",
+      "Modifiers.modifier_texiao_star2.IsHidden": "1"
+    },
+    "tower_lanbaoshi": {
+      "AbilityCastRange": "300",
+      "Modifiers.modifier_tower_lanbaoshi.Passive": "1",
+      "Modifiers.modifier_tower_lanbaoshi.IsHidden": "1",
+      "Modifiers.modifier_tower_lanbaoshi.Aura_Radius": "300",
+      "Modifiers.modifier_tower_lanbaoshi_buff.Properties.MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE": "-70"
+    },
+    "tower_chain_frost": {
+      "MaxLevel": "1",
+      "AbilityCastRange": "500"
+    },
+    "tower_lanbaoshi2": {
+      "AbilityCastRange": "556",
+      "Modifiers.modifier_tower_lanbaoshi2.Passive": "1",
+      "Modifiers.modifier_tower_lanbaoshi2.IsHidden": "1",
+      "Modifiers.modifier_tower_lanbaoshi2.Aura_Radius": "556",
+      "Modifiers.modifier_tower_lanbaoshi2_buff.Properties.MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE": "-75"
+    },
+    "e10001": {
+      "Modifiers.modifier_texiao_star2.Passive": "1",
+      "Modifiers.modifier_texiao_star2.IsHidden": "1"
+    },
+    "e10011": {
+      "Modifiers.modifier_texiao_star2.Passive": "1",
+      "Modifiers.modifier_texiao_star2.IsHidden": "1"
+    },
+    "e10012": {
+      "Modifiers.modifier_texiao_star2.Passive": "1",
+      "Modifiers.modifier_texiao_star2.IsHidden": "1"
+    },
+    "tower_aojiao": {
+      "MaxLevel": "1",
+      "Modifiers.modifier_tower_aojiao.IsDebuff": "1",
+      "Modifiers.modifier_tower_buaojiao.Passive": "1",
+      "Modifiers.modifier_tower_buaojiao.OnAttackStart.Random.OnSuccess.ApplyModifier.Duration": "5",
+      "Modifiers.modifier_tower_buaojiao.OnAttackStart.Random.Chance": "3",
+      "Modifiers.modifier_tower_buaojiao.IsHidden": "1"
+    },
+    "e10008": {
+      "Modifiers.modifier_texiao_star2.Passive": "1",
+      "Modifiers.modifier_texiao_star2.IsHidden": "1"
+    },
+    "tower_zheyi3": {
+      "AbilityCastRange": "600",
+      "Modifiers.modifier_zheyi3.Passive": "1",
+      "Modifiers.modifier_zheyi3.IsHidden": "1",
+      "Modifiers.modifier_zheyi3.Aura_Radius": "600",
+      "Modifiers.modifier_zheyi3_buff.Properties.MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS": "-64",
+      "Modifiers.modifier_zheyi3_buff.Properties.MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT": "-480",
+      "Modifiers.modifier_zheyi3_buff.Properties.MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS": "-100"
+    },
+    "e10013": {
+      "Modifiers.modifier_texiao_star2.Passive": "1",
+      "Modifiers.modifier_texiao_star2.IsHidden": "1"
+    },
+    "e10010": {
+      "Modifiers.modifier_texiao_star2.Passive": "1",
+      "Modifiers.modifier_texiao_star2.IsHidden": "1"
+    },
+    "e10007": {
+      "Modifiers.modifier_texiao_star2.Passive": "1",
+      "Modifiers.modifier_texiao_star2.IsHidden": "1"
+    },
+    "gemtd_guai_base": {
+      "Modifiers.modifier_name.Passive": "1",
+      "Modifiers.modifier_name.IsHidden": "1"
+    },
+    "riki_permanent_invisibility": {
+      "AbilitySpecial.01.fade_time": "1.0",
+      "AbilitySpecial.02.fade_delay": "2.0",
+      "AbilitySpecial.03.bonus_health_regen": "0"
+    },
+    "enemy_momian": {
+      "Modifiers.modifier_momian.Passive": "1",
+      "Modifiers.modifier_momian.IsHidden": "0",
+      "Modifiers.modifier_momian.Properties.MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS": "100"
+    },
+    "enemy_wumian": {
+      "Modifiers.modifier_wumian.Passive": "1",
+      "Modifiers.modifier_wumian.IsHidden": "0",
+      "Modifiers.modifier_wumian.Properties.MODIFIER_PROPERTY_INCOMING_PHYSICAL_DAMAGE_PERCENTAGE": "-100"
+    },
+    "guai_xietong": {
+      "MaxLevel": "1",
+      "AbilityCastRange": "9999",
+      "Modifiers.modifier_tower_xietong.Passive": "1",
+      "Modifiers.modifier_tower_xietong.IsHidden": "1",
+      "Modifiers.modifier_tower_xietong.Aura_Radius": "9999",
+      "Modifiers.modifier_tower_xietong_buff.IsHidden": "1",
+      "Modifiers.modifier_tower_xietong_buff.Duration": "1",
+      "Modifiers.modifier_tower_xietong_buff.ThinkInterval": "0.3",
+      "Modifiers.modifier_tower_xietong_buff.Properties.MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT": "-150"
+    },
+    "tidehunter_kraken_shell": {
+      "MaxLevel": "4",
+      "AbilitySpecial.01.damage_reduction": "0 0 0 0",
+      "AbilitySpecial.02.damage_cleanse": "40000 60000 80000 100000",
+      "AbilitySpecial.03.damage_reset_interval": "10"
+    },
+    "quanpingchenmo": {
+      "MaxLevel": "1",
+      "AbilityCastRange": "99999",
+      "Modifiers.modifier_quanpingchenmoaura.Passive": "1",
+      "Modifiers.modifier_quanpingchenmoaura.IsHidden": "0",
+      "Modifiers.modifier_quanpingchenmoaura.Aura_Radius": "99999",
+      "Modifiers.modifier_quanpingchenmo.Duration": "99999"
+    }
+  }
+}

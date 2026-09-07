@@ -14,6 +14,7 @@
     "test": "tsx --test tests/*.test.ts",
     "typecheck": "tsc --noEmit",
     "data:extract": "node scripts/extract-data.mjs",
+    "data:original": "node scripts/extract-original.mjs",
     "balance:check": "tsx scripts/balance-check.ts",
     "build:pages": "vite build --config vite.pages.config.ts",
     "preview:pages": "vite preview --config vite.pages.config.ts"

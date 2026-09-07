@@ -68,7 +68,6 @@ import {
   saveGame,
   startWave,
   tick,
-  upgradeQuality,
   waveInfo,
   type GameState,
 } from '@/lib/game/engine';
@@ -387,7 +386,11 @@ export default function GemGame() {
       readyRef.current = true;
       setReady(true);
       refresh();
-      notify('存档已恢复；战斗处于暂停状态');
+      notify(
+        state.current.phase === 'combat'
+          ? '存档已恢复；战斗处于暂停状态'
+          : '存档已恢复',
+      );
     } catch (e) {
       notify((e as Error).message);
     }
@@ -497,7 +500,7 @@ export default function GemGame() {
               <div className="board-message">
                 <Save size={26} />
                 <h2>继续上次的迷宫</h2>
-                <p>地图已更新为 37×37。新版存档可继续；旧版地图请开始新局。</p>
+                <p>新版存档可继续。规则版本不兼容时，请开始新局。</p>
                 <Button className="primary-action" onClick={resume}>
                   继续游戏 <Play size={16} />
                 </Button>
@@ -631,17 +634,22 @@ export default function GemGame() {
               <span>生命 {w.hp.toLocaleString()}</span>
               <span>护甲 {w.armor}</span>
             </div>
-            {w.invisible && (
+            {(w.invisible || w.variants.some((v) => v.invisible)) && (
               <p className="wave-warning">
                 <Eye size={14} />
                 隐形单位，需要蛋白石等显隐光环
               </p>
             )}
-            {w.physicalImmune && (
-              <p className="wave-warning">物理免疫，需要毒伤或灼烧</p>
+            {(w.physicalImmune || w.variants.some((v) => v.physicalImmune)) && (
+              <p className="wave-warning">
+                有物理免疫敌人，可用毒伤、灼烧或红宝石溅射
+              </p>
             )}
-            {w.magicImmune && (
-              <p className="wave-warning">魔法免疫，准备物理输出</p>
+            {(w.magicImmune || w.variants.some((v) => v.magicImmune)) && (
+              <p className="wave-warning">有魔法免疫敌人，准备物理或纯粹伤害</p>
+            )}
+            {w.variants.length > 1 && (
+              <p className="wave-warning">混合波：两种敌人随机出现</p>
             )}
             {s.phase === 'combat' && (
               <div className="wave-progress">
@@ -979,30 +987,11 @@ export default function GemGame() {
                       .join(' / ')}
                   </p>
                 </div>
-                <Button
-                  variant="outline"
-                  disabled={
-                    s.quality >= 4 ||
-                    s.gold < MOBILE_RULES.qualityCosts[s.quality] ||
-                    !ready
-                  }
-                  onClick={() =>
-                    act(() => {
-                      upgradeQuality(s);
-                      notify('后续放置将使用新的品质概率');
-                    })
-                  }
-                >
-                  {s.quality >= 4 ? (
-                    '已满级'
-                  ) : (
-                    <>
-                      <Coins size={12} />
-                      {MOBILE_RULES.qualityCosts[s.quality]}
-                      <Plus size={12} />
-                    </>
-                  )}
-                </Button>
+                <small title="击杀获得经验，自动提高后续出石品质">
+                  {s.quality >= 4
+                    ? '品质已满级'
+                    : `经验 ${s.xp} / ${MOBILE_RULES.qualityXP[s.quality + 1]}`}
+                </small>
               </div>
             )}
             <div className="combat-controls">
@@ -1136,7 +1125,7 @@ export default function GemGame() {
                   宝石、配方和怪物基础属性来自 2018
                   年历史资料。地图采用交叉核对的 37×37 单人布局：入 → 1 → 2 → 3
                   → 4 → 5 → 终；金色出生区与终点区禁建，绿色参考道路可建造，32
-                  块预置石头仅在准备阶段可拆。品质概率、出怪数量与部分技能实现仍在校准；石板和部分脚本技能尚未实现。图鉴中标注了具体缺项。
+                  块预置石头仅在准备阶段可拆。品质通过击杀经验自动提升；普通波从5只开始，连续三次90秒内无漏怪过关后增加1只，漏怪会减少后续数量，最低5只。Boss漏怪扣血随剩余生命变化。石板与部分特殊技能尚未实现。
                 </p>
                 <a
                   href="https://clementbera.github.io/Website/"

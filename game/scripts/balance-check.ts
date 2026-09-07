@@ -1,11 +1,5 @@
 import { writeFileSync, mkdirSync } from 'node:fs';
-import {
-  BOARD,
-  MOBILE_RULES,
-  RECIPES,
-  TOWERS,
-  basicId,
-} from '../lib/game/data';
+import { BOARD, RECIPES, TOWERS, basicId } from '../lib/game/data';
 import {
   canPlace,
   combine,
@@ -18,7 +12,6 @@ import {
   removeStone,
   startWave,
   tick,
-  upgradeQuality,
   type GameState,
 } from '../lib/game/engine';
 // Deliberately simple reproducible policy. It is a smoke test, not a claim of optimal play.
@@ -42,8 +35,6 @@ for (const seed of [7, 19, 42, 2026, 9001]) {
   const s = freshGame(seed);
   let rounds = 0;
   while (s.phase === 'prepare' && rounds++ < 50) {
-    while (s.quality < 4 && s.gold >= MOBILE_RULES.qualityCosts[s.quality])
-      upgradeQuality(s);
     // Concentrate around the central crossing of the researched solo map.
     for (let n = 0; n < 5; n++) {
       const positions = [];

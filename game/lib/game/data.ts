@@ -1,6 +1,19 @@
 import historical from '../../data/historical.json';
+import original from '../../data/original-facts.json';
 
-export const DATA_VERSION = '2018-snapshot-mobile-alpha-2-solo37';
+export const DATA_VERSION = '2018-source-mobile-alpha-3';
+type SourceUnit = {
+  damage: number | null;
+  interval: number;
+  range: number;
+  hp: number;
+  speed: number;
+  armor: number;
+  resist: number;
+  ancient: boolean;
+  abilities: string[];
+};
+const sourceUnits: Record<string, SourceUnit> = original.units;
 export const CELL_UNITS = 128;
 export const STEP = 1 / 30;
 export { BOARD } from './map';
@@ -17,6 +30,7 @@ export type Aura = {
   trueSight?: boolean;
   cannotMiss?: boolean;
   immunity?: boolean;
+  nonAncientOnly?: boolean;
 };
 export type TowerDef = {
   id: string;
@@ -33,6 +47,8 @@ export type TowerDef = {
   effects: {
     slow: number;
     poison: number;
+    slowDuration: number;
+    pierceDuration: number;
     pierce: number;
     splash: number;
     splashRange: number;
@@ -130,6 +146,7 @@ rows.forEach((r, index) => {
     family = index < 48 ? short[0] : 'S',
     quality = index < 48 ? Number(short[1]) : 0;
   const damageRaw = f['Attack Damage']?.[0] ?? '0';
+  const native = sourceUnits[id];
   const t: TowerDef = {
     id,
     name:
@@ -142,14 +159,18 @@ rows.forEach((r, index) => {
     color:
       FAMILIES[family]?.color ??
       ['#d5dee9', '#e6cd79', '#f29dca', '#77e2bc'][index % 4],
-    damage: number(damageRaw) + number(damageRaw.match(/\[\+(\d+)/)?.[1]),
-    interval: number(f['Attack Rate']?.[0]) || 1,
-    range: number(f['Attack Range']?.[0]) / CELL_UNITS,
+    damage:
+      (native.damage ?? number(damageRaw)) +
+      number(damageRaw.match(/\[\+(\d+)/)?.[1]),
+    interval: native.interval,
+    range: native.range / CELL_UNITS,
     bonusSpeed: 0,
     recipes: [],
     effects: {
       slow: 0,
       poison: 0,
+      slowDuration: 2,
+      pierceDuration: 2,
       pierce: 0,
       splash: 0,
       splashRange: 0,
@@ -180,7 +201,7 @@ rows.forEach((r, index) => {
         [0, 300, 350, 400, 450, 500, 700][level] / CELL_UNITS;
     } else if (a.startsWith('tower_fenliejian'))
       t.effects.targets = a.endsWith('_you')
-        ? 10
+        ? 11
         : a.endsWith('_xianyan')
           ? 5
           : 3;
@@ -206,6 +227,7 @@ rows.forEach((r, index) => {
         armor: level === 3 ? 64 : 10,
         slow: level === 3 ? 480 : 250,
         resist: level === 1 ? 0 : level === 2 ? 50 : 100,
+        nonAncientOnly: true,
       });
     else if (a === 'tower_jin' || a === 'tower_jin2')
       t.effects.pierce = a === 'tower_jin' ? 32 : 48;
@@ -234,7 +256,6 @@ rows.forEach((r, index) => {
     else if (a === 'tower_chazhuangshandian') t.effects.fork = 0.25;
     else if (a === 'tower_zhongguoyu') {
       t.effects.heal = 0.01;
-      t.notes.push('回血触发量暂按1点，待原脚本核实');
     } else if (!a.startsWith('tower_attack'))
       t.notes.push(`${a}：脚本效果未还原`);
   }
@@ -273,11 +294,44 @@ export type Wave = {
   evasion: number;
   physicalImmune: boolean;
   magicImmune: boolean;
+  ancient: boolean;
   count: number;
   spawnEvery: number;
   leak: number;
+  xp: number;
+  gold: number;
+  variants: EnemyProfile[];
   notes: string[];
 };
+type EnemyProfile = Pick<
+  Wave,
+  | 'hp'
+  | 'speed'
+  | 'armor'
+  | 'resist'
+  | 'flying'
+  | 'invisible'
+  | 'evasion'
+  | 'physicalImmune'
+  | 'magicImmune'
+  | 'ancient'
+>;
+function enemyProfile(row: RecordRow, id = row.fields.Code[0]): EnemyProfile {
+  const n = sourceUnits[id],
+    a = n.abilities;
+  return {
+    hp: n.hp * 0.6,
+    speed: (n.speed * 0.85) / CELL_UNITS,
+    armor: n.armor + (a.includes('enemy_high_armor') ? 20 : 0),
+    resist: n.resist,
+    ancient: n.ancient,
+    flying: id.includes('_fly'),
+    invisible: a.includes('riki_permanent_invisibility'),
+    evasion: a.includes('guai_shanbi') ? 0.5 : 0,
+    physicalImmune: a.includes('enemy_wumian'),
+    magicImmune: a.includes('enemy_momian'),
+  };
+}
 const waveRows = historical.pages.creeps.records as RecordRow[];
 const waveNames = [
   '狂暴野猪',
@@ -341,19 +395,16 @@ export const WAVES: Wave[] = Array.from({ length: 50 }, (_, i) => {
     index: i + 1,
     name: waveNames[i],
     id: f.Code[0],
-    hp: number(f['HP (1-4 players) [Base]']?.[0]),
-    speed: number(f['Movement (1-4 players) [Base]']?.[0]) / CELL_UNITS,
-    armor: number(f.Armor?.[0]) + (a.includes('enemy_high_armor') ? 20 : 0),
-    resist: number(f['Magic resistance']?.[0]),
-    flying: f.Code[0].includes('_fly'),
+    ...enemyProfile(r),
     boss,
-    invisible: a.includes('riki_permanent_invisibility'),
-    evasion: a.includes('guai_shanbi') ? 0.5 : 0,
-    physicalImmune: a.includes('enemy_wumian'),
-    magicImmune: a.includes('enemy_momian'),
-    count: boss ? 1 : 12,
-    spawnEvery: boss ? 1 : 0.8,
-    leak: boss ? 10 : 1,
+    count: boss ? 1 : 5,
+    spawnEvery: 1,
+    leak: boss ? 80 : 3 + Math.floor(i / 10) * 4,
+    xp: boss ? 300 : (Math.floor(i / 10) + 1) * 5,
+    gold: boss ? 150 : (Math.floor(i / 10) + 1) * 5,
+    variants: [35, 36, 38].includes(i + 1)
+      ? [enemyProfile(r), enemyProfile(r, f.Code[0] + '1')]
+      : [],
     notes: a.filter(
       (x) =>
         ![
@@ -367,20 +418,19 @@ export const WAVES: Wave[] = Array.from({ length: 50 }, (_, i) => {
     ),
   };
 });
-// Explicit prototype parameters, NOT extracted historical values.
+// 2018 solo rules. Hero experience is exposed as gem quality, without hero skills.
 export const MOBILE_RULES = {
   initialLife: 100,
   initialGold: 0,
-  waveReward: 20,
-  killGold: 1,
-  qualityCosts: [30, 50, 80, 120],
+  qualityXP: [0, 200, 550, 1050, 1700],
   qualityWeights: [
     [100, 0, 0, 0, 0],
-    [70, 25, 5, 0, 0],
-    [40, 35, 20, 5, 0],
-    [20, 30, 30, 18, 2],
-    [10, 20, 30, 30, 10],
+    [80, 20, 0, 0, 0],
+    [60, 30, 10, 0, 0],
+    [40, 30, 20, 10, 0],
+    [10, 30, 30, 20, 10],
   ],
-  minimumSpeed: 0.35,
-  normalCount: 12,
+  minimumSpeed: 0.35, // Dota engine movement floor still needs in-engine confirmation.
+  normalCount: 5,
+  perfectTime: 90,
 };

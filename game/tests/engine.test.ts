@@ -23,7 +23,6 @@ import {
   saveGame,
   startWave,
   tick,
-  upgradeQuality,
   type GameState,
   type Gem,
 } from '../lib/game/engine';
@@ -116,7 +115,6 @@ void test('combat prohibits building/removal even when paused', () => {
   s.paused = true;
   assert.throws(() => place(s, 10, 5));
   assert.throws(() => removeStone(s, s.gems[1].id));
-  assert.throws(() => upgradeQuality(s));
   const before = s.time;
   tick(s);
   assert.equal(s.time, before);
@@ -256,14 +254,21 @@ void test('wave clear enters next preparation and awards resources', () => {
   assert.equal(s.wave, 2);
   assert.equal(s.placed, 0);
   assert.equal(s.resolved, false);
-  assert.equal(s.kills, 12);
-  assert.equal(s.gold, 32);
+  assert.equal(s.kills, 5);
+  assert.equal(s.gold, 25);
+  assert.equal(s.xp, 25);
 });
 void test('all 50 waves can terminate and final wave leads to victory', () => {
   const s = freshGame();
-  const tower = add(s, basicId('Y', 6), 12, 8);
-  const original = TOWERS[tower.type].damage;
-  TOWERS[tower.type].damage = 1e12;
+  // Deliberately overwhelming fixture tests wave transitions, not game balance.
+  const tower = add(s, basicId('R', 6), 12, 8);
+  add(s, basicId('E', 1), 12, 9);
+  const def = TOWERS[tower.type],
+    sight = TOWERS[basicId('E', 1)].auras.find((a) => a.trueSight)!;
+  const original = { damage: def.damage, range: def.range, sight: sight.range };
+  def.damage = 1e12;
+  def.range = 100;
+  sight.range = 100;
   try {
     for (let n = 1; n <= 50; n++) {
       s.resolved = true;
@@ -273,7 +278,9 @@ void test('all 50 waves can terminate and final wave leads to victory', () => {
     assert.equal(s.phase, 'won');
     assert.equal(s.history.length, 50);
   } finally {
-    TOWERS[tower.type].damage = original;
+    def.damage = original.damage;
+    def.range = original.range;
+    sight.range = original.sight;
   }
 });
 void test('invisible enemies are detected by nearby opal', () => {

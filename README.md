@@ -18,6 +18,7 @@
 | [原版数据研究清单](docs/research/data-catalog.md) | 已观察到的数据样本、缺失字段及核实顺序 |
 | [决策与变更记录](docs/decisions.md) | 已确认决策和被替代的提案 |
 | [制作记录与已知缺项](docs/implementation-status.md) | 已实现内容、暂定参数、验证证据和后续工作 |
+| [原版脚本数值核对与本地测试](game/docs/original-rules-audit.md) | 2018脚本证据、修正前后对照、手机尺寸实操、剩余差异 |
 
 ## 维护约定
 

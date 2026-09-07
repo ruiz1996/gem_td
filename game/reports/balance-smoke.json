@@ -1,170 +1,111 @@
 {
   "policy": "simple greedy placement and DPS heuristic; no strategic recipe planning",
   "date": "2026-09-07",
+  "map": "dota2-solo-37-v1",
   "results": [
     {
       "seed": 7,
       "phase": "lost",
-      "reachedWave": 16,
+      "reachedWave": 10,
       "life": 0,
-      "kills": 81,
-      "leaks": 91,
-      "seconds": 523,
+      "kills": 40,
+      "leaks": 13,
+      "seconds": 228,
       "history": [
         {
           "wave": 1,
-          "kills": 3,
-          "leaks": 9,
-          "life": 91
+          "kills": 5,
+          "leaks": 0,
+          "life": 100
         },
         {
           "wave": 2,
-          "kills": 12,
+          "kills": 5,
           "leaks": 0,
-          "life": 91
+          "life": 100
         },
         {
           "wave": 3,
-          "kills": 12,
+          "kills": 5,
           "leaks": 0,
-          "life": 91
+          "life": 100
         },
         {
           "wave": 4,
-          "kills": 12,
+          "kills": 6,
           "leaks": 0,
-          "life": 91
+          "life": 100
         },
         {
           "wave": 5,
-          "kills": 12,
+          "kills": 6,
           "leaks": 0,
-          "life": 91
+          "life": 100
         },
         {
           "wave": 6,
-          "kills": 11,
-          "leaks": 1,
-          "life": 90
+          "kills": 6,
+          "leaks": 0,
+          "life": 100
         },
         {
           "wave": 7,
           "kills": 7,
-          "leaks": 5,
-          "life": 85
+          "leaks": 0,
+          "life": 100
         },
         {
           "wave": 8,
           "kills": 0,
-          "leaks": 12,
-          "life": 73
+          "leaks": 7,
+          "life": 86
         },
         {
           "wave": 9,
           "kills": 0,
-          "leaks": 12,
-          "life": 61
-        },
-        {
-          "wave": 10,
-          "kills": 0,
-          "leaks": 1,
-          "life": 51
-        },
-        {
-          "wave": 11,
-          "kills": 0,
-          "leaks": 12,
-          "life": 39
-        },
-        {
-          "wave": 12,
-          "kills": 0,
-          "leaks": 12,
-          "life": 27
-        },
-        {
-          "wave": 13,
-          "kills": 0,
-          "leaks": 12,
-          "life": 15
-        },
-        {
-          "wave": 14,
-          "kills": 0,
-          "leaks": 12,
-          "life": 3
-        },
-        {
-          "wave": 15,
-          "kills": 12,
-          "leaks": 0,
-          "life": 3
+          "leaks": 5,
+          "life": 74
         }
       ],
       "towers": [
         {
           "name": "碎裂蛋白石",
-          "damage": 102
+          "damage": 23
+        },
+        {
+          "name": "碎裂紫晶",
+          "damage": 22
+        },
+        {
+          "name": "白银",
+          "damage": 758
         },
         {
           "name": "瑕疵翡翠",
-          "damage": 495
+          "damage": 124
         },
         {
-          "name": "瑕疵蛋白石",
-          "damage": 76
+          "name": "碎裂紫晶",
+          "damage": 65
         },
         {
-          "name": "瑕疵海蓝宝石",
-          "damage": 495
+          "name": "碎裂紫晶",
+          "damage": 42
         },
         {
-          "name": "普通紫晶",
-          "damage": 371
+          "name": "碎裂蛋白石",
+          "damage": 23
         },
         {
-          "name": "普通紫晶",
-          "damage": 329
-        },
-        {
-          "name": "无暇紫晶",
-          "damage": 1276
-        },
-        {
-          "name": "普通紫晶",
-          "damage": 257
-        },
-        {
-          "name": "瑕疵海蓝宝石",
-          "damage": 108
-        },
-        {
-          "name": "普通紫晶",
-          "damage": 225
-        },
-        {
-          "name": "无暇紫晶",
-          "damage": 320
-        },
-        {
-          "name": "完美红宝石",
-          "damage": 817
-        },
-        {
-          "name": "无暇海蓝宝石",
-          "damage": 961
-        },
-        {
-          "name": "无暇蛋白石",
-          "damage": 66
-        },
-        {
-          "name": "普通海蓝宝石",
+          "name": "瑕疵紫晶",
           "damage": 0
         },
         {
-          "name": "无暇紫晶",
+          "name": "碎裂翡翠",
+          "damage": 0
+        },
+        {
+          "name": "瑕疵海蓝宝石",
           "damage": 0
         }
       ]
@@ -172,158 +113,106 @@
     {
       "seed": 19,
       "phase": "lost",
-      "reachedWave": 16,
+      "reachedWave": 10,
       "life": 0,
-      "kills": 85,
-      "leaks": 91,
-      "seconds": 477,
+      "kills": 40,
+      "leaks": 13,
+      "seconds": 211,
       "history": [
         {
           "wave": 1,
-          "kills": 12,
+          "kills": 5,
           "leaks": 0,
           "life": 100
         },
         {
           "wave": 2,
-          "kills": 12,
+          "kills": 5,
           "leaks": 0,
           "life": 100
         },
         {
           "wave": 3,
-          "kills": 12,
+          "kills": 5,
           "leaks": 0,
           "life": 100
         },
         {
           "wave": 4,
-          "kills": 12,
+          "kills": 6,
           "leaks": 0,
           "life": 100
         },
         {
           "wave": 5,
-          "kills": 12,
+          "kills": 6,
           "leaks": 0,
           "life": 100
         },
         {
           "wave": 6,
-          "kills": 12,
+          "kills": 6,
           "leaks": 0,
           "life": 100
         },
         {
           "wave": 7,
-          "kills": 1,
-          "leaks": 11,
-          "life": 89
+          "kills": 7,
+          "leaks": 0,
+          "life": 100
         },
         {
           "wave": 8,
           "kills": 0,
-          "leaks": 12,
-          "life": 77
+          "leaks": 7,
+          "life": 85
         },
         {
           "wave": 9,
           "kills": 0,
-          "leaks": 12,
-          "life": 65
-        },
-        {
-          "wave": 10,
-          "kills": 0,
-          "leaks": 1,
-          "life": 55
-        },
-        {
-          "wave": 11,
-          "kills": 0,
-          "leaks": 12,
-          "life": 43
-        },
-        {
-          "wave": 12,
-          "kills": 0,
-          "leaks": 12,
-          "life": 31
-        },
-        {
-          "wave": 13,
-          "kills": 0,
-          "leaks": 12,
-          "life": 19
-        },
-        {
-          "wave": 14,
-          "kills": 0,
-          "leaks": 12,
-          "life": 7
-        },
-        {
-          "wave": 15,
-          "kills": 12,
-          "leaks": 0,
-          "life": 7
+          "leaks": 5,
+          "life": 77
         }
       ],
       "towers": [
         {
           "name": "碎裂翡翠",
-          "damage": 103
+          "damage": 15
         },
         {
-          "name": "深海珍珠",
-          "damage": 1403
+          "name": "孔雀石",
+          "damage": 248
         },
         {
-          "name": "普通钻石",
-          "damage": 943
+          "name": "瑕疵海蓝宝石",
+          "damage": 0
         },
         {
-          "name": "普通海蓝宝石",
-          "damage": 180
+          "name": "孔雀石",
+          "damage": 150
+        },
+        {
+          "name": "白银",
+          "damage": 523
+        },
+        {
+          "name": "碎裂蛋白石",
+          "damage": 7
+        },
+        {
+          "name": "瑕疵海蓝宝石",
+          "damage": 100
+        },
+        {
+          "name": "瑕疵海蓝宝石",
+          "damage": 0
         },
         {
           "name": "瑕疵蛋白石",
-          "damage": 24
-        },
-        {
-          "name": "普通钻石",
-          "damage": 737
-        },
-        {
-          "name": "无暇蛋白石",
-          "damage": 60
-        },
-        {
-          "name": "完美红宝石",
-          "damage": 953
-        },
-        {
-          "name": "无暇蛋白石",
-          "damage": 29
-        },
-        {
-          "name": "无暇翡翠",
-          "damage": 95
-        },
-        {
-          "name": "无暇海蓝宝石",
           "damage": 0
         },
         {
-          "name": "无暇翡翠",
-          "damage": 0
-        },
-        {
-          "name": "完美红宝石",
-          "damage": 0
-        },
-        {
-          "name": "无暇翡翠",
+          "name": "碎裂蛋白石",
           "damage": 0
         }
       ]
@@ -331,158 +220,106 @@
     {
       "seed": 42,
       "phase": "lost",
-      "reachedWave": 16,
+      "reachedWave": 10,
       "life": 0,
-      "kills": 85,
-      "leaks": 91,
-      "seconds": 531,
+      "kills": 22,
+      "leaks": 25,
+      "seconds": 266,
       "history": [
         {
           "wave": 1,
-          "kills": 12,
+          "kills": 5,
           "leaks": 0,
           "life": 100
         },
         {
           "wave": 2,
-          "kills": 12,
+          "kills": 5,
           "leaks": 0,
           "life": 100
         },
         {
           "wave": 3,
-          "kills": 12,
+          "kills": 5,
           "leaks": 0,
           "life": 100
         },
         {
           "wave": 4,
-          "kills": 12,
-          "leaks": 0,
-          "life": 100
+          "kills": 0,
+          "leaks": 6,
+          "life": 87
         },
         {
           "wave": 5,
-          "kills": 12,
+          "kills": 5,
           "leaks": 0,
-          "life": 100
+          "life": 87
         },
         {
           "wave": 6,
-          "kills": 1,
-          "leaks": 11,
-          "life": 89
+          "kills": 0,
+          "leaks": 5,
+          "life": 78
         },
         {
           "wave": 7,
-          "kills": 12,
-          "leaks": 0,
-          "life": 89
+          "kills": 2,
+          "leaks": 3,
+          "life": 72
         },
         {
           "wave": 8,
           "kills": 0,
-          "leaks": 12,
-          "life": 77
+          "leaks": 5,
+          "life": 59
         },
         {
           "wave": 9,
           "kills": 0,
-          "leaks": 12,
-          "life": 65
-        },
-        {
-          "wave": 10,
-          "kills": 0,
-          "leaks": 1,
-          "life": 55
-        },
-        {
-          "wave": 11,
-          "kills": 0,
-          "leaks": 12,
-          "life": 43
-        },
-        {
-          "wave": 12,
-          "kills": 0,
-          "leaks": 12,
-          "life": 31
-        },
-        {
-          "wave": 13,
-          "kills": 0,
-          "leaks": 12,
-          "life": 19
-        },
-        {
-          "wave": 14,
-          "kills": 0,
-          "leaks": 12,
-          "life": 7
-        },
-        {
-          "wave": 15,
-          "kills": 12,
-          "leaks": 0,
-          "life": 7
+          "leaks": 5,
+          "life": 49
         }
       ],
       "towers": [
         {
           "name": "碎裂海蓝宝石",
-          "damage": 329
+          "damage": 113
+        },
+        {
+          "name": "碎裂蛋白石",
+          "damage": 22
+        },
+        {
+          "name": "碎裂紫晶",
+          "damage": 94
+        },
+        {
+          "name": "碎裂蛋白石",
+          "damage": 32
+        },
+        {
+          "name": "瑕疵黄玉",
+          "damage": 137
+        },
+        {
+          "name": "瑕疵蛋白石",
+          "damage": 34
+        },
+        {
+          "name": "白银",
+          "damage": 408
         },
         {
           "name": "瑕疵海蓝宝石",
-          "damage": 335
-        },
-        {
-          "name": "瑕疵紫晶",
-          "damage": 213
-        },
-        {
-          "name": "瑕疵海蓝宝石",
-          "damage": 231
-        },
-        {
-          "name": "普通蛋白石",
-          "damage": 123
-        },
-        {
-          "name": "深海珍珠",
-          "damage": 1164
-        },
-        {
-          "name": "普通紫晶",
-          "damage": 139
-        },
-        {
-          "name": "普通海蓝宝石",
-          "damage": 262
-        },
-        {
-          "name": "无暇紫晶",
-          "damage": 175
-        },
-        {
-          "name": "巨大翡翠",
           "damage": 0
         },
         {
-          "name": "无暇黄玉",
-          "damage": 178
+          "name": "瑕疵蛋白石",
+          "damage": 0
         },
         {
-          "name": "完美钻石",
-          "damage": 737
-        },
-        {
-          "name": "普通蛋白石",
-          "damage": 2
-        },
-        {
-          "name": "无暇海蓝宝石",
+          "name": "碎裂紫晶",
           "damage": 0
         }
       ]
@@ -490,176 +327,98 @@
     {
       "seed": 2026,
       "phase": "lost",
-      "reachedWave": 17,
+      "reachedWave": 10,
       "life": 0,
-      "kills": 96,
-      "leaks": 91,
-      "seconds": 567,
+      "kills": 35,
+      "leaks": 16,
+      "seconds": 232,
       "history": [
         {
           "wave": 1,
-          "kills": 12,
+          "kills": 5,
           "leaks": 0,
           "life": 100
         },
         {
           "wave": 2,
-          "kills": 12,
+          "kills": 5,
           "leaks": 0,
           "life": 100
         },
         {
           "wave": 3,
-          "kills": 12,
+          "kills": 5,
           "leaks": 0,
           "life": 100
         },
         {
           "wave": 4,
-          "kills": 12,
+          "kills": 6,
           "leaks": 0,
           "life": 100
         },
         {
           "wave": 5,
-          "kills": 12,
+          "kills": 6,
           "leaks": 0,
           "life": 100
         },
         {
           "wave": 6,
-          "kills": 12,
+          "kills": 6,
           "leaks": 0,
           "life": 100
         },
         {
           "wave": 7,
-          "kills": 12,
-          "leaks": 0,
-          "life": 100
+          "kills": 2,
+          "leaks": 5,
+          "life": 87
         },
         {
           "wave": 8,
           "kills": 0,
-          "leaks": 12,
-          "life": 88
+          "leaks": 5,
+          "life": 76
         },
         {
           "wave": 9,
           "kills": 0,
-          "leaks": 12,
-          "life": 76
-        },
-        {
-          "wave": 10,
-          "kills": 0,
-          "leaks": 1,
-          "life": 66
-        },
-        {
-          "wave": 11,
-          "kills": 0,
-          "leaks": 12,
-          "life": 54
-        },
-        {
-          "wave": 12,
-          "kills": 0,
-          "leaks": 12,
-          "life": 42
-        },
-        {
-          "wave": 13,
-          "kills": 0,
-          "leaks": 12,
-          "life": 30
-        },
-        {
-          "wave": 14,
-          "kills": 0,
-          "leaks": 12,
-          "life": 18
-        },
-        {
-          "wave": 15,
-          "kills": 12,
-          "leaks": 0,
-          "life": 18
-        },
-        {
-          "wave": 16,
-          "kills": 0,
-          "leaks": 12,
-          "life": 6
+          "leaks": 5,
+          "life": 64
         }
       ],
       "towers": [
         {
-          "name": "碎裂翡翠",
-          "damage": 284
+          "name": "孔雀石",
+          "damage": 263
         },
         {
-          "name": "瑕疵翡翠",
-          "damage": 175
+          "name": "碎裂紫晶",
+          "damage": 51
+        },
+        {
+          "name": "白银",
+          "damage": 598
         },
         {
           "name": "碎裂蛋白石",
-          "damage": 83
+          "damage": 11
         },
         {
-          "name": "无暇蛋白石",
-          "damage": 335
+          "name": "瑕疵黄玉",
+          "damage": 96
         },
         {
-          "name": "普通翡翠",
-          "damage": 1362
+          "name": "瑕疵蛋白石",
+          "damage": 64
         },
         {
-          "name": "无暇钻石",
-          "damage": 151
-        },
-        {
-          "name": "普通红宝石",
-          "damage": 1095
-        },
-        {
-          "name": "普通紫晶",
-          "damage": 229
-        },
-        {
-          "name": "普通蛋白石",
-          "damage": 68
-        },
-        {
-          "name": "普通紫晶",
-          "damage": 242
-        },
-        {
-          "name": "无暇钻石",
-          "damage": 809
-        },
-        {
-          "name": "完美紫晶",
-          "damage": 442
-        },
-        {
-          "name": "无暇蛋白石",
+          "name": "瑕疵红宝石",
           "damage": 0
         },
         {
-          "name": "无暇钻石",
-          "damage": 596
-        },
-        {
-          "name": "完美钻石",
-          "damage": 0
-        },
-        {
-          "name": "无暇翡翠",
-          "damage": 0
-        },
-        {
-          "name": "无暇钻石",
+          "name": "瑕疵钻石",
           "damage": 0
         }
       ]
@@ -667,156 +426,98 @@
     {
       "seed": 9001,
       "phase": "lost",
-      "reachedWave": 17,
+      "reachedWave": 10,
       "life": 0,
-      "kills": 96,
-      "leaks": 91,
-      "seconds": 527,
+      "kills": 40,
+      "leaks": 13,
+      "seconds": 234,
       "history": [
         {
           "wave": 1,
-          "kills": 12,
+          "kills": 5,
           "leaks": 0,
           "life": 100
         },
         {
           "wave": 2,
-          "kills": 12,
+          "kills": 5,
           "leaks": 0,
           "life": 100
         },
         {
           "wave": 3,
-          "kills": 12,
+          "kills": 5,
           "leaks": 0,
           "life": 100
         },
         {
           "wave": 4,
-          "kills": 12,
+          "kills": 6,
           "leaks": 0,
           "life": 100
         },
         {
           "wave": 5,
-          "kills": 12,
+          "kills": 6,
           "leaks": 0,
           "life": 100
         },
         {
           "wave": 6,
-          "kills": 12,
+          "kills": 6,
           "leaks": 0,
           "life": 100
         },
         {
           "wave": 7,
-          "kills": 12,
+          "kills": 7,
           "leaks": 0,
           "life": 100
         },
         {
           "wave": 8,
           "kills": 0,
-          "leaks": 12,
-          "life": 88
+          "leaks": 7,
+          "life": 84
         },
         {
           "wave": 9,
           "kills": 0,
-          "leaks": 12,
-          "life": 76
-        },
-        {
-          "wave": 10,
-          "kills": 0,
-          "leaks": 1,
-          "life": 66
-        },
-        {
-          "wave": 11,
-          "kills": 0,
-          "leaks": 12,
-          "life": 54
-        },
-        {
-          "wave": 12,
-          "kills": 0,
-          "leaks": 12,
-          "life": 42
-        },
-        {
-          "wave": 13,
-          "kills": 0,
-          "leaks": 12,
-          "life": 30
-        },
-        {
-          "wave": 14,
-          "kills": 0,
-          "leaks": 12,
-          "life": 18
-        },
-        {
-          "wave": 15,
-          "kills": 12,
-          "leaks": 0,
-          "life": 18
-        },
-        {
-          "wave": 16,
-          "kills": 0,
-          "leaks": 12,
-          "life": 6
+          "leaks": 5,
+          "life": 74
         }
       ],
       "towers": [
         {
-          "name": "深海珍珠",
-          "damage": 1431
+          "name": "瑕疵蛋白石",
+          "damage": 27
         },
         {
-          "name": "瑕疵海蓝宝石",
-          "damage": 333
+          "name": "瑕疵红宝石",
+          "damage": 213
         },
         {
-          "name": "普通海蓝宝石",
-          "damage": 731
+          "name": "碎裂蛋白石",
+          "damage": 44
         },
         {
-          "name": "普通海蓝宝石",
-          "damage": 348
+          "name": "孔雀石",
+          "damage": 661
         },
         {
-          "name": "瑕疵紫晶",
-          "damage": 113
+          "name": "碎裂蛋白石",
+          "damage": 25
         },
         {
-          "name": "无暇蛋白石",
+          "name": "碎裂紫晶",
           "damage": 64
         },
         {
-          "name": "普通海蓝宝石",
-          "damage": 297
+          "name": "碎裂蛋白石",
+          "damage": 9
         },
         {
-          "name": "芙蓉石",
-          "damage": 317
-        },
-        {
-          "name": "完美海蓝宝石",
-          "damage": 227
-        },
-        {
-          "name": "无暇海蓝宝石",
-          "damage": 108
-        },
-        {
-          "name": "普通海蓝宝石",
-          "damage": 0
-        },
-        {
-          "name": "完美海蓝宝石",
+          "name": "碎裂紫晶",
           "damage": 0
         },
         {
@@ -824,15 +525,10 @@
           "damage": 0
         },
         {
-          "name": "完美黄玉",
-          "damage": 0
-        },
-        {
-          "name": "无暇海蓝宝石",
+          "name": "瑕疵翡翠",
           "damage": 0
         }
       ]
     }
-  ],
-  "map": "dota2-solo-37-v1"
+  ]
 }
