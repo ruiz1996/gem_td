@@ -29,8 +29,10 @@ npm run build
 | `data/solo-map.json` | 单人地图坐标、禁建区、预置石头、来源散列 |
 | `docs/solo-map-research.md` | 地图考据、依据与验证范围 |
 | `lib/game/data.ts` | 将历史字段转成运行配置，并明确放置手机试玩参数 |
-| `lib/game/board.ts` | Phaser 棋盘绘制、点选、拖动及双指缩放 |
-| `app/game-client.tsx` | 手机界面、合成选材、图鉴、存档恢复 |
+| `lib/game/board.ts` / `board-input.ts` | Phaser 棋盘绘制、统一 Pointer Events、拖动及双指缩放 |
+| `lib/game/interaction.ts` / `hooks/use-game-interaction.ts` | 设备识别、操作模式偏好、棋盘镜头和逐格定位 |
+| `components/game/touch-controls.tsx` | 手机独立操作区、候选列表和合成材料选择 |
+| `app/game-client.tsx` | 桌面与触屏界面、操作桥接、图鉴、存档恢复 |
 | `data/historical.json` | 固定历史快照中提取的事实字段，含来源 URL 与 SHA-256 |
 | `scripts/extract-data.mjs` | 从固定提交重新提取数据：`npm run data:extract` |
 | `tests/engine.test.ts` | 核心规则回归测试 |
@@ -40,6 +42,8 @@ npm run build
 需求、调研与项目决策位于上级目录的 [文档入口](../README.md)。
 
 ## 存档与界面
+
+手机自动进入触屏模式：竖屏底部操作、横屏右侧操作，棋盘与按钮保持在同一屏幕内。拖动移图、双指缩放，点选后用箭头逐格微调并确认建造。五颗候选与宝石列表可直接定位；详情面板提供配方，预览时以材料槽和坐标列表选材。右上角操作设置可选择自动、手机或桌面模式。详见[交互设计与测试](docs/touch-interaction.md)。
 
 存档仅在当前浏览器本地保存，不跨设备同步。每次有效操作、波次切换和战斗约 5 秒间隔保存；恢复后暂停。不同配置版本的存档会被拒绝，不能直接覆盖解释为新版本。
 
@@ -53,7 +57,7 @@ React 界面以低频显式刷新读取可变模拟状态，Phaser 独立绘制�
 - 地图按两套社区工具恢复单人布局；原Lua已确认128单位/格。品质经验与概率、动态出怪数量、奖励和漏怪伤害已按2018脚本校准，详见[核对与测试报告](docs/original-rules-audit.md)。
 - 尚未完成安卓真机交互和性能验收，未制作 APK。
 - 后期难度尚未证明合理；不要将自动测试中用于检查胜利状态的超高伤害夹具当作正常通关结果。
-- 本地完成手机横竖屏尺寸实操和规则回归；后续按用户授权通过GitHub Actions发布本次数值修改。`npm run data:original` 可重建带来源散列的事实配置。
+- 本地完成手机横竖屏尺寸实操和40项自动回归，公开版本通过GitHub Actions发布。`npm run data:original` 可重建带来源散列的事实配置。
 
 ## GitHub Pages
 

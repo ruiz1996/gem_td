@@ -1,6 +1,8 @@
 import { BOARD, TOWERS } from './data';
 import { isProtected, isReferenceRoad } from './map';
 import type { GameState, Point } from './engine';
+import { boardGeometry, focusPan, touchZoom } from './interaction';
+import { attachBoardInput } from './board-input';
 export type BoardView = {
   state: GameState;
   selected: number | null;
@@ -12,6 +14,9 @@ export type BoardView = {
   zoom: number;
   panX: number;
   panY: number;
+  touchMode: boolean;
+  cursor: Point | null;
+  focus: Point | null;
 };
 export async function createBoard(
   parent: HTMLElement,
@@ -21,25 +26,12 @@ export async function createBoard(
 ) {
   const Phaser = (await import('phaser')).default;
   let dead = false;
-  const pointers = new Map<number, { x: number; y: number }>();
-  let start = { x: 0, y: 0, panX: 0, panY: 0 };
-  let dragged = false;
-  let pinching = false;
-  let pinchDistance = 0;
-  let pinchZoom = 1;
   const geometry = () => {
     const v = getView(),
       w = parent.clientWidth,
       h = parent.clientHeight,
-      base = Math.min((w - 40) / BOARD.width, (h - 40) / BOARD.height),
-      cell = base * v.zoom;
-    return {
-      w,
-      h,
-      cell,
-      left: (w - cell * BOARD.width) / 2 + v.panX,
-      top: (h - cell * BOARD.height) / 2 + v.panY,
-    };
+      pan = { x: v.panX, y: v.panY };
+    return boardGeometry(w, h, v.zoom, pan);
   };
   const clampPan = () => {
     const v = getView(),
@@ -63,6 +55,13 @@ export async function createBoard(
       size: number,
       color: string,
     ) {
+      if (
+        x + size < 0 ||
+        x - size > parent.clientWidth ||
+        y + size < 0 ||
+        y - size > parent.clientHeight
+      )
+        return;
       let text = this.labels.get(key);
       if (!text) {
         text = this.add.text(x, y, value, {
@@ -82,6 +81,13 @@ export async function createBoard(
     }
     update() {
       if (dead) return;
+      const camera = getView();
+      if (camera.focus) {
+        const pan = focusPan(camera.focus, geometry().cell);
+        camera.panX = pan.x;
+        camera.panY = pan.y;
+        camera.focus = null;
+      }
       const v = getView(),
         s = v.state,
         g = this.graphics,
@@ -94,8 +100,13 @@ export async function createBoard(
       });
       g.fillStyle(0x0d1723);
       g.fillRect(0, 0, w, h);
-      for (let y = 0; y < BOARD.height; y++)
-        for (let x = 0; x < BOARD.width; x++) {
+      // Zoomed phone views only need to paint the visible part of the grid.
+      const minX = Math.max(0, Math.floor(-left / cell)),
+        minY = Math.max(0, Math.floor(-top / cell)),
+        maxX = Math.min(BOARD.width, Math.ceil((w - left) / cell)),
+        maxY = Math.min(BOARD.height, Math.ceil((h - top) / cell));
+      for (let y = minY; y < maxY; y++)
+        for (let x = minX; x < maxX; x++) {
           g.fillStyle(
             isProtected(x, y)
               ? 0x3d3927
@@ -295,8 +306,11 @@ export async function createBoard(
             '#ffe6b7',
           );
       }
-      if (v.pending) {
-        const p = xy(v.pending);
+      if (
+        v.pending ||
+        (v.touchMode && v.cursor && s.phase === 'prepare' && !s.resolved)
+      ) {
+        const p = xy(v.pending ?? v.cursor!);
         g.fillStyle(0x8ed6b8, 0.15);
         g.fillRect(
           p.x - cell * 0.48,
@@ -304,7 +318,7 @@ export async function createBoard(
           cell * 0.96,
           cell * 0.96,
         );
-        g.lineStyle(2, 0x9ff1cb);
+        g.lineStyle(2, v.pending ? 0x9ff1cb : 0xf0b779);
         g.strokeRect(
           p.x - cell * 0.48,
           p.y - cell * 0.48,
@@ -313,7 +327,7 @@ export async function createBoard(
         );
         this.label(
           'pending',
-          '＋',
+          v.pending ? '＋' : '·',
           p.x,
           p.y,
           Math.max(16, cell * 0.7),
@@ -371,95 +385,36 @@ export async function createBoard(
     scene: BoardScene,
     banner: false,
     audio: { noAudio: true },
+    // React and native Pointer Events own input; avoid a second touch-event consumer.
+    input: { mouse: false, touch: false, keyboard: false },
     fps: { target: 60 },
     render: { roundPixels: false },
   });
   const observer = new ResizeObserver(() => {
     game.scale.resize(parent.clientWidth, parent.clientHeight);
+    const v = getView();
+    if (v.touchMode && v.zoom > 1) {
+      v.zoom = touchZoom(parent.clientWidth, parent.clientHeight);
+      v.focus = v.cursor ?? sSelected(v) ?? { x: 18, y: 18 };
+      onZoom(v.zoom);
+    }
     clampPan();
   });
+  const sSelected = (v: BoardView) =>
+    v.state.gems.find((g) => g.id === v.selected);
   observer.observe(parent);
-  const down = (e: PointerEvent) => {
-    const v = getView();
-    parent.setPointerCapture(e.pointerId);
-    pointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
-    if (pointers.size === 1) {
-      start = { x: e.clientX, y: e.clientY, panX: v.panX, panY: v.panY };
-      dragged = false;
-      pinching = false;
-    }
-    if (pointers.size === 2) {
-      const p = [...pointers.values()];
-      pinchDistance = Math.hypot(p[0].x - p[1].x, p[0].y - p[1].y);
-      pinchZoom = v.zoom;
-      pinching = true;
-      dragged = true;
-    }
-  };
-  const move = (e: PointerEvent) => {
-    if (!pointers.has(e.pointerId)) return;
-    pointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
-    const v = getView();
-    if (pointers.size === 2) {
-      const p = [...pointers.values()];
-      v.zoom = Math.max(
-        1,
-        Math.min(
-          3,
-          (pinchZoom * Math.hypot(p[0].x - p[1].x, p[0].y - p[1].y)) /
-            Math.max(1, pinchDistance),
-        ),
-      );
-      onZoom(v.zoom);
-      clampPan();
-      return;
-    }
-    const dx = e.clientX - start.x,
-      dy = e.clientY - start.y;
-    if (Math.hypot(dx, dy) > 8) dragged = true;
-    if (dragged && !pinching && v.zoom > 1) {
-      v.panX = start.panX + dx;
-      v.panY = start.panY + dy;
-      clampPan();
-    }
-  };
-  const up = (e: PointerEvent) => {
-    if (!pointers.has(e.pointerId)) return;
-    pointers.delete(e.pointerId);
-    if (!dragged && !pinching) {
-      const rect = parent.getBoundingClientRect(),
-        g = geometry();
-      onCell(
-        Math.floor((e.clientX - rect.left - g.left) / g.cell),
-        Math.floor((e.clientY - rect.top - g.top) / g.cell),
-      );
-    }
-    if (!pointers.size) pinching = false;
-  };
-  const cancel = (e: PointerEvent) => {
-    pointers.delete(e.pointerId);
-    dragged = true;
-  };
-  const wheel = (e: WheelEvent) => {
-    e.preventDefault();
-    const v = getView();
-    v.zoom = Math.max(1, Math.min(3, v.zoom + (e.deltaY > 0 ? -0.15 : 0.15)));
-    onZoom(v.zoom);
-    clampPan();
-  };
-  parent.addEventListener('pointerdown', down);
-  parent.addEventListener('pointermove', move);
-  parent.addEventListener('pointerup', up);
-  parent.addEventListener('pointercancel', cancel);
-  parent.addEventListener('wheel', wheel, { passive: false });
+  const detachInput = attachBoardInput(
+    parent,
+    getView,
+    geometry,
+    clampPan,
+    onCell,
+    onZoom,
+  );
   return () => {
     dead = true;
     observer.disconnect();
-    parent.removeEventListener('pointerdown', down);
-    parent.removeEventListener('pointermove', move);
-    parent.removeEventListener('pointerup', up);
-    parent.removeEventListener('pointercancel', cancel);
-    parent.removeEventListener('wheel', wheel);
+    detachInput();
     game.destroy(true);
   };
 }

@@ -25,7 +25,20 @@ import {
   Shield,
   Wind,
   Eye,
+  Monitor,
+  Settings2,
 } from 'lucide-react';
+import { useGameInteraction } from '@/hooks/use-game-interaction';
+import {
+  nudgeCell,
+  touchZoom,
+  MAX_TOUCH_ZOOM,
+  type InteractionPreference,
+} from '@/lib/game/interaction';
+import {
+  TouchControls,
+  type TouchActions,
+} from '@/components/game/touch-controls';
 import { Button } from '@/components/ui/button';
 import {
   Dialog,
@@ -82,6 +95,8 @@ type Preview = {
 };
 export default function GemGame() {
   'use no memo'; // The fixed-step game engine is mutable; this bridge samples it explicitly.
+  const { touch, preference, changePreference } = useGameInteraction();
+  const [touchDetails, setTouchDetails] = useState(false);
   const [initialState] = useState(() => freshGame(20260907));
   const state = useRef<GameState>(initialState);
   const board = useRef<HTMLDivElement>(null);
@@ -97,11 +112,16 @@ export default function GemGame() {
     zoom: 1,
     panX: 0,
     panY: 0,
+    touchMode: false,
+    cursor: null,
+    focus: null,
   });
   const [ready, setReady] = useState(false),
     [boardError, setBoardError] = useState(''),
     [notice, setNotice] = useState('点选空格，开始布置宝石'),
-    [modal, setModal] = useState<'help' | 'library' | 'waves' | null>(null),
+    [modal, setModal] = useState<
+      'help' | 'library' | 'waves' | 'settings' | 'towers' | null
+    >(null),
     [restart, setRestart] = useState(false),
     [saved, setSaved] = useState<string | null>(null),
     [search, setSearch] = useState(''),
@@ -180,9 +200,12 @@ export default function GemGame() {
     };
     state.current.paused = true;
     view.current.pending = null;
+    setTouchDetails(false);
+    if (view.current.touchMode)
+      view.current.focus = getGem(state.current, anchor)!;
     updatePreview(p);
   }
-  function openModal(value: 'help' | 'library' | 'waves') {
+  function openModal(value: NonNullable<typeof modal>) {
     if (previewRef.current) return;
     modalPause.current = state.current.paused;
     state.current.paused = true;
@@ -206,6 +229,7 @@ export default function GemGame() {
     const current = state.current,
       gem = current.gems.find((g) => g.x === x && g.y === y),
       p = previewRef.current;
+    if (view.current.touchMode) view.current.cursor = { x, y };
     if (p) {
       if (!gem) return;
       if (p.ids[p.slot] === p.anchor) {
@@ -246,6 +270,21 @@ export default function GemGame() {
     view.current.selected = null;
     refresh();
   };
+  useEffect(() => {
+    const v = view.current;
+    v.touchMode = touch;
+    v.zoom =
+      touch && board.current
+        ? touchZoom(board.current.clientWidth, board.current.clientHeight)
+        : 1;
+    v.panX = 0;
+    v.panY = 0;
+    v.focus = touch
+      ? (getGem(state.current, v.selected) ?? { x: 18, y: 18 })
+      : null;
+    setZoom(v.zoom);
+    setTouchDetails(false);
+  }, [touch]);
   useEffect(() => {
     let disposed = false,
       destroy: (() => void) | undefined;
@@ -368,8 +407,18 @@ export default function GemGame() {
       zoom: 1,
       panX: 0,
       panY: 0,
+      cursor: null,
+      focus: null,
     });
-    setZoom(1);
+    if (view.current.touchMode && board.current) {
+      view.current.zoom = touchZoom(
+        board.current.clientWidth,
+        board.current.clientHeight,
+      );
+      view.current.focus = { x: 18, y: 18 };
+    }
+    setZoom(view.current.zoom);
+    setTouchDetails(false);
     setSaved(null);
     setRestart(false);
     readyRef.current = true;
@@ -408,15 +457,111 @@ export default function GemGame() {
   );
   const complete = s.phase === 'won' || s.phase === 'lost';
   function adjustZoom(amount: number) {
-    v.zoom = Math.max(1, Math.min(3, v.zoom + amount));
+    v.zoom = Math.max(1, Math.min(touch ? MAX_TOUCH_ZOOM : 3, v.zoom + amount));
     if (v.zoom === 1) {
       v.panX = 0;
       v.panY = 0;
     }
     setZoom(v.zoom);
   }
+  function selectTouchGem(id: number) {
+    const gem = getGem(s, id);
+    if (!gem) return;
+    v.selected = id;
+    v.pending = null;
+    v.cursor = { x: gem.x, y: gem.y };
+    if (touch && board.current) {
+      if (v.zoom === 1) {
+        v.zoom = touchZoom(
+          board.current.clientWidth,
+          board.current.clientHeight,
+        );
+        setZoom(v.zoom);
+      }
+      v.focus = { x: gem.x, y: gem.y };
+    }
+    refresh();
+  }
+  function confirmPlacement() {
+    act(() => {
+      if (!v.pending) return;
+      const g = place(s, v.pending.x, v.pending.y);
+      v.selected = g.id;
+      v.pending = null;
+      notify(`${TOWERS[g.type].name} · 已放置 ${s.placed}/5`);
+    });
+  }
+  const touchActions: TouchActions = {
+    selectGem: selectTouchGem,
+    nudge: (dx, dy) => {
+      const p = nudgeCell(v.cursor ?? selected ?? { x: 18, y: 18 }, dx, dy);
+      callbacks.current(p.x, p.y);
+      v.focus = p;
+      if (v.zoom === 1 && board.current) {
+        v.zoom = touchZoom(
+          board.current.clientWidth,
+          board.current.clientHeight,
+        );
+        setZoom(v.zoom);
+      }
+    },
+    place: confirmPlacement,
+    keep: () =>
+      act(() => {
+        if (selected) keep(s, selected.id);
+        notify('已保留，其余候选变成石头');
+      }),
+    fuse: (count) =>
+      act(() => {
+        if (selected) fuse(s, selected.id, count);
+        notify('同品质融合完成');
+      }),
+    remove: () =>
+      act(() => {
+        if (selected) removeStone(s, selected.id);
+        v.selected = null;
+        notify('石头已拆除');
+      }),
+    fight: () =>
+      act(() => {
+        if (s.phase === 'prepare') startWave(s);
+        else s.paused = !s.paused;
+      }),
+    speed: () =>
+      act(() => {
+        s.speed = s.speed === 1 ? 2 : 1;
+      }),
+    details: () => setTouchDetails(true),
+    library: () => openModal('library'),
+    towers: () => openModal('towers'),
+    slot: (slot) => {
+      if (preview) {
+        updatePreview({ ...preview, slot });
+        v.focus = getGem(s, preview.ids[slot])!;
+      }
+    },
+    material: (id) => {
+      const g = getGem(s, id);
+      if (g) {
+        callbacks.current(g.x, g.y);
+        v.focus = { x: g.x, y: g.y };
+      }
+    },
+    combine: () =>
+      act(() => {
+        if (preview) {
+          combine(s, preview.recipe.id, preview.anchor, preview.ids);
+          closePreview();
+          notify('合成完成');
+        }
+      }),
+    cancel: closePreview,
+  };
   return (
-    <main className="game-shell">
+    <main
+      className={'game-shell' + (touch ? ' touch-mode' : '')}
+      data-interaction={touch ? 'touch' : 'desktop'}
+    >
       <header className="topbar">
         <div className="brand">
           <Diamond size={27} />
@@ -442,26 +587,39 @@ export default function GemGame() {
         <div className="header-actions">
           <Button
             variant="ghost"
-            title="玩法说明"
-            aria-label="玩法说明"
-            onClick={() => openModal('help')}
+            aria-label="操作设置"
+            title={touch ? '触屏模式' : '桌面模式'}
+            onClick={() => openModal('settings')}
             disabled={!!preview}
           >
-            <HelpCircle />
+            {touch ? <Settings2 /> : <Monitor />}
           </Button>
-          <Button
-            variant="ghost"
-            title="重新开始"
-            aria-label="重新开始"
-            onClick={() => {
-              restartPause.current = s.paused;
-              s.paused = true;
-              setRestart(true);
-            }}
-            disabled={!!preview || !ready}
-          >
-            <RotateCcw />
-          </Button>
+          {!touch && (
+            <>
+              <Button
+                variant="ghost"
+                title="玩法说明"
+                aria-label="玩法说明"
+                onClick={() => openModal('help')}
+                disabled={!!preview}
+              >
+                <HelpCircle />
+              </Button>
+              <Button
+                variant="ghost"
+                title="重新开始"
+                aria-label="重新开始"
+                onClick={() => {
+                  restartPause.current = s.paused;
+                  s.paused = true;
+                  setRestart(true);
+                }}
+                disabled={!!preview || !ready}
+              >
+                <RotateCcw />
+              </Button>
+            </>
+          )}
         </div>
       </header>
       <div className="workspace">
@@ -592,468 +750,491 @@ export default function GemGame() {
                 variant="ghost"
                 aria-label="放大棋盘"
                 onClick={() => adjustZoom(0.25)}
-                disabled={zoom >= 3}
+                disabled={zoom >= (touch ? MAX_TOUCH_ZOOM : 3)}
               >
                 <Plus />
               </Button>
               <Button
                 variant="ghost"
-                aria-label="棋盘居中"
+                aria-label={touch ? '查看全图' : '棋盘居中'}
                 onClick={() => {
                   v.zoom = 1;
                   v.panX = 0;
                   v.panY = 0;
+                  v.focus = null;
                   setZoom(1);
                 }}
               >
                 <Maximize2 />
+                {touch && '全图'}
               </Button>
             </div>
           </div>
         </section>
-        <aside className="inspector">
-          <div className="wave-card">
-            <div className="eyebrow">
-              {s.phase === 'combat' ? '当前敌人' : '下一波'}
-              <Button
-                variant="ghost"
-                onClick={() => openModal('waves')}
-                disabled={!!preview}
-              >
-                波次表 <ArrowUpRight size={13} />
-              </Button>
-            </div>
-            <h2>
-              {w.name} {w.boss && <b className="boss-badge">BOSS</b>}
-            </h2>
-            <div className="enemy-info">
-              <span>
-                {w.flying ? <Wind size={13} /> : <Shield size={13} />}{' '}
-                {w.flying ? '飞行' : '地面'}
-              </span>
-              <span>生命 {w.hp.toLocaleString()}</span>
-              <span>护甲 {w.armor}</span>
-            </div>
-            {(w.invisible || w.variants.some((v) => v.invisible)) && (
-              <p className="wave-warning">
-                <Eye size={14} />
-                隐形单位，需要蛋白石等显隐光环
-              </p>
-            )}
-            {(w.physicalImmune || w.variants.some((v) => v.physicalImmune)) && (
-              <p className="wave-warning">
-                有物理免疫敌人，可用毒伤、灼烧或红宝石溅射
-              </p>
-            )}
-            {(w.magicImmune || w.variants.some((v) => v.magicImmune)) && (
-              <p className="wave-warning">有魔法免疫敌人，准备物理或纯粹伤害</p>
-            )}
-            {w.variants.length > 1 && (
-              <p className="wave-warning">混合波：两种敌人随机出现</p>
-            )}
-            {s.phase === 'combat' && (
-              <div className="wave-progress">
-                <span style={{ width: (s.spawned / w.count) * 100 + '%' }} />
-                <small>
-                  已出怪 {s.spawned}/{w.count} · 场上 {s.enemies.length}
-                </small>
+        {touch && (
+          <TouchControls
+            state={s}
+            view={v}
+            ready={ready}
+            preview={preview}
+            actions={touchActions}
+            notice={notice}
+            saveStatus={saveStatus}
+          />
+        )}
+        {(!touch || touchDetails) && (
+          <aside className={'inspector' + (touch ? ' touch-details' : '')}>
+            {touch && (
+              <div className="touch-detail-header">
+                <strong>宝石详情与配方</strong>
+                <Button
+                  variant="outline"
+                  onClick={() => setTouchDetails(false)}
+                >
+                  返回棋盘
+                </Button>
               </div>
             )}
-          </div>
-          <div className="selection-content">
-            {preview ? (
-              <>
-                <div className="section-title">
-                  <span>合成预览</span>
-                  <Button
-                    variant="ghost"
-                    onClick={closePreview}
-                    aria-label="取消合成"
-                  >
-                    <X />
-                  </Button>
-                </div>
-                <div className="gem-title">
-                  <Diamond
-                    style={{ color: TOWERS[preview.recipe.result].color }}
-                    size={32}
-                  />
-                  <div>
-                    <h2>{TOWERS[preview.recipe.result].name}</h2>
-                    <p>
-                      成品位置：{getGem(s, preview.anchor)!.x + 1},{' '}
-                      {getGem(s, preview.anchor)!.y + 1}
-                    </p>
-                  </div>
-                </div>
-                <p className="muted">
-                  选中材料槽，再点击棋盘高亮的宝石进行替换。
-                </p>
-                <div className="material-slots">
-                  {preview.ids.map((id, i) => {
-                    const g = getGem(s, id)!,
-                      t = TOWERS[g.type];
-                    return (
-                      <Button
-                        key={i}
-                        variant="outline"
-                        className={
-                          'material-slot ' +
-                          (preview.slot === i ? 'chosen' : '')
-                        }
-                        onClick={() => updatePreview({ ...preview, slot: i })}
-                      >
-                        <Diamond size={17} style={{ color: t.color }} />
-                        <span>
-                          {t.name}
-                          <small>
-                            {id === preview.anchor
-                              ? '成品位置'
-                              : '材料 ' + (i + 1)}{' '}
-                            · {g.x + 1}, {g.y + 1}
-                          </small>
-                        </span>
-                        {preview.slot === i && <Check size={14} />}
-                      </Button>
-                    );
-                  })}
-                </div>
-                <p className="muted">其余材料原地变成石头，道路保持不变。</p>
-                <Button
-                  className="primary-action full"
-                  onClick={() =>
-                    act(() => {
-                      combine(
-                        s,
-                        preview.recipe.id,
-                        preview.anchor,
-                        preview.ids,
-                      );
-                      closePreview();
-                      notify('合成完成');
-                    })
-                  }
-                >
-                  确认合成 <Layers size={16} />
-                </Button>
-                <Button variant="ghost" className="full" onClick={closePreview}>
-                  取消
-                </Button>
-              </>
-            ) : v.pending ? (
-              <>
-                <div className="section-title">
-                  放置宝石 <span>{s.placed}/5</span>
-                </div>
-                <div className="placement-mark">
-                  <Plus size={34} />
-                </div>
-                <h2>在这里放置</h2>
-                <p className="muted">
-                  格子 {v.pending.x + 1}, {v.pending.y + 1}
-                  <br />
-                  确认后揭晓宝石种类与品质。
-                </p>
-                <Button
-                  className="primary-action full"
-                  onClick={() =>
-                    act(() => {
-                      const p = v.pending!;
-                      const g = place(s, p.x, p.y);
-                      v.selected = g.id;
-                      v.pending = null;
-                      notify(
-                        TOWERS[g.type].name + ' · 已放置 ' + s.placed + '/5',
-                      );
-                    })
-                  }
-                >
-                  确认放置 <Plus size={16} />
-                </Button>
+            <div className="wave-card">
+              <div className="eyebrow">
+                {s.phase === 'combat' ? '当前敌人' : '下一波'}
                 <Button
                   variant="ghost"
-                  className="full"
-                  onClick={() => {
-                    v.pending = null;
-                    refresh();
-                  }}
+                  onClick={() => openModal('waves')}
+                  disabled={!!preview}
                 >
-                  取消
+                  波次表 <ArrowUpRight size={13} />
                 </Button>
-              </>
-            ) : selected ? (
-              <>
-                <div className="section-title">
-                  <span>
-                    {selected.type === 'stone'
-                      ? '迷宫石头'
-                      : selected.candidate
-                        ? '本轮候选'
-                        : '已保留宝石'}
-                  </span>
-                  <span>
-                    {selected.x + 1}, {selected.y + 1}
-                  </span>
+              </div>
+              <h2>
+                {w.name} {w.boss && <b className="boss-badge">BOSS</b>}
+              </h2>
+              <div className="enemy-info">
+                <span>
+                  {w.flying ? <Wind size={13} /> : <Shield size={13} />}{' '}
+                  {w.flying ? '飞行' : '地面'}
+                </span>
+                <span>生命 {w.hp.toLocaleString()}</span>
+                <span>护甲 {w.armor}</span>
+              </div>
+              {(w.invisible || w.variants.some((v) => v.invisible)) && (
+                <p className="wave-warning">
+                  <Eye size={14} />
+                  隐形单位，需要蛋白石等显隐光环
+                </p>
+              )}
+              {(w.physicalImmune ||
+                w.variants.some((v) => v.physicalImmune)) && (
+                <p className="wave-warning">
+                  有物理免疫敌人，可用毒伤、灼烧或红宝石溅射
+                </p>
+              )}
+              {(w.magicImmune || w.variants.some((v) => v.magicImmune)) && (
+                <p className="wave-warning">
+                  有魔法免疫敌人，准备物理或纯粹伤害
+                </p>
+              )}
+              {w.variants.length > 1 && (
+                <p className="wave-warning">混合波：两种敌人随机出现</p>
+              )}
+              {s.phase === 'combat' && (
+                <div className="wave-progress">
+                  <span style={{ width: (s.spawned / w.count) * 100 + '%' }} />
+                  <small>
+                    已出怪 {s.spawned}/{w.count} · 场上 {s.enemies.length}
+                  </small>
                 </div>
-                <div className="gem-title">
-                  <Diamond
-                    size={35}
-                    style={{ color: selectedTower?.color ?? '#768694' }}
-                  />
-                  <div>
-                    <h2>{selectedTower?.name ?? '石头'}</h2>
-                    <p>
-                      {selectedTower?.quality
-                        ? selectedTower.family +
-                          selectedTower.quality +
-                          ' · ' +
-                          FAMILIES[selectedTower.family].role
-                        : (selectedTower?.english ?? '构筑你的防线')}
-                    </p>
+              )}
+            </div>
+            <div className="selection-content">
+              {preview ? (
+                <>
+                  <div className="section-title">
+                    <span>合成预览</span>
+                    <Button
+                      variant="ghost"
+                      onClick={closePreview}
+                      aria-label="取消合成"
+                    >
+                      <X />
+                    </Button>
                   </div>
-                </div>
-                <p className="ability-text">{describe(selected.type)}</p>
-                {selectedTower && (
-                  <>
-                    <div className="stat-grid">
-                      <div>
-                        <strong>{selectedTower.damage}</strong>
-                        <small>攻击</small>
-                      </div>
-                      <div>
-                        <strong>
-                          {(
-                            selectedTower.interval /
-                            (1 + selectedTower.bonusSpeed / 100)
-                          ).toFixed(2)}
-                          <em>s</em>
-                        </strong>
-                        <small>基础间隔</small>
-                      </div>
-                      <div>
-                        <strong>{selectedTower.range.toFixed(1)}</strong>
-                        <small>射程 / 格</small>
-                      </div>
-                    </div>
-                    {!selected.candidate && (
-                      <p className="damage-stats">
-                        本塔累计伤害{' '}
-                        {Math.round(selected.damage).toLocaleString()} · 击杀{' '}
-                        {selected.kills}
+                  <div className="gem-title">
+                    <Diamond
+                      style={{ color: TOWERS[preview.recipe.result].color }}
+                      size={32}
+                    />
+                    <div>
+                      <h2>{TOWERS[preview.recipe.result].name}</h2>
+                      <p>
+                        成品位置：{getGem(s, preview.anchor)!.x + 1},{' '}
+                        {getGem(s, preview.anchor)!.y + 1}
                       </p>
-                    )}
-                  </>
-                )}
-                {selected.type === 'stone' ? (
+                    </div>
+                  </div>
+                  <p className="muted">
+                    选中材料槽，再点击棋盘高亮的宝石进行替换。
+                  </p>
+                  <div className="material-slots">
+                    {preview.ids.map((id, i) => {
+                      const g = getGem(s, id)!,
+                        t = TOWERS[g.type];
+                      return (
+                        <Button
+                          key={i}
+                          variant="outline"
+                          className={
+                            'material-slot ' +
+                            (preview.slot === i ? 'chosen' : '')
+                          }
+                          onClick={() => updatePreview({ ...preview, slot: i })}
+                        >
+                          <Diamond size={17} style={{ color: t.color }} />
+                          <span>
+                            {t.name}
+                            <small>
+                              {id === preview.anchor
+                                ? '成品位置'
+                                : '材料 ' + (i + 1)}{' '}
+                              · {g.x + 1}, {g.y + 1}
+                            </small>
+                          </span>
+                          {preview.slot === i && <Check size={14} />}
+                        </Button>
+                      );
+                    })}
+                  </div>
+                  <p className="muted">其余材料原地变成石头，道路保持不变。</p>
                   <Button
-                    variant="outline"
-                    className="full"
-                    disabled={s.phase !== 'prepare'}
+                    className="primary-action full"
                     onClick={() =>
                       act(() => {
-                        removeStone(s, selected.id);
-                        v.selected = null;
+                        combine(
+                          s,
+                          preview.recipe.id,
+                          preview.anchor,
+                          preview.ids,
+                        );
+                        closePreview();
+                        notify('合成完成');
                       })
                     }
                   >
-                    拆除石头
+                    确认合成 <Layers size={16} />
                   </Button>
-                ) : selected.candidate ? (
-                  <>
+                  <Button
+                    variant="ghost"
+                    className="full"
+                    onClick={closePreview}
+                  >
+                    取消
+                  </Button>
+                </>
+              ) : v.pending ? (
+                <>
+                  <div className="section-title">
+                    放置宝石 <span>{s.placed}/5</span>
+                  </div>
+                  <div className="placement-mark">
+                    <Plus size={34} />
+                  </div>
+                  <h2>在这里放置</h2>
+                  <p className="muted">
+                    格子 {v.pending.x + 1}, {v.pending.y + 1}
+                    <br />
+                    确认后揭晓宝石种类与品质。
+                  </p>
+                  <Button
+                    className="primary-action full"
+                    onClick={confirmPlacement}
+                  >
+                    确认放置 <Plus size={16} />
+                  </Button>
+                  <Button
+                    variant="ghost"
+                    className="full"
+                    onClick={() => {
+                      v.pending = null;
+                      refresh();
+                    }}
+                  >
+                    取消
+                  </Button>
+                </>
+              ) : selected ? (
+                <>
+                  <div className="section-title">
+                    <span>
+                      {selected.type === 'stone'
+                        ? '迷宫石头'
+                        : selected.candidate
+                          ? '本轮候选'
+                          : '已保留宝石'}
+                    </span>
+                    <span>
+                      {selected.x + 1}, {selected.y + 1}
+                    </span>
+                  </div>
+                  <div className="gem-title">
+                    <Diamond
+                      size={35}
+                      style={{ color: selectedTower?.color ?? '#768694' }}
+                    />
+                    <div>
+                      <h2>{selectedTower?.name ?? '石头'}</h2>
+                      <p>
+                        {selectedTower?.quality
+                          ? selectedTower.family +
+                            selectedTower.quality +
+                            ' · ' +
+                            FAMILIES[selectedTower.family].role
+                          : (selectedTower?.english ?? '构筑你的防线')}
+                      </p>
+                    </div>
+                  </div>
+                  <p className="ability-text">{describe(selected.type)}</p>
+                  {selectedTower && (
+                    <>
+                      <div className="stat-grid">
+                        <div>
+                          <strong>{selectedTower.damage}</strong>
+                          <small>攻击</small>
+                        </div>
+                        <div>
+                          <strong>
+                            {(
+                              selectedTower.interval /
+                              (1 + selectedTower.bonusSpeed / 100)
+                            ).toFixed(2)}
+                            <em>s</em>
+                          </strong>
+                          <small>基础间隔</small>
+                        </div>
+                        <div>
+                          <strong>{selectedTower.range.toFixed(1)}</strong>
+                          <small>射程 / 格</small>
+                        </div>
+                      </div>
+                      {!selected.candidate && (
+                        <p className="damage-stats">
+                          本塔累计伤害{' '}
+                          {Math.round(selected.damage).toLocaleString()} · 击杀{' '}
+                          {selected.kills}
+                        </p>
+                      )}
+                    </>
+                  )}
+                  {selected.type === 'stone' ? (
                     <Button
-                      className="primary-action full"
-                      disabled={s.placed !== 5 || s.resolved}
+                      variant="outline"
+                      className="full"
+                      disabled={s.phase !== 'prepare'}
                       onClick={() =>
                         act(() => {
-                          keep(s, selected.id);
-                          notify('已保留，其余候选变成石头');
+                          removeStone(s, selected.id);
+                          v.selected = null;
                         })
                       }
                     >
-                      {s.placed < 5
-                        ? '还需放置 ' + (5 - s.placed) + ' 颗'
-                        : '保留这颗宝石'}
-                      <Check size={16} />
+                      拆除石头
                     </Button>
-                    {fuseOptions(s, selected.id).map((count) => (
+                  ) : selected.candidate ? (
+                    <>
                       <Button
-                        key={count}
-                        variant="outline"
-                        className="full mt"
+                        className="primary-action full"
+                        disabled={s.placed !== 5 || s.resolved}
                         onClick={() =>
                           act(() => {
-                            fuse(s, selected.id, count);
-                            notify('同品质融合完成');
+                            keep(s, selected.id);
+                            notify('已保留，其余候选变成石头');
                           })
                         }
                       >
-                        {count} 颗同级融合 → 品质 +{count === 4 ? 2 : 1}
+                        {s.placed < 5
+                          ? '还需放置 ' + (5 - s.placed) + ' 颗'
+                          : '保留这颗宝石'}
+                        <Check size={16} />
                       </Button>
-                    ))}
-                  </>
-                ) : null}
-                {combinations.length > 0 && (
-                  <div className="recipe-section">
-                    <div className="section-title">
-                      相关合成{' '}
-                      <span>
-                        {combinations.filter((x) => x.ids).length} 可合成
-                      </span>
+                      {fuseOptions(s, selected.id).map((count) => (
+                        <Button
+                          key={count}
+                          variant="outline"
+                          className="full mt"
+                          onClick={() =>
+                            act(() => {
+                              fuse(s, selected.id, count);
+                              notify('同品质融合完成');
+                            })
+                          }
+                        >
+                          {count} 颗同级融合 → 品质 +{count === 4 ? 2 : 1}
+                        </Button>
+                      ))}
+                    </>
+                  ) : null}
+                  {combinations.length > 0 && (
+                    <div className="recipe-section">
+                      <div className="section-title">
+                        相关合成{' '}
+                        <span>
+                          {combinations.filter((x) => x.ids).length} 可合成
+                        </span>
+                      </div>
+                      {combinations.map(({ recipe, ids }) => (
+                        <Button
+                          key={recipe.id}
+                          variant="ghost"
+                          className="recipe-option"
+                          disabled={!ids || complete}
+                          onClick={() => openPreview(recipe, ids!)}
+                        >
+                          <div>
+                            <strong>{TOWERS[recipe.result].name}</strong>
+                            <small>
+                              {recipe.materials
+                                .map((id) =>
+                                  TOWERS[id].quality
+                                    ? TOWERS[id].family + TOWERS[id].quality
+                                    : TOWERS[id].name,
+                                )
+                                .join(' + ')}
+                            </small>
+                          </div>
+                          {ids ? (
+                            <ChevronRight size={15} />
+                          ) : (
+                            <span className="missing">未凑齐</span>
+                          )}
+                        </Button>
+                      ))}
                     </div>
-                    {combinations.map(({ recipe, ids }) => (
-                      <Button
-                        key={recipe.id}
-                        variant="ghost"
-                        className="recipe-option"
-                        disabled={!ids || complete}
-                        onClick={() => openPreview(recipe, ids!)}
-                      >
-                        <div>
-                          <strong>{TOWERS[recipe.result].name}</strong>
-                          <small>
-                            {recipe.materials
-                              .map((id) =>
-                                TOWERS[id].quality
-                                  ? TOWERS[id].family + TOWERS[id].quality
-                                  : TOWERS[id].name,
-                              )
-                              .join(' + ')}
-                          </small>
-                        </div>
-                        {ids ? (
-                          <ChevronRight size={15} />
-                        ) : (
-                          <span className="missing">未凑齐</span>
-                        )}
-                      </Button>
+                  )}
+                </>
+              ) : (
+                <>
+                  <div className="section-title">
+                    {s.resolved ? '布局已就绪' : '本轮建造'}{' '}
+                    <span>{s.placed}/5</span>
+                  </div>
+                  <div className="build-steps">
+                    {[0, 1, 2, 3, 4].map((i) => (
+                      <span key={i} className={i < s.placed ? 'filled' : ''}>
+                        <Diamond size={19} />
+                      </span>
                     ))}
                   </div>
-                )}
-              </>
-            ) : (
-              <>
-                <div className="section-title">
-                  {s.resolved ? '布局已就绪' : '本轮建造'}{' '}
-                  <span>{s.placed}/5</span>
-                </div>
-                <div className="build-steps">
-                  {[0, 1, 2, 3, 4].map((i) => (
-                    <span key={i} className={i < s.placed ? 'filled' : ''}>
-                      <Diamond size={19} />
-                    </span>
-                  ))}
-                </div>
-                <h2>
-                  {s.phase === 'combat'
-                    ? '防守正在进行'
-                    : s.resolved
-                      ? '准备迎接下一波'
-                      : s.placed === 5
-                        ? '选择一颗，留下它'
-                        : '构筑你的迷宫'}
-                </h2>
-                <p className="muted">
-                  {s.phase === 'combat'
-                    ? '点击宝石查看输出与配方。战斗中可以合成，但不能建造或拆石。'
-                    : s.resolved
-                      ? '可以拆除石头调整路线，或查看宝石配方。准备好后开始防守。'
-                      : s.placed === 5
-                        ? '点击本轮任意一颗宝石，选择保留、同级融合或配方合成。'
-                        : '点选空格，再确认放置。每轮揭晓 5 颗宝石，最终保留一颗，其余变成迷宫石头。'}
-                </p>
-                <div className="tip-block">
-                  <Route size={19} />
-                  <p>
-                    让怪物绕得更远，
-                    <br />
-                    让宝石打得更久。
+                  <h2>
+                    {s.phase === 'combat'
+                      ? '防守正在进行'
+                      : s.resolved
+                        ? '准备迎接下一波'
+                        : s.placed === 5
+                          ? '选择一颗，留下它'
+                          : '构筑你的迷宫'}
+                  </h2>
+                  <p className="muted">
+                    {s.phase === 'combat'
+                      ? '点击宝石查看输出与配方。战斗中可以合成，但不能建造或拆石。'
+                      : s.resolved
+                        ? '可以拆除石头调整路线，或查看宝石配方。准备好后开始防守。'
+                        : s.placed === 5
+                          ? '点击本轮任意一颗宝石，选择保留、同级融合或配方合成。'
+                          : '点选空格，再确认放置。每轮揭晓 5 颗宝石，最终保留一颗，其余变成迷宫石头。'}
                   </p>
-                </div>
-              </>
-            )}
-          </div>
-          <div className="inspector-bottom">
-            {!preview && s.phase === 'prepare' && (
-              <div className="quality-row">
-                <div>
-                  <small>
-                    宝石品质 <strong>Lv.{s.quality + 1}</strong>
+                  <div className="tip-block">
+                    <Route size={19} />
+                    <p>
+                      让怪物绕得更远，
+                      <br />
+                      让宝石打得更久。
+                    </p>
+                  </div>
+                </>
+              )}
+            </div>
+            <div className="inspector-bottom">
+              {!preview && s.phase === 'prepare' && (
+                <div className="quality-row">
+                  <div>
+                    <small>
+                      宝石品质 <strong>Lv.{s.quality + 1}</strong>
+                    </small>
+                    <p>
+                      当前：
+                      {MOBILE_RULES.qualityWeights[s.quality]
+                        .map((n, i) => (n ? i + 1 + '级 ' + n + '%' : null))
+                        .filter(Boolean)
+                        .join(' / ')}
+                    </p>
+                  </div>
+                  <small title="击杀获得经验，自动提高后续出石品质">
+                    {s.quality >= 4
+                      ? '品质已满级'
+                      : `经验 ${s.xp} / ${MOBILE_RULES.qualityXP[s.quality + 1]}`}
                   </small>
-                  <p>
-                    当前：
-                    {MOBILE_RULES.qualityWeights[s.quality]
-                      .map((n, i) => (n ? i + 1 + '级 ' + n + '%' : null))
-                      .filter(Boolean)
-                      .join(' / ')}
-                  </p>
                 </div>
-                <small title="击杀获得经验，自动提高后续出石品质">
-                  {s.quality >= 4
-                    ? '品质已满级'
-                    : `经验 ${s.xp} / ${MOBILE_RULES.qualityXP[s.quality + 1]}`}
-                </small>
-              </div>
-            )}
-            <div className="combat-controls">
-              <Button
-                className="primary-action"
-                disabled={
-                  !ready ||
-                  !!preview ||
-                  complete ||
-                  (s.phase === 'prepare' && !s.resolved)
-                }
-                onClick={() =>
-                  act(() => {
-                    if (s.phase === 'prepare') startWave(s);
-                    else s.paused = !s.paused;
-                  })
-                }
-              >
-                {s.phase === 'combat' ? (
-                  s.paused ? (
-                    <>
-                      <Play size={17} />
-                      继续防守
-                    </>
+              )}
+              <div className="combat-controls">
+                <Button
+                  className="primary-action"
+                  disabled={
+                    !ready ||
+                    !!preview ||
+                    complete ||
+                    (s.phase === 'prepare' && !s.resolved)
+                  }
+                  onClick={() =>
+                    act(() => {
+                      if (s.phase === 'prepare') startWave(s);
+                      else s.paused = !s.paused;
+                    })
+                  }
+                >
+                  {s.phase === 'combat' ? (
+                    s.paused ? (
+                      <>
+                        <Play size={17} />
+                        继续防守
+                      </>
+                    ) : (
+                      <>
+                        <Pause size={17} />
+                        暂停
+                      </>
+                    )
                   ) : (
                     <>
-                      <Pause size={17} />
-                      暂停
+                      <Play size={17} />
+                      开始第 {s.wave} 波
                     </>
-                  )
-                ) : (
-                  <>
-                    <Play size={17} />
-                    开始第 {s.wave} 波
-                  </>
-                )}
-              </Button>
+                  )}
+                </Button>
+                <Button
+                  variant="outline"
+                  className="speed-button"
+                  onClick={() =>
+                    act(() => {
+                      s.speed = s.speed === 1 ? 2 : 1;
+                    })
+                  }
+                  disabled={!!preview || !ready}
+                >
+                  <FastForward size={16} />
+                  {s.speed}×
+                </Button>
+              </div>
               <Button
-                variant="outline"
-                className="speed-button"
-                onClick={() =>
-                  act(() => {
-                    s.speed = s.speed === 1 ? 2 : 1;
-                  })
-                }
-                disabled={!!preview || !ready}
+                variant="ghost"
+                className="full codex-button"
+                onClick={() => openModal('library')}
+                disabled={!!preview}
               >
-                <FastForward size={16} />
-                {s.speed}×
+                <BookOpen size={16} />
+                宝石图鉴与合成配方<span>{Object.keys(TOWERS).length}</span>
               </Button>
             </div>
-            <Button
-              variant="ghost"
-              className="full codex-button"
-              onClick={() => openModal('library')}
-              disabled={!!preview}
-            >
-              <BookOpen size={16} />
-              宝石图鉴与合成配方<span>{Object.keys(TOWERS).length}</span>
-            </Button>
-          </div>
-        </aside>
+          </aside>
+        )}
       </div>
       <footer className="statusbar">
         <output className="status-notice" aria-live="polite">
@@ -1073,7 +1254,9 @@ export default function GemGame() {
       >
         <DialogContent
           className={
-            'game-dialog ' + (modal === 'library' ? 'wide-dialog' : '')
+            'game-dialog ' +
+            (touch ? 'touch-dialog ' : '') +
+            (modal === 'library' ? 'wide-dialog' : '')
           }
         >
           <DialogTitle>
@@ -1081,17 +1264,105 @@ export default function GemGame() {
               ? '宝石图鉴'
               : modal === 'waves'
                 ? '波次情报'
-                : '欢迎来到宝石 TD'}
+                : modal === 'settings'
+                  ? '操作设置'
+                  : modal === 'towers'
+                    ? '宝石列表'
+                    : '欢迎来到宝石 TD'}
           </DialogTitle>
           <DialogDescription>
             {modal === 'library'
               ? '查看宝石属性与配方，规划你的下一次合成。'
               : modal === 'waves'
                 ? '根据下一波的飞行、隐形与免疫能力安排防线。'
-                : '随机选石、合成强塔，用迷宫守住每一波。'}
+                : modal === 'settings'
+                  ? '自动适应设备，也可以手动切换操作方式。'
+                  : modal === 'towers'
+                    ? '点击列表中的宝石，直接定位到棋盘上。'
+                    : '随机选石、合成强塔，用迷宫守住每一波。'}
           </DialogDescription>
+          {modal === 'settings' && (
+            <div className="touch-settings">
+              <label>
+                操作模式
+                <select
+                  aria-label="操作模式"
+                  value={preference}
+                  onChange={(e) =>
+                    changePreference(e.target.value as InteractionPreference)
+                  }
+                >
+                  <option value="auto">自动识别</option>
+                  <option value="touch">手机触屏</option>
+                  <option value="desktop">电脑桌面</option>
+                </select>
+              </label>
+              <p className="muted">
+                当前使用{touch ? '触屏' : '桌面'}模式。切换模式不会重开游戏。
+              </p>
+              <Button variant="outline" onClick={() => setModal('waves')}>
+                第{s.wave}波 · {w.name} · 查看波次
+              </Button>
+              <Button variant="outline" onClick={() => setModal('help')}>
+                玩法说明
+              </Button>
+              <Button
+                variant="outline"
+                disabled={!ready}
+                onClick={() => {
+                  restartPause.current = modalPause.current;
+                  setModal(null);
+                  setRestart(true);
+                }}
+              >
+                重新开始
+              </Button>
+              <Button className="primary-action" onClick={closeModal}>
+                返回游戏
+              </Button>
+            </div>
+          )}
+          {modal === 'towers' && (
+            <div className="touch-tower-list">
+              {s.gems
+                .filter((g) => g.type !== 'stone')
+                .map((g) => (
+                  <Button
+                    key={g.id}
+                    variant="outline"
+                    onClick={() => {
+                      closeModal();
+                      selectTouchGem(g.id);
+                    }}
+                  >
+                    <Diamond
+                      size={22}
+                      style={{ color: TOWERS[g.type].color }}
+                    />
+                    <span>
+                      <strong>{TOWERS[g.type].name}</strong>
+                      <small>
+                        {g.candidate ? '本轮候选' : '已保留'} · {g.x + 1}列{' '}
+                        {g.y + 1}行
+                      </small>
+                    </span>
+                    <ChevronRight size={18} />
+                  </Button>
+                ))}
+              {!s.gems.some((g) => g.type !== 'stone') && (
+                <p className="muted">
+                  还没有宝石。返回棋盘，点选空格后确认建造。
+                </p>
+              )}
+            </div>
+          )}
           {modal === 'help' && (
             <div className="help-content">
+              {touch && (
+                <p className="touch-hint">
+                  手机操作：拖动棋盘移图，点格子定位，用箭头逐格微调，再点“确认放置”。候选与宝石列表都可直接定位。合成时从材料列表选择，无需点中小宝石。
+                </p>
+              )}
               <ol>
                 <li>
                   <strong>放置 5 颗</strong>

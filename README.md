@@ -4,7 +4,7 @@
 
 当前阶段：已实现首个可运行试玩版，源码位于 [game/](game/README.md)。历史资料已固定到 2018 年快照；完整原版还原、后期平衡和安卓实机验收尚未完成。
 
-手机试玩发布目标：[GitHub Pages](https://ruiz1996.github.io/gem_td/)（以 Actions 部署成功为准，建议安卓横屏）。
+手机试玩发布目标：[GitHub Pages](https://ruiz1996.github.io/gem_td/)（以 Actions 部署成功为准）。手机自动启用独立触屏界面，支持横竖屏；操作设置可手动切换模式。
 
 仓库：[ruiz1996/gem_td](https://github.com/ruiz1996/gem_td)。发布与本地测试步骤见 [GitHub Pages 文档](docs/github-pages.md)。
 
@@ -19,6 +19,7 @@
 | [决策与变更记录](docs/decisions.md) | 已确认决策和被替代的提案 |
 | [制作记录与已知缺项](docs/implementation-status.md) | 已实现内容、暂定参数、验证证据和后续工作 |
 | [原版脚本数值核对与本地测试](game/docs/original-rules-audit.md) | 2018脚本证据、修正前后对照、手机尺寸实操、剩余差异 |
+| [手机交互设计与测试](game/docs/touch-interaction.md) | 自动识别、固定操作区、建造与选材流程、手势回归及验收范围 |
 
 ## 维护约定
 

@@ -1203,3 +1203,348 @@ input {
     transition: none !important;
   }
 }
+/* Dedicated touch layout: the board and commands share one viewport. */
+.game-shell.touch-mode {
+  height: 100dvh;
+  min-height: 0;
+  overflow: hidden;
+  padding: env(safe-area-inset-top) env(safe-area-inset-right)
+    env(safe-area-inset-bottom) env(safe-area-inset-left);
+}
+.touch-mode .topbar {
+  height: 52px;
+  padding: 0 10px;
+  gap: 8px;
+}
+.touch-mode .brand {
+  gap: 6px;
+}
+.touch-mode .brand > strong {
+  font-size: 16px;
+  letter-spacing: 0;
+}
+.touch-mode .brand > svg {
+  width: 18px;
+}
+.touch-mode .brand > span,
+.touch-mode .alpha-tag {
+  display: none;
+}
+.touch-mode .resources {
+  gap: 9px;
+}
+.touch-mode .resources > span {
+  gap: 4px;
+  font-size: 13px;
+}
+.touch-mode .resources strong {
+  font-size: 16px;
+}
+.touch-mode .resources small {
+  display: none;
+}
+.touch-mode .resources svg {
+  width: 14px;
+}
+.touch-mode .wave-number {
+  display: flex !important;
+}
+.touch-mode .header-actions button {
+  width: 44px;
+  height: 44px;
+  min-height: 44px !important;
+  padding: 10px;
+}
+.touch-mode .workspace {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: minmax(0, 1fr) auto;
+  padding: 0;
+  gap: 0;
+  overflow: hidden;
+}
+.touch-mode .board-wrap {
+  height: auto;
+  min-height: 0;
+  border: 0;
+  border-radius: 0;
+}
+.touch-mode .board-heading {
+  height: 28px;
+  padding: 0 12px;
+}
+.touch-mode .board-heading > span:first-child,
+.touch-mode .phase-label {
+  font-size: 12px;
+}
+.touch-mode .board-heading small {
+  display: none;
+}
+.touch-mode .board-toolbar {
+  height: 48px;
+  padding: 0 8px;
+}
+.touch-mode .board-toolbar .legend {
+  display: none;
+}
+.touch-mode .map-controls {
+  flex: 1;
+  justify-content: space-between;
+}
+.touch-mode .map-controls button {
+  width: 46px;
+  height: 44px;
+  min-height: 44px !important;
+}
+.touch-mode .map-controls button:last-child {
+  width: 80px;
+}
+.touch-mode .map-controls span {
+  font-size: 14px;
+}
+.touch-mode .phaser-host {
+  overscroll-behavior: none;
+  -webkit-touch-callout: none;
+}
+.touch-mode .phaser-host canvas {
+  touch-action: none;
+}
+.touch-mode > .statusbar {
+  display: none;
+}
+.touch-dock {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 10px 12px 6px;
+  border-top: 1px solid #385346;
+  background: #12202c;
+  min-width: 0;
+  overflow: auto;
+  overscroll-behavior: contain;
+}
+.touch-dock button {
+  min-height: 46px !important;
+  font-size: 14px;
+  touch-action: manipulation;
+}
+.touch-selection {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  min-height: 42px;
+}
+.touch-selection > div {
+  min-width: 0;
+}
+.touch-selection strong {
+  font-size: 16px;
+  display: block;
+}
+.touch-selection small {
+  display: block;
+  font-size: 12px;
+  color: #acbecb;
+  line-height: 1.5;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
+}
+.touch-candidates {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 6px;
+}
+.touch-candidates button {
+  padding: 4px;
+  gap: 7px;
+}
+.touch-candidates span {
+  font-size: 17px;
+  font-weight: 600;
+}
+.touch-candidates button[aria-pressed='true'] {
+  border: 2px solid #afe5c9;
+  background: #294d43;
+}
+.touch-candidates small {
+  color: #93a6b7;
+}
+.touch-nudge {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+.touch-nudge > span {
+  flex: 1;
+  font-size: 13px;
+  color: #a8c7b5;
+}
+.touch-nudge button {
+  width: 46px;
+  padding: 0;
+  flex-shrink: 0;
+}
+.touch-main-actions {
+  display: flex;
+  gap: 8px;
+}
+.touch-main-actions > button {
+  flex: 1;
+  padding: 8px;
+  min-height: 48px !important;
+}
+.touch-tools {
+  display: grid;
+  grid-template-columns: 1.3fr 1.4fr 0.8fr 0.6fr;
+  gap: 4px;
+}
+.touch-tools button {
+  padding: 4px;
+}
+.touch-notice {
+  display: block;
+  min-height: 18px;
+  max-height: 36px;
+  font-size: 12px;
+  line-height: 18px;
+  color: #acc5b5;
+  overflow: hidden;
+}
+.touch-field {
+  display: grid;
+  grid-template-columns: 68px minmax(0, 1fr);
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+}
+.touch-field select,
+.touch-settings select {
+  background: #0c1722;
+  color: #e2edf4;
+  border: 1px solid #496170;
+  border-radius: 7px;
+  min-height: 48px;
+  padding: 8px;
+  width: 100%;
+  font-size: 16px;
+}
+.touch-hint {
+  background: #1b322d;
+  color: #c4dfce;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+.touch-mode .touch-details {
+  position: absolute;
+  inset: 0;
+  z-index: 25;
+  background: #12202c;
+  padding: 0 16px 16px;
+  overflow-y: auto;
+  min-height: 0;
+}
+.touch-mode .touch-details .selection-content {
+  overflow: visible;
+  flex: 1 0 auto;
+}
+.touch-mode .touch-details .inspector-bottom {
+  position: static;
+}
+.touch-mode .touch-details button {
+  min-height: 48px !important;
+}
+.touch-detail-header {
+  position: sticky;
+  top: 0;
+  background: #12202c;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 12px 0;
+  border-bottom: 1px solid #385346;
+}
+.touch-settings,
+.touch-tower-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 0;
+}
+.touch-settings label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 14px;
+}
+.touch-tower-list {
+  overflow: auto;
+}
+.touch-tower-list > button {
+  justify-content: flex-start;
+  min-height: 64px !important;
+  height: auto;
+  padding: 10px;
+}
+.touch-tower-list > button > span {
+  flex: 1;
+  text-align: left;
+  white-space: normal;
+}
+.touch-tower-list strong,
+.touch-tower-list small {
+  display: block;
+}
+.touch-tower-list small {
+  color: #a1b6c4;
+  font-size: 14px;
+}
+.touch-dialog button {
+  min-height: 46px !important;
+}
+.touch-dialog [data-slot='dialog-close'] {
+  width: 46px;
+  height: 46px;
+}
+@media (orientation: landscape) {
+  .touch-mode .workspace {
+    grid-template-columns: minmax(0, 1fr) 320px;
+    grid-template-rows: minmax(0, 1fr);
+  }
+  .touch-mode .topbar {
+    height: 48px;
+  }
+  .touch-dock {
+    border-top: 0;
+    border-left: 1px solid #385346;
+    gap: 6px;
+    padding: 8px 10px;
+  }
+  .touch-mode .touch-details {
+    left: 28%;
+  }
+}
+@media (max-width: 360px) {
+  .touch-mode .brand > svg {
+    display: none;
+  }
+  .touch-mode .resources {
+    gap: 6px;
+  }
+  .touch-nudge {
+    gap: 4px;
+  }
+  .touch-nudge button {
+    width: 44px;
+  }
+  .touch-tools {
+    grid-template-columns: 1.15fr 1.4fr 0.75fr 0.6fr;
+  }
+}

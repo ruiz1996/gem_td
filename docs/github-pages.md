@@ -22,7 +22,7 @@ npm run preview:pages
 
 本地与 GitHub Actions 使用 Node.js 22。GitHub Pages 子路径在 `game/vite.pages.config.ts` 中配置；更改仓库名时同步修改 base。
 
-Pages 网页是公开试玩地址。存档仅保存在当前浏览器的当前网站下，不上传 GitHub；原 Sites 地址的存档不会自动迁移。建议安卓横屏游玩，可添加到浏览器主屏幕；当前未实现离线缓存。
+Pages 网页是公开试玩地址。存档仅保存在当前浏览器的当前网站下，不上传 GitHub；原 Sites 地址的存档不会自动迁移。手机自动启用触屏模式，支持横竖屏；若识别不符，可在右上角操作设置切换。可添加到浏览器主屏幕；当前未实现离线缓存。
 
 部署失败时先看仓库 Actions：构建失败查看 build 日志；Pages 配置或权限错误检查 Settings → Pages。首次启用后，可重跑失败的任务。
 
