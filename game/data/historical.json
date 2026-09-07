@@ -1,0 +1,6061 @@
+{
+  "revision": "f424bb2abbe9355f7cfa9a539e4e61512f027750",
+  "snapshotDate": "2018-06-10",
+  "retrieved": "2026-09-07",
+  "status": "historical-extraction-not-current-map",
+  "pages": {
+    "baseTowers": {
+      "url": "https://raw.githubusercontent.com/clementbera/Website/f424bb2abbe9355f7cfa9a539e4e61512f027750/baseTowers.html",
+      "sha256": "e44d78c11e2b427cf9570a07d9d288ee3b087b23daec02dfa9b52892f6956b58",
+      "records": [
+        {
+          "title": "Chipped Sapphire / B1",
+          "fields": {
+            "Code": [
+              "gemtd_b1"
+            ],
+            "English": [
+              "Chipped Sapphire / B1"
+            ],
+            "Attack Damage": [
+              "2"
+            ],
+            "Attack Rate": [
+              "1"
+            ],
+            "Attack Range": [
+              "600"
+            ],
+            "Ability": [
+              "tower_slow1"
+            ],
+            "Raw": [
+              "[MOVESPEED: -60]"
+            ]
+          }
+        },
+        {
+          "title": "Flawed Sapphire / B2",
+          "fields": {
+            "Code": [
+              "gemtd_b11"
+            ],
+            "English": [
+              "Flawed Sapphire / B2"
+            ],
+            "Attack Damage": [
+              "4"
+            ],
+            "Attack Rate": [
+              "1"
+            ],
+            "Attack Range": [
+              "600"
+            ],
+            "Ability": [
+              "tower_slow2"
+            ],
+            "Raw": [
+              "[MOVESPEED: -90]"
+            ]
+          }
+        },
+        {
+          "title": "Normal Sapphire / B3",
+          "fields": {
+            "Code": [
+              "gemtd_b111"
+            ],
+            "English": [
+              "Normal Sapphire / B3"
+            ],
+            "Attack Damage": [
+              "6"
+            ],
+            "Attack Rate": [
+              "1"
+            ],
+            "Attack Range": [
+              "600"
+            ],
+            "Ability": [
+              "tower_slow3"
+            ],
+            "Raw": [
+              "[MOVESPEED: -120]"
+            ]
+          }
+        },
+        {
+          "title": "Flawless Sapphire / B4",
+          "fields": {
+            "Code": [
+              "gemtd_b1111"
+            ],
+            "English": [
+              "Flawless Sapphire / B4"
+            ],
+            "Attack Damage": [
+              "8"
+            ],
+            "Attack Rate": [
+              "1"
+            ],
+            "Attack Range": [
+              "600"
+            ],
+            "Ability": [
+              "tower_slow4"
+            ],
+            "Raw": [
+              "[MOVESPEED: -150]"
+            ]
+          }
+        },
+        {
+          "title": "Perfect Sapphire / B5",
+          "fields": {
+            "Code": [
+              "gemtd_b11111"
+            ],
+            "English": [
+              "Perfect Sapphire / B5"
+            ],
+            "Attack Damage": [
+              "10"
+            ],
+            "Attack Rate": [
+              "1"
+            ],
+            "Attack Range": [
+              "600"
+            ],
+            "Ability": [
+              "tower_slow5"
+            ],
+            "Raw": [
+              "[MOVESPEED: -180]"
+            ]
+          }
+        },
+        {
+          "title": "Huge Sapphire / B6",
+          "fields": {
+            "Code": [
+              "gemtd_b111111"
+            ],
+            "English": [
+              "Huge Sapphire / B6"
+            ],
+            "Attack Damage": [
+              "36"
+            ],
+            "Attack Rate": [
+              "0.6"
+            ],
+            "Attack Range": [
+              "600"
+            ],
+            "Ability": [
+              "tower_slow6"
+            ],
+            "Raw": [
+              "[MOVESPEED: -480]"
+            ]
+          }
+        },
+        {
+          "title": "Chipped Diamond / D1",
+          "fields": {
+            "Code": [
+              "gemtd_d1"
+            ],
+            "English": [
+              "Chipped Diamond / D1"
+            ],
+            "Attack Damage": [
+              "5"
+            ],
+            "Attack Rate": [
+              "1"
+            ],
+            "Attack Range": [
+              "500"
+            ]
+          }
+        },
+        {
+          "title": "Flawed Diamond / D2",
+          "fields": {
+            "Code": [
+              "gemtd_d11"
+            ],
+            "English": [
+              "Flawed Diamond / D2"
+            ],
+            "Attack Damage": [
+              "10"
+            ],
+            "Attack Rate": [
+              "1"
+            ],
+            "Attack Range": [
+              "500"
+            ]
+          }
+        },
+        {
+          "title": "Normal Diamond / D3",
+          "fields": {
+            "Code": [
+              "gemtd_d111"
+            ],
+            "English": [
+              "Normal Diamond / D3"
+            ],
+            "Attack Damage": [
+              "20"
+            ],
+            "Attack Rate": [
+              "1"
+            ],
+            "Attack Range": [
+              "500"
+            ]
+          }
+        },
+        {
+          "title": "Flawless Diamond / D4",
+          "fields": {
+            "Code": [
+              "gemtd_d1111"
+            ],
+            "English": [
+              "Flawless Diamond / D4"
+            ],
+            "Attack Damage": [
+              "20 [+20]"
+            ],
+            "Attack Rate": [
+              "1"
+            ],
+            "Attack Range": [
+              "500"
+            ],
+            "Ability": [
+              "tower_attack1"
+            ],
+            "Raw": [
+              "[BASEATTACK BONUSDAMAGE: 20]"
+            ]
+          }
+        },
+        {
+          "title": "Perfect Diamond / D5",
+          "fields": {
+            "Code": [
+              "gemtd_d11111"
+            ],
+            "English": [
+              "Perfect Diamond / D5"
+            ],
+            "Attack Damage": [
+              "40 [+40]"
+            ],
+            "Attack Rate": [
+              "1"
+            ],
+            "Attack Range": [
+              "500"
+            ],
+            "Ability": [
+              "tower_attack2"
+            ],
+            "Raw": [
+              "[BASEATTACK BONUSDAMAGE: 40]"
+            ]
+          }
+        },
+        {
+          "title": "Huge Diamond / D6",
+          "fields": {
+            "Code": [
+              "gemtd_d111111"
+            ],
+            "English": [
+              "Huge Diamond / D6"
+            ],
+            "Attack Damage": [
+              "140 [+320]"
+            ],
+            "Attack Rate": [
+              "0.7"
+            ],
+            "Attack Range": [
+              "500"
+            ],
+            "Ability": [
+              "tower_attack5"
+            ],
+            "Raw": [
+              "[BASEATTACK BONUSDAMAGE: 320]"
+            ]
+          }
+        },
+        {
+          "title": "Chipped Opal / E1",
+          "fields": {
+            "Code": [
+              "gemtd_e1"
+            ],
+            "English": [
+              "Chipped Opal / E1"
+            ],
+            "Attack Damage": [
+              "1"
+            ],
+            "Attack Rate": [
+              "1"
+            ],
+            "Attack Range": [
+              "500"
+            ],
+            "Ability": [
+              "tower_true_sight",
+              "tower_speed_aura1"
+            ],
+            "Raw": [
+              "Aura: Range 664 Effect: [ATTACKSPEED: 20]"
+            ]
+          }
+        },
+        {
+          "title": "Flawed Opal / E2",
+          "fields": {
+            "Code": [
+              "gemtd_e11"
+            ],
+            "English": [
+              "Flawed Opal / E2"
+            ],
+            "Attack Damage": [
+              "2"
+            ],
+            "Attack Rate": [
+              "1"
+            ],
+            "Attack Range": [
+              "500"
+            ],
+            "Ability": [
+              "tower_true_sight",
+              "tower_speed_aura2"
+            ],
+            "Raw": [
+              "Aura: Range 664 Effect: [ATTACKSPEED: 30]"
+            ]
+          }
+        },
+        {
+          "title": "Normal Opal / E3",
+          "fields": {
+            "Code": [
+              "gemtd_e111"
+            ],
+            "English": [
+              "Normal Opal / E3"
+            ],
+            "Attack Damage": [
+              "3"
+            ],
+            "Attack Rate": [
+              "1"
+            ],
+            "Attack Range": [
+              "500"
+            ],
+            "Ability": [
+              "tower_true_sight",
+              "tower_speed_aura3"
+            ],
+            "Raw": [
+              "Aura: Range 664 Effect: [ATTACKSPEED: 40]"
+            ]
+          }
+        },
+        {
+          "title": "Flawless Opal / E4",
+          "fields": {
+            "Code": [
+              "gemtd_e1111"
+            ],
+            "English": [
+              "Flawless Opal / E4"
+            ],
+            "Attack Damage": [
+              "4"
+            ],
+            "Attack Rate": [
+              "1"
+            ],
+            "Attack Range": [
+              "500"
+            ],
+            "Ability": [
+              "tower_true_sight",
+              "tower_speed_aura4"
+            ],
+            "Raw": [
+              "Aura: Range 664 Effect: [ATTACKSPEED: 50]"
+            ]
+          }
+        },
+        {
+          "title": "Perfect Opal / E5",
+          "fields": {
+            "Code": [
+              "gemtd_e11111"
+            ],
+            "English": [
+              "Perfect Opal / E5"
+            ],
+            "Attack Damage": [
+              "5"
+            ],
+            "Attack Rate": [
+              "1"
+            ],
+            "Attack Range": [
+              "500"
+            ],
+            "Ability": [
+              "tower_true_sight",
+              "tower_speed_aura5"
+            ],
+            "Raw": [
+              "Aura: Range 664 Effect: [ATTACKSPEED: 60]"
+            ]
+          }
+        },
+        {
+          "title": "Huge Opal / E6",
+          "fields": {
+            "Code": [
+              "gemtd_e111111"
+            ],
+            "English": [
+              "Huge Opal / E6"
+            ],
+            "Attack Damage": [
+              "6"
+            ],
+            "Attack Rate": [
+              "1"
+            ],
+            "Attack Range": [
+              "500"
+            ],
+            "Ability": [
+              "tower_true_sight",
+              "tower_speed_aura6"
+            ],
+            "Raw": [
+              "Aura: Range 664 Effect: [ATTACKSPEED: 70]"
+            ]
+          }
+        },
+        {
+          "title": "Chipped Emerald / G1",
+          "fields": {
+            "Code": [
+              "gemtd_g1"
+            ],
+            "English": [
+              "Chipped Emerald / G1"
+            ],
+            "Attack Damage": [
+              "2"
+            ],
+            "Attack Rate": [
+              "1"
+            ],
+            "Attack Range": [
+              "500"
+            ],
+            "Ability": [
+              "tower_du1"
+            ],
+            "Raw": [
+              "On Attack Landed, during 5 seconds, every 1 seconds, deals 2 magic damage."
+            ]
+          }
+        },
+        {
+          "title": "Flawed Emerald / G2",
+          "fields": {
+            "Code": [
+              "gemtd_g11"
+            ],
+            "English": [
+              "Flawed Emerald / G2"
+            ],
+            "Attack Damage": [
+              "4"
+            ],
+            "Attack Rate": [
+              "1"
+            ],
+            "Attack Range": [
+              "500"
+            ],
+            "Ability": [
+              "tower_du2"
+            ],
+            "Raw": [
+              "On Attack Landed, during 5 seconds, every 1 seconds, deals 4 magic damage."
+            ]
+          }
+        },
+        {
+          "title": "Normal Emerald / G3",
+          "fields": {
+            "Code": [
+              "gemtd_g111"
+            ],
+            "English": [
+              "Normal Emerald / G3"
+            ],
+            "Attack Damage": [
+              "6"
+            ],
+            "Attack Rate": [
+              "1"
+            ],
+            "Attack Range": [
+              "500"
+            ],
+            "Ability": [
+              "tower_du3"
+            ],
+            "Raw": [
+              "On Attack Landed, during 5 seconds, every 1 seconds, deals 8 magic damage."
+            ]
+          }
+        },
+        {
+          "title": "Flawless Emerald / G4",
+          "fields": {
+            "Code": [
+              "gemtd_g1111"
+            ],
+            "English": [
+              "Flawless Emerald / G4"
+            ],
+            "Attack Damage": [
+              "8"
+            ],
+            "Attack Rate": [
+              "1"
+            ],
+            "Attack Range": [
+              "500"
+            ],
+            "Ability": [
+              "tower_du4"
+            ],
+            "Raw": [
+              "On Attack Landed, during 5 seconds, every 1 seconds, deals 16 magic damage."
+            ]
+          }
+        },
+        {
+          "title": "Perfect Emerald / G5",
+          "fields": {
+            "Code": [
+              "gemtd_g11111"
+            ],
+            "English": [
+              "Perfect Emerald / G5"
+            ],
+            "Attack Damage": [
+              "10"
+            ],
+            "Attack Rate": [
+              "1"
+            ],
+            "Attack Range": [
+              "500"
+            ],
+            "Ability": [
+              "tower_du5"
+            ],
+            "Raw": [
+              "On Attack Landed, during 5 seconds, every 1 seconds, deals 32 magic damage."
+            ]
+          }
+        },
+        {
+          "title": "Huge Emerald / G6",
+          "fields": {
+            "Code": [
+              "gemtd_g111111"
+            ],
+            "English": [
+              "Huge Emerald / G6"
+            ],
+            "Attack Damage": [
+              "12"
+            ],
+            "Attack Rate": [
+              "1"
+            ],
+            "Attack Range": [
+              "500"
+            ],
+            "Ability": [
+              "tower_du6"
+            ],
+            "Raw": [
+              "On Attack Landed, during 5 seconds, every 1 seconds, deals 128 magic damage."
+            ]
+          }
+        },
+        {
+          "title": "Chipped Amethyst / P1",
+          "fields": {
+            "Code": [
+              "gemtd_p1"
+            ],
+            "English": [
+              "Chipped Amethyst / P1"
+            ],
+            "Attack Damage": [
+              "2"
+            ],
+            "Attack Rate": [
+              "0.6"
+            ],
+            "Attack Range": [
+              "500"
+            ],
+            "Ability": [
+              "tower_jianjia1"
+            ],
+            "Raw": [
+              "On Attack Landed, [PHYSICAL ARMOR: -2]"
+            ]
+          }
+        },
+        {
+          "title": "Flawed Amethyst / P2",
+          "fields": {
+            "Code": [
+              "gemtd_p11"
+            ],
+            "English": [
+              "Flawed Amethyst / P2"
+            ],
+            "Attack Damage": [
+              "4"
+            ],
+            "Attack Rate": [
+              "0.6"
+            ],
+            "Attack Range": [
+              "500"
+            ],
+            "Ability": [
+              "tower_jianjia2"
+            ],
+            "Raw": [
+              "On Attack Landed, [PHYSICAL ARMOR: -4]"
+            ]
+          }
+        },
+        {
+          "title": "Normal Amethyst / P3",
+          "fields": {
+            "Code": [
+              "gemtd_p111"
+            ],
+            "English": [
+              "Normal Amethyst / P3"
+            ],
+            "Attack Damage": [
+              "6"
+            ],
+            "Attack Rate": [
+              "0.6"
+            ],
+            "Attack Range": [
+              "500"
+            ],
+            "Ability": [
+              "tower_jianjia3"
+            ],
+            "Raw": [
+              "On Attack Landed, [PHYSICAL ARMOR: -8]"
+            ]
+          }
+        },
+        {
+          "title": "Flawless Amethyst / P4",
+          "fields": {
+            "Code": [
+              "gemtd_p1111"
+            ],
+            "English": [
+              "Flawless Amethyst / P4"
+            ],
+            "Attack Damage": [
+              "8"
+            ],
+            "Attack Rate": [
+              "0.6"
+            ],
+            "Attack Range": [
+              "500"
+            ],
+            "Ability": [
+              "tower_jianjia4"
+            ],
+            "Raw": [
+              "On Attack Landed, [PHYSICAL ARMOR: -16]"
+            ]
+          }
+        },
+        {
+          "title": "Perfect Amethyst / P5",
+          "fields": {
+            "Code": [
+              "gemtd_p11111"
+            ],
+            "English": [
+              "Perfect Amethyst / P5"
+            ],
+            "Attack Damage": [
+              "10"
+            ],
+            "Attack Rate": [
+              "0.6"
+            ],
+            "Attack Range": [
+              "500"
+            ],
+            "Ability": [
+              "tower_jianjia5"
+            ],
+            "Raw": [
+              "On Attack Landed, [PHYSICAL ARMOR: -32]"
+            ]
+          }
+        },
+        {
+          "title": "Huge Amethyst / P6",
+          "fields": {
+            "Code": [
+              "gemtd_p111111"
+            ],
+            "English": [
+              "Huge Amethyst / P6"
+            ],
+            "Attack Damage": [
+              "70"
+            ],
+            "Attack Rate": [
+              "0.6"
+            ],
+            "Attack Range": [
+              "500"
+            ],
+            "Ability": [
+              "tower_jianjia6"
+            ],
+            "Raw": [
+              "On Attack Landed, [PHYSICAL ARMOR: -64]"
+            ]
+          }
+        },
+        {
+          "title": "Chipped Aquamarine / Q1",
+          "fields": {
+            "Code": [
+              "gemtd_q1"
+            ],
+            "English": [
+              "Chipped Aquamarine / Q1"
+            ],
+            "Attack Damage": [
+              "2"
+            ],
+            "Attack Rate": [
+              "1"
+            ],
+            "Attack Range": [
+              "400"
+            ],
+            "Ability": [
+              "tower_speed1"
+            ],
+            "Raw": [
+              "[ATTACKSPEED: 200]"
+            ]
+          }
+        },
+        {
+          "title": "Flawed Aquamarine / Q2",
+          "fields": {
+            "Code": [
+              "gemtd_q11"
+            ],
+            "English": [
+              "Flawed Aquamarine / Q2"
+            ],
+            "Attack Damage": [
+              "4"
+            ],
+            "Attack Rate": [
+              "0.9"
+            ],
+            "Attack Range": [
+              "400"
+            ],
+            "Ability": [
+              "tower_speed1"
+            ],
+            "Raw": [
+              "[ATTACKSPEED: 200]"
+            ]
+          }
+        },
+        {
+          "title": "Normal Aquamarine / Q3",
+          "fields": {
+            "Code": [
+              "gemtd_q111"
+            ],
+            "English": [
+              "Normal Aquamarine / Q3"
+            ],
+            "Attack Damage": [
+              "8"
+            ],
+            "Attack Rate": [
+              "0.8"
+            ],
+            "Attack Range": [
+              "400"
+            ],
+            "Ability": [
+              "tower_speed1"
+            ],
+            "Raw": [
+              "[ATTACKSPEED: 200]"
+            ]
+          }
+        },
+        {
+          "title": "Flawless Aquamarine / Q4",
+          "fields": {
+            "Code": [
+              "gemtd_q1111"
+            ],
+            "English": [
+              "Flawless Aquamarine / Q4"
+            ],
+            "Attack Damage": [
+              "16"
+            ],
+            "Attack Rate": [
+              "0.7"
+            ],
+            "Attack Range": [
+              "400"
+            ],
+            "Ability": [
+              "tower_speed1"
+            ],
+            "Raw": [
+              "[ATTACKSPEED: 200]"
+            ]
+          }
+        },
+        {
+          "title": "Perfect Aquamarine / Q5",
+          "fields": {
+            "Code": [
+              "gemtd_q11111"
+            ],
+            "English": [
+              "Perfect Aquamarine / Q5"
+            ],
+            "Attack Damage": [
+              "24"
+            ],
+            "Attack Rate": [
+              "0.6"
+            ],
+            "Attack Range": [
+              "400"
+            ],
+            "Ability": [
+              "tower_speed1"
+            ],
+            "Raw": [
+              "[ATTACKSPEED: 200]"
+            ]
+          }
+        },
+        {
+          "title": "Huge Aquamarine / Q6",
+          "fields": {
+            "Code": [
+              "gemtd_q111111"
+            ],
+            "English": [
+              "Huge Aquamarine / Q6"
+            ],
+            "Attack Damage": [
+              "80"
+            ],
+            "Attack Rate": [
+              "0.5"
+            ],
+            "Attack Range": [
+              "500"
+            ],
+            "Ability": [
+              "tower_speed2"
+            ],
+            "Raw": [
+              "[ATTACKSPEED: 500]"
+            ]
+          }
+        },
+        {
+          "title": "Chipped Ruby / R1",
+          "fields": {
+            "Code": [
+              "gemtd_r1"
+            ],
+            "English": [
+              "Chipped Ruby / R1"
+            ],
+            "Attack Damage": [
+              "4"
+            ],
+            "Attack Rate": [
+              "1"
+            ],
+            "Attack Range": [
+              "500"
+            ],
+            "Ability": [
+              "tower_jianshe1"
+            ],
+            "Raw": [
+              "On Attack Landed, run script jianshe1 (addon_game_mode.lua) with [Damage: %attack_damage]"
+            ]
+          }
+        },
+        {
+          "title": "Flawed Ruby / R2",
+          "fields": {
+            "Code": [
+              "gemtd_r11"
+            ],
+            "English": [
+              "Flawed Ruby / R2"
+            ],
+            "Attack Damage": [
+              "8"
+            ],
+            "Attack Rate": [
+              "1"
+            ],
+            "Attack Range": [
+              "500"
+            ],
+            "Ability": [
+              "tower_jianshe2"
+            ],
+            "Raw": [
+              "On Attack Landed, run script jianshe2 (addon_game_mode.lua) with [Damage: %attack_damage]"
+            ]
+          }
+        },
+        {
+          "title": "Normal Ruby / R3",
+          "fields": {
+            "Code": [
+              "gemtd_r111"
+            ],
+            "English": [
+              "Normal Ruby / R3"
+            ],
+            "Attack Damage": [
+              "12"
+            ],
+            "Attack Rate": [
+              "1"
+            ],
+            "Attack Range": [
+              "500"
+            ],
+            "Ability": [
+              "tower_jianshe3"
+            ],
+            "Raw": [
+              "On Attack Landed, run script jianshe3 (addon_game_mode.lua) with [Damage: %attack_damage]"
+            ]
+          }
+        },
+        {
+          "title": "Flawless Ruby / R4",
+          "fields": {
+            "Code": [
+              "gemtd_r1111"
+            ],
+            "English": [
+              "Flawless Ruby / R4"
+            ],
+            "Attack Damage": [
+              "24"
+            ],
+            "Attack Rate": [
+              "1"
+            ],
+            "Attack Range": [
+              "500"
+            ],
+            "Ability": [
+              "tower_jianshe4"
+            ],
+            "Raw": [
+              "On Attack Landed, run script jianshe4 (addon_game_mode.lua) with [Damage: %attack_damage]"
+            ]
+          }
+        },
+        {
+          "title": "Perfect Ruby / R5",
+          "fields": {
+            "Code": [
+              "gemtd_r11111"
+            ],
+            "English": [
+              "Perfect Ruby / R5"
+            ],
+            "Attack Damage": [
+              "48"
+            ],
+            "Attack Rate": [
+              "1"
+            ],
+            "Attack Range": [
+              "500"
+            ],
+            "Ability": [
+              "tower_jianshe5"
+            ],
+            "Raw": [
+              "On Attack Landed, run script jianshe5 (addon_game_mode.lua) with [Damage: %attack_damage]"
+            ]
+          }
+        },
+        {
+          "title": "Huge Ruby / R6",
+          "fields": {
+            "Code": [
+              "gemtd_r111111"
+            ],
+            "English": [
+              "Huge Ruby / R6"
+            ],
+            "Attack Damage": [
+              "150"
+            ],
+            "Attack Rate": [
+              "1"
+            ],
+            "Attack Range": [
+              "500"
+            ],
+            "Ability": [
+              "tower_jianshe6"
+            ],
+            "Raw": [
+              "On Attack Landed, run script jianshe6 (addon_game_mode.lua) with [Damage: %attack_damage]"
+            ]
+          }
+        },
+        {
+          "title": "Chipped Topaz / Y1",
+          "fields": {
+            "Code": [
+              "gemtd_y1"
+            ],
+            "English": [
+              "Chipped Topaz / Y1"
+            ],
+            "Attack Damage": [
+              "3"
+            ],
+            "Attack Rate": [
+              "1.3"
+            ],
+            "Attack Range": [
+              "600"
+            ],
+            "Ability": [
+              "tower_fenliejian"
+            ],
+            "Raw": [
+              "On Attack, run script DuoChongGongJi (fenliejian.lua) with [Damage: %attack_damage, attack_count: 2]"
+            ]
+          }
+        },
+        {
+          "title": "Flawed Topaz / Y2",
+          "fields": {
+            "Code": [
+              "gemtd_y11"
+            ],
+            "English": [
+              "Flawed Topaz / Y2"
+            ],
+            "Attack Damage": [
+              "6"
+            ],
+            "Attack Rate": [
+              "1.3"
+            ],
+            "Attack Range": [
+              "500"
+            ],
+            "Ability": [
+              "tower_fenliejian"
+            ],
+            "Raw": [
+              "On Attack, run script DuoChongGongJi (fenliejian.lua) with [Damage: %attack_damage, attack_count: 2]"
+            ]
+          }
+        },
+        {
+          "title": "Normal Topaz / Y3",
+          "fields": {
+            "Code": [
+              "gemtd_y111"
+            ],
+            "English": [
+              "Normal Topaz / Y3"
+            ],
+            "Attack Damage": [
+              "9"
+            ],
+            "Attack Rate": [
+              "1.3"
+            ],
+            "Attack Range": [
+              "500"
+            ],
+            "Ability": [
+              "tower_fenliejian"
+            ],
+            "Raw": [
+              "On Attack, run script DuoChongGongJi (fenliejian.lua) with [Damage: %attack_damage, attack_count: 2]"
+            ]
+          }
+        },
+        {
+          "title": "Flawless Topaz / Y4",
+          "fields": {
+            "Code": [
+              "gemtd_y1111"
+            ],
+            "English": [
+              "Flawless Topaz / Y4"
+            ],
+            "Attack Damage": [
+              "18"
+            ],
+            "Attack Rate": [
+              "1.3"
+            ],
+            "Attack Range": [
+              "500"
+            ],
+            "Ability": [
+              "tower_fenliejian"
+            ],
+            "Raw": [
+              "On Attack, run script DuoChongGongJi (fenliejian.lua) with [Damage: %attack_damage, attack_count: 2]"
+            ]
+          }
+        },
+        {
+          "title": "Perfect Topaz / Y5",
+          "fields": {
+            "Code": [
+              "gemtd_y11111"
+            ],
+            "English": [
+              "Perfect Topaz / Y5"
+            ],
+            "Attack Damage": [
+              "36"
+            ],
+            "Attack Rate": [
+              "1.3"
+            ],
+            "Attack Range": [
+              "500"
+            ],
+            "Ability": [
+              "tower_fenliejian"
+            ],
+            "Raw": [
+              "On Attack, run script DuoChongGongJi (fenliejian.lua) with [Damage: %attack_damage, attack_count: 2]"
+            ]
+          }
+        },
+        {
+          "title": "Huge Topaz / Y6",
+          "fields": {
+            "Code": [
+              "gemtd_y111111"
+            ],
+            "English": [
+              "Huge Topaz / Y6"
+            ],
+            "Attack Damage": [
+              "200"
+            ],
+            "Attack Rate": [
+              "0.6"
+            ],
+            "Attack Range": [
+              "5000"
+            ],
+            "Ability": [
+              "tower_fenliejian"
+            ],
+            "Raw": [
+              "On Attack, run script DuoChongGongJi (fenliejian.lua) with [Damage: %attack_damage, attack_count: 2]"
+            ]
+          }
+        }
+      ]
+    },
+    "advancedTowers": {
+      "url": "https://raw.githubusercontent.com/clementbera/Website/f424bb2abbe9355f7cfa9a539e4e61512f027750/advancedTowers.html",
+      "sha256": "c14032e310af99e3fed64e09d85566a3fc04071f393d625afaa1dc461b38f89d",
+      "records": [
+        {
+          "title": "Silver",
+          "fields": {
+            "Code": [
+              "gemtd_baiyin"
+            ],
+            "English": [
+              "Silver / S"
+            ],
+            "Attack Damage": [
+              "30"
+            ],
+            "Attack Rate": [
+              "1"
+            ],
+            "Attack Range": [
+              "600"
+            ],
+            "Combination": [
+              "B1 + Y1 + D1"
+            ],
+            "Ability": [
+              "tower_slow2"
+            ],
+            "Raw": [
+              "[MOVESPEED: -90]"
+            ]
+          }
+        },
+        {
+          "title": "Silver Knight",
+          "fields": {
+            "Code": [
+              "gemtd_baiyinqishi"
+            ],
+            "English": [
+              "Silver Knight / SK"
+            ],
+            "Attack Damage": [
+              "100"
+            ],
+            "Attack Rate": [
+              "0.8"
+            ],
+            "Attack Range": [
+              "700"
+            ],
+            "Combination": [
+              "Silver + Q2 + R3"
+            ],
+            "Ability": [
+              "tower_jianshe3",
+              "tower_slow3"
+            ],
+            "Raw": [
+              "On Attack Landed, run script jianshe3 (addon_game_mode.lua) with [Damage: %attack_damage]",
+              "[MOVESPEED: -120]"
+            ]
+          }
+        },
+        {
+          "title": "Pink Diamond",
+          "fields": {
+            "Code": [
+              "gemtd_fenhongzuanshi"
+            ],
+            "English": [
+              "Pink Diamond / PD"
+            ],
+            "Attack Damage": [
+              "30 [+80]"
+            ],
+            "Attack Rate": [
+              "1"
+            ],
+            "Attack Range": [
+              "600"
+            ],
+            "Combination": [
+              "D5 + Y3 + D3"
+            ],
+            "Ability": [
+              "tower_baoji1",
+              "tower_attack3"
+            ],
+            "Raw": [
+              "On Attack Start, [10%][CRITICALSTRIKE: 500]",
+              "[BASEATTACK BONUSDAMAGE: 80]"
+            ],
+            "Pierce Spell Immunity": [
+              "true"
+            ]
+          }
+        },
+        {
+          "title": "Huge Pink Diamond",
+          "fields": {
+            "Code": [
+              "gemtd_juxingfenhongzuanshi"
+            ],
+            "English": [
+              "Huge Pink Diamond / HPD"
+            ],
+            "Attack Damage": [
+              "150 [+160]"
+            ],
+            "Attack Rate": [
+              "0.8"
+            ],
+            "Attack Range": [
+              "700"
+            ],
+            "Combination": [
+              "Pink Diamond + Silver Knight + Silver"
+            ],
+            "Ability": [
+              "tower_jianshe3",
+              "tower_baoji1",
+              "tower_attack4",
+              "tower_slow3"
+            ],
+            "Raw": [
+              "On Attack Landed, run script jianshe3 (addon_game_mode.lua) with [Damage: %attack_damage]",
+              "On Attack Start, [10%][CRITICALSTRIKE: 500]",
+              "[BASEATTACK BONUSDAMAGE: 160]",
+              "[MOVESPEED: -120]"
+            ],
+            "Pierce Spell Immunity": [
+              "true"
+            ]
+          }
+        },
+        {
+          "title": "Koh-i-noor Diamond",
+          "fields": {
+            "Code": [
+              "gemtd_keyinuoerguangmingzhishan"
+            ],
+            "English": [
+              "Koh-i-noor Diamond / KD"
+            ],
+            "Attack Damage": [
+              "660 [+640]"
+            ],
+            "Attack Rate": [
+              "0.6"
+            ],
+            "Attack Range": [
+              "700"
+            ],
+            "Combination": [
+              "Huge Pink Diamond + P6 + D6 | P1 + P2 + P3 + P4 + P5"
+            ],
+            "Ability": [
+              "tower_jianshe3",
+              "tower_baoji1",
+              "tower_attack6",
+              "tower_jianjia6",
+              "e301"
+            ],
+            "Raw": [
+              "On Attack Landed, run script jianshe3 (addon_game_mode.lua) with [Damage: %attack_damage]",
+              "On Attack Start, [10%][CRITICALSTRIKE: 500]",
+              "[BASEATTACK BONUSDAMAGE: 640]",
+              "On Attack Landed, [PHYSICAL ARMOR: -64]"
+            ],
+            "Pierce Spell Immunity": [
+              "true"
+            ]
+          }
+        },
+        {
+          "title": "Malachite",
+          "fields": {
+            "Code": [
+              "gemtd_kongqueshi"
+            ],
+            "English": [
+              "Malachite / M"
+            ],
+            "Attack Damage": [
+              "15"
+            ],
+            "Attack Rate": [
+              "0.8"
+            ],
+            "Attack Range": [
+              "600"
+            ],
+            "Combination": [
+              "E1 + Q1 + G1"
+            ],
+            "Ability": [
+              "tower_fenliejian"
+            ],
+            "Raw": [
+              "On Attack, run script DuoChongGongJi (fenliejian.lua) with [Damage: %attack_damage, attack_count: 2]"
+            ]
+          }
+        },
+        {
+          "title": "Vivid Malachite",
+          "fields": {
+            "Code": [
+              "gemtd_xianyandekongqueshi"
+            ],
+            "English": [
+              "Vivid Malachite / VM"
+            ],
+            "Attack Damage": [
+              "50"
+            ],
+            "Attack Rate": [
+              "0.7"
+            ],
+            "Attack Range": [
+              "700"
+            ],
+            "Combination": [
+              "Malachite + D2 + Y3"
+            ],
+            "Ability": [
+              "tower_fenliejian_xianyan"
+            ],
+            "Raw": [
+              "On Attack, run script DuoChongGongJi (fenliejian.lua) with [attack_count: 4]"
+            ]
+          }
+        },
+        {
+          "title": "Uranium-238",
+          "fields": {
+            "Code": [
+              "gemtd_you238"
+            ],
+            "English": [
+              "Uranium-238 / U"
+            ],
+            "Attack Damage": [
+              "120"
+            ],
+            "Attack Rate": [
+              "0.7"
+            ],
+            "Attack Range": [
+              "700"
+            ],
+            "Combination": [
+              "Y5 + E2 + B3"
+            ],
+            "Ability": [
+              "tower_fenliejian_you"
+            ],
+            "Raw": [
+              "On Attack, run script DuoChongGongJi_you (fenliejian.lua) with [attack_count: 10]"
+            ]
+          }
+        },
+        {
+          "title": "Uranium-235",
+          "fields": {
+            "Code": [
+              "gemtd_you235"
+            ],
+            "English": [
+              "Uranium-235 / U"
+            ],
+            "Attack Damage": [
+              "60 [+160]"
+            ],
+            "Attack Rate": [
+              "0.7"
+            ],
+            "Attack Range": [
+              "800"
+            ],
+            "Combination": [
+              "Uranium-238 + Vivid Malachite + Malachite"
+            ],
+            "Ability": [
+              "tower_fenliejian_you",
+              "tower_attack4"
+            ],
+            "Raw": [
+              "On Attack, run script DuoChongGongJi_you (fenliejian.lua) with [attack_count: 10]",
+              "[BASEATTACK BONUSDAMAGE: 160]"
+            ]
+          }
+        },
+        {
+          "title": "Depleted-Kyparium",
+          "fields": {
+            "Code": [
+              "gemtd_shuaibiankaipayou"
+            ],
+            "English": [
+              "Depleted-Kyparium / D"
+            ],
+            "Attack Damage": [
+              "90 [+320]"
+            ],
+            "Attack Rate": [
+              "0.4"
+            ],
+            "Attack Range": [
+              "5000"
+            ],
+            "Combination": [
+              "Uranium-235 + Q6 + Y6 | Q1 + Q2 + Q3 + Q4 + Q5"
+            ],
+            "Ability": [
+              "tower_attack5",
+              "tower_fenliejian_you",
+              "e10003"
+            ],
+            "Raw": [
+              "[BASEATTACK BONUSDAMAGE: 320]",
+              "On Attack, run script DuoChongGongJi_you (fenliejian.lua) with [attack_count: 10]"
+            ]
+          }
+        },
+        {
+          "title": "Asteriated Ruby",
+          "fields": {
+            "Code": [
+              "gemtd_xingcaihongbaoshi"
+            ],
+            "English": [
+              "Asteriated Ruby / AR"
+            ],
+            "Attack Damage": [
+              "0"
+            ],
+            "Attack Rate": [
+              "1"
+            ],
+            "Attack Range": [
+              "600"
+            ],
+            "Combination": [
+              "R2 + R1 + P1"
+            ],
+            "Ability": [
+              "tower_huiyao"
+            ],
+            "Raw": [
+              "Aura: Range 400 Effect: during 1 seconds, every 0.5 seconds, deals 30 magic damage."
+            ]
+          }
+        },
+        {
+          "title": "Volcano",
+          "fields": {
+            "Code": [
+              "gemtd_xuehonghuoshan"
+            ],
+            "English": [
+              "Volcano / V"
+            ],
+            "Attack Damage": [
+              "0"
+            ],
+            "Attack Rate": [
+              "1"
+            ],
+            "Attack Range": [
+              "600"
+            ],
+            "Combination": [
+              "Asteriated Ruby + R4 + P3"
+            ],
+            "Ability": [
+              "tower_huiyao2"
+            ],
+            "Raw": [
+              "Aura: Range 500 Effect: during 1 seconds, every 0.5 seconds, deals 160 magic damage."
+            ]
+          }
+        },
+        {
+          "title": "Bloodstone",
+          "fields": {
+            "Code": [
+              "gemtd_jixueshi"
+            ],
+            "English": [
+              "Bloodstone / B"
+            ],
+            "Attack Damage": [
+              "35"
+            ],
+            "Attack Rate": [
+              "1"
+            ],
+            "Attack Range": [
+              "700"
+            ],
+            "Combination": [
+              "R5 + Q4 + P3"
+            ],
+            "Ability": [
+              "tower_shandianlian"
+            ],
+            "Raw": [
+              "On Attack Landed, [30%]run script jn_D3_00 (shandianlian.lua) with [Damage: 150, Radius: 1000, AttackCount: 1, Count: 5]"
+            ],
+            "Pierce Spell Immunity": [
+              "false"
+            ]
+          }
+        },
+        {
+          "title": "Antique Bloodstone",
+          "fields": {
+            "Code": [
+              "gemtd_gudaidejixueshi"
+            ],
+            "English": [
+              "Antique Bloodstone / AB"
+            ],
+            "Attack Damage": [
+              "70"
+            ],
+            "Attack Rate": [
+              "1"
+            ],
+            "Attack Range": [
+              "800"
+            ],
+            "Combination": [
+              "Bloodstone + Volcano + R2"
+            ],
+            "Ability": [
+              "tower_chazhuangshandian",
+              "tower_huiyao2"
+            ],
+            "Raw": [
+              "On Attack Landed, [25%]run script Shock (shock.lua) with []",
+              "Aura: Range 500 Effect: during 1 seconds, every 0.5 seconds, deals 160 magic damage."
+            ],
+            "Raw: Special": [
+              "[damage: 2500][targets: 5][start_radius: 100][chance: 25][end_distance: 5000][end_radius: 3000]"
+            ],
+            "Pierce Spell Immunity": [
+              "false"
+            ]
+          }
+        },
+        {
+          "title": "The Crown Prince",
+          "fields": {
+            "Code": [
+              "gemtd_heiwangzihuangguanhongbaoshi"
+            ],
+            "English": [
+              "The Crown Prince / TCP"
+            ],
+            "Attack Damage": [
+              "70"
+            ],
+            "Attack Rate": [
+              "1"
+            ],
+            "Attack Range": [
+              "800"
+            ],
+            "Combination": [
+              "Antique Bloodstone + R6 + G6 | R1 + R2 + R3 + R4 + R5"
+            ],
+            "Ability": [
+              "tower_chazhuangshandian",
+              "tower_huiyao3",
+              "tower_du6",
+              "e10002"
+            ],
+            "Raw": [
+              "On Attack Landed, [25%]run script Shock (shock.lua) with []",
+              "Aura: Range 800 Effect: during 1 seconds, every 2 seconds, deals 5000 magic damage.",
+              "On Attack Landed, during 5 seconds, every 1 seconds, deals 128 magic damage."
+            ],
+            "Raw: Special": [
+              "[damage: 2500][targets: 5][start_radius: 100][chance: 25][end_distance: 5000][end_radius: 3000]"
+            ],
+            "Pierce Spell Immunity": [
+              "false"
+            ]
+          }
+        },
+        {
+          "title": "Jade",
+          "fields": {
+            "Code": [
+              "gemtd_yu"
+            ],
+            "English": [
+              "Jade / J"
+            ],
+            "Attack Damage": [
+              "10"
+            ],
+            "Attack Rate": [
+              "0.5"
+            ],
+            "Attack Range": [
+              "800"
+            ],
+            "Combination": [
+              "G3 + E3 + B2"
+            ],
+            "Ability": [
+              "tower_du4"
+            ],
+            "Raw": [
+              "On Attack Landed, during 5 seconds, every 1 seconds, deals 16 magic damage."
+            ]
+          }
+        },
+        {
+          "title": "Quartz",
+          "fields": {
+            "Code": [
+              "gemtd_furongshi"
+            ],
+            "English": [
+              "Quartz / Q"
+            ],
+            "Attack Damage": [
+              "15"
+            ],
+            "Attack Rate": [
+              "0.6"
+            ],
+            "Attack Range": [
+              "500"
+            ],
+            "Combination": [
+              "G4 + R3 + P2"
+            ],
+            "Ability": [
+              "tower_zheyi"
+            ],
+            "Raw": [
+              "Aura: Range 600 Effect: [PHYSICAL ARMOR: -10][MOVESPEED: -250]"
+            ]
+          }
+        },
+        {
+          "title": "Grey Jade",
+          "fields": {
+            "Code": [
+              "gemtd_haiyangqingyu"
+            ],
+            "English": [
+              "Grey Jade / GJ"
+            ],
+            "Attack Damage": [
+              "30"
+            ],
+            "Attack Rate": [
+              "0.5"
+            ],
+            "Attack Range": [
+              "800"
+            ],
+            "Combination": [
+              "Jade + B4 + Q3"
+            ],
+            "Ability": [
+              "tower_shechengguanghuan",
+              "tower_du5"
+            ],
+            "Raw": [
+              "Aura: Range 290 Effect: [ATTACK RANGE: 300]",
+              "On Attack Landed, during 5 seconds, every 1 seconds, deals 32 magic damage."
+            ]
+          }
+        },
+        {
+          "title": "Monkey King Jade",
+          "fields": {
+            "Code": [
+              "gemtd_huaguoshanxiandan"
+            ],
+            "English": [
+              "Monkey King Jade / MKJ"
+            ],
+            "Attack Damage": [
+              "80"
+            ],
+            "Attack Rate": [
+              "0.5"
+            ],
+            "Attack Range": [
+              "1000"
+            ],
+            "Combination": [
+              "Grey Jade + G4 + P2"
+            ],
+            "Ability": [
+              "tower_du5",
+              "tower_shechengguanghuan",
+              "tower_jingzhun"
+            ],
+            "Raw": [
+              "On Attack Landed, during 5 seconds, every 1 seconds, deals 32 magic damage.",
+              "Aura: Range 290 Effect: [ATTACK RANGE: 300]",
+              "Aura: Range 300 Effect: [CANNOT MISS: true]"
+            ]
+          }
+        },
+        {
+          "title": "Diamond Cullinan",
+          "fields": {
+            "Code": [
+              "gemtd_jingangshikulinan"
+            ],
+            "English": [
+              "Diamond Cullinan / DC"
+            ],
+            "Attack Damage": [
+              "2514 [+640]"
+            ],
+            "Attack Rate": [
+              "0.8"
+            ],
+            "Attack Range": [
+              "1200"
+            ],
+            "Combination": [
+              "Monkey King Jade + D6 + B6 | D1 + D2 + D3 + D4 + D5"
+            ],
+            "Ability": [
+              "tower_jingzhun",
+              "tower_shechengguanghuan",
+              "tower_attack6",
+              "tower_baoji1",
+              "e10005"
+            ],
+            "Raw": [
+              "Aura: Range 300 Effect: [CANNOT MISS: true]",
+              "Aura: Range 290 Effect: [ATTACK RANGE: 300]",
+              "[BASEATTACK BONUSDAMAGE: 640]",
+              "On Attack Start, [10%][CRITICALSTRIKE: 500]"
+            ],
+            "Pierce Spell Immunity": [
+              "true"
+            ]
+          }
+        },
+        {
+          "title": "Lucky Chinese Jade",
+          "fields": {
+            "Code": [
+              "gemtd_jixiangdezhongguoyu"
+            ],
+            "English": [
+              "Lucky Chinese Jade / LCJ"
+            ],
+            "Attack Damage": [
+              "30"
+            ],
+            "Attack Rate": [
+              "0.5"
+            ],
+            "Attack Range": [
+              "900"
+            ],
+            "Combination": [
+              "Jade + Quartz + G3"
+            ],
+            "Ability": [
+              "tower_du5",
+              "tower_zhongguoyu",
+              "tower_zheyi"
+            ],
+            "Raw": [
+              "On Attack Landed, during 5 seconds, every 1 seconds, deals 32 magic damage.",
+              "On Attack Landed, [1%]run script huichun (huichun.lua) with []",
+              "Aura: Range 600 Effect: [PHYSICAL ARMOR: -10][MOVESPEED: -250]"
+            ]
+          }
+        },
+        {
+          "title": "Charming Lazurite",
+          "fields": {
+            "Code": [
+              "gemtd_mirendeqingjinshi"
+            ],
+            "English": [
+              "Charming Lazurite / CL"
+            ],
+            "Attack Damage": [
+              "30"
+            ],
+            "Attack Rate": [
+              "0.6"
+            ],
+            "Attack Range": [
+              "800"
+            ],
+            "Combination": [
+              "Quartz + P4 + Y2"
+            ],
+            "Ability": [
+              "tower_zheyi2"
+            ],
+            "Raw": [
+              "Aura: Range 600 Effect: [PHYSICAL ARMOR: -10][MOVESPEED: -250][MAGICAL RESISTANCE: -50]"
+            ],
+            "Pierce Spell Immunity": [
+              "true"
+            ]
+          }
+        },
+        {
+          "title": "Golden Jubilee",
+          "fields": {
+            "Code": [
+              "gemtd_huguoshenyishi"
+            ],
+            "English": [
+              "Golden Jubilee / GJ"
+            ],
+            "Attack Damage": [
+              "1"
+            ],
+            "Attack Rate": [
+              "0.7"
+            ],
+            "Attack Range": [
+              "800"
+            ],
+            "Combination": [
+              "Charming Lazurite + Y6 + R6 | Y1 + Y2 + Y3 + Y4 + Y5"
+            ],
+            "Ability": [
+              "tower_zheyi2",
+              "tower_ranjin",
+              "e10006"
+            ],
+            "Raw": [
+              "Aura: Range 600 Effect: [PHYSICAL ARMOR: -10][MOVESPEED: -250][MAGICAL RESISTANCE: -50]",
+              "On Attack Landed, run script ranjin (addon_game_mode.lua) with [Damage: %attack_damage]"
+            ],
+            "Pierce Spell Immunity": [
+              "true"
+            ]
+          }
+        },
+        {
+          "title": "Gold",
+          "fields": {
+            "Code": [
+              "gemtd_jin"
+            ],
+            "English": [
+              "Gold / G"
+            ],
+            "Attack Damage": [
+              "60"
+            ],
+            "Attack Rate": [
+              "0.8"
+            ],
+            "Attack Range": [
+              "600"
+            ],
+            "Combination": [
+              "P5 + P4 + D2"
+            ],
+            "Ability": [
+              "tower_jin"
+            ],
+            "Raw": [
+              "On Attack Landed, [PHYSICAL ARMOR: -32]"
+            ],
+            "Pierce Spell Immunity": [
+              "true"
+            ]
+          }
+        },
+        {
+          "title": "Egypt Gold",
+          "fields": {
+            "Code": [
+              "gemtd_aijijin"
+            ],
+            "English": [
+              "Egypt Gold / EG"
+            ],
+            "Attack Damage": [
+              "100"
+            ],
+            "Attack Rate": [
+              "0.8"
+            ],
+            "Attack Range": [
+              "700"
+            ],
+            "Combination": [
+              "Gold + P5 + Q2"
+            ],
+            "Ability": [
+              "tower_jin2",
+              "tower_tanlan"
+            ],
+            "Raw": [
+              "On Attack Landed, [PHYSICAL ARMOR: -48]",
+              "Aura: Range 800 Effect:"
+            ],
+            "Pierce Spell Immunity": [
+              "true"
+            ]
+          }
+        },
+        {
+          "title": "Dark Emerald",
+          "fields": {
+            "Code": [
+              "gemtd_heianfeicui"
+            ],
+            "English": [
+              "Dark Emerald / DE"
+            ],
+            "Attack Damage": [
+              "80"
+            ],
+            "Attack Rate": [
+              "0.5"
+            ],
+            "Attack Range": [
+              "700"
+            ],
+            "Combination": [
+              "G5 + B4 + Y2"
+            ],
+            "Ability": [
+              "tower_10jiyun"
+            ],
+            "Raw": [
+              "On Attack Landed, [10%][Stun 2 seconds]"
+            ]
+          }
+        },
+        {
+          "title": "Emerald Golem",
+          "fields": {
+            "Code": [
+              "gemtd_feicuimoxiang"
+            ],
+            "English": [
+              "Emerald Golem / EG"
+            ],
+            "Attack Damage": [
+              "170"
+            ],
+            "Attack Rate": [
+              "0.5"
+            ],
+            "Attack Range": [
+              "700"
+            ],
+            "Combination": [
+              "Gold + Dark Emerald + D3"
+            ],
+            "Ability": [
+              "tower_10jiyun",
+              "tower_jin",
+              "tower_5shihua"
+            ],
+            "Raw": [
+              "On Attack Landed, [10%][Stun 2 seconds]",
+              "On Attack Landed, [PHYSICAL ARMOR: -32]",
+              "On Attack Landed, [1%]run script shihua (addon_game_mode.lua) with []"
+            ],
+            "Pierce Spell Immunity": [
+              "true"
+            ],
+            "Raw: Special": [
+              "[bonus_magic_resist: 0][bonus_physical_damage: 100]"
+            ]
+          }
+        },
+        {
+          "title": "Paraiba Tourmaline",
+          "fields": {
+            "Code": [
+              "gemtd_palayibabixi"
+            ],
+            "English": [
+              "Paraiba Tourmaline / PT"
+            ],
+            "Attack Damage": [
+              "30"
+            ],
+            "Attack Rate": [
+              "0.6"
+            ],
+            "Attack Range": [
+              "600"
+            ],
+            "Combination": [
+              "Q5 + E4 + G2"
+            ],
+            "Ability": [
+              "tower_bixi"
+            ],
+            "Raw": [
+              "Aura: Range 800 Effect: [PHYSICAL ARMOR: -15]"
+            ],
+            "Pierce Spell Immunity": [
+              "false"
+            ]
+          }
+        },
+        {
+          "title": "Elaborately Carved Tourmaline",
+          "fields": {
+            "Code": [
+              "gemtd_jingxindiaozhuodepalayibabixi"
+            ],
+            "English": [
+              "Elaborately Carved Tourmaline / ECT"
+            ],
+            "Attack Damage": [
+              "130"
+            ],
+            "Attack Rate": [
+              "0.6"
+            ],
+            "Attack Range": [
+              "700"
+            ],
+            "Combination": [
+              "Paraiba Tourmaline + Dark Emerald + G2"
+            ],
+            "Ability": [
+              "tower_10jiyun",
+              "tower_bixi2"
+            ],
+            "Raw": [
+              "On Attack Landed, [10%][Stun 2 seconds]",
+              "Aura: Range 1200 Effect: [PHYSICAL ARMOR: -30]"
+            ],
+            "Pierce Spell Immunity": [
+              "true"
+            ]
+          }
+        },
+        {
+          "title": "Sapphire Star Of Adam",
+          "fields": {
+            "Code": [
+              "gemtd_sililankazhixing"
+            ],
+            "English": [
+              "Sapphire Star Of Adam / SSOA"
+            ],
+            "Attack Damage": [
+              "42"
+            ],
+            "Attack Rate": [
+              "1"
+            ],
+            "Attack Range": [
+              "800"
+            ],
+            "Combination": [
+              "Elaborately Carved Tourmaline + G6 + P6 | G1 + G2 + G3 + G4 + G5"
+            ],
+            "Ability": [
+              "tower_du6",
+              "tower_jianjia6",
+              "tower_bixi2",
+              "tower_jihan",
+              "e10004"
+            ],
+            "Raw": [
+              "On Attack Landed, during 5 seconds, every 1 seconds, deals 128 magic damage.",
+              "On Attack Landed, [PHYSICAL ARMOR: -64]",
+              "Aura: Range 1200 Effect: [PHYSICAL ARMOR: -30]",
+              "On Attack Landed, [Duration: 3] [Splash: 300][MOVESPEED: -50%][DISABLE HEALING: 1]"
+            ],
+            "Pierce Spell Immunity": [
+              "true"
+            ]
+          }
+        },
+        {
+          "title": "Deep Sea Pearl",
+          "fields": {
+            "Code": [
+              "gemtd_shenhaizhenzhu"
+            ],
+            "English": [
+              "Deep Sea Pearl / DSP"
+            ],
+            "Attack Damage": [
+              "80"
+            ],
+            "Attack Rate": [
+              "0.6"
+            ],
+            "Attack Range": [
+              "500"
+            ],
+            "Combination": [
+              "Q4 + D4 + E2"
+            ],
+            "Ability": [
+              "tower_chenmoguanghuan"
+            ],
+            "Raw": [
+              "Aura: Range 600 Effect: [MAGIC IMMUNE: true]"
+            ]
+          }
+        },
+        {
+          "title": "Chrysoberyl Cat's Eye",
+          "fields": {
+            "Code": [
+              "gemtd_heisemaoyanshi"
+            ],
+            "English": [
+              "Chrysoberyl Cat's Eye / CCE"
+            ],
+            "Attack Damage": [
+              "6"
+            ],
+            "Attack Rate": [
+              "1"
+            ],
+            "Attack Range": [
+              "500"
+            ],
+            "Combination": [
+              "E5 + D4 + Q3"
+            ],
+            "Ability": [
+              "tower_speed_aura5",
+              "tower_true_sight",
+              "tower_maoyan"
+            ],
+            "Raw": [
+              "Aura: Range 664 Effect: [ATTACKSPEED: 60]",
+              "Aura: Range 500 Effect: [DAMAGEOUTGOING: 50%]"
+            ]
+          }
+        },
+        {
+          "title": "Red Coral",
+          "fields": {
+            "Code": [
+              "gemtd_hongshanhu"
+            ],
+            "English": [
+              "Red Coral / RC"
+            ],
+            "Attack Damage": [
+              "120"
+            ],
+            "Attack Rate": [
+              "0.6"
+            ],
+            "Attack Range": [
+              "500"
+            ],
+            "Combination": [
+              "Chrysoberyl Cat's Eye + Deep Sea Pearl + E4"
+            ],
+            "Ability": [
+              "tower_speed_aura5",
+              "tower_speed_aura4",
+              "tower_true_sight",
+              "tower_maoyan",
+              "tower_chenmoguanghuan"
+            ],
+            "Raw": [
+              "Aura: Range 664 Effect: [ATTACKSPEED: 60]",
+              "Aura: Range 664 Effect: [ATTACKSPEED: 50]",
+              "Aura: Range 500 Effect: [DAMAGEOUTGOING: 50%]",
+              "Aura: Range 600 Effect: [MAGIC IMMUNE: true]"
+            ]
+          }
+        },
+        {
+          "title": "Natural Zumurud",
+          "fields": {
+            "Code": [
+              "gemtd_tianranzumulv"
+            ],
+            "English": [
+              "Natural Zumurud / NZ"
+            ],
+            "Attack Damage": [
+              "80"
+            ],
+            "Attack Rate": [
+              "1"
+            ],
+            "Attack Range": [
+              "500"
+            ],
+            "Combination": [
+              "Deep Sea Pearl + G5 + D3"
+            ]
+          }
+        },
+        {
+          "title": "Carmen-Lucia",
+          "fields": {
+            "Code": [
+              "gemtd_yijiazhishi"
+            ],
+            "English": [
+              "Carmen-Lucia / C"
+            ],
+            "Attack Damage": [
+              "6"
+            ],
+            "Attack Rate": [
+              "1"
+            ],
+            "Attack Range": [
+              "500"
+            ],
+            "Combination": [
+              "Red Coral + E6 + Q6 | E1 + E2 + E3 + E4 + E5"
+            ],
+            "Ability": [
+              "tower_chenmoguanghuan",
+              "tower_maoyan",
+              "tower_speed_aura_guichu",
+              "tower_speed_aura6",
+              "tower_true_sight",
+              "e10009"
+            ],
+            "Raw": [
+              "Aura: Range 600 Effect: [MAGIC IMMUNE: true]",
+              "Aura: Range 500 Effect: [DAMAGEOUTGOING: 50%]",
+              "Aura: Range 200 Effect: [ATTACKSPEED: 200]",
+              "Aura: Range 664 Effect: [ATTACKSPEED: 70]"
+            ]
+          }
+        },
+        {
+          "title": "Yellow Sapphire",
+          "fields": {
+            "Code": [
+              "gemtd_huangcailanbaoshi"
+            ],
+            "English": [
+              "Yellow Sapphire / YS"
+            ],
+            "Attack Damage": [
+              "20"
+            ],
+            "Attack Rate": [
+              "1"
+            ],
+            "Attack Range": [
+              "600"
+            ],
+            "Combination": [
+              "B5 + Y4 + R4"
+            ],
+            "Ability": [
+              "tower_lanbaoshi"
+            ],
+            "Raw": [
+              "Aura: Range 300 Effect: [MOVESPEED: -70%]"
+            ]
+          }
+        },
+        {
+          "title": "Northern Saber's Eye",
+          "fields": {
+            "Code": [
+              "gemtd_haibao"
+            ],
+            "English": [
+              "Northern Saber's Eye / NSE"
+            ],
+            "Attack Damage": [
+              "60"
+            ],
+            "Attack Rate": [
+              "1"
+            ],
+            "Attack Range": [
+              "500"
+            ],
+            "Combination": [
+              "Yellow Sapphire + Bloodstone + B5"
+            ],
+            "Ability": [
+              "tower_lanbaoshi",
+              "tower_chain_frost"
+            ],
+            "Raw": [
+              "Aura: Range 300 Effect: [MOVESPEED: -70%]"
+            ],
+            "Pierce Spell Immunity": [
+              "false"
+            ]
+          }
+        },
+        {
+          "title": "Star Sapphire",
+          "fields": {
+            "Code": [
+              "gemtd_xingguanglanbaoshi"
+            ],
+            "English": [
+              "Star Sapphire / SS"
+            ],
+            "Attack Damage": [
+              "20"
+            ],
+            "Attack Rate": [
+              "1"
+            ],
+            "Attack Range": [
+              "600"
+            ],
+            "Combination": [
+              "Yellow Sapphire + B6 + E6 | B1 + B2 + B3 + B4 + B5"
+            ],
+            "Ability": [
+              "tower_true_sight",
+              "tower_speed_aura6",
+              "tower_slow6",
+              "tower_lanbaoshi2",
+              "e10001"
+            ],
+            "Raw": [
+              "Aura: Range 664 Effect: [ATTACKSPEED: 70]",
+              "[MOVESPEED: -480]",
+              "Aura: Range 556 Effect: [MOVESPEED: -75%]"
+            ]
+          }
+        },
+        {
+          "title": "Obsidian",
+          "fields": {
+            "Code": [
+              "gemtd_heiyaoshi"
+            ],
+            "English": [
+              "Obsidian / O"
+            ],
+            "Attack Damage": [
+              "180 [+640]"
+            ],
+            "Attack Rate": [
+              "0.8"
+            ],
+            "Attack Range": [
+              "800"
+            ],
+            "Combination": [
+              "B5 + Y5 + D5"
+            ],
+            "Ability": [
+              "tower_jianshe5",
+              "tower_slow5",
+              "e10011",
+              "tower_attack6"
+            ],
+            "Raw": [
+              "On Attack Landed, run script jianshe5 (addon_game_mode.lua) with [Damage: %attack_damage]",
+              "[MOVESPEED: -180]",
+              "[BASEATTACK BONUSDAMAGE: 640]"
+            ]
+          }
+        },
+        {
+          "title": "Agate",
+          "fields": {
+            "Code": [
+              "gemtd_manao"
+            ],
+            "English": [
+              "Agate / A"
+            ],
+            "Attack Damage": [
+              "110 [+320]"
+            ],
+            "Attack Rate": [
+              "0.3"
+            ],
+            "Attack Range": [
+              "5000"
+            ],
+            "Combination": [
+              "Q5 + E5 + G5"
+            ],
+            "Ability": [
+              "tower_fenliejian_xianyan",
+              "e10012",
+              "tower_attack5"
+            ],
+            "Raw": [
+              "On Attack, run script DuoChongGongJi (fenliejian.lua) with [attack_count: 4]",
+              "[BASEATTACK BONUSDAMAGE: 320]"
+            ]
+          }
+        },
+        {
+          "title": "Fantastic Miss Shrimp",
+          "fields": {
+            "Code": [
+              "gemtd_xiameishi"
+            ],
+            "English": [
+              "Fantastic Miss Shrimp / FMS"
+            ],
+            "Attack Damage": [
+              "585 [+640]"
+            ],
+            "Attack Rate": [
+              "0.5"
+            ],
+            "Attack Range": [
+              "1000"
+            ],
+            "Combination": [
+              "R5 + G5 + B5"
+            ],
+            "Ability": [
+              "tower_aojiao",
+              "tower_shandianlian",
+              "tower_chazhuangshandian",
+              "e10008",
+              "tower_attack6"
+            ],
+            "Raw": [
+              "On Attack Start, [3%] [Duration: 5][DISARMED: true]",
+              "On Attack Landed, [30%]run script jn_D3_00 (shandianlian.lua) with [Damage: 150, Radius: 1000, AttackCount: 1, Count: 5]",
+              "On Attack Landed, [25%]run script Shock (shock.lua) with []",
+              "[BASEATTACK BONUSDAMAGE: 640]"
+            ],
+            "Pierce Spell Immunity": [
+              "false",
+              "false"
+            ],
+            "Raw: Special": [
+              "[damage: 2500][targets: 5][start_radius: 100][chance: 25][end_distance: 5000][end_radius: 3000]"
+            ]
+          }
+        },
+        {
+          "title": "Yaphets Stone",
+          "fields": {
+            "Code": [
+              "gemtd_geluanshi"
+            ],
+            "English": [
+              "Yaphets Stone / YS"
+            ],
+            "Attack Damage": [
+              "140"
+            ],
+            "Attack Rate": [
+              "1"
+            ],
+            "Attack Range": [
+              "800"
+            ],
+            "Combination": [
+              "B5 + G5 + B4 + G4"
+            ],
+            "Ability": [
+              "tower_bixi2",
+              "tower_jianjia6",
+              "tower_zheyi3",
+              "e10013"
+            ],
+            "Raw": [
+              "Aura: Range 1200 Effect: [PHYSICAL ARMOR: -30]",
+              "On Attack Landed, [PHYSICAL ARMOR: -64]",
+              "Aura: Range 600 Effect: [PHYSICAL ARMOR: -64][MOVESPEED: -480][MAGICAL RESISTANCE: -100]"
+            ],
+            "Pierce Spell Immunity": [
+              "true",
+              "true"
+            ]
+          }
+        },
+        {
+          "title": "Burning Stone",
+          "fields": {
+            "Code": [
+              "gemtd_ranshaozhishi"
+            ],
+            "English": [
+              "Burning Stone / BS"
+            ],
+            "Attack Damage": [
+              "0"
+            ],
+            "Attack Rate": [
+              "0.5"
+            ],
+            "Attack Range": [
+              "600"
+            ],
+            "Combination": [
+              "R5 + P5 + R4 + P4"
+            ],
+            "Ability": [
+              "tower_huiyao3",
+              "e10010"
+            ],
+            "Raw": [
+              "Aura: Range 800 Effect: during 1 seconds, every 2 seconds, deals 5000 magic damage."
+            ]
+          }
+        },
+        {
+          "title": "The Great Stone",
+          "fields": {
+            "Code": [
+              "gemtd_zhenjiazhishi"
+            ],
+            "English": [
+              "The Great Stone / TGS"
+            ],
+            "Attack Damage": [
+              "1369 [+640]"
+            ],
+            "Attack Rate": [
+              "1"
+            ],
+            "Attack Range": [
+              "800"
+            ],
+            "Ability": [
+              "tower_baoji1",
+              "tower_attack6",
+              "tower_jianshe6",
+              "e10007"
+            ],
+            "Raw": [
+              "On Attack Start, [10%][CRITICALSTRIKE: 500]",
+              "[BASEATTACK BONUSDAMAGE: 640]",
+              "On Attack Landed, run script jianshe6 (addon_game_mode.lua) with [Damage: %attack_damage]"
+            ],
+            "Pierce Spell Immunity": [
+              "true"
+            ]
+          }
+        }
+      ]
+    },
+    "creeps": {
+      "url": "https://raw.githubusercontent.com/clementbera/Website/f424bb2abbe9355f7cfa9a539e4e61512f027750/creeps.html",
+      "sha256": "8188654a117185d9e5079b8af59fe69f7905f98d023510f09271986e13a739a9",
+      "records": [
+        {
+          "title": "Level 1 Frenzied Pig",
+          "fields": {
+            "Code": [
+              "gemtd_kuangbaoyezhu"
+            ],
+            "English": [
+              "Frenzied Pig"
+            ],
+            "Lvl": [
+              "1"
+            ],
+            "HP (1-4 players) [Base]": [
+              "3 . 11 . 22 . 29 [5]"
+            ],
+            "Movement (1-4 players) [Base]": [
+              "446 . 604 . 714 . 830 [525]"
+            ],
+            "Armor": [
+              "0"
+            ],
+            "Magic resistance": [
+              "10"
+            ],
+            "Ability": [
+              "gemtd_guai_base"
+            ]
+          }
+        },
+        {
+          "title": "Level 2 Swift Frog",
+          "fields": {
+            "Code": [
+              "gemtd_kuaidiqingwatiaotiao"
+            ],
+            "English": [
+              "Swift Frog"
+            ],
+            "Lvl": [
+              "2"
+            ],
+            "HP (1-4 players) [Base]": [
+              "6 . 21 . 43 . 58 [10]"
+            ],
+            "Movement (1-4 players) [Base]": [
+              "510 . 690 . 816 . 948 [600]"
+            ],
+            "Armor": [
+              "0"
+            ],
+            "Magic resistance": [
+              "10"
+            ],
+            "Ability": [
+              "gemtd_guai_base"
+            ]
+          }
+        },
+        {
+          "title": "Level 3 Sturdy Yak",
+          "fields": {
+            "Code": [
+              "gemtd_zhongchenggaoshanmaoniu"
+            ],
+            "English": [
+              "Sturdy Yak"
+            ],
+            "Lvl": [
+              "3"
+            ],
+            "HP (1-4 players) [Base]": [
+              "12 . 42 . 86 . 116 [20]"
+            ],
+            "Movement (1-4 players) [Base]": [
+              "446 . 604 . 714 . 830 [525]"
+            ],
+            "Armor": [
+              "0"
+            ],
+            "Magic resistance": [
+              "10"
+            ],
+            "Ability": [
+              "gemtd_guai_base"
+            ]
+          }
+        },
+        {
+          "title": "Level 4 Smart Robot",
+          "fields": {
+            "Code": [
+              "gemtd_moluokedejixiezhushou"
+            ],
+            "English": [
+              "Smart Robot"
+            ],
+            "Lvl": [
+              "4"
+            ],
+            "HP (1-4 players) [Base]": [
+              "12 . 42 . 86 . 116 [20]"
+            ],
+            "Movement (1-4 players) [Base]": [
+              "850 . 1150 . 1360 . 1580 [1000]"
+            ],
+            "Armor": [
+              "0"
+            ],
+            "Magic resistance": [
+              "10"
+            ],
+            "Ability": [
+              "gemtd_guai_base"
+            ]
+          }
+        },
+        {
+          "title": "Level 5 Baby Panda & Balloon Badger",
+          "fields": {
+            "Code": [
+              "gemtd_xiaohongmao_fly"
+            ],
+            "English": [
+              "Baby Panda"
+            ],
+            "Lvl": [
+              "5"
+            ],
+            "HP (1-4 players) [Base]": [
+              "14 . 50 . 103 . 139 [24]"
+            ],
+            "Movement (1-4 players) [Base]": [
+              "425 . 575 . 680 . 790 (flying) [500]"
+            ],
+            "Armor": [
+              "0"
+            ],
+            "Magic resistance": [
+              "10"
+            ],
+            "Ability": [
+              "gemtd_guai_base"
+            ]
+          }
+        },
+        {
+          "title": "Level 5 Baby Panda & Balloon Badger",
+          "fields": {
+            "Code": [
+              "gemtd_wuweizhihuan_fly"
+            ],
+            "English": [
+              "Balloon Badger"
+            ],
+            "Lvl": [
+              "5"
+            ],
+            "HP (1-4 players) [Base]": [
+              "13 . 46 . 95 . 128 [22]"
+            ],
+            "Movement (1-4 players) [Base]": [
+              "425 . 575 . 680 . 790 (flying) [500]"
+            ],
+            "Armor": [
+              "0"
+            ],
+            "Magic resistance": [
+              "10"
+            ],
+            "Ability": [
+              "gemtd_guai_base"
+            ]
+          }
+        },
+        {
+          "title": "Level 6 Tardy Stump",
+          "fields": {
+            "Code": [
+              "gemtd_shudunziranzhizhu"
+            ],
+            "English": [
+              "Tardy Stump"
+            ],
+            "Lvl": [
+              "6"
+            ],
+            "HP (1-4 players) [Base]": [
+              "60 . 210 . 430 . 580 [100]"
+            ],
+            "Movement (1-4 players) [Base]": [
+              "383 . 518 . 612 . 711 [450]"
+            ],
+            "Armor": [
+              "0"
+            ],
+            "Magic resistance": [
+              "10"
+            ],
+            "Ability": [
+              "gemtd_guai_base"
+            ]
+          }
+        },
+        {
+          "title": "Level 7 Satisfied Lizard",
+          "fields": {
+            "Code": [
+              "gemtd_chaomengjuxi"
+            ],
+            "English": [
+              "Satisfied Lizard"
+            ],
+            "Lvl": [
+              "7"
+            ],
+            "HP (1-4 players) [Base]": [
+              "60 . 210 . 430 . 580 [100]"
+            ],
+            "Movement (1-4 players) [Base]": [
+              "510 . 690 . 816 . 948 [600]"
+            ],
+            "Armor": [
+              "0"
+            ],
+            "Magic resistance": [
+              "10"
+            ],
+            "Ability": [
+              "gemtd_guai_base"
+            ]
+          }
+        },
+        {
+          "title": "Level 8 Invisible Spider",
+          "fields": {
+            "Code": [
+              "gemtd_mengzhu"
+            ],
+            "English": [
+              "Invisible Spider"
+            ],
+            "Lvl": [
+              "8"
+            ],
+            "HP (1-4 players) [Base]": [
+              "42 . 147 . 301 . 406 [70]"
+            ],
+            "Movement (1-4 players) [Base]": [
+              "638 . 862 . 1020 . 1185 [750]"
+            ],
+            "Armor": [
+              "0"
+            ],
+            "Magic resistance": [
+              "10"
+            ],
+            "Ability": [
+              "gemtd_guai_base",
+              "riki_permanent_invisibility"
+            ],
+            "Raw: Special": [
+              "[fade_time: 1.0][fade_delay: 2.0][bonus_health_regen: 0]"
+            ]
+          }
+        },
+        {
+          "title": "Level 9 Dusky",
+          "fields": {
+            "Code": [
+              "gemtd_dashiqi"
+            ],
+            "English": [
+              "Dusky"
+            ],
+            "Lvl": [
+              "9"
+            ],
+            "HP (1-4 players) [Base]": [
+              "72 . 252 . 516 . 696 [120]"
+            ],
+            "Movement (1-4 players) [Base]": [
+              "510 . 690 . 816 . 948 [600]"
+            ],
+            "Armor": [
+              "0"
+            ],
+            "Magic resistance": [
+              "10"
+            ],
+            "Ability": [
+              "gemtd_guai_base",
+              "guai_shanbi"
+            ],
+            "Raw": [
+              "[EVASION: 50]"
+            ]
+          }
+        },
+        {
+          "title": "Level 10 Invincible Dog",
+          "fields": {
+            "Code": [
+              "gemtd_buquzhanquan_boss"
+            ],
+            "English": [
+              "Invincible Dog"
+            ],
+            "Lvl": [
+              "10"
+            ],
+            "HP (1-4 players) [Base]": [
+              "1260 . 4410 . 9030 . 12180 [2100]"
+            ],
+            "Movement (1-4 players) [Base]": [
+              "638 . 862 . 1020 . 1185 [750]"
+            ],
+            "Armor": [
+              "0"
+            ],
+            "Magic resistance": [
+              "10"
+            ],
+            "Ability": [
+              "gemtd_guai_base"
+            ]
+          }
+        },
+        {
+          "title": "Level 11 Sheep",
+          "fields": {
+            "Code": [
+              "gemtd_maorongrongdefeiyangyang"
+            ],
+            "English": [
+              "Sheep"
+            ],
+            "Lvl": [
+              "11"
+            ],
+            "HP (1-4 players) [Base]": [
+              "180 . 630 . 1290 . 1740 [300]"
+            ],
+            "Movement (1-4 players) [Base]": [
+              "446 . 604 . 714 . 830 [525]"
+            ],
+            "Armor": [
+              "4"
+            ],
+            "Magic resistance": [
+              "10"
+            ],
+            "Ability": [
+              "gemtd_guai_base"
+            ]
+          }
+        },
+        {
+          "title": "Level 12 Funny Alpaca",
+          "fields": {
+            "Code": [
+              "gemtd_caonimalama"
+            ],
+            "English": [
+              "Funny Alpaca"
+            ],
+            "Lvl": [
+              "12"
+            ],
+            "HP (1-4 players) [Base]": [
+              "270 . 945 . 1935 . 2610 [450]"
+            ],
+            "Movement (1-4 players) [Base]": [
+              "510 . 690 . 816 . 948 [600]"
+            ],
+            "Armor": [
+              "4"
+            ],
+            "Magic resistance": [
+              "20"
+            ],
+            "Ability": [
+              "gemtd_guai_base",
+              "guai_jiaoxieguanghuan"
+            ],
+            "Raw": [
+              "Aura: Range 130 150 170 190 Effect: [DISARMED: true]"
+            ]
+          }
+        },
+        {
+          "title": "Level 13 Pig Princess",
+          "fields": {
+            "Code": [
+              "gemtd_fengtungongzhu"
+            ],
+            "English": [
+              "Pig Princess"
+            ],
+            "Lvl": [
+              "13"
+            ],
+            "HP (1-4 players) [Base]": [
+              "480 . 1680 . 3440 . 4640 [800]"
+            ],
+            "Movement (1-4 players) [Base]": [
+              "510 . 690 . 816 . 948 [600]"
+            ],
+            "Armor": [
+              "4"
+            ],
+            "Magic resistance": [
+              "10"
+            ],
+            "Ability": [
+              "gemtd_guai_base"
+            ]
+          }
+        },
+        {
+          "title": "Level 14 Bulldog",
+          "fields": {
+            "Code": [
+              "gemtd_bugou"
+            ],
+            "English": [
+              "Bulldog"
+            ],
+            "Lvl": [
+              "14"
+            ],
+            "HP (1-4 players) [Base]": [
+              "660 . 2310 . 4730 . 6380 [1100]"
+            ],
+            "Movement (1-4 players) [Base]": [
+              "510 . 690 . 816 . 948 [600]"
+            ],
+            "Armor": [
+              "4"
+            ],
+            "Magic resistance": [
+              "10"
+            ],
+            "Ability": [
+              "gemtd_guai_base",
+              "enemy_zheguang"
+            ]
+          }
+        },
+        {
+          "title": "Level 15 Cat & Dog & Bamboo Addict",
+          "fields": {
+            "Code": [
+              "gemtd_tianmaodigou_fly"
+            ],
+            "English": [
+              "Cat & Dog"
+            ],
+            "Lvl": [
+              "15"
+            ],
+            "HP (1-4 players) [Base]": [
+              "240 . 840 . 1720 . 2320 [400]"
+            ],
+            "Movement (1-4 players) [Base]": [
+              "595 . 805 . 952 . 1106 (flying) [700]"
+            ],
+            "Armor": [
+              "4"
+            ],
+            "Magic resistance": [
+              "10"
+            ],
+            "Ability": [
+              "gemtd_guai_base"
+            ]
+          }
+        },
+        {
+          "title": "Level 15 Cat & Dog & Bamboo Addict",
+          "fields": {
+            "Code": [
+              "gemtd_banzhuduizhang_fly"
+            ],
+            "English": [
+              "Bamboo Addict"
+            ],
+            "Lvl": [
+              "15"
+            ],
+            "HP (1-4 players) [Base]": [
+              "264 . 924 . 1892 . 2552 [440]"
+            ],
+            "Movement (1-4 players) [Base]": [
+              "510 . 690 . 816 . 948 (flying) [600]"
+            ],
+            "Armor": [
+              "4"
+            ],
+            "Magic resistance": [
+              "10"
+            ],
+            "Ability": [
+              "gemtd_guai_base"
+            ]
+          }
+        },
+        {
+          "title": "Level 16 Young Demon",
+          "fields": {
+            "Code": [
+              "gemtd_xunjiemotong"
+            ],
+            "English": [
+              "Young Demon"
+            ],
+            "Lvl": [
+              "16"
+            ],
+            "HP (1-4 players) [Base]": [
+              "570 . 1995 . 4085 . 5510 [950]"
+            ],
+            "Movement (1-4 players) [Base]": [
+              "680 . 920 . 1088 . 1264 [800]"
+            ],
+            "Armor": [
+              "4"
+            ],
+            "Magic resistance": [
+              "10"
+            ],
+            "Ability": [
+              "gemtd_guai_base",
+              "enemy_momian"
+            ],
+            "Raw": [
+              "[MAGIC IMMUNE: true][MAGICAL RESISTANCE: 100]"
+            ]
+          }
+        },
+        {
+          "title": "Level 17 Belted Chicken",
+          "fields": {
+            "Code": [
+              "gemtd_yonggandexiaoji"
+            ],
+            "English": [
+              "Belted Chicken"
+            ],
+            "Lvl": [
+              "17"
+            ],
+            "HP (1-4 players) [Base]": [
+              "960 . 3360 . 6880 . 9280 [1600]"
+            ],
+            "Movement (1-4 players) [Base]": [
+              "510 . 690 . 816 . 948 [600]"
+            ],
+            "Armor": [
+              "4"
+            ],
+            "Magic resistance": [
+              "50"
+            ],
+            "Ability": [
+              "gemtd_guai_base",
+              "enemy_bukeqinfan"
+            ],
+            "Raw": [
+              "[DISARMED: true][ATTACKSPEED: -300]"
+            ]
+          }
+        },
+        {
+          "title": "Level 18 Bajie",
+          "fields": {
+            "Code": [
+              "gemtd_xiaobajie"
+            ],
+            "English": [
+              "Bajie"
+            ],
+            "Lvl": [
+              "18"
+            ],
+            "HP (1-4 players) [Base]": [
+              "1800 . 6300 . 12900 . 17400 [3000]"
+            ],
+            "Movement (1-4 players) [Base]": [
+              "574 . 776 . 918 . 1067 [675]"
+            ],
+            "Armor": [
+              "4"
+            ],
+            "Magic resistance": [
+              "10"
+            ],
+            "Ability": [
+              "gemtd_guai_base",
+              "riki_permanent_invisibility",
+              "guai_jiaoxieguanghuan"
+            ],
+            "Raw: Special": [
+              "[fade_time: 1.0][fade_delay: 2.0][bonus_health_regen: 0]"
+            ],
+            "Raw": [
+              "Aura: Range 130 150 170 190 Effect: [DISARMED: true]"
+            ]
+          }
+        },
+        {
+          "title": "Level 19 Exquisite Rabbit & Donkey Trio",
+          "fields": {
+            "Code": [
+              "gemtd_shentu"
+            ],
+            "English": [
+              "Exquisite Rabbit"
+            ],
+            "Lvl": [
+              "19"
+            ],
+            "HP (1-4 players) [Base]": [
+              "1320 . 4620 . 9460 . 12760 [2200]"
+            ],
+            "Movement (1-4 players) [Base]": [
+              "850 . 1150 . 1360 . 1580 [1000]"
+            ],
+            "Armor": [
+              "4"
+            ],
+            "Magic resistance": [
+              "10"
+            ],
+            "Ability": [
+              "gemtd_guai_base",
+              "runrunrun"
+            ],
+            "Raw": [
+              "[MOVESPEED: 50%]"
+            ]
+          }
+        },
+        {
+          "title": "Level 19 Exquisite Rabbit & Donkey Trio",
+          "fields": {
+            "Code": [
+              "gemtd_yaobaidelvgemi"
+            ],
+            "English": [
+              "Donkey Trio"
+            ],
+            "Lvl": [
+              "19"
+            ],
+            "HP (1-4 players) [Base]": [
+              "2220 . 7770 . 15910 . 21460 [3700]"
+            ],
+            "Movement (1-4 players) [Base]": [
+              "595 . 805 . 952 . 1106 [700]"
+            ],
+            "Armor": [
+              "4"
+            ],
+            "Magic resistance": [
+              "10"
+            ],
+            "Ability": [
+              "gemtd_guai_base",
+              "runrunrun"
+            ],
+            "Raw": [
+              "[MOVESPEED: 50%]"
+            ]
+          }
+        },
+        {
+          "title": "Level 20 Shakbag",
+          "fields": {
+            "Code": [
+              "gemtd_huxiaotao_boss"
+            ],
+            "English": [
+              "Shakbag"
+            ],
+            "Lvl": [
+              "20"
+            ],
+            "HP (1-4 players) [Base]": [
+              "20400 . 71400 . 146200 . 197200 [34000]"
+            ],
+            "Movement (1-4 players) [Base]": [
+              "765 . 1035 . 1224 . 1422 [900]"
+            ],
+            "Armor": [
+              "0"
+            ],
+            "Magic resistance": [
+              "10"
+            ],
+            "Ability": [
+              "gemtd_guai_base"
+            ]
+          }
+        },
+        {
+          "title": "Level 21 Ripper & Crab",
+          "fields": {
+            "Code": [
+              "gemtd_siwangsiliezhe"
+            ],
+            "English": [
+              "Ripper"
+            ],
+            "Lvl": [
+              "21"
+            ],
+            "HP (1-4 players) [Base]": [
+              "4500 . 15750 . 32250 . 43500 [7500]"
+            ],
+            "Movement (1-4 players) [Base]": [
+              "574 . 776 . 918 . 1067 [675]"
+            ],
+            "Armor": [
+              "8"
+            ],
+            "Magic resistance": [
+              "10"
+            ],
+            "Ability": [
+              "gemtd_guai_base"
+            ]
+          }
+        },
+        {
+          "title": "Level 21 Ripper & Crab",
+          "fields": {
+            "Code": [
+              "gemtd_xiexiaowo"
+            ],
+            "English": [
+              "Crab"
+            ],
+            "Lvl": [
+              "21"
+            ],
+            "HP (1-4 players) [Base]": [
+              "5400 . 18900 . 38700 . 52200 [9000]"
+            ],
+            "Movement (1-4 players) [Base]": [
+              "595 . 805 . 952 . 1106 [700]"
+            ],
+            "Armor": [
+              "8"
+            ],
+            "Magic resistance": [
+              "10"
+            ],
+            "Ability": [
+              "gemtd_guai_base"
+            ]
+          }
+        },
+        {
+          "title": "Level 22 Lockjaw",
+          "fields": {
+            "Code": [
+              "gemtd_yaorenxiangluoke"
+            ],
+            "English": [
+              "Lockjaw"
+            ],
+            "Lvl": [
+              "22"
+            ],
+            "HP (1-4 players) [Base]": [
+              "5400 . 18900 . 38700 . 52200 [9000]"
+            ],
+            "Movement (1-4 players) [Base]": [
+              "510 . 690 . 816 . 948 [600]"
+            ],
+            "Armor": [
+              "8"
+            ],
+            "Magic resistance": [
+              "10"
+            ],
+            "Ability": [
+              "gemtd_guai_base",
+              "enemy_high_armor"
+            ],
+            "Raw": [
+              "[PHYSICAL ARMOR: %armor]"
+            ],
+            "Raw: Special": [
+              "[armor: 20 30 40 50]"
+            ]
+          }
+        },
+        {
+          "title": "Level 23 Flopjaw & Trapjaw",
+          "fields": {
+            "Code": [
+              "gemtd_dazuiyaorenxiang"
+            ],
+            "English": [
+              "Flopjaw"
+            ],
+            "Lvl": [
+              "23"
+            ],
+            "HP (1-4 players) [Base]": [
+              "7200 . 25200 . 51600 . 69600 [12000]"
+            ],
+            "Movement (1-4 players) [Base]": [
+              "553 . 747 . 884 . 1027 [650]"
+            ],
+            "Armor": [
+              "8"
+            ],
+            "Magic resistance": [
+              "10"
+            ],
+            "Ability": [
+              "gemtd_guai_base",
+              "enemy_wumian",
+              "enemy_zheguang"
+            ],
+            "Raw": [
+              "[INCOMING PHYSICAL DAMAGE: -100%]"
+            ]
+          }
+        },
+        {
+          "title": "Level 23 Flopjaw & Trapjaw",
+          "fields": {
+            "Code": [
+              "gemtd_tiezuiyaorenxiang"
+            ],
+            "English": [
+              "Trapjaw"
+            ],
+            "Lvl": [
+              "23"
+            ],
+            "HP (1-4 players) [Base]": [
+              "6000 . 21000 . 43000 . 58000 [10000]"
+            ],
+            "Movement (1-4 players) [Base]": [
+              "531 . 719 . 850 . 988 [625]"
+            ],
+            "Armor": [
+              "8"
+            ],
+            "Magic resistance": [
+              "10"
+            ],
+            "Ability": [
+              "gemtd_guai_base",
+              "enemy_wumian",
+              "enemy_zheguang"
+            ],
+            "Raw": [
+              "[INCOMING PHYSICAL DAMAGE: -100%]"
+            ]
+          }
+        },
+        {
+          "title": "Level 24 Mech Donkey & Machjaw",
+          "fields": {
+            "Code": [
+              "gemtd_jixiezhanlv"
+            ],
+            "English": [
+              "Mech Donkey"
+            ],
+            "Lvl": [
+              "24"
+            ],
+            "HP (1-4 players) [Base]": [
+              "4500 . 15750 . 32250 . 43500 [7500]"
+            ],
+            "Movement (1-4 players) [Base]": [
+              "659 . 891 . 1054 . 1225 [775]"
+            ],
+            "Armor": [
+              "8"
+            ],
+            "Magic resistance": [
+              "10"
+            ],
+            "Ability": [
+              "gemtd_guai_base",
+              "shredder_reactive_armor"
+            ],
+            "Raw: Special": [
+              "[bonus_armor: 5.0 5.0 5.0 5.0]"
+            ]
+          }
+        },
+        {
+          "title": "Level 24 Mech Donkey & Machjaw",
+          "fields": {
+            "Code": [
+              "gemtd_jixieyaorenxiang"
+            ],
+            "English": [
+              "Machjaw"
+            ],
+            "Lvl": [
+              "24"
+            ],
+            "HP (1-4 players) [Base]": [
+              "6000 . 21000 . 43000 . 58000 [10000]"
+            ],
+            "Movement (1-4 players) [Base]": [
+              "574 . 776 . 918 . 1067 [675]"
+            ],
+            "Armor": [
+              "8"
+            ],
+            "Magic resistance": [
+              "10"
+            ],
+            "Ability": [
+              "gemtd_guai_base",
+              "shredder_reactive_armor"
+            ],
+            "Raw: Special": [
+              "[bonus_armor: 5.0 5.0 5.0 5.0]"
+            ]
+          }
+        },
+        {
+          "title": "Level 25 Demolisher & Corsair",
+          "fields": {
+            "Code": [
+              "gemtd_huoxingche_fly"
+            ],
+            "English": [
+              "Demolisher"
+            ],
+            "Lvl": [
+              "25"
+            ],
+            "HP (1-4 players) [Base]": [
+              "1680 . 5880 . 12040 . 16240 [2800]"
+            ],
+            "Movement (1-4 players) [Base]": [
+              "510 . 690 . 816 . 948 (flying) [600]"
+            ],
+            "Armor": [
+              "8"
+            ],
+            "Magic resistance": [
+              "10"
+            ],
+            "Ability": [
+              "gemtd_guai_base",
+              "enemy_high_armor"
+            ],
+            "Raw": [
+              "[PHYSICAL ARMOR: %armor]"
+            ],
+            "Raw: Special": [
+              "[armor: 20 30 40 50]"
+            ]
+          }
+        },
+        {
+          "title": "Level 25 Demolisher & Corsair",
+          "fields": {
+            "Code": [
+              "gemtd_fengbaozhizikesaier_fly"
+            ],
+            "English": [
+              "Corsair"
+            ],
+            "Lvl": [
+              "25"
+            ],
+            "HP (1-4 players) [Base]": [
+              "2160 . 7560 . 15480 . 20880 [3600]"
+            ],
+            "Movement (1-4 players) [Base]": [
+              "340 . 460 . 544 . 632 (flying) [400]"
+            ],
+            "Armor": [
+              "8"
+            ],
+            "Magic resistance": [
+              "10"
+            ],
+            "Ability": [
+              "gemtd_guai_base",
+              "enemy_high_armor"
+            ],
+            "Raw": [
+              "[PHYSICAL ARMOR: %armor]"
+            ],
+            "Raw: Special": [
+              "[armor: 20 30 40 50]"
+            ]
+          }
+        },
+        {
+          "title": "Level 26 Skateboard Flamingo",
+          "fields": {
+            "Code": [
+              "gemtd_niepanhuolieniao"
+            ],
+            "English": [
+              "Skateboard Flamingo"
+            ],
+            "Lvl": [
+              "26"
+            ],
+            "HP (1-4 players) [Base]": [
+              "3780 . 13230 . 27090 . 36540 [6300]"
+            ],
+            "Movement (1-4 players) [Base]": [
+              "765 . 1035 . 1224 . 1422 [900]"
+            ],
+            "Armor": [
+              "8"
+            ],
+            "Magic resistance": [
+              "10"
+            ],
+            "Ability": [
+              "gemtd_guai_base",
+              "enemy_momian"
+            ],
+            "Raw": [
+              "[MAGIC IMMUNE: true][MAGICAL RESISTANCE: 100]"
+            ]
+          }
+        },
+        {
+          "title": "Level 27 Lgd Goldfish & Jellyfish",
+          "fields": {
+            "Code": [
+              "gemtd_lgddejinmengmeng_fly"
+            ],
+            "English": [
+              "Lgd Goldfish"
+            ],
+            "Lvl": [
+              "27"
+            ],
+            "HP (1-4 players) [Base]": [
+              "2100 . 7350 . 15050 . 20300 [3500]"
+            ],
+            "Movement (1-4 players) [Base]": [
+              "531 . 719 . 850 . 988 (flying) [625]"
+            ],
+            "Armor": [
+              "8"
+            ],
+            "Magic resistance": [
+              "50"
+            ],
+            "Ability": [
+              "gemtd_guai_base",
+              "enemy_bukeqinfan"
+            ],
+            "Raw": [
+              "[DISARMED: true][ATTACKSPEED: -300]"
+            ]
+          }
+        },
+        {
+          "title": "Level 27 Lgd Goldfish & Jellyfish",
+          "fields": {
+            "Code": [
+              "gemtd_ruxingshuimu_fly"
+            ],
+            "English": [
+              "Jellyfish"
+            ],
+            "Lvl": [
+              "27"
+            ],
+            "HP (1-4 players) [Base]": [
+              "1200 . 4200 . 8600 . 11600 [2000]"
+            ],
+            "Movement (1-4 players) [Base]": [
+              "531 . 719 . 850 . 988 (flying) [625]"
+            ],
+            "Armor": [
+              "8"
+            ],
+            "Magic resistance": [
+              "50"
+            ],
+            "Ability": [
+              "gemtd_guai_base",
+              "enemy_wumian",
+              "enemy_bukeqinfan"
+            ],
+            "Raw": [
+              "[INCOMING PHYSICAL DAMAGE: -100%]",
+              "[DISARMED: true][ATTACKSPEED: -300]"
+            ]
+          }
+        },
+        {
+          "title": "Level 28 Ig Dragon & Timbersaw",
+          "fields": {
+            "Code": [
+              "gemtd_youniekesizhinu_fly"
+            ],
+            "English": [
+              "Ig Dragon"
+            ],
+            "Lvl": [
+              "28"
+            ],
+            "HP (1-4 players) [Base]": [
+              "2280 . 7980 . 16340 . 22040 [3800]"
+            ],
+            "Movement (1-4 players) [Base]": [
+              "638 . 862 . 1020 . 1185 (flying) [750]"
+            ],
+            "Armor": [
+              "8"
+            ],
+            "Magic resistance": [
+              "10"
+            ],
+            "Ability": [
+              "gemtd_guai_base",
+              "shredder_reactive_armor"
+            ],
+            "Raw: Special": [
+              "[bonus_armor: 5.0 5.0 5.0 5.0]"
+            ]
+          }
+        },
+        {
+          "title": "Level 28 Ig Dragon & Timbersaw",
+          "fields": {
+            "Code": [
+              "gemtd_xiaofamuji_fly"
+            ],
+            "English": [
+              "Timbersaw"
+            ],
+            "Lvl": [
+              "28"
+            ],
+            "HP (1-4 players) [Base]": [
+              "2940 . 10290 . 21070 . 28420 [4900]"
+            ],
+            "Movement (1-4 players) [Base]": [
+              "510 . 690 . 816 . 948 (flying) [600]"
+            ],
+            "Armor": [
+              "24"
+            ],
+            "Magic resistance": [
+              "10"
+            ],
+            "Ability": [
+              "gemtd_guai_base",
+              "shredder_reactive_armor"
+            ],
+            "Raw: Special": [
+              "[bonus_armor: 5.0 5.0 5.0 5.0]"
+            ]
+          }
+        },
+        {
+          "title": "Level 29 Vg Fox & Parrot Boatman",
+          "fields": {
+            "Code": [
+              "gemtd_feihuxia_fly"
+            ],
+            "English": [
+              "Vg Fox"
+            ],
+            "Lvl": [
+              "29"
+            ],
+            "HP (1-4 players) [Base]": [
+              "3600 . 12600 . 25800 . 34800 [6000]"
+            ],
+            "Movement (1-4 players) [Base]": [
+              "659 . 891 . 1054 . 1225 (flying) [775]"
+            ],
+            "Armor": [
+              "8"
+            ],
+            "Magic resistance": [
+              "10"
+            ],
+            "Ability": [
+              "gemtd_guai_base",
+              "guai_shanbi",
+              "enemy_zheguang"
+            ],
+            "Raw": [
+              "[EVASION: 50]"
+            ]
+          }
+        },
+        {
+          "title": "Level 29 Vg Fox & Parrot Boatman",
+          "fields": {
+            "Code": [
+              "gemtd_yingwuchuanfu_fly"
+            ],
+            "English": [
+              "Parrot Boatman"
+            ],
+            "Lvl": [
+              "29"
+            ],
+            "HP (1-4 players) [Base]": [
+              "2700 . 9450 . 19350 . 26100 [4500]"
+            ],
+            "Movement (1-4 players) [Base]": [
+              "850 . 1150 . 1360 . 1580 (flying) [1000]"
+            ],
+            "Armor": [
+              "8"
+            ],
+            "Magic resistance": [
+              "10"
+            ],
+            "Ability": [
+              "gemtd_guai_base",
+              "guai_shanbi",
+              "enemy_zheguang"
+            ],
+            "Raw": [
+              "[EVASION: 50]"
+            ]
+          }
+        },
+        {
+          "title": "Level 30 Carpet Rider",
+          "fields": {
+            "Code": [
+              "gemtd_mofafeitanxiaoemo_boss_fly"
+            ],
+            "English": [
+              "Carpet Rider"
+            ],
+            "Lvl": [
+              "30"
+            ],
+            "HP (1-4 players) [Base]": [
+              "48000 . 168000 . 344000 . 464000 [80000]"
+            ],
+            "Movement (1-4 players) [Base]": [
+              "638 . 862 . 1020 . 1185 (flying) [750]"
+            ],
+            "Armor": [
+              "0"
+            ],
+            "Magic resistance": [
+              "10"
+            ],
+            "Ability": [
+              "gemtd_guai_base"
+            ]
+          }
+        },
+        {
+          "title": "Level 31 Bookwyrm & Otter Dragon",
+          "fields": {
+            "Code": [
+              "gemtd_modianxiaolong"
+            ],
+            "English": [
+              "Bookwyrm"
+            ],
+            "Lvl": [
+              "31"
+            ],
+            "HP (1-4 players) [Base]": [
+              "8400 . 29400 . 60200 . 81200 [14000]"
+            ],
+            "Movement (1-4 players) [Base]": [
+              "765 . 1035 . 1224 . 1422 [900]"
+            ],
+            "Armor": [
+              "12"
+            ],
+            "Magic resistance": [
+              "10"
+            ],
+            "Ability": [
+              "gemtd_guai_base",
+              "enemy_momian",
+              "enemy_zheguang"
+            ],
+            "Raw": [
+              "[MAGIC IMMUNE: true][MAGICAL RESISTANCE: 100]"
+            ]
+          }
+        },
+        {
+          "title": "Level 31 Bookwyrm & Otter Dragon",
+          "fields": {
+            "Code": [
+              "gemtd_talongaosiji"
+            ],
+            "English": [
+              "Otter Dragon"
+            ],
+            "Lvl": [
+              "31"
+            ],
+            "HP (1-4 players) [Base]": [
+              "12600 . 44100 . 90300 . 121800 [21000]"
+            ],
+            "Movement (1-4 players) [Base]": [
+              "680 . 920 . 1088 . 1264 [800]"
+            ],
+            "Armor": [
+              "12"
+            ],
+            "Magic resistance": [
+              "10"
+            ],
+            "Ability": [
+              "gemtd_guai_base",
+              "enemy_wumian",
+              "enemy_zheguang"
+            ],
+            "Raw": [
+              "[INCOMING PHYSICAL DAMAGE: -100%]"
+            ]
+          }
+        },
+        {
+          "title": "Level 32 Rechargeable Shark",
+          "fields": {
+            "Code": [
+              "gemtd_xiaoshayu"
+            ],
+            "English": [
+              "Rechargeable Shark"
+            ],
+            "Lvl": [
+              "32"
+            ],
+            "HP (1-4 players) [Base]": [
+              "51000 . 178500 . 365500 . 493000 [85000]"
+            ],
+            "Movement (1-4 players) [Base]": [
+              "510 . 690 . 816 . 948 [600]"
+            ],
+            "Armor": [
+              "12"
+            ],
+            "Magic resistance": [
+              "10"
+            ],
+            "Ability": [
+              "gemtd_guai_base",
+              "enemy_recharge"
+            ],
+            "Raw": [
+              "[HEALTH REGEN: %recharge_life]"
+            ],
+            "Raw: Special": [
+              "[recharge_life: 400 600 800 1000]"
+            ]
+          }
+        },
+        {
+          "title": "Level 33 Ribboned Zombie & Baby DP",
+          "fields": {
+            "Code": [
+              "gemtd_feijiangxiaobao"
+            ],
+            "English": [
+              "Ribboned Zombie"
+            ],
+            "Lvl": [
+              "33"
+            ],
+            "HP (1-4 players) [Base]": [
+              "48000 . 168000 . 344000 . 464000 [80000]"
+            ],
+            "Movement (1-4 players) [Base]": [
+              "595 . 805 . 952 . 1106 [700]"
+            ],
+            "Armor": [
+              "12"
+            ],
+            "Magic resistance": [
+              "10"
+            ],
+            "Ability": [
+              "gemtd_guai_base",
+              "enemy_wumian",
+              "enemy_shanshuo"
+            ],
+            "Raw": [
+              "[INCOMING PHYSICAL DAMAGE: -100%]"
+            ]
+          }
+        },
+        {
+          "title": "Level 33 Ribboned Zombie & Baby DP",
+          "fields": {
+            "Code": [
+              "gemtd_siwangxianzhi"
+            ],
+            "English": [
+              "Baby DP"
+            ],
+            "Lvl": [
+              "33"
+            ],
+            "HP (1-4 players) [Base]": [
+              "33000 . 115500 . 236500 . 319000 [55000]"
+            ],
+            "Movement (1-4 players) [Base]": [
+              "850 . 1150 . 1360 . 1580 [1000]"
+            ],
+            "Armor": [
+              "12"
+            ],
+            "Magic resistance": [
+              "10"
+            ],
+            "Ability": [
+              "gemtd_guai_base",
+              "enemy_wumian",
+              "enemy_shanshuo"
+            ],
+            "Raw": [
+              "[INCOMING PHYSICAL DAMAGE: -100%]"
+            ]
+          }
+        },
+        {
+          "title": "Level 34 Baby Bloody & Bounty Apprentice",
+          "fields": {
+            "Code": [
+              "gemtd_xuemobaobao_fly"
+            ],
+            "English": [
+              "Baby Bloody"
+            ],
+            "Lvl": [
+              "34"
+            ],
+            "HP (1-4 players) [Base]": [
+              "7800 . 27300 . 55900 . 75400 [13000]"
+            ],
+            "Movement (1-4 players) [Base]": [
+              "786 . 1064 . 1258 . 1462 (flying) [925]"
+            ],
+            "Armor": [
+              "12"
+            ],
+            "Magic resistance": [
+              "10"
+            ],
+            "Ability": [
+              "gemtd_guai_base",
+              "guai_shanbi"
+            ],
+            "Raw": [
+              "[EVASION: 50]"
+            ]
+          }
+        },
+        {
+          "title": "Level 34 Baby Bloody & Bounty Apprentice",
+          "fields": {
+            "Code": [
+              "gemtd_shangjinbaobao_fly"
+            ],
+            "English": [
+              "Bounty Apprentice"
+            ],
+            "Lvl": [
+              "34"
+            ],
+            "HP (1-4 players) [Base]": [
+              "12000 . 42000 . 86000 . 116000 [20000]"
+            ],
+            "Movement (1-4 players) [Base]": [
+              "616 . 834 . 986 . 1146 (flying) [725]"
+            ],
+            "Armor": [
+              "12"
+            ],
+            "Magic resistance": [
+              "10"
+            ],
+            "Ability": [
+              "gemtd_guai_base",
+              "guai_shanbi"
+            ],
+            "Raw": [
+              "[EVASION: 50]"
+            ]
+          }
+        },
+        {
+          "title": "Level 35 Black And White Fox",
+          "fields": {
+            "Code": [
+              "gemtd_jinyinhuling_fly"
+            ],
+            "English": [
+              "Black And White Fox"
+            ],
+            "Lvl": [
+              "35"
+            ],
+            "HP (1-4 players) [Base]": [
+              "5280 . 18480 . 37840 . 51040 [8800]"
+            ],
+            "Movement (1-4 players) [Base]": [
+              "595 . 805 . 952 . 1106 (flying) [700]"
+            ],
+            "Armor": [
+              "12"
+            ],
+            "Magic resistance": [
+              "10"
+            ],
+            "Ability": [
+              "gemtd_guai_base",
+              "enemy_momian"
+            ],
+            "Raw": [
+              "[MAGIC IMMUNE: true][MAGICAL RESISTANCE: 100]"
+            ]
+          }
+        },
+        {
+          "title": "Level 36 Jumo",
+          "fields": {
+            "Code": [
+              "gemtd_cuihua"
+            ],
+            "English": [
+              "Jumo"
+            ],
+            "Lvl": [
+              "36"
+            ],
+            "HP (1-4 players) [Base]": [
+              "33000 . 115500 . 236500 . 319000 [55000]"
+            ],
+            "Movement (1-4 players) [Base]": [
+              "850 . 1150 . 1360 . 1580 [1000]"
+            ],
+            "Armor": [
+              "12"
+            ],
+            "Magic resistance": [
+              "10"
+            ],
+            "Ability": [
+              "gemtd_guai_base",
+              "enemy_momian"
+            ],
+            "Raw": [
+              "[MAGIC IMMUNE: true][MAGICAL RESISTANCE: 100]"
+            ]
+          }
+        },
+        {
+          "title": "Level 37 Baekho",
+          "fields": {
+            "Code": [
+              "gemtd_xiaobaihu"
+            ],
+            "English": [
+              "Baekho"
+            ],
+            "Lvl": [
+              "37"
+            ],
+            "HP (1-4 players) [Base]": [
+              "72000 . 252000 . 516000 . 696000 [120000]"
+            ],
+            "Movement (1-4 players) [Base]": [
+              "1020 . 1380 . 1632 . 1896 [1200]"
+            ],
+            "Armor": [
+              "12"
+            ],
+            "Magic resistance": [
+              "10"
+            ],
+            "Ability": [
+              "gemtd_guai_base",
+              "enemy_shanshuo"
+            ]
+          }
+        },
+        {
+          "title": "Level 38 Lilnova",
+          "fields": {
+            "Code": [
+              "gemtd_xiaoxingyue"
+            ],
+            "English": [
+              "Lilnova"
+            ],
+            "Lvl": [
+              "38"
+            ],
+            "HP (1-4 players) [Base]": [
+              "120000 . 420000 . 860000 . 1160000 [200000]"
+            ],
+            "Movement (1-4 players) [Base]": [
+              "850 . 1150 . 1360 . 1580 [1000]"
+            ],
+            "Armor": [
+              "12"
+            ],
+            "Magic resistance": [
+              "10"
+            ],
+            "Ability": [
+              "gemtd_guai_base",
+              "guai_jiaoxieguanghuan"
+            ],
+            "Raw": [
+              "Aura: Range 130 150 170 190 Effect: [DISARMED: true]"
+            ]
+          }
+        },
+        {
+          "title": "Level 39 Mermaid Rider & Newt",
+          "fields": {
+            "Code": [
+              "gemtd_liangqiyuhai_fly"
+            ],
+            "English": [
+              "Mermaid Rider"
+            ],
+            "Lvl": [
+              "39"
+            ],
+            "HP (1-4 players) [Base]": [
+              "33000 . 115500 . 236500 . 319000 [55000]"
+            ],
+            "Movement (1-4 players) [Base]": [
+              "510 . 690 . 816 . 948 (flying) [600]"
+            ],
+            "Armor": [
+              "12"
+            ],
+            "Magic resistance": [
+              "10"
+            ],
+            "Ability": [
+              "gemtd_guai_base",
+              "enemy_bukeqinfan",
+              "tidehunter_kraken_shell",
+              "guai_shanbi"
+            ],
+            "Raw": [
+              "[DISARMED: true][ATTACKSPEED: -300]",
+              "[EVASION: 50]"
+            ],
+            "Raw: Special": [
+              "[damage_reduction: 0 0 0 0][damage_reset_interval: 10][damage_cleanse: 40000 60000 80000 100000]"
+            ]
+          }
+        },
+        {
+          "title": "Level 39 Mermaid Rider & Newt",
+          "fields": {
+            "Code": [
+              "gemtd_fennenrongyuan_fly"
+            ],
+            "English": [
+              "Newt"
+            ],
+            "Lvl": [
+              "39"
+            ],
+            "HP (1-4 players) [Base]": [
+              "9000 . 31500 . 64500 . 87000 [15000]"
+            ],
+            "Movement (1-4 players) [Base]": [
+              "680 . 920 . 1088 . 1264 (flying) [800]"
+            ],
+            "Armor": [
+              "12"
+            ],
+            "Magic resistance": [
+              "10"
+            ],
+            "Ability": [
+              "gemtd_guai_base",
+              "enemy_bukeqinfan",
+              "tidehunter_kraken_shell",
+              "guai_shanbi"
+            ],
+            "Raw": [
+              "[DISARMED: true][ATTACKSPEED: -300]",
+              "[EVASION: 50]"
+            ],
+            "Raw: Special": [
+              "[damage_reduction: 0 0 0 0][damage_reset_interval: 10][damage_cleanse: 40000 60000 80000 100000]"
+            ]
+          }
+        },
+        {
+          "title": "Level 40 Thrilling Ghost",
+          "fields": {
+            "Code": [
+              "gemtd_guixiaoxieling_boss_fly"
+            ],
+            "English": [
+              "Thrilling Ghost"
+            ],
+            "Lvl": [
+              "40"
+            ],
+            "HP (1-4 players) [Base]": [
+              "198000 . 693000 . 1419000 . 1914000 [330000]"
+            ],
+            "Movement (1-4 players) [Base]": [
+              "680 . 920 . 1088 . 1264 (flying) [800]"
+            ],
+            "Armor": [
+              "0"
+            ],
+            "Magic resistance": [
+              "10"
+            ],
+            "Ability": [
+              "gemtd_guai_base",
+              "tidehunter_kraken_shell"
+            ],
+            "Raw: Special": [
+              "[damage_reduction: 0 0 0 0][damage_reset_interval: 10][damage_cleanse: 40000 60000 80000 100000]"
+            ]
+          }
+        },
+        {
+          "title": "Level 41 Jade Dragon & Azuremir",
+          "fields": {
+            "Code": [
+              "gemtd_cuiyuxiaolong"
+            ],
+            "English": [
+              "Jade Dragon"
+            ],
+            "Lvl": [
+              "41"
+            ],
+            "HP (1-4 players) [Base]": [
+              "144000 . 504000 . 1032000 . 1392000 [240000]"
+            ],
+            "Movement (1-4 players) [Base]": [
+              "595 . 805 . 952 . 1106 [700]"
+            ],
+            "Armor": [
+              "16"
+            ],
+            "Magic resistance": [
+              "50"
+            ],
+            "Ability": [
+              "gemtd_guai_base",
+              "enemy_zheguang"
+            ]
+          }
+        },
+        {
+          "title": "Level 41 Jade Dragon & Azuremir",
+          "fields": {
+            "Code": [
+              "gemtd_weilanlong"
+            ],
+            "English": [
+              "Azuremir"
+            ],
+            "Lvl": [
+              "41"
+            ],
+            "HP (1-4 players) [Base]": [
+              "72000 . 252000 . 516000 . 696000 [120000]"
+            ],
+            "Movement (1-4 players) [Base]": [
+              "1105 . 1495 . 1768 . 2054 [1300]"
+            ],
+            "Armor": [
+              "16"
+            ],
+            "Magic resistance": [
+              "25"
+            ],
+            "Ability": [
+              "gemtd_guai_base",
+              "enemy_zheguang"
+            ]
+          }
+        },
+        {
+          "title": "Level 42 Kupu",
+          "fields": {
+            "Code": [
+              "gemtd_saodiekupu_fly"
+            ],
+            "English": [
+              "Kupu"
+            ],
+            "Lvl": [
+              "42"
+            ],
+            "HP (1-4 players) [Base]": [
+              "9000 . 31500 . 64500 . 87000 [15000]"
+            ],
+            "Movement (1-4 players) [Base]": [
+              "595 . 805 . 952 . 1106 (flying) [700]"
+            ],
+            "Armor": [
+              "16"
+            ],
+            "Magic resistance": [
+              "10"
+            ],
+            "Ability": [
+              "gemtd_guai_base",
+              "enemy_momian",
+              "runrunrun"
+            ],
+            "Raw": [
+              "[MAGIC IMMUNE: true][MAGICAL RESISTANCE: 100]",
+              "[MOVESPEED: 50%]"
+            ]
+          }
+        },
+        {
+          "title": "Level 43 Furry Fish",
+          "fields": {
+            "Code": [
+              "gemtd_maomaoyu"
+            ],
+            "English": [
+              "Furry Fish"
+            ],
+            "Lvl": [
+              "43"
+            ],
+            "HP (1-4 players) [Base]": [
+              "114000 . 399000 . 817000 . 1102000 [190000]"
+            ],
+            "Movement (1-4 players) [Base]": [
+              "680 . 920 . 1088 . 1264 [800]"
+            ],
+            "Armor": [
+              "16"
+            ],
+            "Magic resistance": [
+              "50"
+            ],
+            "Ability": [
+              "gemtd_guai_base",
+              "enemy_bukeqinfan",
+              "guai_shanbi",
+              "enemy_recharge"
+            ],
+            "Raw": [
+              "[DISARMED: true][ATTACKSPEED: -300]",
+              "[EVASION: 50]",
+              "[HEALTH REGEN: %recharge_life]"
+            ],
+            "Raw: Special": [
+              "[recharge_life: 400 600 800 1000]"
+            ]
+          }
+        },
+        {
+          "title": "Level 44 Shroomy",
+          "fields": {
+            "Code": [
+              "gemtd_xiaomogu"
+            ],
+            "English": [
+              "Shroomy"
+            ],
+            "Lvl": [
+              "44"
+            ],
+            "HP (1-4 players) [Base]": [
+              "120000 . 420000 . 860000 . 1160000 [200000]"
+            ],
+            "Movement (1-4 players) [Base]": [
+              "425 . 575 . 680 . 790 [500]"
+            ],
+            "Armor": [
+              "16"
+            ],
+            "Magic resistance": [
+              "10"
+            ],
+            "Ability": [
+              "gemtd_guai_base",
+              "enemy_momian",
+              "enemy_shanshuo"
+            ],
+            "Raw": [
+              "[MAGIC IMMUNE: true][MAGICAL RESISTANCE: 100]"
+            ]
+          }
+        },
+        {
+          "title": "Level 45 Chirpy",
+          "fields": {
+            "Code": [
+              "gemtd_jiujiu_fly"
+            ],
+            "English": [
+              "Chirpy"
+            ],
+            "Lvl": [
+              "45"
+            ],
+            "HP (1-4 players) [Base]": [
+              "72000 . 252000 . 516000 . 696000 [120000]"
+            ],
+            "Movement (1-4 players) [Base]": [
+              "2040 . 2760 . 3264 . 3792 (flying) [2400]"
+            ],
+            "Armor": [
+              "16"
+            ],
+            "Magic resistance": [
+              "10"
+            ],
+            "Ability": [
+              "gemtd_guai_base",
+              "guai_xietong",
+              "guai_jiaoxieguanghuan"
+            ],
+            "Raw": [
+              "Aura: Range 9999 Effect: [MOVESPEED: -150]",
+              "Aura: Range 130 150 170 190 Effect: [DISARMED: true]"
+            ]
+          }
+        },
+        {
+          "title": "Level 46 Boooofus",
+          "fields": {
+            "Code": [
+              "gemtd_siwangxintu"
+            ],
+            "English": [
+              "Boooofus"
+            ],
+            "Lvl": [
+              "46"
+            ],
+            "HP (1-4 players) [Base]": [
+              "360000 . 1260000 . 2580000 . 3480000 [600000]"
+            ],
+            "Movement (1-4 players) [Base]": [
+              "680 . 920 . 1088 . 1264 [800]"
+            ],
+            "Armor": [
+              "32"
+            ],
+            "Magic resistance": [
+              "20"
+            ],
+            "Ability": [
+              "gemtd_guai_base",
+              "enemy_wumian"
+            ],
+            "Raw": [
+              "[INCOMING PHYSICAL DAMAGE: -100%]"
+            ]
+          }
+        },
+        {
+          "title": "Level 47 Swift Donkey & Crummy",
+          "fields": {
+            "Code": [
+              "gemtd_xunjieyuanzumaolv"
+            ],
+            "English": [
+              "Swift Donkey"
+            ],
+            "Lvl": [
+              "47"
+            ],
+            "HP (1-4 players) [Base]": [
+              "180000 . 630000 . 1290000 . 1740000 [300000]"
+            ],
+            "Movement (1-4 players) [Base]": [
+              "425 . 575 . 680 . 790 [500]"
+            ],
+            "Armor": [
+              "16"
+            ],
+            "Magic resistance": [
+              "80"
+            ],
+            "Ability": [
+              "gemtd_guai_base",
+              "enemy_momian",
+              "enemy_bukeqinfan",
+              "runrunrun"
+            ],
+            "Raw": [
+              "[MAGIC IMMUNE: true][MAGICAL RESISTANCE: 100]",
+              "[DISARMED: true][ATTACKSPEED: -300]",
+              "[MOVESPEED: 50%]"
+            ]
+          }
+        },
+        {
+          "title": "Level 47 Swift Donkey & Crummy",
+          "fields": {
+            "Code": [
+              "gemtd_jilamofashi"
+            ],
+            "English": [
+              "Crummy"
+            ],
+            "Lvl": [
+              "47"
+            ],
+            "HP (1-4 players) [Base]": [
+              "330000 . 1155000 . 2365000 . 3190000 [550000]"
+            ],
+            "Movement (1-4 players) [Base]": [
+              "510 . 690 . 816 . 948 [600]"
+            ],
+            "Armor": [
+              "16"
+            ],
+            "Magic resistance": [
+              "80"
+            ],
+            "Ability": [
+              "gemtd_guai_base",
+              "enemy_bukeqinfan",
+              "runrunrun"
+            ],
+            "Raw": [
+              "[DISARMED: true][ATTACKSPEED: -300]",
+              "[MOVESPEED: 50%]"
+            ]
+          }
+        },
+        {
+          "title": "Level 48 Wabbit & G1 Courier",
+          "fields": {
+            "Code": [
+              "gemtd_xiaofeixia_fly"
+            ],
+            "English": [
+              "Wabbit"
+            ],
+            "Lvl": [
+              "48"
+            ],
+            "HP (1-4 players) [Base]": [
+              "36000 . 126000 . 258000 . 348000 [60000]"
+            ],
+            "Movement (1-4 players) [Base]": [
+              "468 . 633 . 748 . 869 (flying) [550]"
+            ],
+            "Armor": [
+              "16"
+            ],
+            "Magic resistance": [
+              "10"
+            ],
+            "Ability": [
+              "gemtd_guai_base",
+              "enemy_momian",
+              "guai_jiaoxieguanghuan",
+              "guai_shanbi"
+            ],
+            "Raw": [
+              "[MAGIC IMMUNE: true][MAGICAL RESISTANCE: 100]",
+              "Aura: Range 130 150 170 190 Effect: [DISARMED: true]",
+              "[EVASION: 50]"
+            ]
+          }
+        },
+        {
+          "title": "Level 48 Wabbit & G1 Courier",
+          "fields": {
+            "Code": [
+              "gemtd_jiwanghaidao_fly"
+            ],
+            "English": [
+              "G1 Courier"
+            ],
+            "Lvl": [
+              "48"
+            ],
+            "HP (1-4 players) [Base]": [
+              "60000 . 210000 . 430000 . 580000 [100000]"
+            ],
+            "Movement (1-4 players) [Base]": [
+              "340 . 460 . 544 . 632 (flying) [400]"
+            ],
+            "Armor": [
+              "16"
+            ],
+            "Magic resistance": [
+              "10"
+            ],
+            "Ability": [
+              "gemtd_guai_base",
+              "enemy_momian",
+              "guai_jiaoxieguanghuan",
+              "guai_shanbi"
+            ],
+            "Raw": [
+              "[MAGIC IMMUNE: true][MAGICAL RESISTANCE: 100]",
+              "Aura: Range 130 150 170 190 Effect: [DISARMED: true]",
+              "[EVASION: 50]"
+            ]
+          }
+        },
+        {
+          "title": "Level 49 Drodo",
+          "fields": {
+            "Code": [
+              "gemtd_juniaoduoduo"
+            ],
+            "English": [
+              "Drodo"
+            ],
+            "Lvl": [
+              "49"
+            ],
+            "HP (1-4 players) [Base]": [
+              "480000 . 1680000 . 3440000 . 4640000 [800000]"
+            ],
+            "Movement (1-4 players) [Base]": [
+              "595 . 805 . 952 . 1106 [700]"
+            ],
+            "Armor": [
+              "32"
+            ],
+            "Magic resistance": [
+              "80"
+            ],
+            "Ability": [
+              "gemtd_guai_base",
+              "tidehunter_kraken_shell",
+              "enemy_recharge"
+            ],
+            "Raw: Special": [
+              "[damage_reduction: 0 0 0 0][damage_reset_interval: 10][damage_cleanse: 40000 60000 80000 100000]",
+              "[recharge_life: 400 600 800 1000]"
+            ],
+            "Raw": [
+              "[HEALTH REGEN: %recharge_life]"
+            ]
+          }
+        },
+        {
+          "title": "Level 50 Baby Roshan",
+          "fields": {
+            "Code": [
+              "gemtd_roushan_boss_fly"
+            ],
+            "English": [
+              "Baby Roshan"
+            ],
+            "Lvl": [
+              "50"
+            ],
+            "HP (1-4 players) [Base]": [
+              "600000 . 2100000 . 4300000 . 5800000 [1000000]"
+            ],
+            "Movement (1-4 players) [Base]": [
+              "850 . 1150 . 1360 . 1580 (flying) [1000]"
+            ],
+            "Armor": [
+              "16"
+            ],
+            "Magic resistance": [
+              "20"
+            ],
+            "Ability": [
+              "gemtd_guai_base",
+              "tidehunter_kraken_shell"
+            ],
+            "Raw: Special": [
+              "[damage_reduction: 0 0 0 0][damage_reset_interval: 10][damage_cleanse: 40000 60000 80000 100000]"
+            ]
+          }
+        },
+        {
+          "title": "Others",
+          "fields": {
+            "Code": [
+              "gemtd_stone"
+            ],
+            "English": [
+              "Stone"
+            ],
+            "Lvl": [
+              "0"
+            ],
+            "HP (1-4 players) [Base]": [
+              "1 . 2 . 4 . 6 [1]"
+            ],
+            "Movement (1-4 players) [Base]": [
+              "0 . 0 . 0 . 0 [0]"
+            ],
+            "Armor": [
+              "0"
+            ],
+            "Magic resistance": [
+              "10"
+            ]
+          }
+        },
+        {
+          "title": "Others",
+          "fields": {
+            "Code": [
+              "gemtd_yuediyang_boss"
+            ],
+            "English": [
+              "Blackface"
+            ],
+            "Lvl": [
+              "20"
+            ],
+            "HP (1-4 players) [Base]": [
+              "24000 . 84000 . 172000 . 232000 [40000]"
+            ],
+            "Movement (1-4 players) [Base]": [
+              "723 . 977 . 1156 . 1343 [850]"
+            ],
+            "Armor": [
+              "0"
+            ],
+            "Magic resistance": [
+              "10"
+            ],
+            "Ability": [
+              "gemtd_guai_base"
+            ]
+          }
+        },
+        {
+          "title": "Others",
+          "fields": {
+            "Code": [
+              "gemtd_kongxinnanguaren_boss"
+            ],
+            "English": [
+              "Pumpkin"
+            ],
+            "Lvl": [
+              "20"
+            ],
+            "HP (1-4 players) [Base]": [
+              "27000 . 94500 . 193500 . 261000 [45000]"
+            ],
+            "Movement (1-4 players) [Base]": [
+              "680 . 920 . 1088 . 1264 (flying) [800]"
+            ],
+            "Armor": [
+              "0"
+            ],
+            "Magic resistance": [
+              "10"
+            ],
+            "Ability": [
+              "gemtd_guai_base"
+            ]
+          }
+        },
+        {
+          "title": "Others",
+          "fields": {
+            "Code": [
+              "gemtd_nianshou_boss"
+            ],
+            "English": [
+              "Festival Monster"
+            ],
+            "Lvl": [
+              "20"
+            ],
+            "HP (1-4 players) [Base]": [
+              "24000 . 84000 . 172000 . 232000 [40000]"
+            ],
+            "Movement (1-4 players) [Base]": [
+              "765 . 1035 . 1224 . 1422 [900]"
+            ],
+            "Armor": [
+              "0"
+            ],
+            "Magic resistance": [
+              "10"
+            ],
+            "Ability": [
+              "gemtd_guai_base"
+            ]
+          }
+        },
+        {
+          "title": "Others",
+          "fields": {
+            "Code": [
+              "gemtd_zard_boss_fly"
+            ],
+            "English": [
+              "Zard-"
+            ],
+            "Lvl": [
+              "30"
+            ],
+            "HP (1-4 players) [Base]": [
+              "60000 . 210000 . 430000 . 580000 [100000]"
+            ],
+            "Movement (1-4 players) [Base]": [
+              "638 . 862 . 1020 . 1185 (flying) [750]"
+            ],
+            "Armor": [
+              "0"
+            ],
+            "Magic resistance": [
+              "10"
+            ],
+            "Ability": [
+              "gemtd_guai_base"
+            ]
+          }
+        },
+        {
+          "title": "Others",
+          "fields": {
+            "Code": [
+              "gemtd_jinyinhuling_fly1"
+            ],
+            "English": [
+              "Black And White Fox"
+            ],
+            "Lvl": [
+              "35"
+            ],
+            "HP (1-4 players) [Base]": [
+              "6000 . 21000 . 43000 . 58000 [10000]"
+            ],
+            "Movement (1-4 players) [Base]": [
+              "595 . 805 . 952 . 1106 (flying) [700]"
+            ],
+            "Armor": [
+              "12"
+            ],
+            "Magic resistance": [
+              "10"
+            ],
+            "Ability": [
+              "gemtd_guai_base",
+              "enemy_wumian"
+            ],
+            "Raw": [
+              "[INCOMING PHYSICAL DAMAGE: -100%]"
+            ]
+          }
+        },
+        {
+          "title": "Others",
+          "fields": {
+            "Code": [
+              "gemtd_cuihua1"
+            ],
+            "English": [
+              "Jumo"
+            ],
+            "Lvl": [
+              "36"
+            ],
+            "HP (1-4 players) [Base]": [
+              "51000 . 178500 . 365500 . 493000 [85000]"
+            ],
+            "Movement (1-4 players) [Base]": [
+              "850 . 1150 . 1360 . 1580 [1000]"
+            ],
+            "Armor": [
+              "12"
+            ],
+            "Magic resistance": [
+              "10"
+            ],
+            "Ability": [
+              "gemtd_guai_base",
+              "enemy_wumian"
+            ],
+            "Raw": [
+              "[INCOMING PHYSICAL DAMAGE: -100%]"
+            ]
+          }
+        },
+        {
+          "title": "Others",
+          "fields": {
+            "Code": [
+              "gemtd_taijiaoxiongdi_tester"
+            ],
+            "English": [
+              "Brother"
+            ],
+            "Lvl": [
+              "36"
+            ],
+            "HP (1-4 players) [Base]": [
+              "1200000 . 4200000 . 8600000 . 11600000 [2000000]"
+            ],
+            "Movement (1-4 players) [Base]": [
+              "84999 . 114999 . 135999 . 157998 (flying) [99999]"
+            ],
+            "Armor": [
+              "99999"
+            ],
+            "Magic resistance": [
+              "10"
+            ],
+            "Ability": [
+              "gemtd_guai_base"
+            ]
+          }
+        },
+        {
+          "title": "Others",
+          "fields": {
+            "Code": [
+              "gemtd_yutumeixuan_tester"
+            ],
+            "English": [
+              "Jade Rabbit"
+            ],
+            "Lvl": [
+              "36"
+            ],
+            "HP (1-4 players) [Base]": [
+              "1200000 . 4200000 . 8600000 . 11600000 [2000000]"
+            ],
+            "Movement (1-4 players) [Base]": [
+              "574 . 776 . 918 . 1067 (flying) [675]"
+            ],
+            "Armor": [
+              "0"
+            ],
+            "Magic resistance": [
+              "10"
+            ],
+            "Ability": [
+              "gemtd_guai_base",
+              "enemy_momian"
+            ],
+            "Raw": [
+              "[MAGIC IMMUNE: true][MAGICAL RESISTANCE: 100]"
+            ]
+          }
+        },
+        {
+          "title": "Others",
+          "fields": {
+            "Code": [
+              "gemtd_xiaoxingyue1"
+            ],
+            "English": [
+              "Lilnova"
+            ],
+            "Lvl": [
+              "38"
+            ],
+            "HP (1-4 players) [Base]": [
+              "120000 . 420000 . 860000 . 1160000 [200000]"
+            ],
+            "Movement (1-4 players) [Base]": [
+              "850 . 1150 . 1360 . 1580 [1000]"
+            ],
+            "Armor": [
+              "12"
+            ],
+            "Magic resistance": [
+              "10"
+            ],
+            "Ability": [
+              "gemtd_guai_base",
+              "riki_permanent_invisibility",
+              "guai_jiaoxieguanghuan"
+            ],
+            "Raw: Special": [
+              "[fade_time: 1.0][fade_delay: 2.0][bonus_health_regen: 0]"
+            ],
+            "Raw": [
+              "Aura: Range 130 150 170 190 Effect: [DISARMED: true]"
+            ]
+          }
+        },
+        {
+          "title": "Others",
+          "fields": {
+            "Code": [
+              "gemtd_gugubiao_boss_fly"
+            ],
+            "English": [
+              "Gu-gu"
+            ],
+            "Lvl": [
+              "40"
+            ],
+            "HP (1-4 players) [Base]": [
+              "198000 . 693000 . 1419000 . 1914000 [330000]"
+            ],
+            "Movement (1-4 players) [Base]": [
+              "1020 . 1380 . 1632 . 1896 (flying) [1200]"
+            ],
+            "Armor": [
+              "0"
+            ],
+            "Magic resistance": [
+              "10"
+            ],
+            "Ability": [
+              "gemtd_guai_base",
+              "tidehunter_kraken_shell"
+            ],
+            "Raw: Special": [
+              "[damage_reduction: 0 0 0 0][damage_reset_interval: 10][damage_cleanse: 40000 60000 80000 100000]"
+            ]
+          }
+        },
+        {
+          "title": "Others",
+          "fields": {
+            "Code": [
+              "gemtd_moke_boss_fly"
+            ],
+            "English": [
+              "Mok"
+            ],
+            "Lvl": [
+              "43"
+            ],
+            "HP (1-4 players) [Base]": [
+              "240000 . 840000 . 1720000 . 2320000 [400000]"
+            ],
+            "Movement (1-4 players) [Base]": [
+              "765 . 1035 . 1224 . 1422 (flying) [900]"
+            ],
+            "Armor": [
+              "0"
+            ],
+            "Magic resistance": [
+              "10"
+            ],
+            "Ability": [
+              "gemtd_guai_base",
+              "tidehunter_kraken_shell",
+              "enemy_bukeqinfan",
+              "guai_shanbi",
+              "enemy_recharge"
+            ],
+            "Raw: Special": [
+              "[damage_reduction: 0 0 0 0][damage_reset_interval: 10][damage_cleanse: 40000 60000 80000 100000]",
+              "[recharge_life: 400 600 800 1000]"
+            ],
+            "Raw": [
+              "[DISARMED: true][ATTACKSPEED: -300]",
+              "[EVASION: 50]",
+              "[HEALTH REGEN: %recharge_life]"
+            ]
+          }
+        },
+        {
+          "title": "Others",
+          "fields": {
+            "Code": [
+              "gemtd_jumenghaimin_tester"
+            ],
+            "English": [
+              "Toothless Tuskar"
+            ],
+            "Lvl": [
+              "43"
+            ],
+            "HP (1-4 players) [Base]": [
+              "1800000 . 6300000 . 12900000 . 17400000 [3000000]"
+            ],
+            "Movement (1-4 players) [Base]": [
+              "1275 . 1725 . 2040 . 2370 (flying) [1500]"
+            ],
+            "Armor": [
+              "0"
+            ],
+            "Magic resistance": [
+              "10"
+            ],
+            "Ability": [
+              "gemtd_guai_base",
+              "tidehunter_kraken_shell",
+              "enemy_bukeqinfan",
+              "guai_shanbi",
+              "enemy_recharge"
+            ],
+            "Raw: Special": [
+              "[damage_reduction: 0 0 0 0][damage_reset_interval: 10][damage_cleanse: 40000 60000 80000 100000]",
+              "[recharge_life: 400 600 800 1000]"
+            ],
+            "Raw": [
+              "[DISARMED: true][ATTACKSPEED: -300]",
+              "[EVASION: 50]",
+              "[HEALTH REGEN: %recharge_life]"
+            ]
+          }
+        },
+        {
+          "title": "Others",
+          "fields": {
+            "Code": [
+              "gemtd_juniaoduoduo_tester"
+            ],
+            "English": [
+              "Drodo"
+            ],
+            "Lvl": [
+              "46"
+            ],
+            "HP (1-4 players) [Base]": [
+              "12000000 . 42000000 . 86000000 . 116000000 [20000000]"
+            ],
+            "Movement (1-4 players) [Base]": [
+              "1275 . 1725 . 2040 . 2370 (flying) [1500]"
+            ],
+            "Armor": [
+              "20"
+            ],
+            "Magic resistance": [
+              "10"
+            ],
+            "Ability": [
+              "gemtd_guai_base",
+              "quanpingchenmo"
+            ],
+            "Raw": [
+              "Aura: Range 99999 Effect: [SILENCED: true]"
+            ]
+          }
+        },
+        {
+          "title": "Others",
+          "fields": {
+            "Code": [
+              "gemtd_roushan_boss_fly_jin"
+            ],
+            "English": [
+              "Golden Baby Roshan"
+            ],
+            "Lvl": [
+              "50"
+            ],
+            "HP (1-4 players) [Base]": [
+              "600000 . 2100000 . 4300000 . 5800000 [1000000]"
+            ],
+            "Movement (1-4 players) [Base]": [
+              "765 . 1035 . 1224 . 1422 (flying) [900]"
+            ],
+            "Armor": [
+              "32"
+            ],
+            "Magic resistance": [
+              "100"
+            ],
+            "Ability": [
+              "gemtd_guai_base",
+              "tidehunter_kraken_shell"
+            ],
+            "Raw: Special": [
+              "[damage_reduction: 0 0 0 0][damage_reset_interval: 10][damage_cleanse: 40000 60000 80000 100000]"
+            ]
+          }
+        },
+        {
+          "title": "Others",
+          "fields": {
+            "Code": [
+              "gemtd_roushan_boss_fly_bojin"
+            ],
+            "English": [
+              "Platinum Baby Roshan"
+            ],
+            "Lvl": [
+              "50"
+            ],
+            "HP (1-4 players) [Base]": [
+              "600000 . 2100000 . 4300000 . 5800000 [1000000]"
+            ],
+            "Movement (1-4 players) [Base]": [
+              "765 . 1035 . 1224 . 1422 (flying) [900]"
+            ],
+            "Armor": [
+              "9999"
+            ],
+            "Magic resistance": [
+              "20"
+            ],
+            "Ability": [
+              "gemtd_guai_base",
+              "tidehunter_kraken_shell"
+            ],
+            "Raw: Special": [
+              "[damage_reduction: 0 0 0 0][damage_reset_interval: 10][damage_cleanse: 40000 60000 80000 100000]"
+            ]
+          }
+        },
+        {
+          "title": "Others",
+          "fields": {
+            "Code": [
+              "gemtd_castle"
+            ],
+            "English": [
+              "Gem Castle"
+            ],
+            "Lvl": [
+              "100"
+            ],
+            "HP (1-4 players) [Base]": [
+              "60 . 210 . 430 . 580 [100]"
+            ],
+            "Movement (1-4 players) [Base]": [
+              "0 . 0 . 0 . 0 (flying) [0]"
+            ],
+            "Armor": [
+              "0"
+            ],
+            "Magic resistance": [
+              "10"
+            ]
+          }
+        }
+      ]
+    },
+    "pedals": {
+      "url": "https://raw.githubusercontent.com/clementbera/Website/f424bb2abbe9355f7cfa9a539e4e61512f027750/pedals.html",
+      "sha256": "f353bb85d4034a5386770d32b3bbab8c0dab54e6e539090c75ff2367eafe8471",
+      "records": [
+        {
+          "title": "Ensnare Pedal",
+          "fields": {
+            "Code": [
+              "gemtd_youbushiban"
+            ],
+            "English": [
+              "Ensnare Pedal"
+            ],
+            "Combination": [
+              "Y3 + D2"
+            ],
+            "Ability": [
+              "naga_siren_ensnare"
+            ]
+          }
+        },
+        {
+          "title": "Gale Pedal",
+          "fields": {
+            "Code": [
+              "gemtd_zhangqishiban"
+            ],
+            "English": [
+              "Gale Pedal"
+            ],
+            "Combination": [
+              "G3 + E2"
+            ],
+            "Ability": [
+              "new_venomous_gale"
+            ],
+            "Raw": [
+              "deals %tick_damage magic damage."
+            ],
+            "Raw: Special": [
+              "[tick_interval: 3.0 3.0 3.0 3.0][strike_damage: 0][radius: 125 125 125 125][duration: 5 7 9 11][tick_damage: 0][movement_slow: -50 -50 -50 -50]"
+            ],
+            "Pierce Spell Immunity": [
+              "false"
+            ]
+          }
+        },
+        {
+          "title": "Torrent Pedal",
+          "fields": {
+            "Code": [
+              "gemtd_hongliushiban"
+            ],
+            "English": [
+              "Torrent Pedal"
+            ],
+            "Combination": [
+              "B3 + Q2"
+            ],
+            "Ability": [
+              "new_torrent"
+            ],
+            "Raw": [
+              "during %stun_duration seconds, every %stun_duration / %tick_count seconds, deals 0 magic damage. ~ [MOVESPEED: %movespeed_bonus%]"
+            ],
+            "Raw: Special": [
+              "[stun_duration: 2][tick_count: 10][movespeed_bonus: -40][vision_duration: 4.73][delay: 1.6 1.6 1.6 1.6][torrent_height: 400]"
+            ],
+            "Pierce Spell Immunity": [
+              "false"
+            ]
+          }
+        },
+        {
+          "title": "Howl Pedal",
+          "fields": {
+            "Code": [
+              "gemtd_haojiaoshiban"
+            ],
+            "English": [
+              "Howl Pedal"
+            ],
+            "Combination": [
+              "P3 + R2"
+            ],
+            "Ability": [
+              "new_haojiao"
+            ],
+            "Raw": [
+              "[DAMAGEOUTGOING: %unit_bonus_damage%]"
+            ],
+            "Raw: Special": [
+              "[aura_radius: 256][unit_bonus_damage: 20 30 40 50][howl_duration: 10.0][think_interval: 0.5]"
+            ]
+          }
+        },
+        {
+          "title": "Acid Pedal",
+          "fields": {
+            "Code": [
+              "gemtd_suanwushiban"
+            ],
+            "English": [
+              "Acid Pedal"
+            ],
+            "Combination": [
+              "Q3 + Y2"
+            ],
+            "Ability": [
+              "new_acid_spray"
+            ],
+            "Raw": [
+              "Aura: Range %radius Effect: deals %damage physical damage."
+            ],
+            "Raw: Special": [
+              "[duration: 10.0][damage: 0][radius: 625][armor_reduction: -8 -10 -12 -14][tick_rate: 1.0]"
+            ],
+            "Pierce Spell Immunity": [
+              "true"
+            ]
+          }
+        },
+        {
+          "title": "Paralysis Pedal",
+          "fields": {
+            "Code": [
+              "gemtd_mabishiban"
+            ],
+            "English": [
+              "Paralysis Pedal"
+            ],
+            "Combination": [
+              "R3 + G2"
+            ],
+            "Ability": [
+              "new_cask"
+            ],
+            "Raw: Special": [
+              "[bounce_delay: 0.2][hero_duration: 1][creep_duration: 1][bounces_tooltip: 6 8 10 12][hero_damage: 0][bounces: 6 8 10 12]"
+            ],
+            "Pierce Spell Immunity": [
+              "false"
+            ]
+          }
+        },
+        {
+          "title": "Terrorize Pedal",
+          "fields": {
+            "Code": [
+              "gemtd_kongheshiban"
+            ],
+            "English": [
+              "Terrorize Pedal"
+            ],
+            "Combination": [
+              "D3 + P2"
+            ],
+            "Ability": [
+              "new_konghe"
+            ],
+            "Raw": [
+              "[INCOMING DAMAGE: %konghe_damage_per%][MOVESPEED: %konghe_speed_per%]"
+            ],
+            "Raw: Special": [
+              "[konghe_speed_per: 30][konghe_duration: 6 8 10 12][konghe_damage_per: 50]"
+            ],
+            "Pierce Spell Immunity": [
+              "true"
+            ]
+          }
+        },
+        {
+          "title": "Decrepify Pedal",
+          "fields": {
+            "Code": [
+              "gemtd_xuwushiban"
+            ],
+            "English": [
+              "Decrepify Pedal"
+            ],
+            "Combination": [
+              "E3 + B2"
+            ],
+            "Ability": [
+              "new_xuwu"
+            ],
+            "Raw": [
+              "[MOVESPEED: %xuwu_speed_per%][MAGICAL RESISTANCE DECREPIFY UNIQUE: %xuwu_mokang_per]"
+            ],
+            "Raw: Special": [
+              "[xuwu_speed_per: -50][xuwu_mokang_per: -30][xuwu_duration: 5 6 7 8]"
+            ],
+            "Pierce Spell Immunity": [
+              "false"
+            ]
+          }
+        },
+        {
+          "title": "Sparkling Ensnare Pedal",
+          "fields": {
+            "Code": [
+              "gemtd_youbushiban_yin"
+            ],
+            "English": [
+              "Sparkling Ensnare Pedal"
+            ],
+            "Combination": [
+              "3 * Ensnare Pedal"
+            ],
+            "Ability": [
+              "new_youbu2"
+            ],
+            "Raw: Special": [
+              "[youbu_duration: 2 3 4 5]"
+            ],
+            "Pierce Spell Immunity": [
+              "true"
+            ]
+          }
+        },
+        {
+          "title": "Sparkling Gale Pedal",
+          "fields": {
+            "Code": [
+              "gemtd_zhangqishiban_yin"
+            ],
+            "English": [
+              "Sparkling Gale Pedal"
+            ],
+            "Combination": [
+              "3 * Gale Pedal"
+            ],
+            "Ability": [
+              "new_venomous_gale2"
+            ],
+            "Raw": [
+              "deals %tick_damage magic damage."
+            ],
+            "Raw: Special": [
+              "[tick_interval: 3.0 3.0 3.0 3.0][strike_damage: 0][radius: 125 125 125 125][duration: 7 9 11 13][tick_damage: 0][movement_slow: -70 -70 -70 -70]"
+            ],
+            "Pierce Spell Immunity": [
+              "false"
+            ]
+          }
+        },
+        {
+          "title": "Sparkling Torrent Pedal",
+          "fields": {
+            "Code": [
+              "gemtd_hongliushiban_yin"
+            ],
+            "English": [
+              "Sparkling Torrent Pedal"
+            ],
+            "Combination": [
+              "3 * Torrent Pedal"
+            ],
+            "Ability": [
+              "new_torrent2"
+            ],
+            "Raw": [
+              "during %stun_duration seconds, every %stun_duration / %tick_count seconds, deals 0 magic damage. ~ [MOVESPEED: %movespeed_bonus%]"
+            ],
+            "Raw: Special": [
+              "[stun_duration: 4][tick_count: 10][movespeed_bonus: -60][vision_duration: 4.73][delay: 1.6 1.6 1.6 1.6][torrent_height: 800]"
+            ],
+            "Pierce Spell Immunity": [
+              "false"
+            ]
+          }
+        },
+        {
+          "title": "Sparkling Howl Pedal",
+          "fields": {
+            "Code": [
+              "gemtd_haojiaoshiban_yin"
+            ],
+            "English": [
+              "Sparkling Howl Pedal"
+            ],
+            "Combination": [
+              "3 * Howl Pedal"
+            ],
+            "Ability": [
+              "new_haojiao2"
+            ],
+            "Raw": [
+              "[DAMAGEOUTGOING: %unit_bonus_damage%]"
+            ],
+            "Raw: Special": [
+              "[aura_radius: 384][unit_bonus_damage: 40 60 80 100][howl_duration: 10.0][think_interval: 0.5]"
+            ]
+          }
+        },
+        {
+          "title": "Sparkling Acid Pedal",
+          "fields": {
+            "Code": [
+              "gemtd_suanwushiban_yin"
+            ],
+            "English": [
+              "Sparkling Acid Pedal"
+            ],
+            "Combination": [
+              "3 * Acid Pedal"
+            ],
+            "Ability": [
+              "new_acid_spray2"
+            ],
+            "Raw": [
+              "Aura: Range %radius Effect: deals %damage physical damage."
+            ],
+            "Raw: Special": [
+              "[duration: 15.0][damage: 0][radius: 625][armor_reduction: -16 -20 -24 -28][tick_rate: 1.0]"
+            ],
+            "Pierce Spell Immunity": [
+              "true"
+            ]
+          }
+        },
+        {
+          "title": "Sparkling Paralyze Pedal",
+          "fields": {
+            "Code": [
+              "gemtd_mabishiban_yin"
+            ],
+            "English": [
+              "Sparkling Paralyze Pedal"
+            ],
+            "Combination": [
+              "3 * Paralysis Pedal"
+            ],
+            "Ability": [
+              "new_cask2"
+            ],
+            "Raw: Special": [
+              "[youbu_duration: 2 3 4 5]"
+            ],
+            "Pierce Spell Immunity": [
+              "true"
+            ]
+          }
+        },
+        {
+          "title": "Sparkling Terrorize Pedal",
+          "fields": {
+            "Code": [
+              "gemtd_kongheshiban_yin"
+            ],
+            "English": [
+              "Sparkling Terrorize Pedal"
+            ],
+            "Combination": [
+              "3 * Terrorize Pedal"
+            ],
+            "Ability": [
+              "new_konghe2"
+            ],
+            "Raw": [
+              "[INCOMING DAMAGE: %konghe_damage_per%][MOVESPEED: %konghe_speed_per%]"
+            ],
+            "Raw: Special": [
+              "[konghe_speed_per: 30][konghe_duration: 6 8 10 12][konghe_damage_per: 100]"
+            ],
+            "Pierce Spell Immunity": [
+              "true"
+            ]
+          }
+        },
+        {
+          "title": "Sparkling Decrepify Pedal",
+          "fields": {
+            "Code": [
+              "gemtd_xuwushiban_yin"
+            ],
+            "English": [
+              "Sparkling Decrepify Pedal"
+            ],
+            "Combination": [
+              "3 * Decrepify Pedal"
+            ],
+            "Ability": [
+              "new_xuwu2"
+            ],
+            "Raw": [
+              "[MOVESPEED: %xuwu_speed_per%][MAGICAL RESISTANCE DECREPIFY UNIQUE: %xuwu_mokang_per]"
+            ],
+            "Raw: Special": [
+              "[xuwu_speed_per: -70][xuwu_mokang_per: -60][xuwu_duration: 6 7 8 9]"
+            ],
+            "Pierce Spell Immunity": [
+              "false"
+            ]
+          }
+        },
+        {
+          "title": "Blingbling Ensnare Pedal",
+          "fields": {
+            "Code": [
+              "gemtd_youbushiban_jin"
+            ],
+            "English": [
+              "Blingbling Ensnare Pedal"
+            ],
+            "Combination": [
+              "3 * Sparkling Ensnare Pedal"
+            ],
+            "Ability": [
+              "new_youbu3"
+            ],
+            "Raw: Special": [
+              "[youbu_duration: 2 3 4 5]"
+            ],
+            "Pierce Spell Immunity": [
+              "true"
+            ]
+          }
+        },
+        {
+          "title": "Blingbling Gale Pedal",
+          "fields": {
+            "Code": [
+              "gemtd_zhangqishiban_jin"
+            ],
+            "English": [
+              "Blingbling Gale Pedal"
+            ],
+            "Combination": [
+              "3 * Sparkling Gale Pedal"
+            ],
+            "Ability": [
+              "new_venomous_gale3"
+            ],
+            "Raw": [
+              "deals %tick_damage magic damage."
+            ],
+            "Raw: Special": [
+              "[tick_interval: 3.0 3.0 3.0 3.0][strike_damage: 0][radius: 125 125 125 125][duration: 11 13 15 17][tick_damage: 0][movement_slow: -90 -90 -90 -90]"
+            ],
+            "Pierce Spell Immunity": [
+              "false"
+            ]
+          }
+        },
+        {
+          "title": "Blingbling Torrent Pedal",
+          "fields": {
+            "Code": [
+              "gemtd_hongliushiban_jin"
+            ],
+            "English": [
+              "Blingbling Torrent Pedal"
+            ],
+            "Combination": [
+              "3 * Sparkling Torrent Pedal"
+            ],
+            "Ability": [
+              "new_torrent3"
+            ],
+            "Raw": [
+              "during %stun_duration seconds, every %stun_duration / %tick_count seconds, deals 0 magic damage. ~ [MOVESPEED: %movespeed_bonus%]"
+            ],
+            "Raw: Special": [
+              "[stun_duration: 8][tick_count: 10][movespeed_bonus: -80][vision_duration: 4.73][delay: 1.6 1.6 1.6 1.6][torrent_height: 1200]"
+            ],
+            "Pierce Spell Immunity": [
+              "false"
+            ]
+          }
+        },
+        {
+          "title": "Blingbling Howl Pedal",
+          "fields": {
+            "Code": [
+              "gemtd_haojiaoshiban_jin"
+            ],
+            "English": [
+              "Blingbling Howl Pedal"
+            ],
+            "Combination": [
+              "3 * Sparkling Howl Pedal"
+            ],
+            "Ability": [
+              "new_haojiao3"
+            ],
+            "Raw": [
+              "[DAMAGEOUTGOING: %unit_bonus_damage%]"
+            ],
+            "Raw: Special": [
+              "[aura_radius: 512][unit_bonus_damage: 80 120 160 200][howl_duration: 10.0][think_interval: 0.5]"
+            ]
+          }
+        },
+        {
+          "title": "Blingbling Acid Pedal",
+          "fields": {
+            "Code": [
+              "gemtd_suanwushiban_jin"
+            ],
+            "English": [
+              "Blingbling Acid Pedal"
+            ],
+            "Combination": [
+              "3 * Sparkling Acid Pedal"
+            ],
+            "Ability": [
+              "new_acid_spray3"
+            ],
+            "Raw": [
+              "Aura: Range %radius Effect: deals %damage physical damage."
+            ],
+            "Raw: Special": [
+              "[duration: 20.0][damage: 0][radius: 625][armor_reduction: -32 -40 -48 -56][tick_rate: 1.0]"
+            ],
+            "Pierce Spell Immunity": [
+              "true"
+            ]
+          }
+        },
+        {
+          "title": "Blingbling Paralyze Pedal",
+          "fields": {
+            "Code": [
+              "gemtd_mabishiban_jin"
+            ],
+            "English": [
+              "Blingbling Paralyze Pedal"
+            ],
+            "Combination": [
+              "3 * Sparkling Paralyze Pedal"
+            ],
+            "Ability": [
+              "new_cask3"
+            ],
+            "Raw: Special": [
+              "[youbu_duration: 2 3 4 5]"
+            ],
+            "Pierce Spell Immunity": [
+              "true"
+            ]
+          }
+        },
+        {
+          "title": "Blingbling Terrorize Pedal",
+          "fields": {
+            "Code": [
+              "gemtd_kongheshiban_jin"
+            ],
+            "English": [
+              "Blingbling Terrorize Pedal"
+            ],
+            "Combination": [
+              "3 * Sparkling Terrorize Pedal"
+            ],
+            "Ability": [
+              "new_konghe3"
+            ],
+            "Raw": [
+              "[INCOMING DAMAGE: %konghe_damage_per%][MOVESPEED: %konghe_speed_per%]"
+            ],
+            "Raw: Special": [
+              "[konghe_speed_per: 30][konghe_duration: 6 8 10 12][konghe_damage_per: 200]"
+            ],
+            "Pierce Spell Immunity": [
+              "true"
+            ]
+          }
+        },
+        {
+          "title": "Blingbling Decrepify Pedal",
+          "fields": {
+            "Code": [
+              "gemtd_xuwushiban_jin"
+            ],
+            "English": [
+              "Blingbling Decrepify Pedal"
+            ],
+            "Combination": [
+              "3 * Sparkling Decrepify Pedal"
+            ],
+            "Ability": [
+              "new_xuwu3"
+            ],
+            "Raw": [
+              "[MOVESPEED: %xuwu_speed_per%][MAGICAL RESISTANCE DECREPIFY UNIQUE: %xuwu_mokang_per]"
+            ],
+            "Raw: Special": [
+              "[xuwu_speed_per: -90][xuwu_mokang_per: -90][xuwu_duration: 7 8 9 10]"
+            ],
+            "Pierce Spell Immunity": [
+              "false"
+            ]
+          }
+        }
+      ]
+    }
+  }
+}
