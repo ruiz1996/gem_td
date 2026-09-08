@@ -1,10 +1,18 @@
 import historical from '../../data/historical.json';
 import original from '../../data/original-facts.json';
 
-export const DATA_VERSION = '2018-source-mobile-alpha-4-mvp';
+export const DATA_VERSION = '2018-source-mobile-alpha-5-original-mvp-stats';
+export const CUSTOM_MVP_DATA_VERSION = '2018-source-mobile-alpha-4-mvp';
 export const LEGACY_DATA_VERSION = '2018-source-mobile-alpha-3';
-// User-designed progression, separate from the archived tower and wave values.
-export const MVP_RULES = { maxLevel: 10, damagePerLevel: 10, auraDamage: 100 };
+// Archived tower_mofa1..10. Ranges use the source's 128-unit grid.
+export const MVP_RULES = {
+  maxLevel: 10,
+  damagePerLevel: 10,
+  auraDamage: 100,
+  attackAuraRange: 290 / 128,
+  resistAuraRange: 800 / 128,
+  resistPerLevel: 7,
+};
 // User-approved solo balance adjustment; keep the archived source values intact.
 export const FIRST_BOSS_BALANCE = { wave: 10, hp: 800, previousHp: 1260 };
 type SourceUnit = {

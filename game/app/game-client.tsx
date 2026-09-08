@@ -27,9 +27,11 @@ import {
   Eye,
   Monitor,
   Settings2,
+  ChartNoAxesCombined,
 } from 'lucide-react';
 import { useGameInteraction } from '@/hooks/use-game-interaction';
 import { CrushAction } from '@/components/game/crush-action';
+import { DamageReport } from '@/components/game/damage-report';
 import {
   MvpStats,
   MvpInheritance,
@@ -125,7 +127,14 @@ export default function GemGame() {
     [boardError, setBoardError] = useState(''),
     [notice, setNotice] = useState('点选空格，开始布置宝石'),
     [modal, setModal] = useState<
-      'help' | 'library' | 'waves' | 'settings' | 'towers' | 'action' | null
+      | 'help'
+      | 'library'
+      | 'waves'
+      | 'settings'
+      | 'towers'
+      | 'action'
+      | 'damage'
+      | null
     >(null),
     [restart, setRestart] = useState(false),
     [saved, setSaved] = useState<string | null>(null),
@@ -435,7 +444,7 @@ export default function GemGame() {
           ? '存档已恢复；战斗处于暂停状态'
           : '存档已恢复') +
           (state.current.mvpStartWave > state.current.wave
-            ? `；MVP从第${state.current.mvpStartWave}波开始统计`
+            ? `；已切换原版MVP，本波为部分统计，第${state.current.mvpStartWave}波起完整计分`
             : ''),
       );
     } catch (e) {
@@ -595,6 +604,15 @@ export default function GemGame() {
         <div className="header-actions">
           <Button
             variant="ghost"
+            aria-label="伤害统计"
+            title="每波伤害统计"
+            onClick={() => openModal('damage')}
+            disabled={!!preview || !ready}
+          >
+            <ChartNoAxesCombined />
+          </Button>
+          <Button
+            variant="ghost"
             aria-label="操作设置"
             title={touch ? '触屏模式' : '桌面模式'}
             onClick={() => openModal('settings')}
@@ -695,6 +713,9 @@ export default function GemGame() {
                   }}
                 >
                   再开一局 <RotateCcw size={16} />
+                </Button>
+                <Button variant="outline" onClick={() => openModal('damage')}>
+                  查看本波伤害 <ChartNoAxesCombined size={16} />
                 </Button>
               </div>
             )}
@@ -1301,47 +1322,52 @@ export default function GemGame() {
           className={
             'game-dialog ' +
             (touch ? 'touch-dialog ' : '') +
-            (modal === 'library' ? 'wide-dialog' : '') +
+            (modal === 'library' || modal === 'damage' ? 'wide-dialog' : '') +
             (modal === 'action' ? ' touch-context-dialog' : '')
           }
           showCloseButton={modal !== 'action'}
         >
           <DialogTitle>
-            {modal === 'action'
-              ? preview
-                ? `合成 ${TOWERS[preview.recipe.result].name}`
-                : selected
-                  ? (selectedTower?.name ?? '迷宫石头')
-                  : '建造宝石'
-              : modal === 'library'
-                ? '宝石图鉴'
-                : modal === 'waves'
-                  ? '波次情报'
-                  : modal === 'settings'
-                    ? '操作设置'
-                    : modal === 'towers'
-                      ? '宝石列表'
-                      : '欢迎来到宝石 TD'}
+            {modal === 'damage'
+              ? '每波伤害统计'
+              : modal === 'action'
+                ? preview
+                  ? `合成 ${TOWERS[preview.recipe.result].name}`
+                  : selected
+                    ? (selectedTower?.name ?? '迷宫石头')
+                    : '建造宝石'
+                : modal === 'library'
+                  ? '宝石图鉴'
+                  : modal === 'waves'
+                    ? '波次情报'
+                    : modal === 'settings'
+                      ? '操作设置'
+                      : modal === 'towers'
+                        ? '宝石列表'
+                        : '欢迎来到宝石 TD'}
           </DialogTitle>
           <DialogDescription>
-            {modal === 'action'
-              ? preview
-                ? '预览期间暂停，完成或取消后回到地图。'
-                : selected
-                  ? `${selected.x + 1}列 · ${selected.y + 1}行${selected.candidate ? ' · 本轮候选' : ''}`
-                  : touchPoint
-                    ? `${touchPoint.x + 1}列 · ${touchPoint.y + 1}行`
-                    : '点选位置后进行操作。'
-              : modal === 'library'
-                ? '查看宝石属性与配方，规划你的下一次合成。'
-                : modal === 'waves'
-                  ? '根据下一波的飞行、隐形与免疫能力安排防线。'
-                  : modal === 'settings'
-                    ? '暂停、倍速、地图缩放和操作模式。'
-                    : modal === 'towers'
-                      ? '点击列表选择宝石，回到地图后点“操作”。'
-                      : '随机选石、合成强塔，用迷宫守住每一波。'}
+            {modal === 'damage'
+              ? '逐塔查看伤害类型、占比和MVP计分，可回看本局已完成的波次。'
+              : modal === 'action'
+                ? preview
+                  ? '预览期间暂停，完成或取消后回到地图。'
+                  : selected
+                    ? `${selected.x + 1}列 · ${selected.y + 1}行${selected.candidate ? ' · 本轮候选' : ''}`
+                    : touchPoint
+                      ? `${touchPoint.x + 1}列 · ${touchPoint.y + 1}行`
+                      : '点选位置后进行操作。'
+                : modal === 'library'
+                  ? '查看宝石属性与配方，规划你的下一次合成。'
+                  : modal === 'waves'
+                    ? '根据下一波的飞行、隐形与免疫能力安排防线。'
+                    : modal === 'settings'
+                      ? '暂停、倍速、地图缩放和操作模式。'
+                      : modal === 'towers'
+                        ? '点击列表选择宝石，回到地图后点“操作”。'
+                        : '随机选石、合成强塔，用迷宫守住每一波。'}
           </DialogDescription>
+          {modal === 'damage' && <DamageReport state={s} />}
           {modal === 'action' && (
             <>
               <TouchControls
@@ -1469,6 +1495,9 @@ export default function GemGame() {
               <Button variant="outline" onClick={() => setModal('waves')}>
                 第{s.wave}波 · {w.name} · 查看波次
               </Button>
+              <Button variant="outline" onClick={() => setModal('damage')}>
+                <ChartNoAxesCombined size={18} /> 每波伤害统计
+              </Button>
               <Button variant="outline" onClick={() => setModal('help')}>
                 玩法说明
               </Button>
@@ -1559,7 +1588,7 @@ export default function GemGame() {
                 <li>
                   <strong>MVP成长</strong>
                   <p>
-                    每波伤害最高的未满级塔获得1级MVP，每级自身全伤害+10%。10级保留自身加成，并为相邻8格提供+100%全伤害光环；多个光环及自身MVP相加。满级塔退出评选，合成继承所有材料等级，最高10级。
+                    每波按逐次取整的伤害计分，最高且未满级的塔获得1级MVP；无正计分时不颁奖。每级攻击伤害+10%，并对6.25格内敌人提供每级7的减魔抗光环。满级为2.27格圆形范围内友塔增加100%攻击伤害，多个满级光环叠加；低级减抗同等级取一份、不同等级并存。满级塔退出评选，合成继承材料等级之和，最高10级，成品本波从零计分。右上角图表按钮可查看每波伤害。
                   </p>
                 </li>
               </ol>

@@ -160,12 +160,13 @@ export async function createBoard(
         g.lineStyle(1, parseInt(tower.color.slice(1), 16), 0.3);
         g.strokeCircle(p.x, p.y, tower.range * cell);
         if (!selected.candidate && selected.mvpLevel === MVP_RULES.maxLevel) {
-          for (let dy = -1; dy <= 1; dy++)
-            for (let dx = -1; dx <= 1; dx++) {
+          for (let dy = -2; dy <= 2; dy++)
+            for (let dx = -2; dx <= 2; dx++) {
               const x = selected.x + dx,
                 y = selected.y + dy;
               if (
                 (!dx && !dy) ||
+                Math.hypot(dx, dy) > MVP_RULES.attackAuraRange ||
                 x < 0 ||
                 y < 0 ||
                 x >= BOARD.width ||

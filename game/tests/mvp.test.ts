@@ -2,6 +2,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import {
   DATA_VERSION,
+  CUSTOM_MVP_DATA_VERSION,
   LEGACY_DATA_VERSION,
   RECIPES,
   TOWERS,
@@ -14,6 +15,7 @@ import {
   inheritedMvp,
   loadGame,
   mvpBonus,
+  mvpMagicMultiplier,
   saveGame,
   startWave,
   tick,
@@ -42,6 +44,7 @@ function tower(
     burnClock: 0,
     damage: 0,
     waveDamage: 0,
+    waveScore: 0,
     kills: 0,
   };
   s.gems.push(g);
@@ -87,7 +90,7 @@ void test('MVP uses this wave damage, skips every capped tower and awards only o
     winner = tower(s, basicId('D', 1), 14, 12, 4),
     other = tower(s, basicId('D', 1), 15, 12, 2);
   begin(s);
-  [a.waveDamage, b.waveDamage, winner.waveDamage, other.waveDamage] = [
+  [a.waveScore, b.waveScore, winner.waveScore, other.waveScore] = [
     1000, 900, 80, 70,
   ];
   other.damage = 1e8;
@@ -110,7 +113,7 @@ void test('MVP uses this wave damage, skips every capped tower and awards only o
   assert.ok(s.gems.every((g) => g.waveDamage === 0));
   assert.equal(other.damage, 1e8);
 });
-void test('MVP ties use build order then ID; zero damage ties still select the first eligible tower', () => {
+void test('MVP requires positive scores; positive ties use build order then ID', () => {
   const s = freshGame();
   const a = tower(s, basicId('D', 1), 12, 12),
     b = tower(s, basicId('D', 1), 13, 12);
@@ -118,11 +121,16 @@ void test('MVP ties use build order then ID; zero damage ties still select the f
   s.gems.reverse();
   begin(s);
   finish(s);
-  assert.equal(s.history[0].mvp?.id, a.id);
+  assert.equal(s.history[0].mvp, null);
+  begin(s);
+  a.waveScore = b.waveScore = 10;
+  finish(s);
+  assert.equal(s.history[1].mvp?.id, a.id);
   begin(s);
   b.order = 1;
+  a.waveScore = b.waveScore = 10;
   finish(s);
-  assert.equal(s.history[1].mvp?.id, b.id);
+  assert.equal(s.history[2].mvp?.id, b.id);
 });
 void test('no eligible tower means no MVP; final completed wave awards, defeat does not', () => {
   for (const capped of [false, true]) {
@@ -136,25 +144,25 @@ void test('no eligible tower means no MVP; final completed wave awards, defeat d
     g = tower(s);
   s.wave = 50;
   begin(s);
-  g.waveDamage = 55;
+  g.waveScore = 55;
   finish(s);
   assert.equal(s.phase, 'won');
   assert.equal(g.mvpLevel, 1);
   const lost = freshGame(),
     losing = tower(lost);
   begin(lost);
-  losing.waveDamage = 100;
+  losing.waveScore = 100;
   lost.life = 0;
   finish(lost);
   assert.equal(lost.phase, 'lost');
   assert.equal(losing.mvpLevel, 0);
   assert.equal(lost.history.length, 0);
 });
-void test('level 9 promotes to an aura, benefits exactly the eight neighboring cells and retains own bonus', () => {
+void test('level 9 promotes to a circular 290-unit aura covering twenty cells and retains own bonus', () => {
   const s = freshGame(),
     source = tower(s, basicId('D', 1), 17, 15, 9);
   begin(s);
-  source.waveDamage = 100;
+  source.waveScore = 100;
   finish(s);
   assert.equal(source.mvpLevel, 10);
   assert.deepEqual(mvpBonus(s, source), {
@@ -163,16 +171,18 @@ void test('level 9 promotes to an aura, benefits exactly the eight neighboring c
     auraCount: 0,
     total: 100,
   });
-  for (let dy = -1; dy <= 1; dy++)
-    for (let dx = -1; dx <= 1; dx++) {
+  let covered = 0;
+  for (let dy = -3; dy <= 3; dy++)
+    for (let dx = -3; dx <= 3; dx++) {
       if (!dx && !dy) continue;
+      const expected = dx * dx + dy * dy <= 5 ? 100 : 0;
       assert.equal(
         mvpBonus(s, tower(s, basicId('D', 1), 17 + dx, 15 + dy)).total,
-        100,
+        expected,
       );
+      if (expected) covered++;
     }
-  assert.equal(mvpBonus(s, tower(s, basicId('D', 1), 19, 15)).total, 0);
-  assert.equal(mvpBonus(s, tower(s, basicId('D', 1), 17, 17)).total, 0);
+  assert.equal(covered, 20);
 });
 void test('multiple MVP auras and personal levels stack additively, including between full-level towers', () => {
   const s = freshGame(),
@@ -181,7 +191,7 @@ void test('multiple MVP auras and personal levels stack additively, including be
     b = tower(s, basicId('D', 1), 16, 16, 10);
   tower(s, 'stone', 18, 16, 10);
   tower(s, basicId('D', 1), 18, 15, 10, true);
-  tower(s, basicId('D', 1), 19, 15, 10);
+  tower(s, basicId('D', 1), 20, 15, 10);
   assert.deepEqual(mvpBonus(s, recipient), {
     own: 30,
     aura: 200,
@@ -231,14 +241,14 @@ void test('MVP affects poison ticks and preserves magic immunity', () => {
   poison.nextTick = s.time;
   const before = g.damage;
   tick(s);
-  close(g.damage - before, poison.damage * 1.5);
+  close(g.damage - before, poison.damage * 1.35);
   e.magicImmune = true;
   poison.nextTick = s.time;
   const immuneBefore = g.damage;
   tick(s);
   assert.equal(g.damage, immuneBefore);
 });
-void test('MVP amplifies burn, lightning and fork damage with the same multiplier', () => {
+void test('fixed burn, lightning and fork gain magic reduction rather than the attack multiplier', () => {
   for (const effect of ['burn', 'lightning', 'fork'] as const) {
     const def = Object.values(TOWERS).find((t) => t.effects[effect] > 0)!;
     assert.ok(def);
@@ -252,7 +262,14 @@ void test('MVP amplifies burn, lightning and fork damage with the same multiplie
       assert.ok(plain.g.damage > 0);
       if (effect !== 'burn')
         assert.ok(plain.g.damage >= (effect === 'lightning' ? 200 : 2500));
-      close(boosted.g.damage, plain.g.damage * 1.3);
+      const baseline = plain.s.damageReport!.rows.find(
+        (r) => r.id === plain.g.id,
+      )!;
+      const enhanced = boosted.s.damageReport!.rows.find(
+        (r) => r.id === boosted.g.id,
+      )!;
+      close(enhanced.physical, baseline.physical * 1.3);
+      close(enhanced.magic, baseline.magic * 1.21);
     } finally {
       def.effects[effect] = original;
     }
@@ -269,7 +286,7 @@ void test('MVP applies to every multishot target and records their combined actu
   for (const enemy of s.enemies) close(1e9 - enemy.hp, expected);
   close(g.waveDamage, expected * 3);
 });
-void test('combat combination inherits only chosen MVP levels and damage, caps at ten and transfers poison ownership', () => {
+void test('combat combination inherits chosen MVP levels but starts a new score and retains material report rows', () => {
   const { s, g: b, e } = arena(basicId('B', 1), 4);
   const y = tower(s, basicId('Y', 1), 16, 18, 4),
     d = tower(s, basicId('D', 1), 15, 18, 3),
@@ -285,7 +302,8 @@ void test('combat combination inherits only chosen MVP levels and damage, caps a
   const recipe = RECIPES.find((r) => r.result === 'gemtd_baiyin')!;
   combine(s, recipe.id, b.id, [b.id, y.id, d.id]);
   assert.equal(b.mvpLevel, 10);
-  assert.equal(b.waveDamage, 90);
+  assert.equal(b.waveDamage, 0);
+  assert.equal(b.waveScore, 0);
   assert.equal(b.damage, 600);
   assert.equal(b.kills, 6);
   assert.equal(b.cooldown, 0.7);
@@ -299,7 +317,8 @@ void test('combat combination inherits only chosen MVP levels and damage, caps a
         g.damage === 0,
     ),
   );
-  assert.equal(e.poisons[0].owner, b.id);
+  assert.equal(e.poisons[0].owner, d.id);
+  assert.equal(e.poisons[0].sourceType, basicId('D', 1));
   assert.equal(s.path, path);
   assert.deepEqual(
     s.gems.map((g) => [g.x, g.y]),
@@ -307,7 +326,14 @@ void test('combat combination inherits only chosen MVP levels and damage, caps a
   );
   assert.deepEqual([s.time, s.spawnClock, s.spawned], clocks);
   tick(s);
-  close(b.waveDamage, 94);
+  close(b.waveDamage, 0);
+  close(s.damageReport!.rows.find((r) => r.id === d.id)!.magic, 2 * 1.7 * 1.56);
+  assert.ok(
+    s.damageReport!.rows.some(
+      (r) => r.id === b.id && r.type === basicId('B', 1) && r.retired,
+    ),
+  );
+  spare.waveScore = 1;
   finish(s);
   assert.equal(s.history[0].mvp?.id, spare.id);
   assert.equal(spare.mvpLevel, 9);
@@ -374,10 +400,12 @@ void test('legacy saves migrate explicitly; partial old combat waits until the n
     assert.equal(migrated.mvpStartWave, combat ? 2 : 1);
     migrated.paused = false;
     if (!combat) begin(migrated);
+    migrated.gems.find((x) => x.id === g.id)!.waveScore = 10;
     finish(migrated);
     assert.equal(migrated.history[0].mvp?.id ?? null, combat ? null : g.id);
     if (combat) {
       begin(migrated);
+      migrated.gems.find((x) => x.id === g.id)!.waveScore = 10;
       finish(migrated);
       assert.equal(migrated.history[1].mvp?.id, g.id);
     }
@@ -393,6 +421,7 @@ void test('new saves reject invalid or missing MVP fields and forged award recor
   const bad = JSON.parse(saveGame(s));
   bad.gems.find((x: Gem) => x.id === g.id).waveDamage = -1;
   assert.throws(() => loadGame(JSON.stringify(bad)));
+  g.waveScore = 1;
   finish(s);
   const badHistory = JSON.parse(saveGame(s));
   badHistory.history[0].mvp.level = 11;
@@ -414,4 +443,130 @@ void test('legacy poison on consumed rocks does not create an invalid MVP save',
   tick(migrated);
   assert.equal(migrated.gems.find((x) => x.id === g.id)!.waveDamage, 0);
   assert.doesNotThrow(() => loadGame(saveGame(migrated)));
+});
+
+void test('MVP magic auras deduplicate equal low levels, combine different levels and stack every level ten', () => {
+  const { s, e } = arena(basicId('D', 1), 3);
+  tower(s, basicId('D', 1), 18, 17, 3);
+  tower(s, basicId('D', 1), 17, 19, 5);
+  tower(s, basicId('D', 1), 18, 19, 5);
+  tower(s, basicId('D', 1), 19, 17, 10);
+  tower(s, basicId('D', 1), 19, 19, 10);
+  tower(s, basicId('D', 1), 18, 20, 10, true);
+  close(mvpMagicMultiplier(s, e), 1.21 * 1.35 * 1.7 * 1.7);
+  e.magicImmune = true;
+  assert.equal(mvpMagicMultiplier(s, e), 1);
+  const boundary = arena(basicId('D', 1), 10);
+  boundary.e.x = boundary.g.x + 6.25;
+  close(mvpMagicMultiplier(boundary.s, boundary.e), 1.7);
+  boundary.e.x += 0.001;
+  assert.equal(mvpMagicMultiplier(boundary.s, boundary.e), 1);
+});
+void test('a fixed poison outside the MVP debuff range has no personal attack amplification', () => {
+  const { s, g, e } = arena(basicId('G', 1), 10);
+  g.x = 3;
+  g.cooldown = 999;
+  e.poisons.push({
+    owner: g.id,
+    sourceType: g.type,
+    damage: 2,
+    nextTick: s.time,
+    remaining: 1,
+  });
+  tick(s);
+  close(g.waveDamage, 2);
+  close(s.damageReport!.rows[0].magic, 2);
+});
+void test('damage reports preserve fractional hits while original MVP scoring floors each hit separately', () => {
+  const { s, g, e } = arena();
+  e.armor = (TOWERS[g.type].damage / 0.9 - 1) / 0.06;
+  tick(s);
+  g.cooldown = 0;
+  tick(s);
+  close(g.waveDamage, 1.8);
+  assert.equal(g.waveScore, 0);
+  const report = s.damageReport!;
+  close(report.rows[0].physical, 1.8);
+  close(report.rows[0].total, 1.8);
+  assert.equal(report.rows[0].score, 0);
+  e.physicalImmune = true;
+  g.cooldown = 0;
+  tick(s);
+  close(report.rows[0].total, 1.8);
+  finish(s);
+  assert.equal(s.history[0].mvp, null);
+  const snapshot = JSON.stringify(s.history[0].damageReport);
+  begin(s);
+  tick(s);
+  assert.equal(JSON.stringify(s.history[0].damageReport), snapshot);
+  assert.notEqual(s.damageReport, report);
+  assert.equal(s.damageReport!.rows[0].total, 0);
+  assert.doesNotThrow(() => loadGame(saveGame(s)));
+});
+void test('fatal leaks preserve the current damage report without awarding MVP', () => {
+  const { s, g, e } = arena();
+  tick(s);
+  assert.ok(g.waveDamage > 0);
+  s.life = 1;
+  e.routeIndex = s.path.length;
+  tick(s);
+  assert.equal(s.phase, 'lost');
+  assert.equal(s.damageReport!.outcome, 'lost');
+  assert.equal(s.damageReport!.mvp, null);
+  assert.ok(loadGame(saveGame(s)).damageReport!.rows[0].total > 0);
+});
+void test('custom MVP saves retain levels, mark old damage unclassified and start original scoring next full wave', () => {
+  const { s, g } = arena(basicId('D', 1), 6);
+  tick(s);
+  const old = JSON.parse(saveGame(s));
+  old.version = CUSTOM_MVP_DATA_VERSION;
+  delete old.damageReport;
+  for (const gem of old.gems) delete gem.waveScore;
+  const migrated = loadGame(JSON.stringify(old));
+  const tower = migrated.gems.find((x) => x.id === g.id)!;
+  assert.equal(tower.mvpLevel, 6);
+  assert.equal(tower.waveScore, 0);
+  assert.equal(migrated.damageReport!.complete, false);
+  assert.equal(migrated.damageReport!.rows[0].unclassified, g.waveDamage);
+  assert.equal(migrated.mvpStartWave, 2);
+  migrated.paused = false;
+  finish(migrated);
+  assert.equal(migrated.history[0].mvp, null);
+  begin(migrated);
+  assert.equal(migrated.damageReport!.complete, true);
+  assert.equal(migrated.damageReport!.rows[0].unclassified, 0);
+  assert.doesNotThrow(() => loadGame(saveGame(migrated)));
+});
+void test('reports reject mismatched waves, missing combat reports, malformed numbers and forged MVP links', () => {
+  const { s } = arena();
+  tick(s);
+  for (const edit of [
+    (state: GameState) => {
+      state.damageReport = null;
+    },
+    (state: GameState) => {
+      state.damageReport!.wave = 2;
+    },
+    (state: GameState) => {
+      state.phase = 'prepare';
+    },
+    (state: GameState) => {
+      state.damageReport!.rows[0].magic = -1;
+    },
+    (state: GameState) => {
+      state.damageReport!.rows[0].total += 1;
+    },
+  ]) {
+    const bad = JSON.parse(saveGame(s));
+    edit(bad);
+    assert.throws(() => loadGame(JSON.stringify(bad)));
+  }
+  finish(s);
+  assert.doesNotThrow(() => loadGame(saveGame(s)));
+  const wrongWave = JSON.parse(saveGame(s));
+  wrongWave.history[0].damageReport.wave = 2;
+  assert.throws(() => loadGame(JSON.stringify(wrongWave)));
+  const wrongAward = JSON.parse(saveGame(s));
+  wrongAward.history[0].damageReport.mvp.damage += 1;
+  assert.throws(() => loadGame(JSON.stringify(wrongAward)));
 });

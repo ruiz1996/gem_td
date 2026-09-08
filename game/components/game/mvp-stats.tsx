@@ -20,16 +20,23 @@ export function MvpStats({ state: s, gem }: { state: GameState; gem: Gem }) {
           : `MVP Lv.${gem.mvpLevel}/10`}
       </strong>
       <p>
-        全伤害 +{bonus.total}%：自身 +{bonus.own}% · 光环 +{bonus.aura}%（
+        攻击伤害 +{bonus.total}%：自身 +{bonus.own}% · 光环 +{bonus.aura}%（
         {bonus.auraCount}座）
       </p>
       {gem.mvpLevel === MVP_RULES.maxLevel && (
-        <p>相邻8格的塔全伤害 +100%，多个光环叠加。</p>
+        <p>2.27格圆形范围内友塔攻击伤害 +100%，多个光环叠加。</p>
+      )}
+      {gem.mvpLevel > 0 && (
+        <p>
+          6.25格内敌人减魔抗光环：{gem.mvpLevel * MVP_RULES.resistPerLevel}
+          。固定法术伤害通过减抗受益。
+        </p>
       )}
       <p>
         {s.phase === 'prepare' ? '上波' : '本波'}伤害{' '}
         {gem.waveDamage.toLocaleString('zh-CN', { maximumFractionDigits: 1 })} ·
-        累计 {Math.round(gem.damage).toLocaleString()} · 击杀 {gem.kills}
+        计分 {gem.waveScore.toLocaleString()} · 累计{' '}
+        {Math.round(gem.damage).toLocaleString()} · 击杀 {gem.kills}
       </p>
     </section>
   );
@@ -48,7 +55,8 @@ export function MvpInheritance({
       {level}
       {level === MVP_RULES.maxLevel
         ? '（获得光环，10级封顶）'
-        : `（自身全伤害 +${level * MVP_RULES.damagePerLevel}%）`}
+        : `（自身攻击伤害 +${level * MVP_RULES.damagePerLevel}%）`}
+      。成品本波伤害从零计分。
     </p>
   );
 }

@@ -2,6 +2,144 @@
 @import 'tw-animate-css';
 @import 'shadcn/tailwind.css';
 @custom-variant dark (&:is(.dark *));
+.wave-damage {
+  min-width: 0;
+}
+.wave-damage-controls {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 110px;
+  gap: 12px;
+  margin: 4px 0 18px;
+}
+.wave-damage-controls label {
+  min-width: 0;
+  display: grid;
+  gap: 6px;
+  color: #a9bdc9;
+  font-size: 12px;
+}
+.wave-damage-controls select {
+  width: 100%;
+  min-width: 0;
+  min-height: 44px;
+  padding: 8px;
+  border: 1px solid #395163;
+  border-radius: 8px;
+  background: #162735;
+  color: #e0e9f2;
+}
+.wave-damage-summary {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr 0.8fr;
+  gap: 8px;
+  padding: 14px 0;
+  border-block: 1px solid #2a3b4b;
+  margin-bottom: 12px;
+}
+.wave-damage-summary > span {
+  color: #97a9b8;
+  font-size: 12px;
+  min-width: 0;
+}
+.wave-damage-summary strong {
+  display: block;
+  color: #e0e9f2;
+  font-size: clamp(15px, 4vw, 23px);
+  font-weight: 600;
+  margin-top: 6px;
+  overflow-wrap: anywhere;
+}
+.wave-damage-summary small {
+  font-size: 11px;
+  font-weight: 400;
+}
+.wave-damage-list {
+  display: grid;
+  gap: 10px;
+  list-style: none;
+  padding: 0;
+  margin: 16px 0;
+}
+.wave-damage-list > li {
+  padding: 12px;
+  border: 1px solid #2a3b4b;
+  border-radius: 10px;
+  background: #101e2a;
+}
+.wave-damage-list > li.awarded {
+  border-color: #9b8756;
+}
+.wave-damage-heading {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+.wave-damage-rank {
+  color: #8da6b7;
+  font-size: 12px;
+  min-width: 16px;
+}
+.wave-damage-name {
+  flex: 1;
+  min-width: 0;
+}
+.wave-damage-name strong {
+  font-size: 14px;
+  font-weight: 500;
+  overflow-wrap: anywhere;
+}
+.wave-damage-heading small {
+  display: block;
+  color: #9bb0bf;
+  font-size: 11px;
+  margin-top: 4px;
+}
+.wave-damage-value {
+  text-align: right;
+  flex-shrink: 0;
+}
+.wave-damage-value strong {
+  color: #d5eadb;
+  font-size: 16px;
+  font-variant-numeric: tabular-nums;
+}
+.wave-damage-bar {
+  height: 5px;
+  background: #263744;
+  border-radius: 4px;
+  overflow: hidden;
+  margin: 12px 0;
+}
+.wave-damage-bar span {
+  display: block;
+  height: 100%;
+}
+.wave-damage-types {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  font-size: 12px;
+  margin: 0;
+}
+.wave-damage-types dt {
+  color: #8da6b7;
+  font-size: 11px;
+}
+.wave-damage-types dd {
+  margin: 3px 0 0;
+  font-variant-numeric: tabular-nums;
+  overflow-wrap: anywhere;
+}
+.wave-damage-note {
+  color: #b4c9bc;
+  font-size: 11px;
+  line-height: 1.7;
+  margin: 10px 0 0;
+}
+.wave-damage-explanation {
+  border-top: 1px solid #2a3b4b;
+  padding-top: 12px;
+}
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -1519,7 +1657,13 @@ input {
     display: none;
   }
   .touch-mode .resources {
-    gap: 6px;
+    gap: 4px;
+  }
+  .touch-mode .resources strong {
+    font-size: 14px;
+  }
+  .touch-mode .wave-number {
+    white-space: nowrap;
   }
   .touch-nudge {
     gap: 4px;

@@ -39,6 +39,7 @@ void test('only the first Boss health differs from the archived solo base; spawn
     burnClock: 0,
     damage: 0,
     waveDamage: 0,
+    waveScore: 0,
     mvpLevel: 0,
     kills: 0,
   });

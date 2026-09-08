@@ -55,6 +55,7 @@ function add(
     burnClock: 0,
     damage: 0,
     waveDamage: 0,
+    waveScore: 0,
     mvpLevel: 0,
     kills: 0,
   };
