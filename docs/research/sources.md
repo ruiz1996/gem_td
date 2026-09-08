@@ -30,6 +30,7 @@
 - 2026-09-08 Boss专项复核：重新读取固定提交的三个原始文件并确认散列一致；逐项检查五个默认Boss的属性、实际生成和结算，保存了[Boss核查报告](../../game/docs/boss-audit.md)。补充明确海妖外壳、随机替代Boss、超时狂暴的源码依据与当前实现缺口，未把历史属性一致当作当前工作坊或完整难度一致。
 - 2026-09-08免疫专项：重取技能、单位、主Lua、多重箭并校验缓存一致，新获取`shock.lua`。核对物理承伤−100%、魔免状态与魔抗、闪电目标、纯粹溅射和原MVP减魔抗，见[第23波报告](../../game/docs/immunity-audit.md)。隔离实验只证明当前模拟器表现，不等于历史Dota或用户回忆版本实测。
 - 同日进一步核对`tower_attack1`至7：它们增加基础攻击力，没有独立伤害事件或类型转换。记录13种携带塔及典型数值，区分加攻被动与巨粉等塔另有的纯粹溅射；现版已包含这些加攻数值。
+- 同日[全免疫波追查](../../game/docs/immunity-followup.md)：核查`show_damage`、英雄链接、Shock调用参数、全局伤害路径及免疫相关增减益。用户已明确整波对应免疫、没有其他技能也会造成伤害，因此混合怪物和链接等外部增益均已排除。后续重点为Lua伤害类别及目标版本的实际免疫结算，尚未唯一确定原因。
 
 ### S03 — Gem TD Helper
 
@@ -83,6 +84,8 @@
 | --- | --- | --- | --- |
 | T01 | [Phaser 官方文档](https://docs.phaser.io/) | 支持桌面与手机浏览器，提供 WebGL/Canvas 渲染 | 官方搜索摘要，2026-09-07；尚未选择版本或进行本项目性能测试 |
 | T02 | [Capacitor 官方文档](https://capacitorjs.com/docs) | 提供从 Web 技术构建 Android/iOS 应用的运行时与原生 API 接口 | 官方搜索摘要，2026-09-07；仅后续打包候选 |
+| T03 | [ModDota：All about the Target](https://moddota.com/abilities/datadriven/all-about-the-target/) | 作者事件实验：OnTakeDamage的attack_damage是减免后，OnAttackLanded是减免前；用于区别伤害统计与链接的攻击事件参数 | 正文查阅，2026-09-08；历史数据驱动事件实验，不代替目标Dota客户端重放 |
+| T04 | [Valve：7.23 Outlanders](https://www.dota2.com/outlanders) | 官方修改技能免疫与100%魔抗的关系；说明引擎版本需要单独确认 | 正文查阅，2026-09-08；不能据此抹掉GemTD脚本显式设置的100魔抗 |
 
 ## 新资料记录模板
 
