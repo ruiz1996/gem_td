@@ -29,6 +29,7 @@ import {
   Settings2,
 } from 'lucide-react';
 import { useGameInteraction } from '@/hooks/use-game-interaction';
+import { CrushAction } from '@/components/game/crush-action';
 import {
   nudgeCell,
   MAX_TOUCH_ZOOM,
@@ -66,6 +67,7 @@ import {
 import {
   canPlace,
   combine,
+  crushAndStartWave,
   describe,
   freshGame,
   fuse,
@@ -471,14 +473,20 @@ export default function GemGame() {
       notify(`${TOWERS[g.type].name} · 已放置 ${s.placed}/5`);
     });
   }
-  function keepSelected() {
+  function keepSelected(crush = false) {
     act(() => {
       if (!selected) return;
-      keepAndStartWave(s, selected.id);
+      const before = TOWERS[selected.type];
+      if (crush) crushAndStartWave(s, selected.id);
+      else keepAndStartWave(s, selected.id);
       if (modal === 'action') closeModal();
       // Opening a new wave supersedes the preparation dialog's previous pause.
       s.paused = document.hidden;
-      notify(`已保留宝石 · 第 ${s.wave} 波开始`);
+      notify(
+        crush
+          ? `敲碎：${before.name} → ${TOWERS[selected.type].name} · 第 ${s.wave} 波开始`
+          : `已保留宝石 · 第 ${s.wave} 波开始`,
+      );
     });
   }
   const touchActions: TouchActions = {
@@ -488,7 +496,8 @@ export default function GemGame() {
       if (v.zoom > 1) v.focus = p;
     },
     place: confirmPlacement,
-    keep: keepSelected,
+    keep: () => keepSelected(),
+    crush: () => keepSelected(true),
     fuse: (count) =>
       act(() => {
         if (selected) fuse(s, selected.id, count);
@@ -1061,13 +1070,18 @@ export default function GemGame() {
                       <Button
                         className="primary-action full"
                         disabled={s.placed !== 5 || s.resolved}
-                        onClick={keepSelected}
+                        onClick={() => keepSelected()}
                       >
                         {s.placed < 5
                           ? '还需放置 ' + (5 - s.placed) + ' 颗'
                           : '保留并开始本波'}
                         <Check size={16} />
                       </Button>
+                      <CrushAction
+                        state={s}
+                        gemId={selected.id}
+                        onCrush={() => keepSelected(true)}
+                      />
                       {fuseOptions(s, selected.id).map((count) => (
                         <Button
                           key={count}
@@ -1505,13 +1519,13 @@ export default function GemGame() {
                 <li>
                   <strong>留下一颗</strong>
                   <p>
-                    选择保留、同品质融合，或者用本轮材料直接合成；其余候选变成石头。
+                    选择保留、敲碎降级、同品质融合，或者用本轮材料直接合成；其余候选变成石头。敲碎保持种类不变，越接近原品质的结果概率越高，1级不能敲碎。
                   </p>
                 </li>
                 <li>
                   <strong>守住路线</strong>
                   <p>
-                    点击保留立即开始本波；同品质融合或本轮合成后可手动开波。飞行怪无视石头，隐形怪需要显隐光环。
+                    点击保留或敲碎立即开始本波；同品质融合或本轮合成后可手动开波。飞行怪无视石头，隐形怪需要显隐光环。
                   </p>
                 </li>
                 <li>

@@ -10,6 +10,8 @@ import {
 } from '../lib/game/data';
 import {
   combine,
+  crushAndStartWave,
+  crushOptions,
   findPath,
   freshGame as originalFreshGame,
   fuse,
@@ -19,6 +21,7 @@ import {
   loadGame,
   physicalMultiplier,
   place,
+  random,
   recipesFor,
   recommend,
   removeStone,
@@ -159,6 +162,184 @@ void test('invalid keep-and-start requests leave the preparation unchanged', () 
     saveGame(s),
     before,
     'failed route validation must not consume candidates',
+  );
+});
+function crushFixture() {
+  const s = originalFreshGame(24);
+  for (let x = 4; x < 9; x++) place(s, x, 11);
+  const selected = s.gems.find((g) => g.candidate)!;
+  selected.type = basicId('B', 5);
+  add(s, basicId('Y', 2), 15, 9);
+  s.wave = 12;
+  s.paused = true;
+  s.speed = 2;
+  return { s, id: selected.id };
+}
+void test('crushing probabilities follow the source and favor closer lower grades', () => {
+  assert.deepEqual(MOBILE_RULES.crushWeights.slice(2, 6), [
+    [100],
+    [66, 34],
+    [50, 30, 20],
+    [50, 25, 15, 10],
+  ]);
+  const { s, id } = crushFixture();
+  const gem = s.gems.find((g) => g.id === id)!;
+  for (let quality = 2; quality <= 6; quality++) {
+    gem.type = basicId('B', quality);
+    const before = saveGame(s);
+    const options = crushOptions(s, id);
+    assert.equal(
+      saveGame(s),
+      before,
+      'viewing probabilities must not roll the result',
+    );
+    assert.deepEqual(
+      options.map((o) => o.quality),
+      Array.from({ length: quality - 1 }, (_, i) => quality - i - 1),
+    );
+    assert.equal(
+      options.reduce((sum, o) => sum + o.chance, 0),
+      100,
+    );
+    assert.ok(
+      options.every(
+        (o, i) => o.chance > 0 && (!i || options[i - 1].chance > o.chance),
+      ),
+    );
+  }
+});
+void test('actual crushing draws honor each percentage interval for grades 2 through 6', () => {
+  const { s: base, id } = crushFixture();
+  const probes = new Map<number, number>();
+  const probe = structuredClone(base);
+  for (let seed = 1; probes.size < 100 && seed < 100000; seed++) {
+    probe.rng = seed;
+    probes.set(Math.floor(random(probe) * 100), seed);
+  }
+  assert.equal(
+    probes.size,
+    100,
+    'sample every percentage interval of the real saved RNG',
+  );
+  for (let quality = 2; quality <= 6; quality++) {
+    const counts = Array(quality - 1).fill(0) as number[];
+    for (const seed of probes.values()) {
+      const s = structuredClone(base);
+      s.rng = seed;
+      s.gems.find((g) => g.id === id)!.type = basicId('B', quality);
+      const result = crushAndStartWave(s, id);
+      counts[quality - TOWERS[result.type].quality - 1]++;
+    }
+    assert.deepEqual(counts, MOBILE_RULES.crushWeights[quality]);
+  }
+});
+void test('crushing retains one lower gem in place and starts this wave exactly once', () => {
+  const { s: base, id } = crushFixture();
+  for (const family of ['B', 'D', 'E', 'G', 'P', 'Q', 'R', 'Y']) {
+    const s = structuredClone(base);
+    const selected = s.gems.find((g) => g.id === id)!;
+    selected.type = basicId(family, 5);
+    const position = {
+      id,
+      x: selected.x,
+      y: selected.y,
+      order: selected.order,
+    };
+    const occupied = s.gems.map((g) => [g.x, g.y]);
+    const candidates = s.gems
+      .filter((g) => g.candidate && g.id !== id)
+      .map((g) => g.id);
+    const retained = structuredClone(s.gems.filter((g) => !g.candidate));
+    const route = findPath(s.gems);
+    crushAndStartWave(s, id);
+    assert.equal(TOWERS[selected.type].family, family);
+    assert.ok(
+      TOWERS[selected.type].quality >= 1 && TOWERS[selected.type].quality < 5,
+    );
+    assert.deepEqual(
+      { id: selected.id, x: selected.x, y: selected.y, order: selected.order },
+      position,
+    );
+    assert.ok(s.gems.every((g) => !g.candidate));
+    assert.ok(
+      candidates.every(
+        (otherId) => s.gems.find((g) => g.id === otherId)!.type === 'stone',
+      ),
+    );
+    assert.deepEqual(
+      s.gems.filter((g) => retained.some((r) => r.id === g.id)),
+      retained,
+    );
+    assert.deepEqual(
+      s.gems.map((g) => [g.x, g.y]),
+      occupied,
+    );
+    assert.deepEqual(s.path, route);
+    assert.deepEqual(
+      [s.phase, s.wave, s.paused, s.speed, s.xp, s.quality],
+      ['combat', 12, false, 2, base.xp, base.quality],
+    );
+    const started = saveGame(s);
+    assert.throws(() => crushAndStartWave(s, id));
+    assert.equal(
+      saveGame(s),
+      started,
+      'repeat input cannot reroll or restart combat',
+    );
+    tick(s);
+    assert.ok(s.enemies.length > 0);
+  }
+});
+void test('invalid crushing never consumes gems or advances RNG', () => {
+  const { s: base, id } = crushFixture();
+  for (const change of [
+    (s: GameState) => {
+      s.placed = 4;
+    },
+    (s: GameState) => {
+      s.resolved = true;
+    },
+    (s: GameState) => {
+      s.phase = 'combat';
+      s.paused = true;
+    },
+    (s: GameState) => {
+      s.phase = 'won';
+    },
+    (s: GameState) => {
+      s.phase = 'lost';
+    },
+    (s: GameState) => {
+      s.gems.find((g) => g.id === id)!.candidate = false;
+    },
+    ...['stone', basicId('B', 1), 'gemtd_baiyin'].map(
+      (type) => (s: GameState) => {
+        s.gems.find((g) => g.id === id)!.type = type;
+      },
+    ),
+    (s: GameState) => {
+      s.gems = s.gems.filter((g) => g.id !== id);
+    },
+    (s: GameState) => {
+      for (let y = 0; y < BOARD.height; y++) add(s, 'stone', 12, y - 6);
+    },
+  ]) {
+    const s = structuredClone(base);
+    change(s);
+    const before = saveGame(s);
+    assert.throws(() => crushAndStartWave(s, id));
+    assert.equal(saveGame(s), before);
+  }
+});
+void test('crushing is deterministic after reloading a preparation save', () => {
+  const { s, id } = crushFixture();
+  const restored = loadGame(saveGame(s));
+  crushAndStartWave(s, id);
+  crushAndStartWave(restored, id);
+  assert.equal(saveGame(restored), saveGame(s));
+  assert.equal(
+    loadGame(saveGame(s)).gems.find((g) => g.id === id)!.type,
+    s.gems.find((g) => g.id === id)!.type,
   );
 });
 void test('combat recipes work while running or paused without changing enemies, route or wave clocks', () => {

@@ -8,6 +8,7 @@ import {
   ChevronRight,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { CrushAction } from '@/components/game/crush-action';
 import { TOWERS, type Recipe } from '@/lib/game/data';
 import {
   canPlace,
@@ -30,6 +31,7 @@ export type TouchActions = {
   nudge: (dx: number, dy: number) => void;
   place: () => void;
   keep: () => void;
+  crush: () => void;
   fuse: (count: number) => void;
   remove: () => void;
   recipe: (recipe: Recipe, ids: number[]) => void;
@@ -193,7 +195,7 @@ export function TouchControls({
               {s.placed < 5 && (
                 <p className="touch-hint">
                   本轮已建造 {s.placed}/5
-                  颗。建满五颗后，选择保留、融合或配方合成。
+                  颗。建满五颗后，选择保留、敲碎、融合或配方合成。
                 </p>
               )}
               <div className="touch-main-actions">
@@ -204,6 +206,12 @@ export function TouchControls({
                 >
                   保留并开始本波
                 </Button>
+                <CrushAction
+                  state={s}
+                  gemId={selected.id}
+                  ready={ready}
+                  onCrush={a.crush}
+                />
                 {options.map((count) => (
                   <Button
                     key={count}

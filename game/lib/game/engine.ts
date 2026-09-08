@@ -232,6 +232,44 @@ export function keepAndStartWave(s: GameState, id: number) {
   keep(s, id);
   startWave(s);
 }
+export function crushOptions(s: GameState, id: number) {
+  const g = getGem(s, id),
+    t = g && TOWERS[g.type];
+  if (
+    s.phase !== 'prepare' ||
+    s.placed !== 5 ||
+    s.resolved ||
+    !g?.candidate ||
+    !t?.quality
+  )
+    return [];
+  return (MOBILE_RULES.crushWeights[t.quality] ?? []).map((chance, i) => ({
+    quality: t.quality - i - 1,
+    chance,
+  }));
+}
+export function crushAndStartWave(s: GameState, id: number) {
+  const options = crushOptions(s, id);
+  if (!options.length)
+    throw new Error('建满5颗后，可敲碎本轮2级及以上的基础宝石');
+  // Reject before drawing randomness or consuming any candidates.
+  if (!findPath(s.gems)) throw new Error('道路不通');
+  const g = getGem(s, id)!,
+    t = TOWERS[g.type];
+  let roll = random(s) * 100,
+    quality = options[options.length - 1].quality;
+  for (const option of options) {
+    roll -= option.chance;
+    if (roll < 0) {
+      quality = option.quality;
+      break;
+    }
+  }
+  keep(s, id);
+  g.type = basicId(t.family, quality);
+  startWave(s);
+  return g;
+}
 export function fuseOptions(s: GameState, id: number) {
   const g = getGem(s, id),
     t = g && TOWERS[g.type];

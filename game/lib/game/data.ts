@@ -430,6 +430,17 @@ export const MOBILE_RULES = {
     [40, 30, 20, 10, 0],
     [10, 30, 30, 20, 10],
   ],
+  // Drop by 1, 2, ... grades. Grades 2–5 follow the archived downgrade Lua.
+  // Grade 6 cannot be rolled as a candidate today; its fallback also favors nearby grades.
+  crushWeights: [
+    [],
+    [],
+    [100],
+    [66, 34],
+    [50, 30, 20],
+    [50, 25, 15, 10],
+    [45, 25, 15, 10, 5],
+  ],
   minimumSpeed: 0.35, // Dota engine movement floor still needs in-engine confirmation.
   normalCount: 5,
   perfectTime: 90,

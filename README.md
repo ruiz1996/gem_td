@@ -20,6 +20,7 @@
 | [制作记录与已知缺项](docs/implementation-status.md) | 已实现内容、暂定参数、验证证据和后续工作 |
 | [原版脚本数值核对与本地测试](game/docs/original-rules-audit.md) | 2018脚本证据、修正前后对照、手机尺寸实操、剩余差异 |
 | [当前升级曲线](docs/upgrade-curve.md) | 全击杀时的升级波次、速度增怪影响、品质概率和50波经验表 |
+| [敲碎降级并保留](game/docs/crushing.md) | 原版降级概率、单颗保留、自动开波及手机验证 |
 | [手机交互设计与测试](game/docs/touch-interaction.md) | 自动识别、固定操作区、建造与选材流程、手势回归及验收范围 |
 
 ## 维护约定
