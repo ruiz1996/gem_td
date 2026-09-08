@@ -20,6 +20,7 @@
 | [制作记录与已知缺项](docs/implementation-status.md) | 已实现内容、暂定参数、验证证据和后续工作 |
 | [原版脚本数值核对与本地测试](game/docs/original-rules-audit.md) | 2018脚本证据、修正前后对照、手机尺寸实操、剩余差异 |
 | [Boss数值依据核查](game/docs/boss-audit.md) | 五个Boss的基础属性、单人缩放、奖励、扣血与尚未还原的机制 |
+| [第10波Boss配置计算](game/docs/boss10-theory.md) | 早期核心阵容、MVP限制、单体输出、击杀时间与迷宫覆盖要求 |
 | [当前升级曲线](docs/upgrade-curve.md) | 全击杀时的升级波次、速度增怪影响、品质概率和50波经验表 |
 | [敲碎降级并保留](game/docs/crushing.md) | 原版降级概率、单颗保留、自动开波及手机验证 |
 | [MVP成长与光环](game/docs/mvp.md) | 每波评选、全伤害叠加、八格光环、合成继承及旧存档迁移 |
