@@ -1,7 +1,10 @@
 import historical from '../../data/historical.json';
 import original from '../../data/original-facts.json';
 
-export const DATA_VERSION = '2018-source-mobile-alpha-3';
+export const DATA_VERSION = '2018-source-mobile-alpha-4-mvp';
+export const LEGACY_DATA_VERSION = '2018-source-mobile-alpha-3';
+// User-designed progression, separate from the archived tower and wave values.
+export const MVP_RULES = { maxLevel: 10, damagePerLevel: 10, auraDamage: 100 };
 type SourceUnit = {
   damage: number | null;
   interval: number;

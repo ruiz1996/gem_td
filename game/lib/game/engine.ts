@@ -4,7 +4,9 @@ export { findPath } from './pathfinding';
 import {
   BOARD,
   DATA_VERSION,
+  LEGACY_DATA_VERSION,
   MOBILE_RULES,
+  MVP_RULES,
   RECIPES,
   STEP,
   TOWERS,
@@ -23,7 +25,15 @@ export type Gem = Point & {
   cooldown: number;
   burnClock: number;
   damage: number;
+  waveDamage: number;
+  mvpLevel: number;
   kills: number;
+};
+export type MvpAward = Point & {
+  id: number;
+  type: string;
+  level: number;
+  damage: number;
 };
 export type Enemy = Point & {
   id: number;
@@ -86,7 +96,14 @@ export type GameState = {
   speed: 1 | 2;
   kills: number;
   leaks: number;
-  history: { wave: number; kills: number; leaks: number; life: number }[];
+  history: {
+    wave: number;
+    kills: number;
+    leaks: number;
+    life: number;
+    mvp: MvpAward | null;
+  }[];
+  mvpStartWave: number;
   waveKills: number;
   waveLeaks: number;
   path: Point[];
@@ -105,6 +122,8 @@ export function freshGame(seed = Date.now() >>> 0): GameState {
     cooldown: 0,
     burnClock: 0,
     damage: 0,
+    waveDamage: 0,
+    mvpLevel: 0,
     kills: 0,
   }));
   return {
@@ -134,6 +153,7 @@ export function freshGame(seed = Date.now() >>> 0): GameState {
     kills: 0,
     leaks: 0,
     history: [],
+    mvpStartWave: 1,
     waveKills: 0,
     waveLeaks: 0,
     path: findPath(gems)!,
@@ -203,6 +223,8 @@ export function place(s: GameState, x: number, y: number): Gem {
     cooldown: 0,
     burnClock: 0,
     damage: 0,
+    waveDamage: 0,
+    mvpLevel: 0,
     kills: 0,
   };
   s.gems.push(gem);
@@ -215,6 +237,68 @@ function stone(g: Gem) {
   g.candidate = false;
   g.cooldown = 0;
   g.burnClock = 0;
+  g.mvpLevel = 0;
+  g.waveDamage = 0;
+  g.damage = 0;
+  g.kills = 0;
+}
+const activeTower = (g: Gem) => !g.candidate && g.type !== 'stone';
+export function mvpBonus(s: GameState, g: Gem) {
+  const own = activeTower(g) ? g.mvpLevel * MVP_RULES.damagePerLevel : 0;
+  const auraCount = activeTower(g)
+    ? s.gems.filter(
+        (source) =>
+          activeTower(source) &&
+          source.mvpLevel === MVP_RULES.maxLevel &&
+          source.id !== g.id &&
+          Math.max(Math.abs(source.x - g.x), Math.abs(source.y - g.y)) === 1,
+      ).length
+    : 0;
+  const aura = auraCount * MVP_RULES.auraDamage;
+  return { own, aura, auraCount, total: own + aura };
+}
+export function inheritedMvp(s: GameState, ids: number[]) {
+  return Math.min(
+    MVP_RULES.maxLevel,
+    [...new Set(ids)].reduce(
+      (sum, id) => sum + (getGem(s, id)?.mvpLevel ?? 0),
+      0,
+    ),
+  );
+}
+function inheritMaterials(s: GameState, anchor: Gem, materials: Gem[]) {
+  const consumed = new Set(
+    materials.filter((g) => g.id !== anchor.id).map((g) => g.id),
+  );
+  anchor.mvpLevel = inheritedMvp(
+    s,
+    materials.map((g) => g.id),
+  );
+  anchor.waveDamage = materials.reduce((sum, g) => sum + g.waveDamage, 0);
+  anchor.damage = materials.reduce((sum, g) => sum + g.damage, 0);
+  anchor.kills = materials.reduce((sum, g) => sum + g.kills, 0);
+  // Outstanding poison belongs to the resulting tower after materials become rocks.
+  for (const e of s.enemies)
+    for (const poison of e.poisons)
+      if (consumed.has(poison.owner)) poison.owner = anchor.id;
+}
+function awardMvp(s: GameState): MvpAward | null {
+  if (s.wave < s.mvpStartWave) return null;
+  const winner = s.gems
+    .filter((g) => activeTower(g) && g.mvpLevel < MVP_RULES.maxLevel)
+    .sort(
+      (a, b) => b.waveDamage - a.waveDamage || a.order - b.order || a.id - b.id,
+    )[0];
+  if (!winner) return null;
+  winner.mvpLevel++;
+  return {
+    id: winner.id,
+    type: winner.type,
+    x: winner.x,
+    y: winner.y,
+    level: winner.mvpLevel,
+    damage: winner.waveDamage,
+  };
 }
 export function keep(s: GameState, id: number) {
   if (s.phase !== 'prepare' || s.placed !== 5 || s.resolved)
@@ -285,6 +369,16 @@ export function fuse(s: GameState, id: number, count: number) {
   const g = getGem(s, id)!,
     t = TOWERS[g.type];
   const result = basicId(t.family, t.quality + (count === 4 ? 2 : 1));
+  const materials = [
+    g,
+    ...s.gems
+      .filter(
+        (other) => other.id !== id && other.candidate && other.type === g.type,
+      )
+      .sort((a, b) => a.order - b.order || a.id - b.id)
+      .slice(0, count - 1),
+  ];
+  inheritMaterials(s, g, materials);
   keep(s, id);
   g.type = result;
 }
@@ -369,6 +463,7 @@ export function combine(
   )
     throw new Error('材料已改变，请重新选择');
   const wasCandidate = anchor.candidate;
+  inheritMaterials(s, anchor, materials as Gem[]);
   // Preserve cooldown so repeatedly upgrading cannot manufacture instant attacks.
   for (const g of materials) if (g!.id !== anchorId) stone(g!);
   if (wasCandidate) {
@@ -392,6 +487,7 @@ export function startWave(s: GameState) {
   s.waveLeaks = 0;
   s.combatCount = WAVES[s.wave - 1].boss ? 1 : s.normalCount;
   s.waveStartedAt = s.time;
+  for (const g of s.gems) g.waveDamage = 0;
 }
 export function physicalMultiplier(armor: number) {
   return 1 - (0.06 * armor) / (1 + 0.06 * Math.abs(armor));
@@ -420,6 +516,7 @@ function hit(
   kind: 'physical' | 'magic' | 'pure' = 'physical',
 ) {
   if (e.hp <= 0 || amount <= 0) return;
+  if (g) amount *= 1 + mvpBonus(s, g).total / 100;
   const auras = auraAt(s, e);
   let value = 0;
   if (kind === 'pure') value = amount;
@@ -440,7 +537,11 @@ function hit(
   }
   value = Math.min(e.hp, value);
   e.hp -= value;
-  if (g) g.damage += value;
+  if (g) {
+    g.damage += value;
+    // Legacy saves can contain poison whose old owner has already become a rock.
+    if (activeTower(g)) g.waveDamage += value;
+  }
   if (e.hp <= 0) {
     s.kills++;
     s.waveKills++;
@@ -656,6 +757,7 @@ export function tick(s: GameState, dt = STEP) {
       kills: s.waveKills,
       leaks: s.waveLeaks,
       life: s.life,
+      mvp: awardMvp(s),
     });
     if (
       s.waveLeaks === 0 &&
@@ -692,13 +794,18 @@ export function loadGame(text: string): GameState {
     throw new Error('存档无法读取');
   }
   const finite = (n: unknown) => typeof n === 'number' && Number.isFinite(n);
-  if (!s || s.version !== DATA_VERSION)
+  const legacy = s?.version === LEGACY_DATA_VERSION;
+  if (!s || (!legacy && s.version !== DATA_VERSION))
     throw new Error('存档版本不兼容，已保留旧存档，请另开新局');
+  if (legacy) s.mvpStartWave = s.wave + (s.phase === 'combat' ? 1 : 0);
   if (
     !['prepare', 'combat', 'won', 'lost'].includes(s.phase) ||
     !Number.isInteger(s.wave) ||
     s.wave < 1 ||
     s.wave > 50 ||
+    !Number.isInteger(s.mvpStartWave) ||
+    s.mvpStartWave < 1 ||
+    s.mvpStartWave > WAVES.length + 1 ||
     ![
       s.seed,
       s.rng,
@@ -742,6 +849,10 @@ export function loadGame(text: string): GameState {
   const cells = new Set<string>(),
     ids = new Set<number>();
   for (const g of s.gems) {
+    if (legacy && g) {
+      g.mvpLevel = 0;
+      g.waveDamage = 0;
+    }
     if (
       !g ||
       !Number.isInteger(g.id) ||
@@ -757,11 +868,53 @@ export function loadGame(text: string): GameState {
       cells.has(pointKey(g.x, g.y)) ||
       (!TOWERS[g.type] && g.type !== 'stone') ||
       typeof g.candidate !== 'boolean' ||
-      ![g.order, g.cooldown, g.burnClock, g.damage, g.kills].every(finite)
+      ![
+        g.order,
+        g.cooldown,
+        g.burnClock,
+        g.damage,
+        g.kills,
+        g.waveDamage,
+      ].every(finite) ||
+      g.waveDamage < 0 ||
+      !Number.isInteger(g.mvpLevel) ||
+      g.mvpLevel < 0 ||
+      g.mvpLevel > MVP_RULES.maxLevel ||
+      (g.type === 'stone' && (g.mvpLevel !== 0 || g.waveDamage !== 0))
     )
       throw new Error('存档中的宝石数据异常');
     cells.add(pointKey(g.x, g.y));
     ids.add(g.id);
+  }
+  for (const entry of s.history) {
+    if (
+      !entry ||
+      !Number.isInteger(entry.wave) ||
+      entry.wave < 1 ||
+      entry.wave > WAVES.length
+    )
+      throw new Error('存档波次记录异常');
+    if (legacy) entry.mvp = null;
+    const m = entry.mvp;
+    if (
+      m !== null &&
+      (!m ||
+        !TOWERS[m.type] ||
+        !Number.isInteger(m.id) ||
+        m.id < 1 ||
+        !Number.isInteger(m.level) ||
+        m.level < 1 ||
+        m.level > MVP_RULES.maxLevel ||
+        !finite(m.damage) ||
+        m.damage < 0 ||
+        !Number.isInteger(m.x) ||
+        !Number.isInteger(m.y) ||
+        m.x < 0 ||
+        m.x >= BOARD.width ||
+        m.y < 0 ||
+        m.y >= BOARD.height)
+    )
+      throw new Error('存档MVP记录异常');
   }
   const route = findPath(s.gems);
   if (!route) throw new Error('存档道路无效');
@@ -810,6 +963,7 @@ export function loadGame(text: string): GameState {
     throw new Error('存档实例编号无效');
   s.paused = true;
   s.shots = [];
+  s.version = DATA_VERSION;
   return s;
 }
 export function describe(type: string) {

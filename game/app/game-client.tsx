@@ -31,6 +31,11 @@ import {
 import { useGameInteraction } from '@/hooks/use-game-interaction';
 import { CrushAction } from '@/components/game/crush-action';
 import {
+  MvpStats,
+  MvpInheritance,
+  mvpResultText,
+} from '@/components/game/mvp-stats';
+import {
   nudgeCell,
   MAX_TOUCH_ZOOM,
   type InteractionPreference,
@@ -345,7 +350,9 @@ export default function GemGame() {
                   ' 波结束 · 击杀 ' +
                   cur.waveKills +
                   ' · 漏怪 ' +
-                  cur.waveLeaks,
+                  cur.waveLeaks +
+                  ' · ' +
+                  mvpResultText(cur.history.at(-1)?.mvp),
               );
             break;
           }
@@ -424,9 +431,12 @@ export default function GemGame() {
       setReady(true);
       refresh();
       notify(
-        state.current.phase === 'combat'
+        (state.current.phase === 'combat'
           ? '存档已恢复；战斗处于暂停状态'
-          : '存档已恢复',
+          : '存档已恢复') +
+          (state.current.mvpStartWave > state.current.wave
+            ? `；MVP从第${state.current.mvpStartWave}波开始统计`
+            : ''),
       );
     } catch (e) {
       notify((e as Error).message);
@@ -924,6 +934,7 @@ export default function GemGame() {
                                 ? '成品位置'
                                 : '材料 ' + (i + 1)}{' '}
                               · {g.x + 1}, {g.y + 1}
+                              {` · MVP ${g.mvpLevel}级`}
                             </small>
                           </span>
                           {preview.slot === i && <Check size={14} />}
@@ -932,6 +943,7 @@ export default function GemGame() {
                     })}
                   </div>
                   <p className="muted">其余材料原地变成石头，道路保持不变。</p>
+                  <MvpInheritance state={s} ids={preview.ids} />
                   <Button
                     className="primary-action full"
                     onClick={() =>
@@ -1025,7 +1037,7 @@ export default function GemGame() {
                       <div className="stat-grid">
                         <div>
                           <strong>{selectedTower.damage}</strong>
-                          <small>攻击</small>
+                          <small>基础攻击</small>
                         </div>
                         <div>
                           <strong>
@@ -1042,13 +1054,7 @@ export default function GemGame() {
                           <small>射程 / 格</small>
                         </div>
                       </div>
-                      {!selected.candidate && (
-                        <p className="damage-stats">
-                          本塔累计伤害{' '}
-                          {Math.round(selected.damage).toLocaleString()} · 击杀{' '}
-                          {selected.kills}
-                        </p>
-                      )}
+                      <MvpStats state={s} gem={selected} />
                     </>
                   )}
                   {selected.type === 'stone' ? (
@@ -1492,6 +1498,8 @@ export default function GemGame() {
                       <small>
                         {g.candidate ? '本轮候选' : '已保留'} · {g.x + 1}列{' '}
                         {g.y + 1}行
+                        {!g.candidate &&
+                          ` · ${g.mvpLevel === 10 ? 'MVP光环' : `MVP ${g.mvpLevel}级`}`}
                       </small>
                     </span>
                     <ChevronRight size={18} />
@@ -1532,6 +1540,12 @@ export default function GemGame() {
                   <strong>合成由你决定</strong>
                   <p>
                     点选材料宝石发起合成，选择其他材料。预览时暂停，其他材料原地变石，战斗道路不变。
+                  </p>
+                </li>
+                <li>
+                  <strong>MVP成长</strong>
+                  <p>
+                    每波伤害最高的未满级塔获得1级MVP，每级自身全伤害+10%。10级保留自身加成，并为相邻8格提供+100%全伤害光环；多个光环及自身MVP相加。满级塔退出评选，合成继承所有材料等级，最高10级。
                   </p>
                 </li>
               </ol>
@@ -1624,6 +1638,15 @@ export default function GemGame() {
           )}
           {modal === 'waves' && (
             <div className="waves-list">
+              {s.history.length > 0 && (
+                <div className="mvp-stats">
+                  <span>
+                    第{s.history.at(-1)!.wave}波结算
+                    <br />
+                    {mvpResultText(s.history.at(-1)!.mvp)}
+                  </span>
+                </div>
+              )}
               {WAVES.map((w) => (
                 <div
                   key={w.index}
@@ -1643,6 +1666,13 @@ export default function GemGame() {
                         .filter(Boolean)
                         .join(' · ')}
                     </small>
+                    {s.history.find((h) => h.wave === w.index)?.mvp && (
+                      <small>
+                        {mvpResultText(
+                          s.history.find((h) => h.wave === w.index)!.mvp,
+                        )}
+                      </small>
+                    )}
                   </span>
                   <small>
                     生命 {w.hp.toLocaleString()}

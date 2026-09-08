@@ -21,6 +21,7 @@
 | [原版脚本数值核对与本地测试](game/docs/original-rules-audit.md) | 2018脚本证据、修正前后对照、手机尺寸实操、剩余差异 |
 | [当前升级曲线](docs/upgrade-curve.md) | 全击杀时的升级波次、速度增怪影响、品质概率和50波经验表 |
 | [敲碎降级并保留](game/docs/crushing.md) | 原版降级概率、单颗保留、自动开波及手机验证 |
+| [MVP成长与光环](game/docs/mvp.md) | 每波评选、全伤害叠加、八格光环、合成继承及旧存档迁移 |
 | [手机交互设计与测试](game/docs/touch-interaction.md) | 自动识别、固定操作区、建造与选材流程、手势回归及验收范围 |
 
 ## 维护约定

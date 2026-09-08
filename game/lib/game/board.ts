@@ -1,4 +1,4 @@
-import { BOARD, TOWERS } from './data';
+import { BOARD, TOWERS, MVP_RULES } from './data';
 import { isProtected, isReferenceRoad } from './map';
 import type { GameState, Point } from './engine';
 import { boardGeometry, focusPan, touchZoom } from './interaction';
@@ -159,6 +159,35 @@ export async function createBoard(
         g.fillCircle(p.x, p.y, tower.range * cell);
         g.lineStyle(1, parseInt(tower.color.slice(1), 16), 0.3);
         g.strokeCircle(p.x, p.y, tower.range * cell);
+        if (!selected.candidate && selected.mvpLevel === MVP_RULES.maxLevel) {
+          for (let dy = -1; dy <= 1; dy++)
+            for (let dx = -1; dx <= 1; dx++) {
+              const x = selected.x + dx,
+                y = selected.y + dy;
+              if (
+                (!dx && !dy) ||
+                x < 0 ||
+                y < 0 ||
+                x >= BOARD.width ||
+                y >= BOARD.height
+              )
+                continue;
+              g.fillStyle(0xf7cf73, 0.22);
+              g.fillRect(
+                left + x * cell + 1,
+                top + y * cell + 1,
+                cell - 2,
+                cell - 2,
+              );
+              g.lineStyle(1, 0xf7cf73, 0.65);
+              g.strokeRect(
+                left + x * cell + 1,
+                top + y * cell + 1,
+                cell - 2,
+                cell - 2,
+              );
+            }
+        }
       }
       if (v.showPath && s.path.length) {
         g.lineStyle(Math.max(1, cell * 0.06), 0x6aa29b, 0.5);
@@ -294,6 +323,25 @@ export async function createBoard(
           if (gem.candidate) {
             g.fillStyle(0xf9d990);
             g.fillCircle(p.x + size, p.y - size, Math.max(2, cell * 0.07));
+          }
+          if (!gem.candidate && gem.mvpLevel > 0) {
+            g.lineStyle(
+              gem.mvpLevel === MVP_RULES.maxLevel ? 2 : 1,
+              0xf7cf73,
+              0.9,
+            );
+            g.strokeCircle(p.x, p.y, cell * 0.43);
+            if (cell >= 22)
+              this.label(
+                'mvp' + gem.id,
+                gem.mvpLevel === MVP_RULES.maxLevel
+                  ? 'MVP★'
+                  : `M${gem.mvpLevel}`,
+                p.x,
+                p.y - cell * 0.55,
+                Math.max(9, cell * 0.25),
+                '#f7cf73',
+              );
           }
         }
         if (material >= 0)

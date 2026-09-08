@@ -409,6 +409,18 @@ input {
   line-height: 1.8;
   color: #93a7b7;
 }
+.mvp-stats {
+  border: 1px solid #77643f;
+  border-radius: 8px;
+  padding: 10px;
+  margin: 8px 0;
+  color: #e9d5a6;
+  font-size: 12px;
+  line-height: 1.7;
+}
+.mvp-stats p {
+  margin: 4px 0 0;
+}
 .tip-block {
   margin-top: 26px;
   border-left: 2px solid #446e62;

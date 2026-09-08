@@ -39,6 +39,8 @@ function arena(family: string, quality = 1) {
     cooldown: 0,
     burnClock: 0,
     damage: 0,
+    waveDamage: 0,
+    mvpLevel: 0,
     kills: 0,
   };
   s.gems.push(g);

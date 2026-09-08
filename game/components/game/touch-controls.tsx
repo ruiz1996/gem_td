@@ -9,6 +9,7 @@ import {
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { CrushAction } from '@/components/game/crush-action';
+import { MvpStats, MvpInheritance } from '@/components/game/mvp-stats';
 import { TOWERS, type Recipe } from '@/lib/game/data';
 import {
   canPlace,
@@ -82,6 +83,7 @@ export function TouchControls({
               {preview.ids.map((id, i) => (
                 <option key={i} value={i}>
                   {i + 1}. {TOWERS[getGem(s, id)!.type].name}
+                  {` · MVP ${getGem(s, id)!.mvpLevel}级`}
                   {id === preview.anchor ? '（成品位置）' : ''}
                 </option>
               ))}
@@ -97,7 +99,7 @@ export function TouchControls({
             >
               {available.map((g) => (
                 <option key={g.id} value={g.id}>
-                  {g.x + 1}列 · {g.y + 1}行（#{g.id}）
+                  {g.x + 1}列 · {g.y + 1}行（#{g.id}）{` · MVP ${g.mvpLevel}级`}
                 </option>
               ))}
             </select>
@@ -105,6 +107,7 @@ export function TouchControls({
           <p className="touch-hint">
             成品留在所选宝石的位置，其他材料原地变成石头。
           </p>
+          <MvpInheritance state={s} ids={preview.ids} />
           <Button className="primary-action" onClick={a.combine}>
             <Layers size={18} />
             确认合成
@@ -118,7 +121,7 @@ export function TouchControls({
               <div className="stat-grid">
                 <div>
                   <strong>{tower.damage}</strong>
-                  <small>攻击</small>
+                  <small>基础攻击</small>
                 </div>
                 <div>
                   <strong>
@@ -132,6 +135,7 @@ export function TouchControls({
                   <small>射程 / 格</small>
                 </div>
               </div>
+              <MvpStats state={s} gem={selected!} />
             </>
           )}
           {building && (!selected || selected.type === 'stone') && (
