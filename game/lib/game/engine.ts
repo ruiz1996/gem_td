@@ -4,6 +4,7 @@ export { findPath } from './pathfinding';
 import {
   BOARD,
   DATA_VERSION,
+  FIRST_BOSS_BALANCE,
   LEGACY_DATA_VERSION,
   MOBILE_RULES,
   MVP_RULES,
@@ -957,6 +958,15 @@ export function loadGame(text: string): GameState {
       e.routeIndex >= (e.flying ? BOARD.checkpoints.length : route.length)
     )
       throw new Error('存档中的敌人数据异常');
+    // Apply the balance change once to an already-spawned first Boss, preserving its health ratio.
+    if (
+      s.phase === 'combat' &&
+      s.wave === FIRST_BOSS_BALANCE.wave &&
+      e.maxHp === FIRST_BOSS_BALANCE.previousHp
+    ) {
+      e.hp = (e.hp / e.maxHp) * FIRST_BOSS_BALANCE.hp;
+      e.maxHp = FIRST_BOSS_BALANCE.hp;
+    }
     ids.add(e.id);
   }
   if (ids.size && s.nextId <= Math.max(...ids))

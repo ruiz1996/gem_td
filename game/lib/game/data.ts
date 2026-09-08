@@ -5,6 +5,8 @@ export const DATA_VERSION = '2018-source-mobile-alpha-4-mvp';
 export const LEGACY_DATA_VERSION = '2018-source-mobile-alpha-3';
 // User-designed progression, separate from the archived tower and wave values.
 export const MVP_RULES = { maxLevel: 10, damagePerLevel: 10, auraDamage: 100 };
+// User-approved solo balance adjustment; keep the archived source values intact.
+export const FIRST_BOSS_BALANCE = { wave: 10, hp: 800, previousHp: 1260 };
 type SourceUnit = {
   damage: number | null;
   interval: number;
@@ -393,12 +395,14 @@ export const WAVES: Wave[] = Array.from({ length: 50 }, (_, i) => {
   if (!r) throw new Error(`Missing wave ${i + 1}`);
   const f = r.fields,
     a = f.Ability ?? [],
-    boss = (i + 1) % 10 === 0;
+    boss = (i + 1) % 10 === 0,
+    profile = enemyProfile(r);
   return {
     index: i + 1,
     name: waveNames[i],
     id: f.Code[0],
-    ...enemyProfile(r),
+    ...profile,
+    hp: i + 1 === FIRST_BOSS_BALANCE.wave ? FIRST_BOSS_BALANCE.hp : profile.hp,
     boss,
     count: boss ? 1 : 5,
     spawnEvery: 1,
