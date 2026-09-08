@@ -475,8 +475,9 @@ export default function GemGame() {
   }
   function confirmPlacement() {
     act(() => {
-      if (!v.pending) return;
-      const g = place(s, v.pending.x, v.pending.y);
+      const point = v.pending ?? (selected?.type === 'stone' ? selected : null);
+      if (!point) return;
+      const g = place(s, point.x, point.y);
       v.selected = g.id;
       v.pending = null;
       if (modal === 'action') closeModal();
@@ -653,7 +654,7 @@ export default function GemGame() {
             <div
               ref={board}
               className="phaser-host"
-              aria-label="宝石棋盘：点选空格后确认建造，点选宝石查看详情，双指缩放地图"
+              aria-label="宝石棋盘：点选空格或石头后确认建造，点选宝石查看详情，双指缩放地图"
             />
             {boardError && (
               <div className="board-message" role="alert">
@@ -1058,19 +1059,30 @@ export default function GemGame() {
                     </>
                   )}
                   {selected.type === 'stone' ? (
-                    <Button
-                      variant="outline"
-                      className="full"
-                      disabled={s.phase !== 'prepare'}
-                      onClick={() =>
-                        act(() => {
-                          removeStone(s, selected.id);
-                          v.selected = null;
-                        })
-                      }
-                    >
-                      拆除石头
-                    </Button>
+                    <>
+                      {s.phase === 'prepare' && !s.resolved && s.placed < 5 && (
+                        <Button
+                          className="primary-action full"
+                          disabled={!!canPlace(s, selected.x, selected.y)}
+                          onClick={confirmPlacement}
+                        >
+                          替换建造 · {s.placed + 1}/5 <Plus size={16} />
+                        </Button>
+                      )}
+                      <Button
+                        variant="outline"
+                        className="full"
+                        disabled={s.phase !== 'prepare'}
+                        onClick={() =>
+                          act(() => {
+                            removeStone(s, selected.id);
+                            v.selected = null;
+                          })
+                        }
+                      >
+                        拆除石头
+                      </Button>
+                    </>
                   ) : selected.candidate ? (
                     <>
                       <Button
@@ -1172,7 +1184,7 @@ export default function GemGame() {
                         ? '可以拆除石头调整路线，或查看宝石配方。准备好后开始防守。'
                         : s.placed === 5
                           ? '点击本轮任意一颗宝石，选择保留、同级融合或配方合成。'
-                          : '点选空格，再确认放置。每轮揭晓 5 颗宝石，最终保留一颗，其余变成迷宫石头。'}
+                          : '点选空格或石头，再确认建造。石头可直接替换，每轮共揭晓5颗宝石，最终保留一颗。'}
                   </p>
                   <div className="tip-block">
                     <Route size={19} />
@@ -1516,13 +1528,15 @@ export default function GemGame() {
             <div className="help-content">
               {touch && (
                 <p className="touch-hint">
-                  手机操作：点选空格或宝石，再点“操作”打开建造、保留或合成面板。完成后自动回到地图。双指缩放，放大后拖动移图；暂停、倍速和图鉴在右上角菜单里。
+                  手机操作：点选空格、石头或宝石，再点“操作”打开面板。石头可直接替换建造，无需先拆除。完成后自动回到地图。双指缩放，放大后拖动移图；暂停、倍速和图鉴在右上角菜单里。
                 </p>
               )}
               <ol>
                 <li>
                   <strong>放置 5 颗</strong>
-                  <p>点选空格，确认建造后揭晓宝石。不能堵死路标之间的道路。</p>
+                  <p>
+                    点选空格建造，或选中石头直接替换建造；均计入本轮五次。不能堵死路标之间的道路。
+                  </p>
                 </li>
                 <li>
                   <strong>留下一颗</strong>

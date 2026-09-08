@@ -191,8 +191,8 @@ export function canPlace(s: GameState, x: number, y: number): string | null {
     y >= BOARD.height
   )
     return '请选择棋盘内的格子';
-  if (s.gems.some((g) => g.x === x && g.y === y))
-    return '这个格子已有宝石或石头';
+  const occupied = s.gems.find((g) => g.x === x && g.y === y);
+  if (occupied && occupied.type !== 'stone') return '这个格子已有宝石';
   if (isProtected(x, y)) return '出生区和终点区不能建造';
   if (isWaypoint(x, y)) return '不能占用路标';
   if (!findPath([...s.gems, { x, y }])) return '这里会堵死道路，请换个位置';
@@ -201,6 +201,9 @@ export function canPlace(s: GameState, x: number, y: number): string | null {
 export function place(s: GameState, x: number, y: number): Gem {
   const error = canPlace(s, x, y);
   if (error) throw new Error(error);
+  const rockIndex = s.gems.findIndex(
+    (g) => g.x === x && g.y === y && g.type === 'stone',
+  );
   const family = ['B', 'D', 'E', 'G', 'P', 'Q', 'R', 'Y'][
     Math.floor(random(s) * 8)
   ];
@@ -228,6 +231,8 @@ export function place(s: GameState, x: number, y: number): Gem {
     mvpLevel: 0,
     kills: 0,
   };
+  // Replace only after validation and generation, without opening the route in between.
+  if (rockIndex !== -1) s.gems.splice(rockIndex, 1);
   s.gems.push(gem);
   s.placed++;
   s.path = findPath(s.gems)!;
@@ -978,7 +983,7 @@ export function loadGame(text: string): GameState {
 }
 export function describe(type: string) {
   const t = TOWERS[type];
-  if (!t) return '阻挡道路，准备阶段可拆除';
+  if (!t) return '阻挡道路，准备阶段可拆除；有建造次数时可直接替换建造宝石';
   const parts: string[] = [];
   if (t.effects.slow) parts.push(`减速 ${t.effects.slow} · 2秒`);
   if (t.effects.poison) parts.push(`毒伤 ${t.effects.poison}/秒 · 5秒可叠加`);

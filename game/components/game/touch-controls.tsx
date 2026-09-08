@@ -60,6 +60,8 @@ export function TouchControls({
     tower = selected && TOWERS[selected.type];
   const building = s.phase === 'prepare' && !s.resolved && s.placed < 5;
   const point = v.pending ?? v.cursor;
+  const placementPoint =
+    v.pending ?? (selected?.type === 'stone' ? selected : null);
   const options = selected ? fuseOptions(s, selected.id) : [];
   const combinations = selected ? recipesFor(s, selected.id) : [];
   const available = preview
@@ -164,24 +166,27 @@ export function TouchControls({
                   );
                 })}
               </div>
-              {!selected && (
-                <>
-                  <p className="muted">
-                    {v.pending
-                      ? '确认后随机揭晓宝石。'
-                      : point
-                        ? canPlace(s, point.x, point.y)
-                        : '请先在地图选择位置。'}
-                  </p>
-                  <Button
-                    className="primary-action"
-                    disabled={!ready || !v.pending}
-                    onClick={a.place}
-                  >
-                    确认建造 · {s.placed + 1}/5
-                  </Button>
-                </>
-              )}
+              <p className="muted">
+                {selected?.type === 'stone'
+                  ? '直接用随机宝石替换这块石头，计入本轮五次建造。'
+                  : v.pending
+                    ? '确认后随机揭晓宝石。'
+                    : point
+                      ? canPlace(s, point.x, point.y)
+                      : '请先在地图选择位置。'}
+              </p>
+              <Button
+                className="primary-action"
+                disabled={
+                  !ready ||
+                  !placementPoint ||
+                  !!canPlace(s, placementPoint.x, placementPoint.y)
+                }
+                onClick={a.place}
+              >
+                {selected?.type === 'stone' ? '替换建造' : '确认建造'} ·{' '}
+                {s.placed + 1}/5
+              </Button>
             </>
           )}
           {selected?.type === 'stone' &&
@@ -191,7 +196,7 @@ export function TouchControls({
               </Button>
             ) : (
               <p className="touch-hint">
-                战斗中不能拆除石头，波次结束后可操作。
+                战斗中不能替换建造或拆除石头，波次结束后可操作。
               </p>
             ))}
           {selected?.candidate && (
