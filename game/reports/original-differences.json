@@ -1,0 +1,290 @@
+{
+  "date": "2026-09-08",
+  "codeCommit": "b5fe62d098f4df6a2f642904dea4f7b3d280b087",
+  "dataVersion": "2018-source-mobile-alpha-5-original-mvp-stats",
+  "sourceCommit": "712f6a2d0f68ea4049e8923917311f8d1a44dfc8",
+  "scope": "Static source comparison and isolated current-engine probes; not an original-client replay or balance simulation.",
+  "hashes": {
+    "npc_units_custom.txt": "5859cd8ece129f3260a8f93a0496e4f2f29f1d5c8193abf1d98f843780fc3f89",
+    "npc_abilities_custom.txt": "f4fb21e311c6b6f2aa9a65541e9d2ab9fdca9c4f1d995ff1b151e29cf96ed6a8",
+    "addon_game_mode.lua": "6b99219b02c6d8b62f3725604451c8f82b23ed7da7e059158cfd2df625a13434",
+    "fenliejian.lua": "244e3ffc06ccac3dfa73dfb0116da00c734c27a0c01fe26c392e19724fc4abfc",
+    "shock.lua": "be685a7687858cd7fd5663881d398be3ad1595b824682420a7f24fdaf33fda8a",
+    "shandianlian.lua": "58c2de1d81e64bf836a2ecec625f187c2c4d81e3a30d8659d838fb3202ee209f"
+  },
+  "counts": {
+    "towers": 92,
+    "standardRecipes": 38,
+    "secretRecipes": 13,
+    "recipesMatchingIngredients": 51,
+    "wavesWithUnimplementedAbilityNotes": 26,
+    "towersWithNotes": 17,
+    "towersWithGameplayNotes": 6,
+    "cosmeticOnlyTowers": 11
+  },
+  "secretCombat": [
+    {
+      "result": "gemtd_keyinuoerguangmingzhishan",
+      "name": "光明之山",
+      "retainedMaterialsAcceptedInCombat": true
+    },
+    {
+      "result": "gemtd_shuaibiankaipayou",
+      "name": "衰变凯帕铀",
+      "retainedMaterialsAcceptedInCombat": true
+    },
+    {
+      "result": "gemtd_heiwangzihuangguanhongbaoshi",
+      "name": "黑王子皇冠红宝石",
+      "retainedMaterialsAcceptedInCombat": true
+    },
+    {
+      "result": "gemtd_xingguanglanbaoshi",
+      "name": "星光蓝宝石",
+      "retainedMaterialsAcceptedInCombat": true
+    },
+    {
+      "result": "gemtd_yijiazhishi",
+      "name": "一家之石",
+      "retainedMaterialsAcceptedInCombat": true
+    },
+    {
+      "result": "gemtd_huguoshenyishi",
+      "name": "护国神异石",
+      "retainedMaterialsAcceptedInCombat": true
+    },
+    {
+      "result": "gemtd_jingangshikulinan",
+      "name": "金刚石库利南",
+      "retainedMaterialsAcceptedInCombat": true
+    },
+    {
+      "result": "gemtd_sililankazhixing",
+      "name": "斯里兰卡之星",
+      "retainedMaterialsAcceptedInCombat": true
+    },
+    {
+      "result": "gemtd_heiyaoshi",
+      "name": "黑曜石",
+      "retainedMaterialsAcceptedInCombat": true
+    },
+    {
+      "result": "gemtd_manao",
+      "name": "玛瑙",
+      "retainedMaterialsAcceptedInCombat": true
+    },
+    {
+      "result": "gemtd_xiameishi",
+      "name": "虾美石",
+      "retainedMaterialsAcceptedInCombat": true
+    },
+    {
+      "result": "gemtd_ranshaozhishi",
+      "name": "燃烧之石",
+      "retainedMaterialsAcceptedInCombat": true
+    },
+    {
+      "result": "gemtd_geluanshi",
+      "name": "歌鸾石",
+      "retainedMaterialsAcceptedInCombat": true
+    }
+  ],
+  "hugeFusion": {
+    "candidateQuality": 5,
+    "copies": 4,
+    "offeredCounts": [2],
+    "sourceResult": "gemtd_zhenjiazhishi"
+  },
+  "goldenHit": {
+    "attack": 1,
+    "physical": 1,
+    "magic": 0
+  },
+  "refreshProbes": [
+    {
+      "family": "B",
+      "time": 2.1666666666666687,
+      "originalStrongExpiry": 2.066666666666667,
+      "retainedStrongMagnitude": 480,
+      "currentExpiry": 3.533333333333335
+    },
+    {
+      "family": "P",
+      "time": 2.1666666666666687,
+      "originalStrongExpiry": 2.066666666666667,
+      "retainedStrongMagnitude": 64,
+      "currentExpiry": 3.533333333333335
+    }
+  ],
+  "lingering": {
+    "initialDamage": 30,
+    "damageDuringOneSecondOutside": 0
+  },
+  "slowOnMagicImmune": [
+    {
+      "magicImmune": false,
+      "measuredSpeed": 8.046875
+    },
+    {
+      "magicImmune": true,
+      "measuredSpeed": 10
+    }
+  ],
+  "bixiOnMagicImmune": [
+    {
+      "withBasicBixi": false,
+      "physical": 1.785714285714286
+    },
+    {
+      "withBasicBixi": true,
+      "physical": 2.6315789473684212
+    }
+  ],
+  "forkProbe": {
+    "forcedTriggerForGeometryOnly": true,
+    "mainTargetHpLoss": 70,
+    "basePhysicalAttack": 70,
+    "otherFiveHpLoss": [2500, 2500, 2500, 2500, 2500],
+    "currentRadiusUnits": 1280,
+    "sourceRadiusUnits": 1000
+  },
+  "armorComparison": [
+    {
+      "armor": 10,
+      "currentPer100": 62.5,
+      "patch707Per100": 66.66666666666667
+    },
+    {
+      "armor": 20,
+      "currentPer100": 45.45454545454546,
+      "patch707Per100": 50
+    },
+    {
+      "armor": 30,
+      "currentPer100": 35.71428571428572,
+      "patch707Per100": 40
+    }
+  ],
+  "missingWaveAbilities": {
+    "guai_jiaoxieguanghuan": [12, 18, 38, 45, 48],
+    "enemy_zheguang": [14, 23, 29, 31, 41],
+    "enemy_bukeqinfan": [17, 27, 39, 43, 47],
+    "runrunrun": [19, 42, 47],
+    "shredder_reactive_armor": [24, 28],
+    "enemy_recharge": [32, 43, 49],
+    "enemy_shanshuo": [33, 37, 44],
+    "tidehunter_kraken_shell": [39, 40, 49, 50],
+    "guai_xietong": [45]
+  },
+  "towerNotes": [
+    {
+      "id": "gemtd_keyinuoerguangmingzhishan",
+      "name": "光明之山",
+      "cosmetic": ["e301：脚本效果未还原"],
+      "gameplay": []
+    },
+    {
+      "id": "gemtd_shuaibiankaipayou",
+      "name": "衰变凯帕铀",
+      "cosmetic": ["e10003：脚本效果未还原"],
+      "gameplay": []
+    },
+    {
+      "id": "gemtd_heiwangzihuangguanhongbaoshi",
+      "name": "黑王子皇冠红宝石",
+      "cosmetic": ["e10002：脚本效果未还原"],
+      "gameplay": []
+    },
+    {
+      "id": "gemtd_jingangshikulinan",
+      "name": "金刚石库利南",
+      "cosmetic": ["e10005：脚本效果未还原"],
+      "gameplay": []
+    },
+    {
+      "id": "gemtd_huguoshenyishi",
+      "name": "护国神异石",
+      "cosmetic": ["e10006：脚本效果未还原"],
+      "gameplay": ["tower_ranjin：脚本效果未还原"]
+    },
+    {
+      "id": "gemtd_aijijin",
+      "name": "埃及金",
+      "cosmetic": [],
+      "gameplay": ["tower_tanlan：脚本效果未还原"]
+    },
+    {
+      "id": "gemtd_feicuimoxiang",
+      "name": "翡翠魔像",
+      "cosmetic": [],
+      "gameplay": ["tower_5shihua：脚本效果未还原"]
+    },
+    {
+      "id": "gemtd_sililankazhixing",
+      "name": "斯里兰卡之星",
+      "cosmetic": ["e10004：脚本效果未还原"],
+      "gameplay": ["tower_jihan：脚本效果未还原"]
+    },
+    {
+      "id": "gemtd_yijiazhishi",
+      "name": "一家之石",
+      "cosmetic": ["e10009：脚本效果未还原"],
+      "gameplay": []
+    },
+    {
+      "id": "gemtd_haibao",
+      "name": "海豹",
+      "cosmetic": [],
+      "gameplay": ["tower_chain_frost：脚本效果未还原"]
+    },
+    {
+      "id": "gemtd_xingguanglanbaoshi",
+      "name": "星光蓝宝石",
+      "cosmetic": ["e10001：脚本效果未还原"],
+      "gameplay": []
+    },
+    {
+      "id": "gemtd_heiyaoshi",
+      "name": "黑曜石",
+      "cosmetic": ["e10011：脚本效果未还原"],
+      "gameplay": []
+    },
+    {
+      "id": "gemtd_manao",
+      "name": "玛瑙",
+      "cosmetic": ["e10012：脚本效果未还原"],
+      "gameplay": []
+    },
+    {
+      "id": "gemtd_xiameishi",
+      "name": "虾美石",
+      "cosmetic": ["e10008：脚本效果未还原"],
+      "gameplay": ["tower_aojiao：脚本效果未还原"]
+    },
+    {
+      "id": "gemtd_geluanshi",
+      "name": "歌鸾石",
+      "cosmetic": ["e10013：脚本效果未还原"],
+      "gameplay": []
+    },
+    {
+      "id": "gemtd_ranshaozhishi",
+      "name": "燃烧之石",
+      "cosmetic": ["e10010：脚本效果未还原"],
+      "gameplay": []
+    },
+    {
+      "id": "gemtd_zhenjiazhishi",
+      "name": "镇家之石",
+      "cosmetic": ["e10007：脚本效果未还原"],
+      "gameplay": []
+    }
+  ],
+  "copySkills": {
+    "tower": "gemtd_tianranzumulv",
+    "sourceRadiusUnits": 220,
+    "sourceMaxDistinctStolenAbilities": 3,
+    "currentNoEffectsOrAuras": true
+  },
+  "warning": "Coverage counts are not completion percentages. Native-engine behavior and runtime Lua may add omissions beyond note lists."
+}
