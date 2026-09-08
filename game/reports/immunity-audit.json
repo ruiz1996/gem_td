@@ -1,0 +1,233 @@
+{
+  "date": "2026-09-08",
+  "runtimeCommit": "d6ba5b5bd8b182de1c88c55abef59d197fb53be7",
+  "sourceCommit": "712f6a2d0f68ea4049e8923917311f8d1a44dfc8",
+  "scope": "Current simulator, stationary one-target isolation; not a Dota-engine test or a replay of the user maze.",
+  "setup": {
+    "seed": 42,
+    "seconds": 10,
+    "steps": 300,
+    "tower": [
+      17,
+      18
+    ],
+    "target": [
+      18,
+      18
+    ],
+    "targetHp": 1000000,
+    "targetArmor": 8,
+    "targetResist": 10,
+    "enemyStunUntil": 1000000,
+    "extraAuras": false
+  },
+  "wave23": {
+    "index": 23,
+    "name": "物免大嘴箱",
+    "id": "gemtd_dazuiyaorenxiang",
+    "hp": 7200,
+    "speed": 4.31640625,
+    "armor": 8,
+    "resist": 10,
+    "ancient": true,
+    "flying": false,
+    "invisible": false,
+    "evasion": 0,
+    "physicalImmune": true,
+    "magicImmune": false,
+    "boss": false,
+    "count": 5,
+    "spawnEvery": 1,
+    "leak": 11,
+    "xp": 15,
+    "gold": 15,
+    "variants": [],
+    "notes": [
+      "enemy_zheguang"
+    ]
+  },
+  "matrix": [
+    {
+      "tower": "铀235",
+      "id": "gemtd_you235",
+      "mvp": 0,
+      "target": "none",
+      "duration": 10,
+      "damage": 2229.73,
+      "dps": 222.973
+    },
+    {
+      "tower": "铀235",
+      "id": "gemtd_you235",
+      "mvp": 0,
+      "target": "physicalImmune",
+      "duration": 10,
+      "damage": 0,
+      "dps": 0
+    },
+    {
+      "tower": "铀235",
+      "id": "gemtd_you235",
+      "mvp": 0,
+      "target": "magicImmune",
+      "duration": 10,
+      "damage": 2229.73,
+      "dps": 222.973
+    },
+    {
+      "tower": "古代鸡血石",
+      "id": "gemtd_gudaidejixueshi",
+      "mvp": 0,
+      "target": "none",
+      "duration": 10,
+      "damage": 7900.27,
+      "dps": 790.027
+    },
+    {
+      "tower": "古代鸡血石",
+      "id": "gemtd_gudaidejixueshi",
+      "mvp": 0,
+      "target": "physicalImmune",
+      "duration": 10,
+      "damage": 7380,
+      "dps": 738
+    },
+    {
+      "tower": "古代鸡血石",
+      "id": "gemtd_gudaidejixueshi",
+      "mvp": 0,
+      "target": "magicImmune",
+      "duration": 10,
+      "damage": 520.27,
+      "dps": 52.027
+    },
+    {
+      "tower": "星彩红宝石",
+      "id": "gemtd_xingcaihongbaoshi",
+      "mvp": 0,
+      "target": "none",
+      "duration": 10,
+      "damage": 540,
+      "dps": 54
+    },
+    {
+      "tower": "星彩红宝石",
+      "id": "gemtd_xingcaihongbaoshi",
+      "mvp": 0,
+      "target": "physicalImmune",
+      "duration": 10,
+      "damage": 540,
+      "dps": 54
+    },
+    {
+      "tower": "星彩红宝石",
+      "id": "gemtd_xingcaihongbaoshi",
+      "mvp": 0,
+      "target": "magicImmune",
+      "duration": 10,
+      "damage": 0,
+      "dps": 0
+    },
+    {
+      "tower": "鲜艳的孔雀石",
+      "id": "gemtd_xianyandekongqueshi",
+      "mvp": 0,
+      "target": "none",
+      "duration": 10,
+      "damage": 506.757,
+      "dps": 50.676
+    },
+    {
+      "tower": "鲜艳的孔雀石",
+      "id": "gemtd_xianyandekongqueshi",
+      "mvp": 0,
+      "target": "physicalImmune",
+      "duration": 10,
+      "damage": 0,
+      "dps": 0
+    },
+    {
+      "tower": "鲜艳的孔雀石",
+      "id": "gemtd_xianyandekongqueshi",
+      "mvp": 0,
+      "target": "magicImmune",
+      "duration": 10,
+      "damage": 506.757,
+      "dps": 50.676
+    },
+    {
+      "tower": "白银",
+      "id": "gemtd_baiyin",
+      "mvp": 0,
+      "target": "none",
+      "duration": 10,
+      "damage": 222.973,
+      "dps": 22.297
+    },
+    {
+      "tower": "白银",
+      "id": "gemtd_baiyin",
+      "mvp": 0,
+      "target": "physicalImmune",
+      "duration": 10,
+      "damage": 0,
+      "dps": 0
+    },
+    {
+      "tower": "白银",
+      "id": "gemtd_baiyin",
+      "mvp": 0,
+      "target": "magicImmune",
+      "duration": 10,
+      "damage": 222.973,
+      "dps": 22.297
+    },
+    {
+      "tower": "白银骑士",
+      "id": "gemtd_baiyinqishi",
+      "mvp": 0,
+      "target": "none",
+      "duration": 10,
+      "damage": 1528.378,
+      "dps": 152.838
+    },
+    {
+      "tower": "白银骑士",
+      "id": "gemtd_baiyinqishi",
+      "mvp": 0,
+      "target": "physicalImmune",
+      "duration": 10,
+      "damage": 650,
+      "dps": 65
+    },
+    {
+      "tower": "白银骑士",
+      "id": "gemtd_baiyinqishi",
+      "mvp": 0,
+      "target": "magicImmune",
+      "duration": 10,
+      "damage": 1528.378,
+      "dps": 152.838
+    }
+  ],
+  "starMvp10": {
+    "tower": "星彩红宝石",
+    "id": "gemtd_xingcaihongbaoshi",
+    "mvp": 10,
+    "target": "physicalImmune",
+    "duration": 10,
+    "damage": 1080,
+    "dps": 108
+  },
+  "estimates": {
+    "starDpsAtMvp10": 108,
+    "requiredContinuousContactSeconds": 66.66666666666667,
+    "assumedStraightDiametricPasses": 6,
+    "fullTimeSingleSilverSlow": 90,
+    "slowedSpeedCellsPerSecond": 3.61328125,
+    "starBurnRadiusCells": 3.125,
+    "singlePassSeconds": 1.7297297297297298,
+    "sixPassBurnBudget": 1120.864864864865,
+    "note": "Continuous approximation for six straight diametric crossings with uninterrupted slow. Not an upper bound for a winding maze; excludes discrete tick phase, lingering burn and other tower effects. Duplicate Silver slows do not add in the simulator."
+  }
+}

@@ -28,6 +28,7 @@
 - 限制：资料快照版本不等于精确地图版本。Attack Rate、脚本效果及当前版本差异仍需确认；不是当前地图的完整数值核实。
 - 新增脚本证据：master提交[712f6a2](https://github.com/clementbera/Website/commit/712f6a2d0f68ea4049e8923917311f8d1a44dfc8)保存了用于生成页面的`GemTD-Generation/scripts/`。已下载检查Lua和NPC配置，锁定散列，整理200条单位事实及91条技能数值。具体来源、行号、前后对照与限制见[原版规则核对](../../game/docs/original-rules-audit.md)。
 - 2026-09-08 Boss专项复核：重新读取固定提交的三个原始文件并确认散列一致；逐项检查五个默认Boss的属性、实际生成和结算，保存了[Boss核查报告](../../game/docs/boss-audit.md)。补充明确海妖外壳、随机替代Boss、超时狂暴的源码依据与当前实现缺口，未把历史属性一致当作当前工作坊或完整难度一致。
+- 2026-09-08免疫专项：重取技能、单位、主Lua、多重箭并校验缓存一致，新获取`shock.lua`。核对物理承伤−100%、魔免状态与魔抗、闪电目标、纯粹溅射和原MVP减魔抗，见[第23波报告](../../game/docs/immunity-audit.md)。隔离实验只证明当前模拟器表现，不等于历史Dota或用户回忆版本实测。
 
 ### S03 — Gem TD Helper
 
