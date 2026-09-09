@@ -32,6 +32,7 @@ import {
 import { useGameInteraction } from '@/hooks/use-game-interaction';
 import { CrushAction } from '@/components/game/crush-action';
 import { DamageReport } from '@/components/game/damage-report';
+import { SlabActions } from '@/components/game/slab-actions';
 import {
   MvpStats,
   MvpInheritance,
@@ -68,11 +69,18 @@ import {
   MOBILE_RULES,
   STEP,
   TOWERS,
+  ENEMY_SKILL_NAMES,
+  mechanics,
+  SLAB_RECIPES,
   WAVES,
   type Recipe,
 } from '@/lib/game/data';
 import {
   canPlace,
+  canBuildSlab,
+  buildSlab,
+  continueEndless,
+  towerDefinition,
   combine,
   crushAndStartWave,
   describe,
@@ -152,7 +160,7 @@ export default function GemGame() {
   const s = state.current,
     v = view.current,
     selected = getGem(s, v.selected),
-    selectedTower = selected && TOWERS[selected.type],
+    selectedTower = selected && towerDefinition(selected),
     w = waveInfo(s);
   function notify(message: string) {
     setNotice(message);
@@ -243,7 +251,7 @@ export default function GemGame() {
     const current = state.current,
       gem = current.gems.find((g) => g.x === x && g.y === y),
       p = previewRef.current;
-    if (view.current.touchMode) view.current.cursor = { x, y };
+    view.current.cursor = { x, y };
     if (p) {
       if (!gem) return;
       if (p.ids[p.slot] === p.anchor) {
@@ -268,6 +276,15 @@ export default function GemGame() {
     }
     if (gem) {
       view.current.selected = gem.id;
+      view.current.pending = null;
+      refresh();
+      return;
+    }
+    if (
+      current.slabs.some((p) => p.x === x && p.y === y) ||
+      canBuildSlab(current, x, y) === null
+    ) {
+      view.current.selected = null;
       view.current.pending = null;
       refresh();
       return;
@@ -510,6 +527,15 @@ export default function GemGame() {
     });
   }
   const touchActions: TouchActions = {
+    slab: (type) =>
+      act(() => {
+        const p = v.pending ?? v.cursor;
+        if (!p) return;
+        buildSlab(s, type, p.x, p.y);
+        closeModal();
+        s.paused = document.hidden;
+        notify(`石板建造完成 · 第 ${s.wave} 波开始`);
+      }),
     nudge: (dx, dy) => {
       const p = nudgeCell(v.cursor ?? selected ?? { x: 18, y: 18 }, dx, dy);
       callbacks.current(p.x, p.y);
@@ -556,9 +582,7 @@ export default function GemGame() {
       }),
   };
   const touchPoint = v.pending ?? v.cursor;
-  const touchHasSelection =
-    !!selected ||
-    (!!touchPoint && s.phase === 'prepare' && !s.resolved && s.placed < 5);
+  const touchHasSelection = !!selected || !!touchPoint;
   function fullMap() {
     v.zoom = 1;
     v.panX = 0;
@@ -598,7 +622,7 @@ export default function GemGame() {
           </span>
           <span className="wave-number">
             波次 <strong>{String(s.wave).padStart(2, '0')}</strong>
-            <small>/ 50</small>
+            <small>/ {s.wave > 50 ? 100 : 50}</small>
           </span>
         </div>
         <div className="header-actions">
@@ -698,7 +722,7 @@ export default function GemGame() {
                 <Flag size={30} />
                 <small>
                   {s.phase === 'won'
-                    ? '50 波防线守住了'
+                    ? `${s.wave} 波防线守住了`
                     : '每一次布局，都是新的可能'}
                 </small>
                 <h2>{s.phase === 'won' ? '防守成功' : '防线失守'}</h2>
@@ -717,6 +741,21 @@ export default function GemGame() {
                 <Button variant="outline" onClick={() => openModal('damage')}>
                   查看本波伤害 <ChartNoAxesCombined size={16} />
                 </Button>
+                {s.phase === 'won' && s.wave === 50 && (
+                  <Button
+                    variant="outline"
+                    onClick={() =>
+                      act(() => {
+                        continueEndless(s);
+                        notify(
+                          '进入无尽挑战：51–100波，敌人将获得随机技能与大幅成长',
+                        );
+                      })
+                    }
+                  >
+                    继续无尽挑战
+                  </Button>
+                )}
               </div>
             )}
             {preview && !touch && (
@@ -896,6 +935,24 @@ export default function GemGame() {
               {w.variants.length > 1 && (
                 <p className="wave-warning">混合波：两种敌人随机出现</p>
               )}
+              {w.abilities.some((a) => ENEMY_SKILL_NAMES[a]) && (
+                <p className="wave-warning">
+                  {w.abilities
+                    .map((a) => ENEMY_SKILL_NAMES[a])
+                    .filter(Boolean)
+                    .join(' · ')}
+                </p>
+              )}
+              {s.frenzy && s.phase === 'combat' && (
+                <p className="wave-warning">
+                  已狂暴：移速提高100%，获得魔法免疫
+                </p>
+              )}
+              {s.wave > 50 && (
+                <p className="wave-warning">
+                  无尽：每只额外随机两个技能，生命与速度大幅成长
+                </p>
+              )}
               {s.phase === 'combat' && (
                 <div className="wave-progress">
                   <span style={{ width: (s.spawned / w.count) * 100 + '%' }} />
@@ -1053,7 +1110,12 @@ export default function GemGame() {
                       </p>
                     </div>
                   </div>
-                  <p className="ability-text">{describe(selected.type)}</p>
+                  <p className="ability-text">{describe(selected)}</p>
+                  {selected.copiedAbilities && (
+                    <p className="muted">
+                      已复制 {selected.copiedAbilities.length} 种技能。
+                    </p>
+                  )}
                   {selectedTower && (
                     <>
                       <div className="stat-grid">
@@ -1133,7 +1195,9 @@ export default function GemGame() {
                             })
                           }
                         >
-                          {count} 颗同级融合 → 品质 +{count === 4 ? 2 : 1}
+                          {count === 4 && selectedTower?.quality === 5
+                            ? '4颗融合 → 镇家之石'
+                            : `${count} 颗同级融合 → 品质 +${count === 4 ? 2 : 1}`}
                         </Button>
                       ))}
                     </>
@@ -1169,7 +1233,11 @@ export default function GemGame() {
                           {ids ? (
                             <ChevronRight size={15} />
                           ) : (
-                            <span className="missing">未凑齐</span>
+                            <span className="missing">
+                              {recipe.candidateOnly && !selected.candidate
+                                ? '仅限本轮'
+                                : '未凑齐'}
+                            </span>
                           )}
                         </Button>
                       ))}
@@ -1219,6 +1287,13 @@ export default function GemGame() {
               )}
             </div>
             <div className="inspector-bottom">
+              {!preview && (
+                <SlabActions
+                  state={s}
+                  point={v.pending ?? v.cursor}
+                  onBuild={touchActions.slab}
+                />
+              )}
               {!preview && s.phase === 'prepare' && (
                 <div className="quality-row">
                   <div>
@@ -1601,7 +1676,7 @@ export default function GemGame() {
                   宝石、配方和怪物基础属性来自 2018
                   年历史资料。地图采用交叉核对的 37×37 单人布局：入 → 1 → 2 → 3
                   → 4 → 5 → 终；金色出生区与终点区禁建，绿色参考道路可建造，32
-                  块预置石头仅在准备阶段可拆。品质通过击杀经验自动提升；普通波从5只开始，连续三次90秒内无漏怪过关后增加1只，漏怪会减少后续数量，最低5只。Boss漏怪扣血随剩余生命变化。石板与部分特殊技能尚未实现。
+                  块预置石头仅在准备阶段可拆。品质通过击杀经验自动提升；普通波从5只开始，连续三次90秒内无漏怪过关后增加1只，漏怪会减少后续数量，最低5只。Boss漏怪扣血随剩余生命变化。隐藏配方只限本轮候选；本轮材料也可换成不挡路的石板。三块同级同类石板排成直线会升级。战斗超过180秒敌人狂暴；通关50波后可继续51–100波无尽挑战。
                 </p>
                 <a
                   href="https://clementbera.github.io/Website/"
@@ -1654,25 +1729,58 @@ export default function GemGame() {
                       </div>
                     </div>
                     <p>{describe(t.id)}</p>
-                    <small>
-                      攻击 {t.damage} · 基础间隔{' '}
-                      {(t.interval / (1 + t.bonusSpeed / 100)).toFixed(2)}s ·
-                      射程 {t.range.toFixed(1)} 格
-                    </small>
+                    {t.family !== 'L' && (
+                      <small>
+                        攻击{' '}
+                        {t.id === 'gemtd_huguoshenyishi'
+                          ? '普通合成30–1024；本轮合成1–1024'
+                          : t.damage}{' '}
+                        · 基础间隔{' '}
+                        {(t.interval / (1 + t.bonusSpeed / 100)).toFixed(2)}s ·
+                        射程 {t.range.toFixed(1)} 格
+                      </small>
+                    )}
                     {t.recipes.map((r, i) => (
                       <div key={i} className="formula">
                         {r.map((id) => TOWERS[id].name).join(' + ')}
+                        {mechanics.secretRecipes.some(
+                          (secret) =>
+                            secret.result === t.id &&
+                            [...secret.materials].sort().join() ===
+                              [...r].sort().join(),
+                        ) && (
+                          <small className="wave-warning">
+                            隐藏配方：只能使用同一轮五颗候选
+                          </small>
+                        )}
                       </div>
                     ))}
+                    {t.id === 'gemtd_zhenjiazhishi' && (
+                      <small>本轮四颗同种5级宝石，选择融合升两级获得。</small>
+                    )}
+                    {t.family === 'L' && (
+                      <small>
+                        {t.id.endsWith('_yin') || t.id.endsWith('_jin')
+                          ? '三块同类低一级石板排成相邻直线，自动升级。'
+                          : `本轮材料：${SLAB_RECIPES.find(
+                              (r) => r.result === t.id,
+                            )
+                              ?.materials.map((id) => TOWERS[id].name)
+                              .join(' + ')}`}
+                      </small>
+                    )}
                     {t.notes.length > 0 && (
                       <details>
                         <summary>存在待还原效果</summary>
                         <p>{t.notes.join('；')}</p>
                       </details>
                     )}
-                    {!t.quality && !t.recipes.length && (
-                      <small className="wave-warning">获得条件尚未还原</small>
-                    )}
+                    {!t.quality &&
+                      !t.recipes.length &&
+                      t.family !== 'L' &&
+                      t.id !== 'gemtd_zhenjiazhishi' && (
+                        <small className="wave-warning">获得条件尚未还原</small>
+                      )}
                   </article>
                 ))}
                 {!list.length && <p>没有找到匹配的宝石。</p>}
@@ -1705,6 +1813,9 @@ export default function GemGame() {
                         w.invisible ? '隐形' : '',
                         w.physicalImmune ? '物免' : '',
                         w.magicImmune ? '魔免' : '',
+                        ...w.abilities
+                          .map((a) => ENEMY_SKILL_NAMES[a])
+                          .filter(Boolean),
                       ]
                         .filter(Boolean)
                         .join(' · ')}

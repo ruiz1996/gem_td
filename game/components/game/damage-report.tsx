@@ -30,7 +30,7 @@ export function DamageReport({ state: s }: { state: GameState }) {
   );
   const total = rows.reduce((sum, row) => sum + row.total, 0);
   const maximum = Math.max(1, ...rows.map((row) => row.total));
-  const definition = WAVES[wave - 1];
+  const definition = WAVES[(wave - 1) % 50];
   return (
     <div className="wave-damage">
       <div className="wave-damage-controls">
@@ -42,7 +42,8 @@ export function DamageReport({ state: s }: { state: GameState }) {
           >
             {entries.map((entry) => (
               <option key={entry.wave} value={entry.wave}>
-                第{entry.wave}波 · {WAVES[entry.wave - 1].name}
+                第{entry.wave}波 · {entry.wave > 50 ? '无尽 · ' : ''}
+                {WAVES[(entry.wave - 1) % 50].name}
                 {entry.report?.outcome === 'combat'
                   ? ' · 进行中'
                   : entry.report?.outcome === 'lost'
@@ -97,11 +98,13 @@ export function DamageReport({ state: s }: { state: GameState }) {
             {definition.physicalImmune ? '物理免疫 · ' : ''}
             {definition.magicImmune ? '魔法免疫 · ' : ''}
             {definition.variants.length ? '本波含混合怪物 · ' : ''}
-            {report.outcome === 'cleared'
-              ? mvpResultText(report.mvp)
-              : report.outcome === 'lost'
-                ? '失败波次不授予MVP'
-                : '本波结束后评选MVP'}
+            {wave > 50
+              ? '无尽波次保留已有MVP，不再升级'
+              : report.outcome === 'cleared'
+                ? mvpResultText(report.mvp)
+                : report.outcome === 'lost'
+                  ? '失败波次不授予MVP'
+                  : '本波结束后评选MVP'}
           </p>
           {!report.complete && (
             <p className="wave-warning">
@@ -184,7 +187,7 @@ export function DamageReport({ state: s }: { state: GameState }) {
         </>
       )}
       <p className="muted wave-damage-explanation">
-        实际伤害统计敌人扣除的生命，包含小数，不含溢出伤害。MVP按每次伤害向下取整后累计；满级塔和已合成材料不参与评选。材料伤害保留在原行，成品从零计分。打开面板会暂停战斗。
+        实际伤害记录减免后的伤害，包含小数，不含溢出伤害；折射随后回复的生命不撤销计分，因此伤害可高于净掉血。MVP按每次伤害向下取整后累计；满级塔和已合成材料不参与评选。材料伤害保留在原行，成品从零计分。打开面板会暂停战斗。
       </p>
     </div>
   );

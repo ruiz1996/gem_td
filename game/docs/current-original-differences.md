@@ -1,5 +1,7 @@
 # 当前实现与原版差异清单
 
+> 本页是alpha-5的历史审计。2026-09-09已按本清单实施机制补全，当前状态请看[alpha-6补全记录](mechanics-restoration.md)。下文“当前”和机器可读隔离报告均指审计当时版本，不代表新版本仍有全部缺口。
+
 核查日期：2026-09-08。当前代码：`b5fe62d098f4df6a2f642904dea4f7b3d280b087`，规则版本`2018-source-mobile-alpha-5-original-mvp-stats`。
 
 对照的是资料作者保存的[2018脚本快照712f6a2](https://github.com/clementbera/Website/tree/712f6a2d0f68ea4049e8923917311f8d1a44dfc8/GemTD-Generation/scripts)，不是当前游廊客户端。本次只检查和保存证据，没有修改游戏规则。

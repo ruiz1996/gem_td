@@ -27,7 +27,7 @@ void test('only the first Boss health differs from the archived solo base; spawn
     [e.hp, e.maxHp, e.speed * 128, e.armor, e.resist, e.flying],
     [800, 800, 637.5, 0, 10, false],
   );
-  Object.assign(e, { x: 18, y: 18, hp: 1, stunUntil: 100 });
+  Object.assign(e, { x: 17.1, y: 18, hp: 1, stunUntil: 100 });
   s.gems.push({
     id: s.nextId++,
     type: basicId('D', 1),

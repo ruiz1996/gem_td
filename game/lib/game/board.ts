@@ -1,6 +1,11 @@
 import { BOARD, TOWERS, MVP_RULES } from './data';
 import { isProtected, isReferenceRoad } from './map';
-import type { GameState, Point } from './engine';
+import {
+  towerDefinition,
+  slabType,
+  type GameState,
+  type Point,
+} from './engine';
 import { boardGeometry, focusPan, touchZoom } from './interaction';
 import { attachBoardInput } from './board-input';
 export type BoardView = {
@@ -152,7 +157,7 @@ export async function createBoard(
         );
       }
       const selected = s.gems.find((x) => x.id === v.selected),
-        tower = selected && TOWERS[selected.type];
+        tower = selected && towerDefinition(selected);
       if (selected && tower) {
         const p = xy(selected);
         g.fillStyle(parseInt(tower.color.slice(1), 16), 0.035);
@@ -250,6 +255,42 @@ export async function createBoard(
           '#b9dccb',
         );
       });
+      for (const slab of s.slabs) {
+        const p = xy(slab),
+          color =
+            slab.tier === 3 ? 0xf0cd69 : slab.tier === 2 ? 0xc5d7e6 : 0x71aa9a;
+        g.fillStyle(color, 0.18);
+        g.fillRoundedRect(
+          p.x - cell * 0.4,
+          p.y - cell * 0.4,
+          cell * 0.8,
+          cell * 0.8,
+          cell * 0.08,
+        );
+        g.lineStyle(1, color, 0.9);
+        g.strokeRoundedRect(
+          p.x - cell * 0.4,
+          p.y - cell * 0.4,
+          cell * 0.8,
+          cell * 0.8,
+          cell * 0.08,
+        );
+        this.label(
+          'slab' + slab.id,
+          TOWERS[slabType(slab)].name.replace(/^.*·/, '').slice(0, 1) +
+            slab.tier,
+          p.x,
+          p.y,
+          Math.max(8, cell * 0.33),
+          '#d9efdd',
+        );
+      }
+      for (const event of s.events)
+        if (event.projectileSpeed && event.at <= s.time) {
+          const p = xy(event.from);
+          g.fillStyle(event.kind === 'frost' ? 0x91ddff : 0xffe9a3, 0.9);
+          g.fillCircle(p.x, p.y, Math.max(1.2, cell * 0.07));
+        }
       for (const gem of s.gems) {
         const p = xy(gem),
           t = TOWERS[gem.type],

@@ -1,5 +1,7 @@
 # 资料来源索引
 
+2026-09-09补充：[2018原生Dota技能快照](https://github.com/SteamTracking/GameTracking-Dota2/blob/b2448af51cc6fe490d124683aa9b976be0649ac7/game/dota/scripts/npc/npc_abilities.txt)。固定提交`b2448af51cc6fe490d124683aa9b976be0649ac7`，用于确认自定义技能继承的石化凝视、活性护甲和诱捕参数；通过GitHub API读取原文件，未执行第三方脚本。相关自定义辅助Lua仍固定于S02的`712f6a2`快照。数值、散列与重建方法见[补全记录](../../game/docs/mechanics-restoration.md)和`game/data/mechanics.json`，不能作为历史客户端引擎行为的独立证明。
+
 整理日期：2026-09-07。摘要用于后续检索，非网站全文存档。
 
 “正文查阅”表示通过网页工具打开并获取正文；“搜索摘要”表示只取得搜索结果。2026-09-07补充：已取得S02仓库保存的固定版本Lua/NPC配置，并对部分核心规则完成逐项核对；尚非当前工作坊版本的完整验证。
@@ -70,26 +72,26 @@
 
 ## 其他版本，仅作旁证
 
-| ID | 来源链接 | 摘要及用途 | 版本限制／访问深度 |
-| --- | --- | --- | --- |
-| X01 | [Gem Tower Defense](https://gemtd.net/) | 网页玩法说明：每轮放 5 颗随机宝石，保留一颗，其余成石，怪物经过路标；可合成特殊宝石和石板 | 网页版，不能替代 DOTA 2 数值；搜索摘要及打开页面 |
-| X02 | [KK 平台宝石 TD 攻略社区](https://www.kkdzpt.com/fab/5152/strategy) | 通关、迷宫及拆石折返攻略 | 魔兽地图相关；战斗拆石不适用本项目；搜索摘要 |
-| X03 | [TapTap 宝石 TD](https://www.taptap.cn/app/38670) | 四七工作室手游，包含英雄、宝物、进阶宝石 | 独立手游；搜索摘要 |
-| X04 | [TapTap 新手小贴士](https://www.taptap.cn/moment/15225032791820403) | 放置、保留、融合及配方操作提示；页面标注 2023-04-11 修改 | 手游规则与道具不能混入基线；搜索摘要 |
-| X05 | [GemTDdotcomInsights](https://github.com/carlHR/GemTDdotcomInsights) | 作者整理网页游戏的塔、配方与计算观察 | 非 DOTA 2 数据；搜索摘要，未审查代码 |
-| X06 | [Gem Tower Defense Plus](https://github.com/nvs/gem/blob/master/README.md) | README 明确该项目为 Warcraft III 的 Gem TD+，提供开发与版本入口 | 魔兽版本；不能因有源码就当作 DOTA 2 原版；搜索摘要 |
-| X07 | [Gem Maze TD](https://gemmazetd.com/) | 开发者称其为面向 iPhone/iPad 的重新实现，并有图鉴入口 | 手机衍生作品；可参考体验，不作原版数值依据；搜索摘要 |
+| ID  | 来源链接                                                                   | 摘要及用途                                                                                | 版本限制／访问深度                                   |
+| --- | -------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ---------------------------------------------------- |
+| X01 | [Gem Tower Defense](https://gemtd.net/)                                    | 网页玩法说明：每轮放 5 颗随机宝石，保留一颗，其余成石，怪物经过路标；可合成特殊宝石和石板 | 网页版，不能替代 DOTA 2 数值；搜索摘要及打开页面     |
+| X02 | [KK 平台宝石 TD 攻略社区](https://www.kkdzpt.com/fab/5152/strategy)        | 通关、迷宫及拆石折返攻略                                                                  | 魔兽地图相关；战斗拆石不适用本项目；搜索摘要         |
+| X03 | [TapTap 宝石 TD](https://www.taptap.cn/app/38670)                          | 四七工作室手游，包含英雄、宝物、进阶宝石                                                  | 独立手游；搜索摘要                                   |
+| X04 | [TapTap 新手小贴士](https://www.taptap.cn/moment/15225032791820403)        | 放置、保留、融合及配方操作提示；页面标注 2023-04-11 修改                                  | 手游规则与道具不能混入基线；搜索摘要                 |
+| X05 | [GemTDdotcomInsights](https://github.com/carlHR/GemTDdotcomInsights)       | 作者整理网页游戏的塔、配方与计算观察                                                      | 非 DOTA 2 数据；搜索摘要，未审查代码                 |
+| X06 | [Gem Tower Defense Plus](https://github.com/nvs/gem/blob/master/README.md) | README 明确该项目为 Warcraft III 的 Gem TD+，提供开发与版本入口                           | 魔兽版本；不能因有源码就当作 DOTA 2 原版；搜索摘要   |
+| X07 | [Gem Maze TD](https://gemmazetd.com/)                                      | 开发者称其为面向 iPhone/iPad 的重新实现，并有图鉴入口                                     | 手机衍生作品；可参考体验，不作原版数值依据；搜索摘要 |
 
 上表查阅日期均为 2026-09-07。尚未安装、试玩、下载或验证这些游戏。
 
 ## 技术资料
 
-| ID | 来源 | 已获得信息 | 使用限制 |
-| --- | --- | --- | --- |
-| T01 | [Phaser 官方文档](https://docs.phaser.io/) | 支持桌面与手机浏览器，提供 WebGL/Canvas 渲染 | 官方搜索摘要，2026-09-07；尚未选择版本或进行本项目性能测试 |
-| T02 | [Capacitor 官方文档](https://capacitorjs.com/docs) | 提供从 Web 技术构建 Android/iOS 应用的运行时与原生 API 接口 | 官方搜索摘要，2026-09-07；仅后续打包候选 |
+| ID  | 来源                                                                                            | 已获得信息                                                                                                      | 使用限制                                                             |
+| --- | ----------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| T01 | [Phaser 官方文档](https://docs.phaser.io/)                                                      | 支持桌面与手机浏览器，提供 WebGL/Canvas 渲染                                                                    | 官方搜索摘要，2026-09-07；尚未选择版本或进行本项目性能测试           |
+| T02 | [Capacitor 官方文档](https://capacitorjs.com/docs)                                              | 提供从 Web 技术构建 Android/iOS 应用的运行时与原生 API 接口                                                     | 官方搜索摘要，2026-09-07；仅后续打包候选                             |
 | T03 | [ModDota：All about the Target](https://moddota.com/abilities/datadriven/all-about-the-target/) | 作者事件实验：OnTakeDamage的attack_damage是减免后，OnAttackLanded是减免前；用于区别伤害统计与链接的攻击事件参数 | 正文查阅，2026-09-08；历史数据驱动事件实验，不代替目标Dota客户端重放 |
-| T04 | [Valve：7.23 Outlanders](https://www.dota2.com/outlanders) | 官方修改技能免疫与100%魔抗的关系；说明引擎版本需要单独确认 | 正文查阅，2026-09-08；不能据此抹掉GemTD脚本显式设置的100魔抗 |
+| T04 | [Valve：7.23 Outlanders](https://www.dota2.com/outlanders)                                      | 官方修改技能免疫与100%魔抗的关系；说明引擎版本需要单独确认                                                      | 正文查阅，2026-09-08；不能据此抹掉GemTD脚本显式设置的100魔抗         |
 
 ## 新资料记录模板
 

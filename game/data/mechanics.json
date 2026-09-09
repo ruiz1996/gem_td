@@ -1,0 +1,1891 @@
+{
+  "commit": "712f6a2d0f68ea4049e8923917311f8d1a44dfc8",
+  "hashes": {
+    "units": "5859cd8ece129f3260a8f93a0496e4f2f29f1d5c8193abf1d98f843780fc3f89",
+    "abilities": "f4fb21e311c6b6f2aa9a65541e9d2ab9fdca9c4f1d995ff1b151e29cf96ed6a8",
+    "rules": "6b99219b02c6d8b62f3725604451c8f82b23ed7da7e059158cfd2df625a13434"
+  },
+  "nativeSource": {
+    "commit": "b2448af51cc6fe490d124683aa9b976be0649ac7",
+    "date": "2018-06-10",
+    "sha256": "c361cfbf5ea31cdc4fb0493a02eb18dcf4d2c200495e023cfce23157042453e1"
+  },
+  "native": {
+    "medusa_stone_gaze": {
+      "radius": [1000, 1000, 1000],
+      "duration": [5, 6, 7],
+      "slow": [35],
+      "stone_duration": [3],
+      "face_duration": [2],
+      "vision_cone": [0.08715],
+      "bonus_physical_damage": [50]
+    },
+    "shredder_reactive_armor": {
+      "bonus_armor": [1, 1.2, 1.4, 1.6],
+      "bonus_hp_regen": [1, 1.15, 1.3, 1.45],
+      "stack_limit": [5, 10, 15, 20],
+      "stack_duration": [10, 13, 16, 19]
+    },
+    "naga_siren_ensnare": {
+      "duration": [2, 3, 4, 5],
+      "net_speed": [1500, 1500, 1500, 1500],
+      "fake_ensnare_distance": [900, 900, 900, 900]
+    }
+  },
+  "waveAbilities": {
+    "9": ["guai_shanbi"],
+    "12": ["guai_jiaoxieguanghuan"],
+    "14": ["enemy_zheguang"],
+    "17": ["enemy_bukeqinfan"],
+    "18": ["guai_jiaoxieguanghuan"],
+    "19": ["runrunrun"],
+    "22": ["enemy_high_armor"],
+    "23": ["enemy_zheguang"],
+    "24": ["shredder_reactive_armor"],
+    "25": ["enemy_high_armor"],
+    "27": ["enemy_bukeqinfan"],
+    "28": ["shredder_reactive_armor"],
+    "29": ["guai_shanbi", "enemy_zheguang"],
+    "31": ["enemy_zheguang"],
+    "32": ["enemy_recharge"],
+    "33": ["enemy_shanshuo"],
+    "34": ["guai_shanbi"],
+    "37": ["enemy_shanshuo"],
+    "38": ["guai_jiaoxieguanghuan"],
+    "39": ["enemy_bukeqinfan", "tidehunter_kraken_shell", "guai_shanbi"],
+    "40": ["tidehunter_kraken_shell"],
+    "41": ["enemy_zheguang"],
+    "42": ["runrunrun"],
+    "43": ["enemy_bukeqinfan", "guai_shanbi", "enemy_recharge"],
+    "44": ["enemy_shanshuo"],
+    "45": ["guai_jiaoxieguanghuan"],
+    "47": ["enemy_bukeqinfan", "runrunrun"],
+    "48": ["guai_jiaoxieguanghuan", "guai_shanbi"],
+    "49": ["tidehunter_kraken_shell", "enemy_recharge"],
+    "50": ["tidehunter_kraken_shell"]
+  },
+  "secretRecipes": [
+    {
+      "result": "gemtd_keyinuoerguangmingzhishan",
+      "materials": [
+        "gemtd_p1",
+        "gemtd_p11",
+        "gemtd_p111",
+        "gemtd_p1111",
+        "gemtd_p11111"
+      ]
+    },
+    {
+      "result": "gemtd_shuaibiankaipayou",
+      "materials": [
+        "gemtd_q1",
+        "gemtd_q11",
+        "gemtd_q111",
+        "gemtd_q1111",
+        "gemtd_q11111"
+      ]
+    },
+    {
+      "result": "gemtd_heiwangzihuangguanhongbaoshi",
+      "materials": [
+        "gemtd_r1",
+        "gemtd_r11",
+        "gemtd_r111",
+        "gemtd_r1111",
+        "gemtd_r11111"
+      ]
+    },
+    {
+      "result": "gemtd_xingguanglanbaoshi",
+      "materials": [
+        "gemtd_b1",
+        "gemtd_b11",
+        "gemtd_b111",
+        "gemtd_b1111",
+        "gemtd_b11111"
+      ]
+    },
+    {
+      "result": "gemtd_yijiazhishi",
+      "materials": [
+        "gemtd_e1",
+        "gemtd_e11",
+        "gemtd_e111",
+        "gemtd_e1111",
+        "gemtd_e11111"
+      ]
+    },
+    {
+      "result": "gemtd_huguoshenyishi",
+      "materials": [
+        "gemtd_y1",
+        "gemtd_y11",
+        "gemtd_y111",
+        "gemtd_y1111",
+        "gemtd_y11111"
+      ]
+    },
+    {
+      "result": "gemtd_jingangshikulinan",
+      "materials": [
+        "gemtd_d1",
+        "gemtd_d11",
+        "gemtd_d111",
+        "gemtd_d1111",
+        "gemtd_d11111"
+      ]
+    },
+    {
+      "result": "gemtd_sililankazhixing",
+      "materials": [
+        "gemtd_g1",
+        "gemtd_g11",
+        "gemtd_g111",
+        "gemtd_g1111",
+        "gemtd_g11111"
+      ]
+    },
+    {
+      "result": "gemtd_heiyaoshi",
+      "materials": ["gemtd_b11111", "gemtd_y11111", "gemtd_d11111"]
+    },
+    {
+      "result": "gemtd_manao",
+      "materials": ["gemtd_q11111", "gemtd_e11111", "gemtd_g11111"]
+    },
+    {
+      "result": "gemtd_xiameishi",
+      "materials": ["gemtd_r11111", "gemtd_g11111", "gemtd_b11111"]
+    },
+    {
+      "result": "gemtd_ranshaozhishi",
+      "materials": [
+        "gemtd_r11111",
+        "gemtd_p11111",
+        "gemtd_r1111",
+        "gemtd_p1111"
+      ]
+    },
+    {
+      "result": "gemtd_geluanshi",
+      "materials": [
+        "gemtd_b11111",
+        "gemtd_g11111",
+        "gemtd_b1111",
+        "gemtd_g1111"
+      ]
+    }
+  ],
+  "slabRecipes": [
+    {
+      "result": "gemtd_youbushiban",
+      "materials": ["gemtd_y111", "gemtd_d11"]
+    },
+    {
+      "result": "gemtd_zhangqishiban",
+      "materials": ["gemtd_g111", "gemtd_e11"]
+    },
+    {
+      "result": "gemtd_hongliushiban",
+      "materials": ["gemtd_b111", "gemtd_q11"]
+    },
+    {
+      "result": "gemtd_haojiaoshiban",
+      "materials": ["gemtd_p111", "gemtd_r11"]
+    },
+    {
+      "result": "gemtd_suanwushiban",
+      "materials": ["gemtd_q111", "gemtd_y11"]
+    },
+    {
+      "result": "gemtd_mabishiban",
+      "materials": ["gemtd_r111", "gemtd_g11"]
+    },
+    {
+      "result": "gemtd_kongheshiban",
+      "materials": ["gemtd_d111", "gemtd_p11"]
+    },
+    {
+      "result": "gemtd_xuwushiban",
+      "materials": ["gemtd_e111", "gemtd_b11"]
+    }
+  ],
+  "stealable": [
+    "tower_slow1",
+    "tower_slow2",
+    "tower_slow3",
+    "tower_slow4",
+    "tower_slow5",
+    "tower_slow6",
+    "tower_true_sight",
+    "tower_speed_aura1",
+    "tower_speed_aura2",
+    "tower_speed_aura3",
+    "tower_speed_aura4",
+    "tower_speed_aura5",
+    "tower_speed_aura6",
+    "tower_speed_aura_guichu",
+    "tower_jianshe1",
+    "tower_jianshe2",
+    "tower_jianshe3",
+    "tower_jianshe4",
+    "tower_jianshe5",
+    "tower_jianshe6",
+    "tower_ranjin",
+    "tower_du1",
+    "tower_du2",
+    "tower_du3",
+    "tower_du4",
+    "tower_du5",
+    "tower_du6",
+    "tower_fenliejian",
+    "tower_fenliejian_xianyan",
+    "tower_jianjia1",
+    "tower_jianjia2",
+    "tower_jianjia3",
+    "tower_jianjia4",
+    "tower_jianjia5",
+    "tower_jianjia6",
+    "tower_huiyao",
+    "tower_huiyao2",
+    "tower_huiyao3",
+    "tower_fenzheng",
+    "tower_zheyi",
+    "tower_zheyi2",
+    "tower_zheyi3",
+    "tower_bixi",
+    "tower_bixi2",
+    "tower_baoji1",
+    "tower_lanbaoshi",
+    "tower_jihan",
+    "tower_jingzhun",
+    "tower_10jiyun",
+    "tower_5shihua",
+    "tower_maoyan",
+    "tower_jin",
+    "tower_jin2",
+    "tower_shandianlian",
+    "tower_chazhuangshandian",
+    "tower_fenliejian_you",
+    "tower_chenmoguanghuan",
+    "tower_lanbaoshi2",
+    "tower_aojiao",
+    "tower_attack1",
+    "tower_attack2",
+    "tower_attack3",
+    "tower_attack4",
+    "tower_attack5",
+    "tower_attack6",
+    "tower_attack7",
+    "tower_speed1",
+    "tower_speed2"
+  ],
+  "endlessAbilities": [
+    "enemy_bukeqinfan",
+    "guai_shanbi",
+    "guai_jiaoxieguanghuan",
+    "shredder_reactive_armor",
+    "enemy_recharge",
+    "tidehunter_kraken_shell",
+    "enemy_wumian",
+    "enemy_momian",
+    "enemy_zheguang",
+    "enemy_shanshuo",
+    "runrunrun"
+  ],
+  "projectileSpeeds": {
+    "gemtd_stone": 0,
+    "gemtd_d1": 3000,
+    "gemtd_b1": 3000,
+    "gemtd_y1": 3000,
+    "gemtd_r1": 3000,
+    "gemtd_g1": 3000,
+    "gemtd_q1": 3000,
+    "gemtd_e1": 3000,
+    "gemtd_d11": 3000,
+    "gemtd_b11": 3000,
+    "gemtd_y11": 3000,
+    "gemtd_p1": 3000,
+    "gemtd_r11": 3000,
+    "gemtd_g11": 3000,
+    "gemtd_q11": 3000,
+    "gemtd_p11": 3000,
+    "gemtd_e11": 3000,
+    "gemtd_d111": 3000,
+    "gemtd_b111": 3000,
+    "gemtd_y111": 3000,
+    "gemtd_r111": 3000,
+    "gemtd_g111": 3000,
+    "gemtd_q111": 3000,
+    "gemtd_p111": 3000,
+    "gemtd_e111": 3000,
+    "gemtd_d1111": 3000,
+    "gemtd_b1111": 3000,
+    "gemtd_y1111": 3000,
+    "gemtd_r1111": 3000,
+    "gemtd_g1111": 3000,
+    "gemtd_q1111": 3000,
+    "gemtd_p1111": 3000,
+    "gemtd_e1111": 3000,
+    "gemtd_d11111": 3000,
+    "gemtd_b11111": 3000,
+    "gemtd_y11111": 3000,
+    "gemtd_r11111": 3000,
+    "gemtd_g11111": 3000,
+    "gemtd_q11111": 3000,
+    "gemtd_p11111": 3000,
+    "gemtd_e11111": 3000,
+    "gemtd_d111111": 3000,
+    "gemtd_b111111": 3000,
+    "gemtd_y111111": 3000,
+    "gemtd_r111111": 3000,
+    "gemtd_g111111": 3000,
+    "gemtd_q111111": 3000,
+    "gemtd_p111111": 3000,
+    "gemtd_e111111": 3000,
+    "gemtd_zhenjiazhishi": 2000,
+    "gemtd_castle": 0,
+    "gemtd_baiyin": 3000,
+    "gemtd_baiyinqishi": 3000,
+    "gemtd_kongqueshi": 3000,
+    "gemtd_xianyandekongqueshi": 3000,
+    "gemtd_xingcaihongbaoshi": 1200,
+    "gemtd_xuehonghuoshan": 1200,
+    "gemtd_yu": 3000,
+    "gemtd_jixiangdezhongguoyu": 3000,
+    "gemtd_furongshi": 3000,
+    "gemtd_mirendeqingjinshi": 3000,
+    "gemtd_heianfeicui": 3000,
+    "gemtd_feicuimoxiang": 3000,
+    "gemtd_feicuimoxiang_yinxing": 3000,
+    "gemtd_guangzhudaobiao": 3000,
+    "gemtd_huangcailanbaoshi": 3000,
+    "gemtd_palayibabixi": 3000,
+    "gemtd_jingxindiaozhuodepalayibabixi": 3000,
+    "gemtd_heisemaoyanshi": 3000,
+    "gemtd_hongshanhu": 3000,
+    "gemtd_jin": 3000,
+    "gemtd_aijijin": 2000,
+    "gemtd_fenhongzuanshi": 3000,
+    "gemtd_juxingfenhongzuanshi": 3000,
+    "gemtd_jixueshi": 3000,
+    "gemtd_gudaidejixueshi": 3000,
+    "gemtd_you238": 3000,
+    "gemtd_you235": 3000,
+    "gemtd_yijiazhishi": 3000,
+    "gemtd_huguoshenyishi": 3000,
+    "gemtd_ranshaozhishi": 3000,
+    "gemtd_heiyaoshi": 3000,
+    "gemtd_manao": 3000,
+    "gemtd_haiyangqingyu": 3000,
+    "gemtd_xiameishi": 3000,
+    "gemtd_shenhaizhenzhu": 3000,
+    "gemtd_jingangshikulinan": 3000,
+    "gemtd_sililankazhixing": 3000,
+    "gemtd_huaguoshanxiandan": 3000,
+    "gemtd_geluanshi": 1500,
+    "gemtd_tianranzumulv": 3000,
+    "gemtd_keyinuoerguangmingzhishan": 3000,
+    "gemtd_shuaibiankaipayou": 3000,
+    "gemtd_heiwangzihuangguanhongbaoshi": 3000,
+    "gemtd_xingguanglanbaoshi": 3000,
+    "gemtd_diaofengzhishi": 3000,
+    "gemtd_haibao": 3000,
+    "gemtd_youbushiban": 3000,
+    "gemtd_hongliushiban": 3000,
+    "gemtd_zhangqishiban": 3000,
+    "gemtd_haojiaoshiban": 3000,
+    "gemtd_suanwushiban": 3000,
+    "gemtd_mabishiban": 3000,
+    "gemtd_kongheshiban": 3000,
+    "gemtd_xuwushiban": 3000,
+    "gemtd_youbushiban_yin": 3000,
+    "gemtd_hongliushiban_yin": 3000,
+    "gemtd_zhangqishiban_yin": 3000,
+    "gemtd_haojiaoshiban_yin": 3000,
+    "gemtd_suanwushiban_yin": 3000,
+    "gemtd_mabishiban_yin": 3000,
+    "gemtd_kongheshiban_yin": 3000,
+    "gemtd_xuwushiban_yin": 3000,
+    "gemtd_youbushiban_jin": 3000,
+    "gemtd_hongliushiban_jin": 3000,
+    "gemtd_zhangqishiban_jin": 3000,
+    "gemtd_haojiaoshiban_jin": 3000,
+    "gemtd_suanwushiban_jin": 3000,
+    "gemtd_mabishiban_jin": 3000,
+    "gemtd_kongheshiban_jin": 3000,
+    "gemtd_xuwushiban_jin": 3000
+  },
+  "abilities": {
+    "tower_slow1": {
+      "MaxLevel": [1],
+      "Modifiers.SlowTarget1.IsDebuff": [1],
+      "Modifiers.SlowTarget1.Duration": [2],
+      "Modifiers.SlowTarget1.Properties.MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT": [
+        -60
+      ]
+    },
+    "tower_slow2": {
+      "MaxLevel": [1],
+      "Modifiers.SlowTarget2.IsDebuff": [1],
+      "Modifiers.SlowTarget2.Duration": [2],
+      "Modifiers.SlowTarget2.Properties.MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT": [
+        -90
+      ]
+    },
+    "tower_slow3": {
+      "MaxLevel": [1],
+      "Modifiers.SlowTarget3.IsDebuff": [1],
+      "Modifiers.SlowTarget3.Duration": [2],
+      "Modifiers.SlowTarget3.Properties.MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT": [
+        -120
+      ]
+    },
+    "tower_slow4": {
+      "MaxLevel": [1],
+      "Modifiers.SlowTarget4.IsDebuff": [1],
+      "Modifiers.SlowTarget4.Duration": [2],
+      "Modifiers.SlowTarget4.Properties.MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT": [
+        -150
+      ]
+    },
+    "tower_slow5": {
+      "MaxLevel": [1],
+      "Modifiers.SlowTarget5.IsDebuff": [1],
+      "Modifiers.SlowTarget5.Duration": [2],
+      "Modifiers.SlowTarget5.Properties.MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT": [
+        -180
+      ]
+    },
+    "tower_slow6": {
+      "MaxLevel": [1],
+      "Modifiers.SlowTarget6.IsDebuff": [1],
+      "Modifiers.SlowTarget6.Duration": [2],
+      "Modifiers.SlowTarget6.Properties.MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT": [
+        -480
+      ]
+    },
+    "tower_true_sight": {
+      "Modifiers.modifier_true_sight_222.Passive": [1],
+      "Modifiers.modifier_true_sight_222.IsHidden": [1]
+    },
+    "tower_speed_aura1": {
+      "MaxLevel": [1],
+      "AbilityCastRange": [600],
+      "Modifiers.modifier_inner_beast1.Passive": [1],
+      "Modifiers.modifier_inner_beast1.IsHidden": [1],
+      "Modifiers.modifier_inner_beast1.Aura_Radius": [664],
+      "Modifiers.modifier_inner_beast1.IsBuff": [1],
+      "Modifiers.modifier_inner_beast1_buff.Properties.MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT": [
+        20
+      ],
+      "Modifiers.modifier_inner_beast1_buff.IsBuff": [1],
+      "Modifiers.modifier_inner_beast1_buff.IsPurgable": [1]
+    },
+    "tower_speed_aura2": {
+      "MaxLevel": [1],
+      "AbilityCastRange": [600],
+      "Modifiers.modifier_inner_beast2.Passive": [1],
+      "Modifiers.modifier_inner_beast2.IsHidden": [1],
+      "Modifiers.modifier_inner_beast2.Aura_Radius": [664],
+      "Modifiers.modifier_inner_beast2.IsBuff": [1],
+      "Modifiers.modifier_inner_beast2.IsPurgable": [0],
+      "Modifiers.modifier_inner_beast2_buff.Properties.MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT": [
+        30
+      ],
+      "Modifiers.modifier_inner_beast2_buff.IsBuff": [1],
+      "Modifiers.modifier_inner_beast2_buff.IsPurgable": [1]
+    },
+    "tower_speed_aura3": {
+      "MaxLevel": [1],
+      "AbilityCastRange": [600],
+      "Modifiers.modifier_inner_beast3.Passive": [1],
+      "Modifiers.modifier_inner_beast3.IsHidden": [1],
+      "Modifiers.modifier_inner_beast3.Aura_Radius": [664],
+      "Modifiers.modifier_inner_beast3.IsBuff": [1],
+      "Modifiers.modifier_inner_beast3_buff.Properties.MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT": [
+        40
+      ]
+    },
+    "tower_speed_aura4": {
+      "MaxLevel": [1],
+      "AbilityCastRange": [600],
+      "Modifiers.modifier_inner_beast4.Passive": [1],
+      "Modifiers.modifier_inner_beast4.IsHidden": [1],
+      "Modifiers.modifier_inner_beast4.Aura_Radius": [664],
+      "Modifiers.modifier_inner_beast4.IsBuff": [1],
+      "Modifiers.modifier_inner_beast4_buff.Properties.MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT": [
+        50
+      ]
+    },
+    "tower_speed_aura5": {
+      "MaxLevel": [1],
+      "AbilityCastRange": [600],
+      "Modifiers.modifier_inner_beast5.Passive": [1],
+      "Modifiers.modifier_inner_beast5.IsHidden": [1],
+      "Modifiers.modifier_inner_beast5.Aura_Radius": [664],
+      "Modifiers.modifier_inner_beast5.IsBuff": [1],
+      "Modifiers.modifier_inner_beast5_buff.Properties.MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT": [
+        60
+      ]
+    },
+    "tower_speed_aura6": {
+      "MaxLevel": [1],
+      "AbilityCastRange": [600],
+      "Modifiers.modifier_inner_beast6.Passive": [1],
+      "Modifiers.modifier_inner_beast6.IsHidden": [1],
+      "Modifiers.modifier_inner_beast6.Aura_Radius": [664],
+      "Modifiers.modifier_inner_beast6.IsBuff": [1],
+      "Modifiers.modifier_inner_beast6_buff.Properties.MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT": [
+        70
+      ]
+    },
+    "tower_speed_aura_guichu": {
+      "AbilityCastRange": [150],
+      "Modifiers.modifier_inner_beast_guichu.Passive": [1],
+      "Modifiers.modifier_inner_beast_guichu.IsHidden": [1],
+      "Modifiers.modifier_inner_beast_guichu.Aura_Radius": [200],
+      "Modifiers.modifier_inner_beast_guichu_buff.Properties.MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT": [
+        200
+      ]
+    },
+    "tower_jianshe1": {
+      "MaxLevel": [1],
+      "Modifiers.modifier_jianshe_new1.Passive": [1],
+      "Modifiers.modifier_jianshe_new1.IsHidden": [1]
+    },
+    "tower_jianshe2": {
+      "MaxLevel": [1],
+      "Modifiers.modifier_jianshe_new2.Passive": [1],
+      "Modifiers.modifier_jianshe_new2.IsHidden": [1]
+    },
+    "tower_jianshe3": {
+      "MaxLevel": [1],
+      "Modifiers.modifier_jianshe_new3.Passive": [1],
+      "Modifiers.modifier_jianshe_new3.IsHidden": [1]
+    },
+    "tower_jianshe4": {
+      "MaxLevel": [1],
+      "Modifiers.modifier_jianshe_new4.Passive": [1],
+      "Modifiers.modifier_jianshe_new4.IsHidden": [1]
+    },
+    "tower_jianshe5": {
+      "MaxLevel": [1],
+      "Modifiers.modifier_jianshe_new5.Passive": [1],
+      "Modifiers.modifier_jianshe_new5.IsHidden": [1]
+    },
+    "tower_jianshe6": {
+      "MaxLevel": [1],
+      "Modifiers.modifier_jianshe_new6.Passive": [1],
+      "Modifiers.modifier_jianshe_new6.IsHidden": [1]
+    },
+    "tower_ranjin": {
+      "MaxLevel": [1],
+      "Modifiers.modifier_shaojin.Passive": [1],
+      "Modifiers.modifier_shaojin.IsHidden": [1]
+    },
+    "tower_du1": {
+      "MaxLevel": [1],
+      "Modifiers.modifier_MyAbility_passive_dulong.IsHidden": [1],
+      "Modifiers.modifier_MyAbility_passive_dulong.Passive": [1],
+      "Modifiers.modifier_MyAbility_passive_dulong_damage1.IsHidden": [1],
+      "Modifiers.modifier_MyAbility_passive_dulong_damage1.Duration": [5],
+      "Modifiers.modifier_MyAbility_passive_dulong_damage1.ThinkInterval": [1],
+      "Modifiers.modifier_MyAbility_passive_dulong_damage1.OnIntervalThink.Damage.Damage": [
+        2
+      ]
+    },
+    "tower_du2": {
+      "MaxLevel": [2],
+      "Modifiers.modifier_MyAbility_passive_dulong.IsHidden": [1],
+      "Modifiers.modifier_MyAbility_passive_dulong.Passive": [1],
+      "Modifiers.modifier_MyAbility_passive_dulong_damage2.IsHidden": [1],
+      "Modifiers.modifier_MyAbility_passive_dulong_damage2.Duration": [5],
+      "Modifiers.modifier_MyAbility_passive_dulong_damage2.ThinkInterval": [1],
+      "Modifiers.modifier_MyAbility_passive_dulong_damage2.OnIntervalThink.Damage.Damage": [
+        4
+      ]
+    },
+    "tower_du3": {
+      "MaxLevel": [3],
+      "Modifiers.modifier_MyAbility_passive_dulong.IsHidden": [1],
+      "Modifiers.modifier_MyAbility_passive_dulong.Passive": [1],
+      "Modifiers.modifier_MyAbility_passive_dulong_damage3.IsHidden": [1],
+      "Modifiers.modifier_MyAbility_passive_dulong_damage3.Duration": [5],
+      "Modifiers.modifier_MyAbility_passive_dulong_damage3.ThinkInterval": [1],
+      "Modifiers.modifier_MyAbility_passive_dulong_damage3.OnIntervalThink.Damage.Damage": [
+        8
+      ]
+    },
+    "tower_du4": {
+      "MaxLevel": [4],
+      "Modifiers.modifier_MyAbility_passive_dulong.IsHidden": [1],
+      "Modifiers.modifier_MyAbility_passive_dulong.Passive": [1],
+      "Modifiers.modifier_MyAbility_passive_dulong_damage4.IsHidden": [1],
+      "Modifiers.modifier_MyAbility_passive_dulong_damage4.Duration": [5],
+      "Modifiers.modifier_MyAbility_passive_dulong_damage4.ThinkInterval": [1],
+      "Modifiers.modifier_MyAbility_passive_dulong_damage4.OnIntervalThink.Damage.Damage": [
+        16
+      ]
+    },
+    "tower_du5": {
+      "MaxLevel": [5],
+      "Modifiers.modifier_MyAbility_passive_dulong.IsHidden": [1],
+      "Modifiers.modifier_MyAbility_passive_dulong.Passive": [1],
+      "Modifiers.modifier_MyAbility_passive_dulong_damage5.IsHidden": [1],
+      "Modifiers.modifier_MyAbility_passive_dulong_damage5.Duration": [5],
+      "Modifiers.modifier_MyAbility_passive_dulong_damage5.ThinkInterval": [1],
+      "Modifiers.modifier_MyAbility_passive_dulong_damage5.OnIntervalThink.Damage.Damage": [
+        32
+      ]
+    },
+    "tower_du6": {
+      "MaxLevel": [6],
+      "Modifiers.modifier_MyAbility_passive_dulong.IsHidden": [1],
+      "Modifiers.modifier_MyAbility_passive_dulong.Passive": [1],
+      "Modifiers.modifier_MyAbility_passive_dulong_damage6.IsHidden": [1],
+      "Modifiers.modifier_MyAbility_passive_dulong_damage6.Duration": [5],
+      "Modifiers.modifier_MyAbility_passive_dulong_damage6.ThinkInterval": [1],
+      "Modifiers.modifier_MyAbility_passive_dulong_damage6.OnIntervalThink.Damage.Damage": [
+        128
+      ]
+    },
+    "tower_zhongguoyu": {
+      "MaxLevel": [1],
+      "Modifiers.modifier_huichun.Passive": [1],
+      "Modifiers.modifier_huichun.IsHidden": [1],
+      "Modifiers.modifier_huichun.OnAttackLanded.Random.Chance": [1]
+    },
+    "tower_tanlan": {
+      "MaxLevel": [1],
+      "AbilityCastRange": [800],
+      "Modifiers.modifier_tanlan.Passive": [1],
+      "Modifiers.modifier_tanlan.IsHidden": [1],
+      "Modifiers.modifier_tanlan.Aura_Radius": [800],
+      "Modifiers.modifier_tanlan.Aura_ApplyToCaster": [1],
+      "Modifiers.modifier_tower_tanlan.Duration": [99999]
+    },
+    "guai_shanbi": {
+      "MaxLevel": [1],
+      "Modifiers.modifier_shanbi.Passive": [1],
+      "Modifiers.modifier_shanbi.IsHidden": [1],
+      "Modifiers.modifier_shanbi.Properties.MODIFIER_PROPERTY_EVASION_CONSTANT": [
+        50
+      ]
+    },
+    "tower_fenliejian": {
+      "MaxLevel": [1],
+      "Modifiers.modifier_duo_chong_gong_ji_right.Passive": [1],
+      "Modifiers.modifier_duo_chong_gong_ji_right.IsHidden": [1],
+      "Modifiers.modifier_duo_chong_gong_ji_right.OnAttack.RunScript.attack_count": [
+        2
+      ]
+    },
+    "tower_fenliejian_xianyan": {
+      "MaxLevel": [1],
+      "Modifiers.modifier_duo_chong_gong_ji_right.Passive": [1],
+      "Modifiers.modifier_duo_chong_gong_ji_right.IsHidden": [1],
+      "Modifiers.modifier_duo_chong_gong_ji_right.OnAttack.RunScript.attack_count": [
+        4
+      ]
+    },
+    "tower_attack": {
+      "Modifiers.modifier_tower_attack.Properties.MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE": [
+        0
+      ],
+      "Modifiers.modifier_tower_attack.Passive": [1]
+    },
+    "tower_attack1": {
+      "Modifiers.modifier_tower_attack1.Properties.MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE": [
+        20
+      ],
+      "Modifiers.modifier_tower_attack1.Passive": [1]
+    },
+    "tower_attack2": {
+      "Modifiers.modifier_tower_attack2.Properties.MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE": [
+        40
+      ],
+      "Modifiers.modifier_tower_attack2.Passive": [1]
+    },
+    "tower_attack3": {
+      "Modifiers.modifier_tower_attack3.Properties.MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE": [
+        80
+      ],
+      "Modifiers.modifier_tower_attack3.Passive": [1]
+    },
+    "tower_attack4": {
+      "Modifiers.modifier_tower_attack4.Properties.MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE": [
+        160
+      ],
+      "Modifiers.modifier_tower_attack4.Passive": [1]
+    },
+    "tower_attack5": {
+      "Modifiers.modifier_tower_attack5.Properties.MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE": [
+        320
+      ],
+      "Modifiers.modifier_tower_attack5.Passive": [1]
+    },
+    "tower_attack6": {
+      "Modifiers.modifier_tower_attack6.Properties.MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE": [
+        640
+      ],
+      "Modifiers.modifier_tower_attack6.Passive": [1]
+    },
+    "tower_attack7": {
+      "Modifiers.modifier_tower_attack7.Properties.MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE": [
+        1280
+      ],
+      "Modifiers.modifier_tower_attack7.Passive": [1]
+    },
+    "tower_speed": {},
+    "tower_speed1": {
+      "Modifiers.modifier_tower_speed1.Passive": [1],
+      "Modifiers.modifier_tower_speed1.Properties.MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT": [
+        200
+      ]
+    },
+    "tower_speed2": {
+      "Modifiers.modifier_tower_speed2.Passive": [1],
+      "Modifiers.modifier_tower_speed2.Properties.MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT": [
+        500
+      ]
+    },
+    "tower_jianjia1": {
+      "MaxLevel": [1],
+      "Modifiers.modifier_jianjia1.IsHidden": [1],
+      "Modifiers.modifier_jianjia1.Passive": [1],
+      "Modifiers.modifier_jianjia_target1.IsHidden": [0],
+      "Modifiers.modifier_jianjia_target1.Duration": [2],
+      "Modifiers.modifier_jianjia_target1.Properties.MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS": [
+        -2
+      ]
+    },
+    "tower_jianjia2": {
+      "MaxLevel": [1],
+      "Modifiers.modifier_jianjia2.IsHidden": [1],
+      "Modifiers.modifier_jianjia2.Passive": [1],
+      "Modifiers.modifier_jianjia_target2.IsHidden": [0],
+      "Modifiers.modifier_jianjia_target2.Duration": [2],
+      "Modifiers.modifier_jianjia_target2.Properties.MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS": [
+        -4
+      ]
+    },
+    "tower_jianjia3": {
+      "MaxLevel": [1],
+      "Modifiers.modifier_jianjia3.IsHidden": [1],
+      "Modifiers.modifier_jianjia3.Passive": [1],
+      "Modifiers.modifier_jianjia_target3.IsHidden": [0],
+      "Modifiers.modifier_jianjia_target3.Duration": [2],
+      "Modifiers.modifier_jianjia_target3.Properties.MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS": [
+        -8
+      ]
+    },
+    "tower_jianjia4": {
+      "MaxLevel": [1],
+      "Modifiers.modifier_jianjia4.IsHidden": [1],
+      "Modifiers.modifier_jianjia4.Passive": [1],
+      "Modifiers.modifier_jianjia_target4.IsHidden": [0],
+      "Modifiers.modifier_jianjia_target4.Duration": [2],
+      "Modifiers.modifier_jianjia_target4.Properties.MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS": [
+        -16
+      ]
+    },
+    "tower_jianjia5": {
+      "MaxLevel": [1],
+      "Modifiers.modifier_jianjia5.IsHidden": [1],
+      "Modifiers.modifier_jianjia5.Passive": [1],
+      "Modifiers.modifier_jianjia_target5.IsHidden": [0],
+      "Modifiers.modifier_jianjia_target5.Duration": [2],
+      "Modifiers.modifier_jianjia_target5.Properties.MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS": [
+        -32
+      ]
+    },
+    "tower_jianjia6": {
+      "MaxLevel": [1],
+      "Modifiers.modifier_jianjia6.IsHidden": [1],
+      "Modifiers.modifier_jianjia6.Passive": [1],
+      "Modifiers.modifier_jianjia_target6.IsHidden": [0],
+      "Modifiers.modifier_jianjia_target6.Duration": [2],
+      "Modifiers.modifier_jianjia_target6.Properties.MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS": [
+        -64
+      ]
+    },
+    "tower_huiyao": {
+      "MaxLevel": [1],
+      "AbilityCastRange": [400],
+      "Modifiers.modifier_tower_huiyao1.Passive": [1],
+      "Modifiers.modifier_tower_huiyao1.IsHidden": [1],
+      "Modifiers.modifier_tower_huiyao1.Aura_Radius": [400],
+      "Modifiers.modifier_tower_huiyao_buff1.IsHidden": [1],
+      "Modifiers.modifier_tower_huiyao_buff1.Duration": [1],
+      "Modifiers.modifier_tower_huiyao_buff1.ThinkInterval": [0.5],
+      "Modifiers.modifier_tower_huiyao_buff1.OnIntervalThink.Damage.Damage": [
+        30
+      ]
+    },
+    "tower_huiyao2": {
+      "MaxLevel": [1],
+      "AbilityCastRange": [500],
+      "Modifiers.modifier_tower_huiyao2.Passive": [1],
+      "Modifiers.modifier_tower_huiyao2.IsHidden": [1],
+      "Modifiers.modifier_tower_huiyao2.Aura_Radius": [500],
+      "Modifiers.modifier_tower_huiyao_buff2.IsHidden": [1],
+      "Modifiers.modifier_tower_huiyao_buff2.Duration": [1],
+      "Modifiers.modifier_tower_huiyao_buff2.ThinkInterval": [0.5],
+      "Modifiers.modifier_tower_huiyao_buff2.OnIntervalThink.Damage.Damage": [
+        160
+      ]
+    },
+    "tower_huiyao3": {
+      "MaxLevel": [1],
+      "AbilityCastRange": [800],
+      "Modifiers.modifier_tower_huiyao3.Passive": [1],
+      "Modifiers.modifier_tower_huiyao3.IsHidden": [1],
+      "Modifiers.modifier_tower_huiyao3.Aura_Radius": [800],
+      "Modifiers.modifier_tower_huiyao_buff3.IsHidden": [1],
+      "Modifiers.modifier_tower_huiyao_buff3.Duration": [1],
+      "Modifiers.modifier_tower_huiyao_buff3.ThinkInterval": [2],
+      "Modifiers.modifier_tower_huiyao_buff3.OnIntervalThink.Damage.Damage": [
+        5000
+      ]
+    },
+    "tower_fenzheng": {
+      "Modifiers.modifier_tower_fenzheng.Passive": [1],
+      "Modifiers.modifier_tower_fenzheng.IsHidden": [1],
+      "Modifiers.modifier_tower_fenzheng.Aura_Radius": [400],
+      "Modifiers.modifier_tower_fenzheng_buff.Properties.MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS": [
+        -50
+      ]
+    },
+    "tower_zheyi": {
+      "AbilityCastRange": [600],
+      "Modifiers.modifier_zheyi.Passive": [1],
+      "Modifiers.modifier_zheyi.IsHidden": [1],
+      "Modifiers.modifier_zheyi.Aura_Radius": [600],
+      "Modifiers.modifier_zheyi_buff.Properties.MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS": [
+        -10
+      ],
+      "Modifiers.modifier_zheyi_buff.Properties.MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT": [
+        -250
+      ]
+    },
+    "tower_zheyi2": {
+      "AbilityCastRange": [600],
+      "Modifiers.modifier_zheyi2.Passive": [1],
+      "Modifiers.modifier_zheyi2.IsHidden": [1],
+      "Modifiers.modifier_zheyi2.Aura_Radius": [600],
+      "Modifiers.modifier_zheyi2_buff.Properties.MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS": [
+        -10
+      ],
+      "Modifiers.modifier_zheyi2_buff.Properties.MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT": [
+        -250
+      ],
+      "Modifiers.modifier_zheyi2_buff.Properties.MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS": [
+        -50
+      ]
+    },
+    "tower_zheyi3": {
+      "AbilityCastRange": [600],
+      "Modifiers.modifier_zheyi3.Passive": [1],
+      "Modifiers.modifier_zheyi3.IsHidden": [1],
+      "Modifiers.modifier_zheyi3.Aura_Radius": [600],
+      "Modifiers.modifier_zheyi3_buff.Properties.MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS": [
+        -64
+      ],
+      "Modifiers.modifier_zheyi3_buff.Properties.MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT": [
+        -480
+      ],
+      "Modifiers.modifier_zheyi3_buff.Properties.MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS": [
+        -100
+      ]
+    },
+    "tower_bixi": {
+      "MaxLevel": [1],
+      "AbilityCastRange": [800],
+      "Modifiers.modifier_tower_bixi.Passive": [1],
+      "Modifiers.modifier_tower_bixi.IsHidden": [1],
+      "Modifiers.modifier_tower_bixi.Aura_Radius": [800],
+      "Modifiers.modifier_tower_bixi_buff.Properties.MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS": [
+        -15
+      ]
+    },
+    "tower_bixi2": {
+      "MaxLevel": [2],
+      "AbilityCastRange": [1200],
+      "Modifiers.modifier_tower_bixi2.Passive": [1],
+      "Modifiers.modifier_tower_bixi2.IsHidden": [1],
+      "Modifiers.modifier_tower_bixi2.Aura_Radius": [1200],
+      "Modifiers.modifier_tower_bixi2_buff.Properties.MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS": [
+        -30
+      ]
+    },
+    "tower_baoji1": {
+      "Modifiers.modifier_coup_de_grace_datadriven.Passive": [1],
+      "Modifiers.modifier_coup_de_grace_datadriven.IsHidden": [1],
+      "Modifiers.modifier_coup_de_grace_datadriven.OnAttackStart.Random.Chance": [
+        10
+      ],
+      "Modifiers.modifier_coup_de_grace_crit_datadriven.IsHidden": [1],
+      "Modifiers.modifier_coup_de_grace_crit_datadriven.Properties.MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE": [
+        500
+      ]
+    },
+    "tower_lanbaoshi": {
+      "AbilityCastRange": [300],
+      "Modifiers.modifier_tower_lanbaoshi.Passive": [1],
+      "Modifiers.modifier_tower_lanbaoshi.IsHidden": [1],
+      "Modifiers.modifier_tower_lanbaoshi.Aura_Radius": [300],
+      "Modifiers.modifier_tower_lanbaoshi_buff.Properties.MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE": [
+        -70
+      ]
+    },
+    "tower_lanbaoshi2": {
+      "AbilityCastRange": [556],
+      "Modifiers.modifier_tower_lanbaoshi2.Passive": [1],
+      "Modifiers.modifier_tower_lanbaoshi2.IsHidden": [1],
+      "Modifiers.modifier_tower_lanbaoshi2.Aura_Radius": [556],
+      "Modifiers.modifier_tower_lanbaoshi2_buff.Properties.MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE": [
+        -75
+      ]
+    },
+    "tower_jihan": {
+      "MaxLevel": [1],
+      "AbilityCastRange": [300],
+      "Modifiers.modifier_tower_jihan_buff.Properties.MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE": [
+        -50
+      ],
+      "Modifiers.modifier_tower_jihan_buff.Properties.MODIFIER_PROPERTY_DISABLE_HEALING": [
+        1
+      ],
+      "Modifiers.modifier_tower_jihan.Passive": [1],
+      "Modifiers.modifier_tower_jihan.OnAttackLanded.ApplyModifier.Target.Radius": [
+        300
+      ],
+      "Modifiers.modifier_tower_jihan.OnAttackLanded.ApplyModifier.Duration": [
+        3
+      ]
+    },
+    "tower_jingzhun": {
+      "MaxLevel": [1],
+      "AbilityCastRange": [300],
+      "Modifiers.modifier_tower_jingzhun.Passive": [1],
+      "Modifiers.modifier_tower_jingzhun.IsHidden": [1],
+      "Modifiers.modifier_tower_jingzhun.Aura_Radius": [300]
+    },
+    "tower_10jiyun": {
+      "Modifiers.modifier_10jiyun.IsHidden": [1],
+      "Modifiers.modifier_10jiyun.Passive": [1],
+      "Modifiers.modifier_10jiyun.OnAttackLanded.Random.Chance": [10],
+      "Modifiers.modifier_10jiyun.OnAttackLanded.Random.OnSuccess.Stun.Duration": [
+        2
+      ]
+    },
+    "tower_5shihua": {
+      "Modifiers.tower_5shihua.IsHidden": [1],
+      "Modifiers.tower_5shihua.Passive": [1],
+      "Modifiers.tower_5shihua.OnAttackLanded.Random.Chance": [1],
+      "AbilitySpecial.01.bonus_physical_damage": [100],
+      "AbilitySpecial.02.bonus_magic_resist": [0]
+    },
+    "tower_100jiyun": {
+      "AbilityCooldown": [10],
+      "Modifiers.modifier_100jiyun.IsHidden": [1],
+      "Modifiers.modifier_100jiyun.Passive": [1],
+      "Modifiers.modifier_100jiyun.OnAttackLanded.Random.Chance": [100],
+      "Modifiers.modifier_100jiyun.OnAttackLanded.Random.OnSuccess.Stun.Duration": [
+        2
+      ],
+      "StartCooldown": [10]
+    },
+    "tower_maoyan": {
+      "AbilityCastRange": [500],
+      "Modifiers.modifier_tower_maoyan.Passive": [1],
+      "Modifiers.modifier_tower_maoyan.IsHidden": [1],
+      "Modifiers.modifier_tower_maoyan.Aura_Radius": [500],
+      "Modifiers.modifier_tower_maoyan_buff.Properties.MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE": [
+        50
+      ]
+    },
+    "tower_beishuiyizhan1": {
+      "MaxLevel": [10],
+      "AbilityCastRange": [9999],
+      "Modifiers.modifier_tower_beishuiyizhan.Passive": [1],
+      "Modifiers.modifier_tower_beishuiyizhan.IsHidden": [1],
+      "Modifiers.modifier_tower_beishuiyizhan.Aura_Radius": [9999],
+      "AbilitySpecial.01.attack_per": [-6, -3, 3, 6, 9, 12, 15, 18, 21, 24]
+    },
+    "tower_beishuiyizhan2": {
+      "MaxLevel": [10],
+      "AbilityCastRange": [9999],
+      "Modifiers.modifier_tower_beishuiyizhan.Passive": [1],
+      "Modifiers.modifier_tower_beishuiyizhan.IsHidden": [1],
+      "Modifiers.modifier_tower_beishuiyizhan.Aura_Radius": [9999],
+      "AbilitySpecial.01.attack_per": [-8, -4, 4, 8, 12, 16, 20, 24, 28, 32]
+    },
+    "tower_beishuiyizhan3": {
+      "MaxLevel": [10],
+      "AbilityCastRange": [9999],
+      "Modifiers.modifier_tower_beishuiyizhan.Passive": [1],
+      "Modifiers.modifier_tower_beishuiyizhan.IsHidden": [1],
+      "Modifiers.modifier_tower_beishuiyizhan.Aura_Radius": [9999],
+      "AbilitySpecial.01.attack_per": [-10, -5, 5, 10, 15, 20, 25, 30, 35, 40]
+    },
+    "tower_beishuiyizhan4": {
+      "MaxLevel": [10],
+      "AbilityCastRange": [9999],
+      "Modifiers.modifier_tower_beishuiyizhan.Passive": [1],
+      "Modifiers.modifier_tower_beishuiyizhan.IsHidden": [1],
+      "Modifiers.modifier_tower_beishuiyizhan.Aura_Radius": [9999],
+      "AbilitySpecial.01.attack_per": [-12, -6, 6, 12, 18, 24, 30, 36, 42, 48]
+    },
+    "tower_mofa1": {
+      "MaxLevel": [1],
+      "AbilityCastRange": [800],
+      "Modifiers.modifier_mofa_aura1.Passive": [1],
+      "Modifiers.modifier_mofa_aura1.IsHidden": [0],
+      "Modifiers.modifier_mofa_aura1.Aura_Radius": [800],
+      "Modifiers.modifier_mofa_aura1.Properties.MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE": [
+        10
+      ],
+      "Modifiers.modifier_mofa_buff1.Properties.MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS": [
+        -7
+      ]
+    },
+    "tower_mofa2": {
+      "MaxLevel": [2],
+      "AbilityCastRange": [800],
+      "Modifiers.modifier_mofa_aura2.Passive": [1],
+      "Modifiers.modifier_mofa_aura2.IsHidden": [0],
+      "Modifiers.modifier_mofa_aura2.Aura_Radius": [800],
+      "Modifiers.modifier_mofa_aura2.Properties.MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE": [
+        20
+      ],
+      "Modifiers.modifier_mofa_buff2.Properties.MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS": [
+        -14
+      ]
+    },
+    "tower_mofa3": {
+      "MaxLevel": [3],
+      "AbilityCastRange": [800],
+      "Modifiers.modifier_mofa_aura3.Passive": [1],
+      "Modifiers.modifier_mofa_aura3.IsHidden": [0],
+      "Modifiers.modifier_mofa_aura3.Aura_Radius": [800],
+      "Modifiers.modifier_mofa_aura3.Properties.MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE": [
+        30
+      ],
+      "Modifiers.modifier_mofa_buff3.Properties.MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS": [
+        -21
+      ]
+    },
+    "tower_mofa4": {
+      "MaxLevel": [4],
+      "AbilityCastRange": [800],
+      "Modifiers.modifier_mofa_aura4.Passive": [1],
+      "Modifiers.modifier_mofa_aura4.IsHidden": [0],
+      "Modifiers.modifier_mofa_aura4.Aura_Radius": [800],
+      "Modifiers.modifier_mofa_aura4.Properties.MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE": [
+        40
+      ],
+      "Modifiers.modifier_mofa_buff4.Properties.MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS": [
+        -28
+      ]
+    },
+    "tower_mofa5": {
+      "MaxLevel": [5],
+      "AbilityCastRange": [800],
+      "Modifiers.modifier_mofa_aura5.Passive": [1],
+      "Modifiers.modifier_mofa_aura5.IsHidden": [0],
+      "Modifiers.modifier_mofa_aura5.Aura_Radius": [800],
+      "Modifiers.modifier_mofa_aura5.Properties.MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE": [
+        50
+      ],
+      "Modifiers.modifier_mofa_buff5.Properties.MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS": [
+        -35
+      ]
+    },
+    "tower_mofa6": {
+      "MaxLevel": [6],
+      "AbilityCastRange": [800],
+      "Modifiers.modifier_mofa_aura6.Passive": [1],
+      "Modifiers.modifier_mofa_aura6.IsHidden": [0],
+      "Modifiers.modifier_mofa_aura6.Aura_Radius": [800],
+      "Modifiers.modifier_mofa_aura6.Properties.MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE": [
+        60
+      ],
+      "Modifiers.modifier_mofa_buff6.Properties.MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS": [
+        -42
+      ]
+    },
+    "tower_mofa7": {
+      "MaxLevel": [7],
+      "AbilityCastRange": [800],
+      "Modifiers.modifier_mofa_aura7.Passive": [1],
+      "Modifiers.modifier_mofa_aura7.IsHidden": [0],
+      "Modifiers.modifier_mofa_aura7.Aura_Radius": [800],
+      "Modifiers.modifier_mofa_aura7.Properties.MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE": [
+        70
+      ],
+      "Modifiers.modifier_mofa_buff7.Properties.MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS": [
+        -49
+      ]
+    },
+    "tower_mofa8": {
+      "MaxLevel": [8],
+      "AbilityCastRange": [800],
+      "Modifiers.modifier_mofa_aura8.Passive": [1],
+      "Modifiers.modifier_mofa_aura8.IsHidden": [0],
+      "Modifiers.modifier_mofa_aura8.Aura_Radius": [800],
+      "Modifiers.modifier_mofa_aura8.Properties.MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE": [
+        80
+      ],
+      "Modifiers.modifier_mofa_buff8.Properties.MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS": [
+        -56
+      ]
+    },
+    "tower_mofa9": {
+      "MaxLevel": [9],
+      "AbilityCastRange": [800],
+      "Modifiers.modifier_mofa_aura9.Passive": [1],
+      "Modifiers.modifier_mofa_aura9.IsHidden": [0],
+      "Modifiers.modifier_mofa_aura9.Aura_Radius": [800],
+      "Modifiers.modifier_mofa_aura9.Properties.MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE": [
+        90
+      ],
+      "Modifiers.modifier_mofa_buff9.Properties.MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS": [
+        -63
+      ]
+    },
+    "tower_mofa10": {
+      "MaxLevel": [10],
+      "AbilityCastRange": [800],
+      "Modifiers.modifier_mofa_aura10.Passive": [1],
+      "Modifiers.modifier_mofa_aura10.IsHidden": [0],
+      "Modifiers.modifier_mofa_aura10.Aura_Radius": [800],
+      "Modifiers.modifier_mofa_buff10.Properties.MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS": [
+        -70
+      ],
+      "Modifiers.modifier_tower_gongji10_aura.Passive": [1],
+      "Modifiers.modifier_tower_gongji10_aura.IsHidden": [1],
+      "Modifiers.modifier_tower_gongji10_aura.Aura_Radius": [290],
+      "Modifiers.modifier_tower_gongji10_aura.Aura_ApplyToCaster": [0],
+      "Modifiers.modifier_tower_gongji10.Properties.MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE": [
+        100
+      ],
+      "Modifiers.modifier_tower_gongji10.Passive": [1],
+      "Modifiers.modifier_tower_gongji10.IsHidden": [1],
+      "Modifiers.modifier_tower_gongji10_friend.Properties.MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE": [
+        100
+      ]
+    },
+    "enemy_momian": {
+      "Modifiers.modifier_momian.Passive": [1],
+      "Modifiers.modifier_momian.IsHidden": [0],
+      "Modifiers.modifier_momian.Properties.MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS": [
+        100
+      ]
+    },
+    "enemy_jimian": {
+      "Modifiers.modifier_jimian.Passive": [1],
+      "Modifiers.modifier_jimian.IsHidden": [0]
+    },
+    "enemy_wumian": {
+      "Modifiers.modifier_wumian.Passive": [1],
+      "Modifiers.modifier_wumian.IsHidden": [0],
+      "Modifiers.modifier_wumian.Properties.MODIFIER_PROPERTY_INCOMING_PHYSICAL_DAMAGE_PERCENTAGE": [
+        -100
+      ]
+    },
+    "tower_jin": {
+      "MaxLevel": [1],
+      "Modifiers.modifier_jin.IsHidden": [1],
+      "Modifiers.modifier_jin.Passive": [1],
+      "Modifiers.modifier_jin_target.IsHidden": [1],
+      "Modifiers.modifier_jin_target.Duration": [2],
+      "Modifiers.modifier_jin_target.Properties.MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS": [
+        -32
+      ]
+    },
+    "tower_jin2": {
+      "MaxLevel": [1],
+      "Modifiers.modifier_jin.IsHidden": [1],
+      "Modifiers.modifier_jin.Passive": [1],
+      "Modifiers.modifier_jin2_target.IsHidden": [1],
+      "Modifiers.modifier_jin2_target.Duration": [2],
+      "Modifiers.modifier_jin2_target.Properties.MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS": [
+        -48
+      ]
+    },
+    "tower_shandianlian": {
+      "MaxLevel": [1],
+      "Modifiers.modifier_jn_D3_10.Passive": [1],
+      "Modifiers.modifier_jn_D3_10.IsHidden": [1],
+      "Modifiers.modifier_jn_D3_10.IsDebuff": [0],
+      "Modifiers.modifier_jn_D3_10.OnAttackLanded.Random.Chance": [30],
+      "Modifiers.modifier_jn_D3_10.OnAttackLanded.Random.OnSuccess.RunScript.Count": [
+        5
+      ],
+      "Modifiers.modifier_jn_D3_10.OnAttackLanded.Random.OnSuccess.RunScript.Damage": [
+        150
+      ],
+      "Modifiers.modifier_jn_D3_10.OnAttackLanded.Random.OnSuccess.RunScript.Radius": [
+        1000
+      ],
+      "Modifiers.modifier_jn_D3_10.OnAttackLanded.Random.OnSuccess.RunScript.AttackCount": [
+        1
+      ],
+      "Modifiers.modifier_jn_D3_10_effect.Duration": [0.1],
+      "Modifiers.modifier_jn_D3_10_effect.IsHidden": [1],
+      "Modifiers.modifier_jn_D3_10_effect.OnCreated.Damage.Damage": [200]
+    },
+    "tower_chazhuangshandian": {
+      "MaxLevel": [1],
+      "Modifiers.ether_shock_passive.Passive": [1],
+      "Modifiers.ether_shock_passive.IsHidden": [1],
+      "Modifiers.ether_shock_passive.OnAttackLanded.Random.Chance": [25],
+      "AbilitySpecial.01.start_radius": [100],
+      "AbilitySpecial.02.end_radius": [3000],
+      "AbilitySpecial.03.end_distance": [5000],
+      "AbilitySpecial.04.targets": [5],
+      "AbilitySpecial.05.damage": [2500],
+      "AbilitySpecial.06.chance": [25]
+    },
+    "tower_fenliejian_you": {
+      "MaxLevel": [1],
+      "Modifiers.modifier_duo_chong_gong_ji_right.Passive": [1],
+      "Modifiers.modifier_duo_chong_gong_ji_right.IsHidden": [1],
+      "Modifiers.modifier_duo_chong_gong_ji_right.OnAttack.RunScript.attack_count": [
+        10
+      ]
+    },
+    "tower_aojiao": {
+      "MaxLevel": [1],
+      "Modifiers.modifier_tower_aojiao.IsDebuff": [1],
+      "Modifiers.modifier_tower_buaojiao.Passive": [1],
+      "Modifiers.modifier_tower_buaojiao.OnAttackStart.Random.OnSuccess.ApplyModifier.Duration": [
+        5
+      ],
+      "Modifiers.modifier_tower_buaojiao.OnAttackStart.Random.Chance": [3],
+      "Modifiers.modifier_tower_buaojiao.IsHidden": [1]
+    },
+    "tower_chenmoguanghuan": {
+      "MaxLevel": [1],
+      "AbilityCastRange": [600],
+      "Modifiers.modifier_tower_chenmo.Passive": [1],
+      "Modifiers.modifier_tower_chenmo.IsHidden": [1],
+      "Modifiers.modifier_tower_chenmo.Aura_Radius": [600],
+      "Modifiers.modifier_tower_momian_buff.IsHidden": [0],
+      "Modifiers.modifier_tower_momian_buff.Duration": [1],
+      "Modifiers.modifier_tower_momian_buff.ThinkInterval": [0.3],
+      "Modifiers.modifier_tower_momian_buff.IsBuff": [1]
+    },
+    "guai_xietong": {
+      "MaxLevel": [1],
+      "AbilityCastRange": [9999],
+      "Modifiers.modifier_tower_xietong.Passive": [1],
+      "Modifiers.modifier_tower_xietong.IsHidden": [1],
+      "Modifiers.modifier_tower_xietong.Aura_Radius": [9999],
+      "Modifiers.modifier_tower_xietong_buff.IsHidden": [1],
+      "Modifiers.modifier_tower_xietong_buff.Duration": [1],
+      "Modifiers.modifier_tower_xietong_buff.ThinkInterval": [0.3],
+      "Modifiers.modifier_tower_xietong_buff.Properties.MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT": [
+        -150
+      ]
+    },
+    "tower_shechengguanghuan": {
+      "MaxLevel": [1],
+      "AbilityCastRange": [300],
+      "Modifiers.modifier_tower_shecheng.Passive": [1],
+      "Modifiers.modifier_tower_shecheng.IsHidden": [1],
+      "Modifiers.modifier_tower_shecheng.Aura_Radius": [290],
+      "Modifiers.modifier_tower_shecheng_buff.IsHidden": [1],
+      "Modifiers.modifier_tower_shecheng_buff.Duration": [1],
+      "Modifiers.modifier_tower_shecheng_buff.ThinkInterval": [0.3],
+      "Modifiers.modifier_tower_shecheng_buff.Properties.MODIFIER_PROPERTY_ATTACK_RANGE_BONUS": [
+        300
+      ]
+    },
+    "tidehunter_kraken_shell": {
+      "MaxLevel": [4],
+      "AbilitySpecial.01.damage_reduction": [0, 0, 0, 0],
+      "AbilitySpecial.02.damage_cleanse": [40000, 60000, 80000, 100000],
+      "AbilitySpecial.03.damage_reset_interval": [10]
+    },
+    "guai_jiaoxieguanghuan": {
+      "MaxLevel": [4],
+      "AbilityCastRange": [100],
+      "Modifiers.modifier_guai_chenmo.Passive": [1],
+      "Modifiers.modifier_guai_chenmo.IsHidden": [1],
+      "Modifiers.modifier_guai_chenmo.Aura_Radius": [130, 150, 170, 190],
+      "Modifiers.modifier_guai_chenmo_buff.IsHidden": [0],
+      "Modifiers.modifier_guai_chenmo_buff.Duration": [1],
+      "Modifiers.modifier_guai_chenmo_buff.ThinkInterval": [0.3]
+    },
+    "enemy_bukeqinfan": {
+      "MaxLevel": [4],
+      "Modifiers.modifier_enemy_bukeqinfan.IsDebuff": [1],
+      "Modifiers.modifier_enemy_bukeqinfan.Properties.MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT": [
+        -300
+      ],
+      "Modifiers.modifier_enemy_bukeqinfan.Duration": [1, 2, 3, 4],
+      "Modifiers.modifier_enemy_bukeqinfan_2.Passive": [1],
+      "Modifiers.modifier_enemy_bukeqinfan_2.IsHidden": [1],
+      "Modifiers.modifier_enemy_bukeqinfan_2.OnAttacked.Random.OnSuccess.ApplyModifier.Duration": [
+        1, 2, 3, 4
+      ],
+      "Modifiers.modifier_enemy_bukeqinfan_2.OnAttacked.Random.Chance": [50]
+    },
+    "enemy_recharge": {
+      "MaxLevel": [4],
+      "Modifiers.modifier_enemy_recharge.Passive": [1],
+      "Modifiers.modifier_enemy_recharge.IsBuff": [1],
+      "AbilitySpecial.01.recharge_life": [400, 600, 800, 1000]
+    },
+    "enemy_high_armor": {
+      "MaxLevel": [4],
+      "Modifiers.modifier_enemy_high_armor.Passive": [1],
+      "Modifiers.modifier_enemy_high_armor.IsBuff": [1],
+      "AbilitySpecial.01.armor": [20, 30, 40, 50]
+    },
+    "enemy_crazy": {
+      "Modifiers.modifier_enemy_crazy.IsHidden": [0],
+      "Modifiers.modifier_enemy_crazy.Aura_Radius": [9999],
+      "Modifiers.modifier_enemy_crazy.Passive": [1],
+      "Modifiers.modifier_enemy_crazy_enemy.IsPurgable": [0],
+      "Modifiers.modifier_enemy_crazy_enemy.Properties.MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE": [
+        100
+      ]
+    },
+    "medusa_stone_gaze": {
+      "AbilityCooldown": [10, 10, 10, 10],
+      "AbilityManaCost": [0, 0, 0, 0]
+    },
+    "naga_siren_ensnare": {
+      "AbilityCastPoint": [0],
+      "AbilityCooldown": [0],
+      "AbilityManaCost": [0]
+    },
+    "new_venomous_gale": {
+      "FightRecapLevel": [1],
+      "AbilityCastPoint": [0, 0, 0, 0],
+      "AbilityCooldown": [0],
+      "AbilityManaCost": [0],
+      "AbilityCastRange": [800],
+      "OnSpellStart.LinearProjectile.HasFrontalCone": [0],
+      "OnSpellStart.LinearProjectile.ProvidesVision": [0],
+      "OnProjectileHitUnit.DeleteOnHit": [0],
+      "Modifiers.modifier_venomous_gale_debuff_datadriven.IsDebuff": [1],
+      "Modifiers.modifier_venomous_gale_debuff_datadriven.Properties.MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE": [
+        -1
+      ],
+      "AbilitySpecial.01.duration": [5, 7, 9, 11],
+      "AbilitySpecial.02.strike_damage": [0],
+      "AbilitySpecial.03.tick_damage": [0],
+      "AbilitySpecial.04.tick_interval": [3, 3, 3, 3],
+      "AbilitySpecial.05.movement_slow": [-50, -50, -50, -50],
+      "AbilitySpecial.06.radius": [125, 125, 125, 125],
+      "AbilitySpecial.07.speed": [600],
+      "AbilitySpecial.08.distance": [800, 800, 800, 800]
+    },
+    "new_venomous_gale2": {
+      "FightRecapLevel": [1],
+      "AbilityCastPoint": [0, 0, 0, 0],
+      "AbilityCooldown": [0],
+      "AbilityManaCost": [0],
+      "AbilityCastRange": [800],
+      "OnSpellStart.LinearProjectile.HasFrontalCone": [0],
+      "OnSpellStart.LinearProjectile.ProvidesVision": [0],
+      "OnProjectileHitUnit.DeleteOnHit": [0],
+      "Modifiers.modifier_venomous_gale_debuff_datadriven.IsDebuff": [1],
+      "Modifiers.modifier_venomous_gale_debuff_datadriven.Properties.MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE": [
+        -1
+      ],
+      "AbilitySpecial.01.duration": [7, 9, 11, 13],
+      "AbilitySpecial.02.strike_damage": [0],
+      "AbilitySpecial.03.tick_damage": [0],
+      "AbilitySpecial.04.tick_interval": [3, 3, 3, 3],
+      "AbilitySpecial.05.movement_slow": [-70, -70, -70, -70],
+      "AbilitySpecial.06.radius": [125, 125, 125, 125],
+      "AbilitySpecial.07.speed": [400],
+      "AbilitySpecial.08.distance": [1200, 1200, 1200, 1200]
+    },
+    "new_venomous_gale3": {
+      "FightRecapLevel": [1],
+      "AbilityCastPoint": [0, 0, 0, 0],
+      "AbilityCooldown": [0],
+      "AbilityManaCost": [0],
+      "AbilityCastRange": [800],
+      "OnSpellStart.LinearProjectile.HasFrontalCone": [0],
+      "OnSpellStart.LinearProjectile.ProvidesVision": [0],
+      "OnProjectileHitUnit.DeleteOnHit": [0],
+      "Modifiers.modifier_venomous_gale_debuff_datadriven.IsDebuff": [1],
+      "Modifiers.modifier_venomous_gale_debuff_datadriven.Properties.MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE": [
+        -1
+      ],
+      "AbilitySpecial.01.duration": [11, 13, 15, 17],
+      "AbilitySpecial.02.strike_damage": [0],
+      "AbilitySpecial.03.tick_damage": [0],
+      "AbilitySpecial.04.tick_interval": [3, 3, 3, 3],
+      "AbilitySpecial.05.movement_slow": [-90, -90, -90, -90],
+      "AbilitySpecial.06.radius": [125, 125, 125, 125],
+      "AbilitySpecial.07.speed": [200],
+      "AbilitySpecial.08.distance": [1600, 1600, 1600, 1600]
+    },
+    "new_torrent": {
+      "FightRecapLevel": [1],
+      "AbilityCastPoint": [0],
+      "AbilityCooldown": [0],
+      "AbilityManaCost": [0],
+      "AbilityCastRange": [1500],
+      "OnSpellStart.DelayedAction.Action.ActOnTargets.Action.Knockback.Distance": [
+        0
+      ],
+      "OnSpellStart.DelayedAction.Action.ActOnTargets.Action.Knockback.IsFixedDistance": [
+        1
+      ],
+      "OnSpellStart.DelayedAction.Action.ActOnTargets.Action.Knockback.ShouldStun": [
+        1
+      ],
+      "Modifiers.modifier_torrent_damage_thinker_datadriven.IsPurgable": [0],
+      "Modifiers.modifier_torrent_damage_thinker_datadriven.IsHidden": [1],
+      "Modifiers.modifier_torrent_damage_thinker_datadriven.OnIntervalThink.Damage.Damage": [
+        0
+      ],
+      "Modifiers.modifier_torrent_slow_debuff_datadriven.IsDebuff": [1],
+      "AbilitySpecial.01.radius": [256],
+      "AbilitySpecial.02.movespeed_bonus": [-40],
+      "AbilitySpecial.03.slow_duration": [8, 10, 12, 14],
+      "AbilitySpecial.04.stun_duration": [2],
+      "AbilitySpecial.05.delay": [1.6, 1.6, 1.6, 1.6],
+      "AbilitySpecial.06.tick_count": [10],
+      "AbilitySpecial.07.vision_duration": [4.73],
+      "AbilitySpecial.08.torrent_height": [400],
+      "AbilityDamage": [120, 180, 240, 300],
+      "AbilityModifierSupportValue": [0.5]
+    },
+    "new_torrent2": {
+      "FightRecapLevel": [1],
+      "AbilityCastPoint": [0],
+      "AbilityCooldown": [0],
+      "AbilityManaCost": [0],
+      "AbilityCastRange": [1500],
+      "OnSpellStart.DelayedAction.Action.ActOnTargets.Action.Knockback.Distance": [
+        0
+      ],
+      "OnSpellStart.DelayedAction.Action.ActOnTargets.Action.Knockback.IsFixedDistance": [
+        1
+      ],
+      "OnSpellStart.DelayedAction.Action.ActOnTargets.Action.Knockback.ShouldStun": [
+        1
+      ],
+      "Modifiers.modifier_torrent_damage_thinker_datadriven.IsPurgable": [0],
+      "Modifiers.modifier_torrent_damage_thinker_datadriven.IsHidden": [1],
+      "Modifiers.modifier_torrent_damage_thinker_datadriven.OnIntervalThink.Damage.Damage": [
+        0
+      ],
+      "Modifiers.modifier_torrent_slow_debuff_datadriven.IsDebuff": [1],
+      "AbilitySpecial.01.radius": [256],
+      "AbilitySpecial.02.movespeed_bonus": [-60],
+      "AbilitySpecial.03.slow_duration": [8, 10, 12, 14],
+      "AbilitySpecial.04.stun_duration": [4],
+      "AbilitySpecial.05.delay": [1.6, 1.6, 1.6, 1.6],
+      "AbilitySpecial.06.tick_count": [10],
+      "AbilitySpecial.07.vision_duration": [4.73],
+      "AbilitySpecial.08.torrent_height": [800],
+      "AbilityDamage": [120, 180, 240, 300],
+      "AbilityModifierSupportValue": [0.5]
+    },
+    "new_torrent3": {
+      "FightRecapLevel": [1],
+      "AbilityCastPoint": [0],
+      "AbilityCooldown": [0],
+      "AbilityManaCost": [0],
+      "AbilityCastRange": [1500],
+      "OnSpellStart.DelayedAction.Action.ActOnTargets.Action.Knockback.Distance": [
+        0
+      ],
+      "OnSpellStart.DelayedAction.Action.ActOnTargets.Action.Knockback.IsFixedDistance": [
+        1
+      ],
+      "OnSpellStart.DelayedAction.Action.ActOnTargets.Action.Knockback.ShouldStun": [
+        1
+      ],
+      "Modifiers.modifier_torrent_damage_thinker_datadriven.IsPurgable": [0],
+      "Modifiers.modifier_torrent_damage_thinker_datadriven.IsHidden": [1],
+      "Modifiers.modifier_torrent_damage_thinker_datadriven.OnIntervalThink.Damage.Damage": [
+        0
+      ],
+      "Modifiers.modifier_torrent_slow_debuff_datadriven.IsDebuff": [1],
+      "AbilitySpecial.01.radius": [256],
+      "AbilitySpecial.02.movespeed_bonus": [-80],
+      "AbilitySpecial.03.slow_duration": [12, 14, 16, 18],
+      "AbilitySpecial.04.stun_duration": [8],
+      "AbilitySpecial.05.delay": [1.6, 1.6, 1.6, 1.6],
+      "AbilitySpecial.06.tick_count": [10],
+      "AbilitySpecial.07.vision_duration": [4.73],
+      "AbilitySpecial.08.torrent_height": [1200],
+      "AbilityDamage": [120, 180, 240, 300],
+      "AbilityModifierSupportValue": [0.5]
+    },
+    "new_haojiao": {
+      "MaxLevel": [4],
+      "AbilityCastPoint": [0],
+      "AbilityCooldown": [0],
+      "AbilityManaCost": [0],
+      "Modifiers.modifier_howl_unit_datadriven.IsBuff": [1],
+      "AbilitySpecial.01.howl_duration": [10],
+      "AbilitySpecial.02.unit_bonus_damage": [20, 30, 40, 50],
+      "AbilitySpecial.03.aura_radius": [256],
+      "AbilitySpecial.04.think_interval": [0.5]
+    },
+    "new_haojiao2": {
+      "MaxLevel": [4],
+      "AbilityCastPoint": [0],
+      "AbilityCooldown": [0],
+      "AbilityManaCost": [0],
+      "Modifiers.modifier_howl_unit_datadriven.IsBuff": [1],
+      "AbilitySpecial.01.howl_duration": [10],
+      "AbilitySpecial.02.unit_bonus_damage": [40, 60, 80, 100],
+      "AbilitySpecial.03.aura_radius": [384],
+      "AbilitySpecial.04.think_interval": [0.5]
+    },
+    "new_haojiao3": {
+      "MaxLevel": [4],
+      "AbilityCastPoint": [0],
+      "AbilityCooldown": [0],
+      "AbilityManaCost": [0],
+      "Modifiers.modifier_howl_unit_datadriven.IsBuff": [1],
+      "AbilitySpecial.01.howl_duration": [10],
+      "AbilitySpecial.02.unit_bonus_damage": [80, 120, 160, 200],
+      "AbilitySpecial.03.aura_radius": [512],
+      "AbilitySpecial.04.think_interval": [0.5]
+    },
+    "new_cask": {
+      "FightRecapLevel": [1],
+      "AbilityCastPoint": [0],
+      "AbilityCooldown": [0],
+      "AbilityManaCost": [0],
+      "AbilityCastRange": [9999],
+      "OnSpellStart.TrackingProjectile.Dodgeable": [1],
+      "OnSpellStart.TrackingProjectile.ProvidesVision": [0],
+      "AbilitySpecial.01.hero_duration": [1],
+      "AbilitySpecial.02.creep_duration": [1],
+      "AbilitySpecial.03.hero_damage": [0],
+      "AbilitySpecial.04.bounce_range": [1000],
+      "AbilitySpecial.05.bounces": [6, 8, 10, 12],
+      "AbilitySpecial.06.speed": [1800],
+      "AbilitySpecial.07.bounce_delay": [0.2],
+      "AbilitySpecial.08.bounces_tooltip": [6, 8, 10, 12],
+      "AbilityDamage": [0],
+      "AbilityModifierSupportValue": [0.5]
+    },
+    "new_cask_sub2": {
+      "FightRecapLevel": [1],
+      "AbilityCastPoint": [0],
+      "AbilityCooldown": [0],
+      "AbilityManaCost": [0],
+      "AbilityCastRange": [9999],
+      "OnSpellStart.TrackingProjectile.Dodgeable": [1],
+      "OnSpellStart.TrackingProjectile.ProvidesVision": [0],
+      "AbilitySpecial.01.hero_duration": [1.5],
+      "AbilitySpecial.02.creep_duration": [1.5],
+      "AbilitySpecial.03.hero_damage": [0],
+      "AbilitySpecial.04.bounce_range": [1000],
+      "AbilitySpecial.05.bounces": [6, 8, 10, 12],
+      "AbilitySpecial.06.speed": [1800],
+      "AbilitySpecial.07.bounce_delay": [0.2],
+      "AbilitySpecial.08.bounces_tooltip": [6, 8, 10, 12],
+      "AbilityDamage": [0],
+      "AbilityModifierSupportValue": [0.5]
+    },
+    "new_cask_sub3": {
+      "FightRecapLevel": [1],
+      "AbilityCastPoint": [0],
+      "AbilityCooldown": [0],
+      "AbilityManaCost": [0],
+      "AbilityCastRange": [9999],
+      "OnSpellStart.TrackingProjectile.Dodgeable": [1],
+      "OnSpellStart.TrackingProjectile.ProvidesVision": [0],
+      "AbilitySpecial.01.hero_duration": [2],
+      "AbilitySpecial.02.creep_duration": [2],
+      "AbilitySpecial.03.hero_damage": [0],
+      "AbilitySpecial.04.bounce_range": [1000],
+      "AbilitySpecial.05.bounces": [6, 8, 10, 12],
+      "AbilitySpecial.06.speed": [1800],
+      "AbilitySpecial.07.bounce_delay": [0.2],
+      "AbilitySpecial.08.bounces_tooltip": [6, 8, 10, 12],
+      "AbilityDamage": [0],
+      "AbilityModifierSupportValue": [0.5]
+    },
+    "new_acid_spray": {
+      "AbilityCastPoint": [0],
+      "AbilityCooldown": [0],
+      "AbilityManaCost": [0],
+      "AbilityCastRange": [900],
+      "AOERadius": [625],
+      "Modifiers.modifier_acid_spray_thinker.OnCreated.AttachEffect.ControlPoints.15": [
+        25, 150, 25
+      ],
+      "Modifiers.modifier_acid_spray_thinker.OnCreated.AttachEffect.ControlPoints.16": [
+        0, 0, 0
+      ],
+      "Modifiers.modifier_acid_spray_thinker.OnCreated.AttachEffect.ControlPoints.00": [
+        0, 0, 0
+      ],
+      "Modifiers.modifier_acid_spray.IsDebuff": [1],
+      "AbilitySpecial.01.radius": [625],
+      "AbilitySpecial.02.duration": [10],
+      "AbilitySpecial.03.damage": [0],
+      "AbilitySpecial.04.armor_reduction": [-8, -10, -12, -14],
+      "AbilitySpecial.05.tick_rate": [1]
+    },
+    "new_acid_spray2": {
+      "AbilityCastPoint": [0],
+      "AbilityCooldown": [0],
+      "AbilityManaCost": [0],
+      "AbilityCastRange": [900],
+      "AOERadius": [625],
+      "Modifiers.modifier_acid_spray_thinker.OnCreated.AttachEffect.ControlPoints.15": [
+        25, 150, 25
+      ],
+      "Modifiers.modifier_acid_spray_thinker.OnCreated.AttachEffect.ControlPoints.16": [
+        0, 0, 0
+      ],
+      "Modifiers.modifier_acid_spray_thinker.OnCreated.AttachEffect.ControlPoints.00": [
+        0, 0, 0
+      ],
+      "Modifiers.modifier_acid_spray.IsDebuff": [1],
+      "AbilitySpecial.01.radius": [625],
+      "AbilitySpecial.02.duration": [15],
+      "AbilitySpecial.03.damage": [0],
+      "AbilitySpecial.04.armor_reduction": [-16, -20, -24, -28],
+      "AbilitySpecial.05.tick_rate": [1]
+    },
+    "new_acid_spray3": {
+      "AbilityCastPoint": [0],
+      "AbilityCooldown": [0],
+      "AbilityManaCost": [0],
+      "AbilityCastRange": [900],
+      "AOERadius": [625],
+      "Modifiers.modifier_acid_spray_thinker.OnCreated.AttachEffect.ControlPoints.15": [
+        25, 150, 25
+      ],
+      "Modifiers.modifier_acid_spray_thinker.OnCreated.AttachEffect.ControlPoints.16": [
+        0, 0, 0
+      ],
+      "Modifiers.modifier_acid_spray_thinker.OnCreated.AttachEffect.ControlPoints.00": [
+        0, 0, 0
+      ],
+      "Modifiers.modifier_acid_spray.IsDebuff": [1],
+      "AbilitySpecial.01.radius": [625],
+      "AbilitySpecial.02.duration": [20],
+      "AbilitySpecial.03.damage": [0],
+      "AbilitySpecial.04.armor_reduction": [-32, -40, -48, -56],
+      "AbilitySpecial.05.tick_rate": [1]
+    },
+    "chain_frost": {
+      "FightRecapLevel": [2],
+      "MaxLevel": [1],
+      "AbilityCastPoint": [0],
+      "AbilityCooldown": [0],
+      "AbilityManaCost": [0],
+      "AbilityCastRange": [9999],
+      "OnSpellStart.TrackingProjectile.Dodgeable": [1],
+      "OnSpellStart.TrackingProjectile.ProvidesVision": [1],
+      "OnProjectileHitUnit.DeleteOnHit": [1],
+      "Modifiers.modifier_chain_frost_slow.Passive": [0],
+      "Modifiers.modifier_chain_frost_slow.IsHidden": [0],
+      "Modifiers.modifier_chain_frost_slow.IsDebuff": [1],
+      "Modifiers.modifier_chain_frost_slow.StatusEffectPriority": [10],
+      "AbilitySpecial.10.cast_range_scepter": [9999],
+      "AbilitySpecial.11.jump_interval": [0.2],
+      "AbilitySpecial.12.mini_stun": [0.1],
+      "AbilitySpecial.01.jumps": [10],
+      "AbilitySpecial.02.slow_duration": [5],
+      "AbilitySpecial.03.slow_movement_speed": [-50],
+      "AbilitySpecial.04.slow_attack_speed": [-50],
+      "AbilitySpecial.05.jump_range": [1000],
+      "AbilitySpecial.06.projectile_speed": [2000],
+      "AbilitySpecial.07.vision_radius": [1000, 1000, 1000],
+      "AbilitySpecial.08.damage": [8000],
+      "AbilitySpecial.09.damage_scepter": [8000],
+      "AbilityModifierSupportValue": [0]
+    },
+    "tower_chain_frost": {
+      "MaxLevel": [1],
+      "AbilityCastRange": [500]
+    },
+    "shredder_reactive_armor": {
+      "AbilitySpecial.01.bonus_armor": [5, 5, 5, 5]
+    },
+    "enemy_zheguang": {
+      "MaxLevel": [4]
+    },
+    "enemy_shanshuo": {
+      "MaxLevel": [4]
+    },
+    "antimage_blink_new": {
+      "AbilityCastPoint": [0],
+      "AbilityCooldown": [12],
+      "AbilityManaCost": [0],
+      "AbilitySpecial.01.blink_range": [925, 1000, 1075, 1150],
+      "AbilitySpecial.02.min_blink_range": [200]
+    },
+    "templar_assassin_refraction_new": {
+      "AbilityCastPoint": [0, 0, 0, 0],
+      "AbilityCooldown": [5],
+      "AbilityManaCost": [0],
+      "Modifiers.modifier_bonus_damage.IsHidden": [1],
+      "AbilitySpecial.01.instances": [6, 8, 10, 12],
+      "AbilitySpecial.02.bonus_damage": [0, 0, 0, 0],
+      "AbilitySpecial.03.damage_threshold": [0, 0, 0, 0],
+      "AbilitySpecial.04.duration": [60, 60, 60, 60]
+    },
+    "runrunrun": {
+      "MaxLevel": [4],
+      "AbilityCastPoint": [0],
+      "AbilityCooldown": [0],
+      "AbilityManaCost": [0],
+      "OnSpellStart.ApplyModifier.Duration": [20, 28, 36, 44],
+      "Modifiers.modifier_runrunrun.Duration": [20, 28, 36, 44],
+      "Modifiers.modifier_runrunrun.Properties.MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE": [
+        50
+      ]
+    },
+    "new_konghe": {
+      "MaxLevel": [4],
+      "AbilityCastPoint": [0],
+      "AbilityCooldown": [0],
+      "AbilityManaCost": [0],
+      "AbilityCastRange": [9999],
+      "OnSpellStart.TrackingProjectile.MoveSpeed": [1500],
+      "OnProjectileHitUnit.DeleteOnHit": [1],
+      "OnProjectileHitUnit.ApplyModifier.Target.Radius": [256],
+      "AbilitySpecial.01.konghe_duration": [6, 8, 10, 12],
+      "AbilitySpecial.02.konghe_damage_per": [50],
+      "AbilitySpecial.03.konghe_speed_per": [30]
+    },
+    "new_konghe2": {
+      "MaxLevel": [4],
+      "AbilityCastPoint": [0],
+      "AbilityCooldown": [0],
+      "AbilityManaCost": [0],
+      "AbilityCastRange": [9999],
+      "OnSpellStart.TrackingProjectile.MoveSpeed": [1500],
+      "OnProjectileHitUnit.DeleteOnHit": [1],
+      "OnProjectileHitUnit.ApplyModifier.Target.Radius": [512],
+      "AbilitySpecial.01.konghe_duration": [6, 8, 10, 12],
+      "AbilitySpecial.02.konghe_damage_per": [100],
+      "AbilitySpecial.03.konghe_speed_per": [30]
+    },
+    "new_konghe3": {
+      "MaxLevel": [4],
+      "AbilityCastPoint": [0],
+      "AbilityCooldown": [0],
+      "AbilityManaCost": [0],
+      "AbilityCastRange": [9999],
+      "OnSpellStart.TrackingProjectile.MoveSpeed": [1500],
+      "OnProjectileHitUnit.DeleteOnHit": [1],
+      "OnProjectileHitUnit.ApplyModifier.Target.Radius": [1024],
+      "AbilitySpecial.01.konghe_duration": [6, 8, 10, 12],
+      "AbilitySpecial.02.konghe_damage_per": [200],
+      "AbilitySpecial.03.konghe_speed_per": [30]
+    },
+    "new_youbu": {
+      "FightRecapLevel": [1],
+      "AbilityCastPoint": [0.65],
+      "AbilityCooldown": [0],
+      "AbilityManaCost": [0],
+      "AbilityCastRange": [9999],
+      "OnSpellStart.TrackingProjectile.Dodgeable": [1],
+      "OnSpellStart.TrackingProjectile.ProvidesVision": [1],
+      "OnSpellStart.TrackingProjectile.VisionRadius": [0],
+      "OnProjectileHitUnit.DeleteOnHit": [1],
+      "Modifiers.modifier_ensnare_datadriven.IsHidden": [0],
+      "Modifiers.modifier_ensnare_datadriven.IsDebuff": [1],
+      "Modifiers.modifier_ensnare_datadriven.IsPurgable": [0],
+      "Modifiers.modifier_ensnare_fake_datadriven.IsHidden": [1],
+      "AbilitySpecial.01.duration": [2, 3, 4, 5],
+      "AbilitySpecial.02.net_speed": [1500, 1500, 1500, 1500],
+      "AbilitySpecial.03.fake_ensnare_distance": [900, 900, 900, 900]
+    },
+    "new_youbu_sub2": {
+      "MaxLevel": [4],
+      "AbilityCooldown": [0],
+      "AbilityManaCost": [0],
+      "AbilityCastRange": [9999],
+      "OnSpellStart.TrackingProjectile.MoveSpeed": [1500],
+      "OnProjectileHitUnit.DeleteOnHit": [1],
+      "AbilitySpecial.01.youbu_duration": [3, 4, 5, 6]
+    },
+    "new_youbu_sub3": {
+      "MaxLevel": [4],
+      "AbilityCooldown": [0],
+      "AbilityManaCost": [0],
+      "AbilityCastRange": [9999],
+      "OnSpellStart.TrackingProjectile.MoveSpeed": [1500],
+      "OnProjectileHitUnit.DeleteOnHit": [1],
+      "AbilitySpecial.01.youbu_duration": [5, 6, 7, 8]
+    },
+    "new_youbu2": {
+      "MaxLevel": [4],
+      "AbilityCooldown": [0],
+      "AbilityManaCost": [0],
+      "AbilityCastRange": [9999],
+      "AbilitySpecial.01.youbu_duration": [2, 3, 4, 5]
+    },
+    "new_cask2": {
+      "MaxLevel": [4],
+      "AbilityCooldown": [0],
+      "AbilityManaCost": [0],
+      "AbilityCastRange": [9999],
+      "AbilitySpecial.01.youbu_duration": [2, 3, 4, 5]
+    },
+    "new_cask3": {
+      "MaxLevel": [4],
+      "AbilityCooldown": [0],
+      "AbilityManaCost": [0],
+      "AbilityCastRange": [9999],
+      "AbilitySpecial.01.youbu_duration": [2, 3, 4, 5]
+    },
+    "new_youbu3": {
+      "MaxLevel": [4],
+      "AbilityCooldown": [0],
+      "AbilityManaCost": [0],
+      "AbilityCastRange": [9999],
+      "AbilitySpecial.01.youbu_duration": [2, 3, 4, 5]
+    },
+    "new_xuwu": {
+      "MaxLevel": [4],
+      "AbilityCastPoint": [0],
+      "AbilityCooldown": [0],
+      "AbilityManaCost": [0],
+      "AbilityCastRange": [9999],
+      "OnSpellStart.ApplyModifier.Target.Radius": [256],
+      "AbilitySpecial.01.xuwu_duration": [5, 6, 7, 8],
+      "AbilitySpecial.02.xuwu_mokang_per": [-30],
+      "AbilitySpecial.03.xuwu_speed_per": [-50]
+    },
+    "new_xuwu2": {
+      "MaxLevel": [4],
+      "AbilityCastPoint": [0],
+      "AbilityCooldown": [0],
+      "AbilityManaCost": [0],
+      "AbilityCastRange": [9999],
+      "OnSpellStart.ApplyModifier.Target.Radius": [384],
+      "AbilitySpecial.01.xuwu_duration": [6, 7, 8, 9],
+      "AbilitySpecial.02.xuwu_mokang_per": [-60],
+      "AbilitySpecial.03.xuwu_speed_per": [-70]
+    },
+    "new_xuwu3": {
+      "MaxLevel": [4],
+      "AbilityCastPoint": [0],
+      "AbilityCooldown": [0],
+      "AbilityManaCost": [0],
+      "AbilityCastRange": [9999],
+      "OnSpellStart.ApplyModifier.Target.Radius": [512],
+      "AbilitySpecial.01.xuwu_duration": [7, 8, 9, 10],
+      "AbilitySpecial.02.xuwu_mokang_per": [-90],
+      "AbilitySpecial.03.xuwu_speed_per": [-90]
+    }
+  }
+}

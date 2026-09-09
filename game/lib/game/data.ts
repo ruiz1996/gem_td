@@ -1,7 +1,11 @@
 import historical from '../../data/historical.json';
 import original from '../../data/original-facts.json';
+import mechanics from '../../data/mechanics.json';
+export { mechanics };
 
-export const DATA_VERSION = '2018-source-mobile-alpha-5-original-mvp-stats';
+export const PREVIOUS_DATA_VERSION =
+  '2018-source-mobile-alpha-5-original-mvp-stats';
+export const DATA_VERSION = '2018-source-mobile-alpha-6-mechanics';
 export const CUSTOM_MVP_DATA_VERSION = '2018-source-mobile-alpha-4-mvp';
 export const LEGACY_DATA_VERSION = '2018-source-mobile-alpha-3';
 // Archived tower_mofa1..10. Ranges use the source's 128-unit grid.
@@ -44,6 +48,8 @@ export type Aura = {
   cannotMiss?: boolean;
   immunity?: boolean;
   nonAncientOnly?: boolean;
+  affectsMagicImmune?: boolean;
+  greed?: boolean;
 };
 export type TowerDef = {
   id: string;
@@ -56,6 +62,8 @@ export type TowerDef = {
   interval: number;
   range: number;
   bonusSpeed: number;
+  abilities: string[];
+  projectileSpeed: number;
   recipes: string[][];
   effects: {
     slow: number;
@@ -74,6 +82,11 @@ export type TowerDef = {
     lightning: number;
     fork: number;
     heal: number;
+    ranjin?: boolean;
+    cold?: boolean;
+    petrify?: number;
+    selfDisarm?: number;
+    chainFrost?: boolean;
   };
   auras: Aura[];
   notes: string[];
@@ -178,6 +191,9 @@ rows.forEach((r, index) => {
     interval: native.interval,
     range: native.range / CELL_UNITS,
     bonusSpeed: 0,
+    abilities: f.Ability ?? [],
+    projectileSpeed:
+      (mechanics.projectileSpeeds as Record<string, number>)[id] ?? 900,
     recipes: [],
     effects: {
       slow: 0,
@@ -201,77 +217,7 @@ rows.forEach((r, index) => {
     notes: [],
     source: index < 48 ? 'S02-base' : 'S02-advanced',
   };
-  for (const a of f.Ability ?? []) {
-    const level = number(a.match(/(\d+)$/)?.[1]) || 1;
-    if (/^tower_slow\d/.test(a))
-      t.effects.slow = [0, 60, 90, 120, 150, 180, 480][level];
-    else if (/^tower_du\d/.test(a))
-      t.effects.poison = [0, 2, 4, 8, 16, 32, 128][level];
-    else if (/^tower_jianjia\d/.test(a)) t.effects.pierce = 2 ** level;
-    else if (/^tower_jianshe\d/.test(a)) {
-      t.effects.splash = [0, 0.3, 0.4, 0.5, 0.6, 0.7, 1][level];
-      t.effects.splashRange =
-        [0, 300, 350, 400, 450, 500, 700][level] / CELL_UNITS;
-    } else if (a.startsWith('tower_fenliejian'))
-      t.effects.targets = a.endsWith('_you')
-        ? 11
-        : a.endsWith('_xianyan')
-          ? 5
-          : 3;
-    else if (a.startsWith('tower_baoji')) t.effects.crit = 0.1;
-    else if (a === 'tower_speed1' || a === 'tower_speed2')
-      t.bonusSpeed = a === 'tower_speed1' ? 200 : 500;
-    else if (a.startsWith('tower_speed_aura'))
-      t.auras.push({
-        id: a,
-        range: (a.endsWith('guichu') ? 200 : 664) / CELL_UNITS,
-        speed: a.endsWith('guichu') ? 200 : [0, 20, 30, 40, 50, 60, 70][level],
-      });
-    else if (a === 'tower_true_sight')
-      t.auras.push({ id: a, range: 600 / CELL_UNITS, trueSight: true });
-    else if (a.startsWith('tower_huiyao')) {
-      t.effects.burn = [0, 60, 320, 2500][level];
-      t.effects.burnRange = [0, 400, 500, 800][level] / CELL_UNITS;
-      t.effects.burnInterval = level === 3 ? 2 : 0.5;
-    } else if (a.startsWith('tower_zheyi'))
-      t.auras.push({
-        id: a,
-        range: 600 / CELL_UNITS,
-        armor: level === 3 ? 64 : 10,
-        slow: level === 3 ? 480 : 250,
-        resist: level === 1 ? 0 : level === 2 ? 50 : 100,
-        nonAncientOnly: true,
-      });
-    else if (a === 'tower_jin' || a === 'tower_jin2')
-      t.effects.pierce = a === 'tower_jin' ? 32 : 48;
-    else if (a === 'tower_shechengguanghuan')
-      t.auras.push({ id: a, range: 290 / CELL_UNITS, reach: 300 / CELL_UNITS });
-    else if (a === 'tower_jingzhun')
-      t.auras.push({ id: a, range: 300 / CELL_UNITS, cannotMiss: true });
-    else if (a === 'tower_maoyan')
-      t.auras.push({ id: a, range: 500 / CELL_UNITS, damage: 0.5 });
-    else if (a.startsWith('tower_bixi'))
-      t.auras.push({
-        id: a,
-        range: (level === 1 ? 800 : 1200) / CELL_UNITS,
-        armor: level === 1 ? 15 : 30,
-      });
-    else if (a.startsWith('tower_lanbaoshi'))
-      t.auras.push({
-        id: a,
-        range: (level === 1 ? 300 : 556) / CELL_UNITS,
-        slowPct: level === 1 ? 0.7 : 0.75,
-      });
-    else if (a === 'tower_chenmoguanghuan')
-      t.auras.push({ id: a, range: 600 / CELL_UNITS, immunity: true });
-    else if (a === 'tower_10jiyun') t.effects.stun = 0.1;
-    else if (a === 'tower_shandianlian') t.effects.lightning = 0.3;
-    else if (a === 'tower_chazhuangshandian') t.effects.fork = 0.25;
-    else if (a === 'tower_zhongguoyu') {
-      t.effects.heal = 0.01;
-    } else if (!a.startsWith('tower_attack'))
-      t.notes.push(`${a}：脚本效果未还原`);
-  }
+  for (const a of t.abilities) applyTowerAbility(t, a);
   for (const formula of (f.Combination ?? []).flatMap((x) => x.split(' | '))) {
     const recipe = formula.split(' + ').map((x) => names.get(x.trim()) ?? '');
     if (recipe.every(Boolean)) t.recipes.push(recipe);
@@ -279,6 +225,89 @@ rows.forEach((r, index) => {
   }
   TOWERS[id] = t;
 });
+export function applyTowerAbility(t: TowerDef, a: string) {
+  const level = number(a.match(/(\d+)$/)?.[1]) || 1;
+  if (/^tower_slow\d/.test(a))
+    t.effects.slow = [0, 60, 90, 120, 150, 180, 480][level];
+  else if (/^tower_du\d/.test(a))
+    t.effects.poison = [0, 2, 4, 8, 16, 32, 128][level];
+  else if (/^tower_jianjia\d/.test(a)) t.effects.pierce = 2 ** level;
+  else if (/^tower_jianshe\d/.test(a)) {
+    t.effects.splash = [0, 0.3, 0.4, 0.5, 0.6, 0.7, 1][level];
+    t.effects.splashRange =
+      [0, 300, 350, 400, 450, 500, 700][level] / CELL_UNITS;
+  } else if (a.startsWith('tower_fenliejian'))
+    t.effects.targets = a.endsWith('_you')
+      ? 11
+      : a.endsWith('_xianyan')
+        ? 5
+        : 3;
+  else if (a.startsWith('tower_baoji')) t.effects.crit = 0.1;
+  else if (a === 'tower_speed1' || a === 'tower_speed2')
+    t.bonusSpeed += a === 'tower_speed1' ? 200 : 500;
+  else if (a.startsWith('tower_speed_aura'))
+    t.auras.push({
+      id: a,
+      range: (a.endsWith('guichu') ? 200 : 664) / CELL_UNITS,
+      speed: a.endsWith('guichu') ? 200 : [0, 20, 30, 40, 50, 60, 70][level],
+    });
+  else if (a === 'tower_true_sight')
+    t.auras.push({ id: a, range: 600 / CELL_UNITS, trueSight: true });
+  else if (a.startsWith('tower_huiyao')) {
+    t.effects.burn = [0, 60, 320, 2500][level];
+    t.effects.burnRange = [0, 400, 500, 800][level] / CELL_UNITS;
+    t.effects.burnInterval = level === 3 ? 2 : 0.5;
+  } else if (a.startsWith('tower_zheyi'))
+    t.auras.push({
+      id: a,
+      range: 600 / CELL_UNITS,
+      armor: level === 3 ? 64 : 10,
+      slow: level === 3 ? 480 : 250,
+      resist: level === 1 ? 0 : level === 2 ? 50 : 100,
+      nonAncientOnly: true,
+      affectsMagicImmune: level >= 2,
+    });
+  else if (a === 'tower_jin' || a === 'tower_jin2')
+    t.effects.pierce = a === 'tower_jin' ? 32 : 48;
+  else if (a === 'tower_shechengguanghuan')
+    t.auras.push({ id: a, range: 290 / CELL_UNITS, reach: 300 / CELL_UNITS });
+  else if (a === 'tower_jingzhun')
+    t.auras.push({ id: a, range: 300 / CELL_UNITS, cannotMiss: true });
+  else if (a === 'tower_maoyan')
+    t.auras.push({ id: a, range: 500 / CELL_UNITS, damage: 0.5 });
+  else if (a.startsWith('tower_bixi'))
+    t.auras.push({
+      id: a,
+      range: (level === 1 ? 800 : 1200) / CELL_UNITS,
+      armor: level === 1 ? 15 : 30,
+      affectsMagicImmune: level >= 2,
+    });
+  else if (a.startsWith('tower_lanbaoshi'))
+    t.auras.push({
+      id: a,
+      range: (level === 1 ? 300 : 556) / CELL_UNITS,
+      slowPct: level === 1 ? 0.7 : 0.75,
+    });
+  else if (a === 'tower_chenmoguanghuan')
+    t.auras.push({ id: a, range: 600 / CELL_UNITS, immunity: true });
+  else if (a === 'tower_10jiyun') t.effects.stun = 0.1;
+  else if (a === 'tower_shandianlian') t.effects.lightning = 0.3;
+  else if (a === 'tower_chazhuangshandian') t.effects.fork = 0.25;
+  else if (a === 'tower_zhongguoyu') {
+    t.effects.heal = 0.01;
+  } else if (a === 'tower_ranjin') t.effects.ranjin = true;
+  else if (a === 'tower_jihan') t.effects.cold = true;
+  else if (a === 'tower_5shihua') t.effects.petrify = 0.01;
+  else if (a === 'tower_aojiao') t.effects.selfDisarm = 0.03;
+  else if (a === 'tower_chain_frost') t.effects.chainFrost = true;
+  else if (a === 'tower_tanlan')
+    t.auras.push({ id: a, range: 800 / CELL_UNITS, greed: true });
+  else if (a === 'tower_fenzheng')
+    t.auras.push({ id: a, range: 400 / CELL_UNITS, resist: 50 });
+  else if (!a.startsWith('tower_attack') && !/^e(?:301|100\d+)$/.test(a))
+    t.notes.push(`${a}：脚本效果未还原`);
+}
+
 export const BASIC_IDS = Object.values(TOWERS)
   .filter((t) => t.quality > 0)
   .map((t) => t.id);
@@ -290,9 +319,43 @@ export const RECIPES = Object.values(TOWERS).flatMap((t) =>
     id: `${t.id}:${i}`,
     result: t.id,
     materials,
+    candidateOnly: mechanics.secretRecipes.some(
+      (r) =>
+        r.result === t.id &&
+        [...r.materials].sort().join() === [...materials].sort().join(),
+    ),
   })),
 );
 export type Recipe = (typeof RECIPES)[number];
+export const SLAB_RECIPES = mechanics.slabRecipes;
+export const SLAB_NAMES: Record<string, string> = {
+  gemtd_youbushiban: '诱捕石板',
+  gemtd_zhangqishiban: '瘴气石板',
+  gemtd_hongliushiban: '洪流石板',
+  gemtd_haojiaoshiban: '嗥叫石板',
+  gemtd_suanwushiban: '酸雾石板',
+  gemtd_mabishiban: '麻痹石板',
+  gemtd_kongheshiban: '恐吓石板',
+  gemtd_xuwushiban: '虚无石板',
+};
+for (const recipe of SLAB_RECIPES)
+  for (let tier = 1; tier <= 3; tier++) {
+    const id = recipe.result + (tier === 1 ? '' : tier === 2 ? '_yin' : '_jin');
+    TOWERS[id] = {
+      ...structuredClone(TOWERS.gemtd_tianranzumulv),
+      id,
+      name: `${tier === 1 ? '' : tier === 2 ? '白银·' : '黄金·'}${SLAB_NAMES[recipe.result]}`,
+      english: `${tier}阶石板`,
+      family: 'L',
+      damage: 0,
+      range: 1,
+      interval: 10,
+      abilities: [],
+      notes: [],
+      recipes: [],
+      source: '2018-slab',
+    };
+  }
 export type Wave = {
   index: number;
   name: string;
@@ -315,6 +378,18 @@ export type Wave = {
   gold: number;
   variants: EnemyProfile[];
   notes: string[];
+  abilities: string[];
+};
+export const ENEMY_SKILL_NAMES: Record<string, string> = {
+  guai_jiaoxieguanghuan: '范围缴械',
+  enemy_zheguang: '折射',
+  enemy_bukeqinfan: '不可侵犯',
+  runrunrun: '疾跑',
+  shredder_reactive_armor: '活性护甲',
+  enemy_recharge: '回复400/秒',
+  enemy_shanshuo: '闪烁',
+  tidehunter_kraken_shell: '海妖外壳',
+  guai_xietong: '协同',
 };
 type EnemyProfile = Pick<
   Wave,
@@ -328,11 +403,13 @@ type EnemyProfile = Pick<
   | 'physicalImmune'
   | 'magicImmune'
   | 'ancient'
+  | 'abilities'
 >;
 function enemyProfile(row: RecordRow, id = row.fields.Code[0]): EnemyProfile {
   const n = sourceUnits[id],
     a = n.abilities;
   return {
+    abilities: a,
     hp: n.hp * 0.6,
     speed: (n.speed * 0.85) / CELL_UNITS,
     armor: n.armor + (a.includes('enemy_high_armor') ? 20 : 0),
@@ -344,6 +421,9 @@ function enemyProfile(row: RecordRow, id = row.fields.Code[0]): EnemyProfile {
     physicalImmune: a.includes('enemy_wumian'),
     magicImmune: a.includes('enemy_momian'),
   };
+}
+export function sourceEnemyProfile(id: string): EnemyProfile {
+  return enemyProfile({ title: id, fields: { Code: [id] } }, id);
 }
 const waveRows = historical.pages.creeps.records as RecordRow[];
 const waveNames = [
@@ -410,6 +490,12 @@ export const WAVES: Wave[] = Array.from({ length: 50 }, (_, i) => {
     name: waveNames[i],
     id: f.Code[0],
     ...profile,
+    abilities: [
+      ...new Set([
+        ...profile.abilities,
+        ...((mechanics.waveAbilities as Record<string, string[]>)[i + 1] ?? []),
+      ]),
+    ],
     hp: i + 1 === FIRST_BOSS_BALANCE.wave ? FIRST_BOSS_BALANCE.hp : profile.hp,
     boss,
     count: boss ? 1 : 5,
@@ -422,6 +508,7 @@ export const WAVES: Wave[] = Array.from({ length: 50 }, (_, i) => {
       : [],
     notes: a.filter(
       (x) =>
+        !ENEMY_SKILL_NAMES[x] &&
         ![
           'gemtd_guai_base',
           'riki_permanent_invisibility',

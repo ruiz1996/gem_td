@@ -20,7 +20,7 @@ function arena(family: string, quality = 1) {
   s.spawned = s.combatCount;
   const e = s.enemies[0];
   Object.assign(e, {
-    x: 18,
+    x: 17.1,
     y: 18,
     hp: 100000,
     maxHp: 100000,
@@ -143,13 +143,12 @@ void test('slow and armor reduction last two seconds', () => {
   for (const family of ['B', 'P']) {
     const { s, e, g } = arena(family);
     tick(s);
-    assert.ok(
-      Math.abs((family === 'B' ? e.slowUntil : e.pierceUntil) - s.time - 2) <
-        1e-8,
-    );
+    const status = e.debuffs?.find((d) => (family === 'B' ? d.slow : d.armor));
+    assert.ok(status);
+    assert.ok(Math.abs(status.until - s.time - 2) < 1e-8);
     g.type = 'stone';
     advance(s, 2.1);
-    assert.ok((family === 'B' ? e.slowUntil : e.pierceUntil) < s.time);
+    assert.equal(e.debuffs?.length, 0);
   }
 });
 void test('fast attacks preserve fractional cooldown at 30 and 60 simulation steps', () => {
@@ -162,13 +161,16 @@ void test('fast attacks preserve fractional cooldown at 30 and 60 simulation ste
 });
 
 void test('non-attacking burn towers do not bank attacks before a combination', () => {
-  const { s, e, g } = arena('R');
+  const { s, g } = arena('R');
   g.type = Object.values(TOWERS).find(
     (t) => t.effects.burn && t.damage === 0,
   )!.id;
   advance(s, 6);
   g.type = basicId('R', 1);
-  const hp = e.hp;
   tick(s);
-  assert.ok(Math.abs(hp - e.hp - 5.2) < 1e-7);
+  const attack = s.damageReport!.rows.find(
+    (r) => r.id === g.id && r.type === g.type,
+  )!;
+  assert.ok(Math.abs(attack.physical + attack.pure - 5.2) < 1e-7);
+  assert.ok(g.cooldown > 0);
 });

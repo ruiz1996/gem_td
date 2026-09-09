@@ -67,7 +67,8 @@ function arena(type = basicId('D', 1), level = 0) {
   s.spawned = s.combatCount;
   const e = s.enemies[0];
   Object.assign(e, {
-    x: 18,
+    // Keep arithmetic fixtures within one simulation step of projectile travel.
+    x: 17.1,
     y: 18,
     hp: 1e9,
     maxHp: 1e9,
@@ -257,8 +258,10 @@ void test('fixed burn, lightning and fork gain magic reduction rather than the a
     try {
       const plain = arena(def.id),
         boosted = arena(def.id, 3);
-      tick(plain.s);
-      tick(boosted.s);
+      for (let i = 0; i < (effect === 'burn' ? 17 : 1); i++) {
+        tick(plain.s);
+        tick(boosted.s);
+      }
       assert.ok(plain.g.damage > 0);
       if (effect !== 'burn')
         assert.ok(plain.g.damage >= (effect === 'lightning' ? 200 : 2500));
@@ -278,8 +281,8 @@ void test('fixed burn, lightning and fork gain magic reduction rather than the a
 void test('MVP applies to every multishot target and records their combined actual damage', () => {
   const { s, g, e } = arena(basicId('Y', 1), 2);
   s.enemies.push(
-    { ...structuredClone(e), id: s.nextId++, x: 18.1 },
-    { ...structuredClone(e), id: s.nextId++, x: 18.2 },
+    { ...structuredClone(e), id: s.nextId++, x: 17.11 },
+    { ...structuredClone(e), id: s.nextId++, x: 17.12 },
   );
   tick(s);
   const expected = TOWERS[g.type].damage * 1.2;

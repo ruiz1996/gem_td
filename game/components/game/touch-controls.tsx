@@ -9,10 +9,12 @@ import {
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { CrushAction } from '@/components/game/crush-action';
+import { SlabActions } from '@/components/game/slab-actions';
 import { MvpStats, MvpInheritance } from '@/components/game/mvp-stats';
 import { TOWERS, type Recipe } from '@/lib/game/data';
 import {
   canPlace,
+  towerDefinition,
   describe,
   fuseOptions,
   getGem,
@@ -39,6 +41,7 @@ export type TouchActions = {
   slot: (index: number) => void;
   material: (id: number) => void;
   combine: () => void;
+  slab: (type: string) => void;
 };
 // This content is only mounted inside the context dialog, never beside the map.
 export function TouchControls({
@@ -57,7 +60,7 @@ export function TouchControls({
   notice: string;
 }) {
   const selected = getGem(s, v.selected),
-    tower = selected && TOWERS[selected.type];
+    tower = selected && towerDefinition(selected);
   const building = s.phase === 'prepare' && !s.resolved && s.placed < 5;
   const point = v.pending ?? v.cursor;
   const placementPoint =
@@ -119,7 +122,13 @@ export function TouchControls({
         <>
           {tower && (
             <>
-              <p className="ability-text">{describe(selected!.type)}</p>
+              <p className="ability-text">{describe(selected!)}</p>
+              {selected?.copiedAbilities && (
+                <p className="muted">
+                  已复制 {selected.copiedAbilities.length}{' '}
+                  种技能，效果如下方属性与说明。
+                </p>
+              )}
               <div className="stat-grid">
                 <div>
                   <strong>{tower.damage}</strong>
@@ -227,7 +236,9 @@ export function TouchControls({
                     variant="outline"
                     onClick={() => a.fuse(count)}
                   >
-                    {count}颗融合 +{count === 4 ? 2 : 1}
+                    {count === 4 && tower?.quality === 5
+                      ? '4颗融合为镇家之石'
+                      : `${count}颗融合 +${count === 4 ? 2 : 1}`}
                   </Button>
                 ))}
               </div>
@@ -263,7 +274,11 @@ export function TouchControls({
                     {ids ? (
                       <ChevronRight size={18} />
                     ) : (
-                      <span className="missing">未凑齐</span>
+                      <span className="missing">
+                        {recipe.candidateOnly && !selected?.candidate
+                          ? '仅限本轮'
+                          : '未凑齐'}
+                      </span>
                     )}
                   </Button>
                 ))
@@ -279,6 +294,7 @@ export function TouchControls({
           {notice}
         </output>
       )}
+      {!preview && <SlabActions state={s} point={point} onBuild={a.slab} />}
     </div>
   );
 }
