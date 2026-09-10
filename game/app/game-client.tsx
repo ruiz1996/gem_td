@@ -33,6 +33,7 @@ import { useGameInteraction } from '@/hooks/use-game-interaction';
 import { CrushAction } from '@/components/game/crush-action';
 import { DamageReport } from '@/components/game/damage-report';
 import { SlabActions } from '@/components/game/slab-actions';
+import { RecipeHints } from '@/components/game/recipe-hints';
 import {
   MvpStats,
   MvpInheritance,
@@ -92,7 +93,6 @@ import {
   loadGame,
   materialPool,
   place,
-  recipesFor,
   removeStone,
   saveGame,
   startWave,
@@ -468,7 +468,6 @@ export default function GemGame() {
       notify((e as Error).message);
     }
   }
-  const combinations = selected ? recipesFor(s, selected.id) : [];
   const list = Object.values(TOWERS).filter(
     (t) =>
       (filter === 'all' ||
@@ -1202,46 +1201,13 @@ export default function GemGame() {
                       ))}
                     </>
                   ) : null}
-                  {combinations.length > 0 && (
-                    <div className="recipe-section">
-                      <div className="section-title">
-                        相关合成{' '}
-                        <span>
-                          {combinations.filter((x) => x.ids).length} 可合成
-                        </span>
-                      </div>
-                      {combinations.map(({ recipe, ids }) => (
-                        <Button
-                          key={recipe.id}
-                          variant="ghost"
-                          className="recipe-option"
-                          disabled={!ids || complete}
-                          onClick={() => openPreview(recipe, ids!)}
-                        >
-                          <div>
-                            <strong>{TOWERS[recipe.result].name}</strong>
-                            <small>
-                              {recipe.materials
-                                .map((id) =>
-                                  TOWERS[id].quality
-                                    ? TOWERS[id].family + TOWERS[id].quality
-                                    : TOWERS[id].name,
-                                )
-                                .join(' + ')}
-                            </small>
-                          </div>
-                          {ids ? (
-                            <ChevronRight size={15} />
-                          ) : (
-                            <span className="missing">
-                              {recipe.candidateOnly && !selected.candidate
-                                ? '仅限本轮'
-                                : '未凑齐'}
-                            </span>
-                          )}
-                        </Button>
-                      ))}
-                    </div>
+                  {selectedTower && (
+                    <RecipeHints
+                      state={s}
+                      gem={selected}
+                      ready={!complete}
+                      onRecipe={openPreview}
+                    />
                   )}
                 </>
               ) : (

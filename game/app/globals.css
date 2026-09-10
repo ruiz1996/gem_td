@@ -742,11 +742,9 @@ input {
   color: #869aa9;
   margin-bottom: 15px;
 }
-.recipe-section {
-  margin-top: 22px;
-}
-.recipe-section .section-title {
-  margin-bottom: 9px;
+.recipe-hints {
+  margin-top: 18px;
+  min-width: 0;
 }
 .recipe-option {
   display: flex !important;
@@ -775,10 +773,115 @@ input {
 .recipe-option:disabled {
   opacity: 0.55;
 }
-.missing {
-  font-size: 11px;
-  white-space: nowrap;
-  color: #8b9da9;
+.recipe-hints-heading,
+.recipe-progress-heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px 10px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+.recipe-hints-heading > span {
+  font-size: 12px;
+  color: #b7c9d4;
+}
+.recipe-hints-note {
+  font-size: 13px;
+  line-height: 1.65;
+  color: #abc0cf;
+  margin: 6px 0;
+}
+.recipe-progress {
+  padding: 12px 0;
+  border-bottom: 1px solid #2a4152;
+}
+.recipe-status {
+  font-size: 13px;
+  color: #edc995;
+}
+.recipe-status.ready {
+  color: #93e2b7;
+}
+.recipe-materials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 0;
+  margin: 9px 0 2px;
+  list-style: none;
+}
+.recipe-materials > li {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 8px;
+  align-items: baseline;
+  padding: 5px 8px;
+  border: 1px solid #365547;
+  background: #152d29;
+  border-radius: 5px;
+  font-size: 13px;
+  line-height: 1.6;
+  max-width: 100%;
+}
+.recipe-materials strong {
+  font-weight: 600;
+  color: #e0ece7;
+}
+.recipe-materials span {
+  color: #a8dfbf;
+}
+.recipe-materials > li[data-missing='true'] {
+  border-color: #64513b;
+  background: #29261f;
+}
+.recipe-materials > li[data-missing='true'] span {
+  color: #edc995;
+}
+.recipe-locations {
+  color: #adbfce;
+  font-size: 13px;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+.recipe-locations summary {
+  cursor: pointer;
+  padding: 9px 0;
+  min-height: 44px;
+  align-content: center;
+  touch-action: manipulation;
+}
+.recipe-locations summary:focus-visible {
+  outline: 2px solid #93e2b7;
+  outline-offset: 2px;
+}
+.recipe-locations p,
+.recipe-locations ul {
+  margin: 0 0 8px;
+}
+.recipe-locations ul {
+  list-style: none;
+  padding: 0;
+}
+.recipe-locations li {
+  margin-bottom: 8px;
+}
+.recipe-locations strong,
+.recipe-locations li span {
+  display: block;
+}
+.recipe-locations strong {
+  font-weight: 500;
+  color: #d6e3ec;
+}
+.recipe-combine {
+  width: 100%;
+  min-height: 44px !important;
+  white-space: normal !important;
+}
+.recipe-after-keep {
+  color: #93e2b7;
 }
 .placement-mark {
   height: 70px;
@@ -1590,17 +1693,17 @@ input {
   font-size: 14px;
   line-height: 1.6;
 }
-.touch-recipes > strong {
-  display: block;
-  font-size: 14px;
-  margin: 8px 0;
-}
 .touch-settings,
 .touch-tower-list {
   display: flex;
   flex-direction: column;
   gap: 12px;
   min-height: 0;
+}
+.touch-recipes > strong {
+  display: block;
+  font-size: 14px;
+  margin: 8px 0;
 }
 .touch-settings label {
   display: flex;

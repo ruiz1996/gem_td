@@ -5,11 +5,11 @@ import {
   ArrowUp,
   ArrowDown,
   Layers,
-  ChevronRight,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { CrushAction } from '@/components/game/crush-action';
 import { SlabActions } from '@/components/game/slab-actions';
+import { RecipeHints } from '@/components/game/recipe-hints';
 import { MvpStats, MvpInheritance } from '@/components/game/mvp-stats';
 import { TOWERS, type Recipe } from '@/lib/game/data';
 import {
@@ -19,7 +19,6 @@ import {
   fuseOptions,
   getGem,
   materialPool,
-  recipesFor,
   type GameState,
 } from '@/lib/game/engine';
 import type { BoardView } from '@/lib/game/board';
@@ -66,7 +65,6 @@ export function TouchControls({
   const placementPoint =
     v.pending ?? (selected?.type === 'stone' ? selected : null);
   const options = selected ? fuseOptions(s, selected.id) : [];
-  const combinations = selected ? recipesFor(s, selected.id) : [];
   const available = preview
     ? materialPool(s, getGem(s, preview.anchor)!).filter(
         (g) =>
@@ -244,48 +242,13 @@ export function TouchControls({
               </div>
             </>
           )}
-          {!!tower && (
-            <div className="touch-recipes">
-              <strong>配方合成</strong>
-              {s.phase === 'combat' && (
-                <p className="muted">战斗中可合成，其他材料原地变石。</p>
-              )}
-              {combinations.length ? (
-                combinations.map(({ recipe, ids }) => (
-                  <Button
-                    key={recipe.id}
-                    variant="ghost"
-                    className="recipe-option"
-                    disabled={!ready || !ids}
-                    onClick={() => ids && a.recipe(recipe, ids)}
-                  >
-                    <span>
-                      <strong>{TOWERS[recipe.result].name}</strong>
-                      <small>
-                        {recipe.materials
-                          .map((id) =>
-                            TOWERS[id].quality
-                              ? `${TOWERS[id].family}${TOWERS[id].quality}`
-                              : TOWERS[id].name,
-                          )
-                          .join(' + ')}
-                      </small>
-                    </span>
-                    {ids ? (
-                      <ChevronRight size={18} />
-                    ) : (
-                      <span className="missing">
-                        {recipe.candidateOnly && !selected?.candidate
-                          ? '仅限本轮'
-                          : '未凑齐'}
-                      </span>
-                    )}
-                  </Button>
-                ))
-              ) : (
-                <p className="muted">这颗宝石没有后续配方。</p>
-              )}
-            </div>
+          {tower && selected && (
+            <RecipeHints
+              state={s}
+              gem={selected}
+              ready={ready}
+              onRecipe={a.recipe}
+            />
           )}
         </>
       )}
