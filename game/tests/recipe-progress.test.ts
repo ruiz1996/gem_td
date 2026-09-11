@@ -5,12 +5,15 @@ import {
   freshGame,
   keepAndStartWave,
   combine,
+  fuse,
   type GameState,
   type Gem,
 } from '../lib/game/engine';
 import {
   recipeProgress,
   relatedRecipeProgress,
+  plusOneRecipeProgress,
+  recipeMaterialSlots,
 } from '../lib/game/recipe-progress';
 
 function add(s: GameState, type: string, candidate = false) {
@@ -133,4 +136,100 @@ void test('unrelated and stone selections have no hints; actionable recipes sort
   assert.equal(recipeProgress(s, silver, add(s, basicId('G', 1)).id), null);
   assert.deepEqual(relatedRecipeProgress(s, add(s, 'stone').id), []);
   assert.deepEqual(relatedRecipeProgress(s, -1), []);
+});
+
+void test('+1 forecast matches real fusion inventory and never enables a projected recipe button', () => {
+  const s = freshGame(42);
+  const anchor = add(s, basicId('R', 1), true);
+  add(s, basicId('R', 1), true);
+  add(s, basicId('P', 1), true);
+  add(s, basicId('Y', 1), true);
+  add(s, basicId('D', 1), true);
+  add(s, basicId('R', 1));
+  add(s, basicId('P', 1));
+  s.placed = 5;
+  const before = JSON.stringify(s);
+  const forecast = plusOneRecipeProgress(s, anchor.id)!;
+  assert.equal(forecast.gem.type, basicId('R', 2));
+  const star = forecast.recipes.find(
+    (p) => p.recipe.result === 'gemtd_xingcaihongbaoshi',
+  )!;
+  assert.equal(star.missing, 0);
+  assert.ok(
+    forecast.recipes.every((p) => p.ids === null && !p.recipe.candidateOnly),
+  );
+  assert.equal(JSON.stringify(s), before);
+  fuse(s, anchor.id, 2);
+  assert.equal(anchor.type, forecast.gem.type);
+  for (const item of forecast.recipes) {
+    const actual = recipeProgress(s, item.recipe, anchor.id)!;
+    assert.equal(item.missing, actual.missing);
+    assert.deepEqual(
+      recipeMaterialSlots(item, forecast.gem).map((slot) => [
+        slot.type,
+        slot.status,
+        slot.gem?.id,
+      ]),
+      recipeMaterialSlots(actual, anchor).map((slot) => [
+        slot.type,
+        slot.status,
+        slot.gem?.id,
+      ]),
+    );
+  }
+});
+
+void test('+1 preview excludes discarded candidates and only appears when +1 is legal', () => {
+  const s = freshGame(42);
+  const anchor = add(s, basicId('R', 1), true);
+  add(s, basicId('R', 1), true);
+  add(s, basicId('P', 1), true);
+  add(s, basicId('D', 1), true);
+  add(s, basicId('Y', 1), true);
+  assert.equal(
+    plusOneRecipeProgress(s, anchor.id),
+    null,
+    'must finish five builds',
+  );
+  s.placed = 5;
+  const star = plusOneRecipeProgress(s, anchor.id)!.recipes.find(
+    (p) => p.recipe.result === 'gemtd_xingcaihongbaoshi',
+  )!;
+  assert.equal(star.missing, 2, 'discarded R1 and P1 do not survive fusion');
+  s.phase = 'combat';
+  assert.equal(plusOneRecipeProgress(s, anchor.id), null);
+  s.phase = 'prepare';
+  s.resolved = true;
+  assert.equal(plusOneRecipeProgress(s, anchor.id), null);
+  s.resolved = false;
+  anchor.candidate = false;
+  assert.equal(plusOneRecipeProgress(s, anchor.id), null);
+  anchor.candidate = true;
+  anchor.type = basicId('R', 6);
+  add(s, basicId('R', 6), true);
+  assert.equal(plusOneRecipeProgress(s, anchor.id), null, 'quality cap');
+  assert.equal(plusOneRecipeProgress(s, -1), null);
+});
+
+void test('material colors prioritize this gem, consume retained duplicates once, and keep candidates separate', () => {
+  const s = freshGame(42);
+  const anchor = add(s, basicId('B', 1), true);
+  add(s, basicId('B', 1));
+  add(s, basicId('Y', 1), true);
+  const recipe: Recipe = {
+    ...silver,
+    materials: [anchor.type, anchor.type, anchor.type, basicId('Y', 1)],
+  };
+  const progress = recipeProgress(s, recipe, anchor.id)!;
+  assert.deepEqual(
+    recipeMaterialSlots(progress, anchor).map((slot) => slot.status),
+    ['current', 'retained', 'missing', 'missing'],
+  );
+  const hidden = { ...silver, candidateOnly: true };
+  assert.deepEqual(
+    recipeMaterialSlots(recipeProgress(s, hidden, anchor.id)!, anchor).map(
+      (slot) => slot.status,
+    ),
+    ['current', 'current', 'missing'],
+  );
 });
